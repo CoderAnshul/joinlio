@@ -13,6 +13,7 @@ export default {
       colors: {
         customBlue: '#000E29',
         textColor: '#2CA2FB',
+        planColor: '#004453',
       },
     },
   },

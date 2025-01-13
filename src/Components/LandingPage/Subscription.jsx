@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
+import dollar from "../../assets/images/dollar.png";
 
 const PricingSlider = () => {
   const headings = [
@@ -45,7 +46,7 @@ const PricingSlider = () => {
     business: [
       {
         title: "Startup",
-        price: "19.99",
+        price: "9.99",
         features: [
           "Feature A for business.",
           "Feature B for business.",
@@ -54,7 +55,7 @@ const PricingSlider = () => {
       },
       {
         title: "Enterprise",
-        price: "49.99",
+        price: "7.99",
         features: [
           "Feature A for business.",
           "Feature B for business.",
@@ -63,7 +64,7 @@ const PricingSlider = () => {
       },
       {
         title: "Corporate",
-        price: "99.99",
+        price: "4.99",
         features: [
           "Feature A for business.",
           "Feature B for business.",
@@ -83,7 +84,7 @@ const PricingSlider = () => {
       },
       {
         title: "Advanced",
-        price: "29.99",
+        price: "2.99",
         features: [
           "Feature A for universities.",
           "Feature B for universities.",
@@ -92,7 +93,7 @@ const PricingSlider = () => {
       },
       {
         title: "Pro",
-        price: "59.99",
+        price: "5.99",
         features: [
           "Feature A for universities.",
           "Feature B for universities.",
@@ -105,16 +106,19 @@ const PricingSlider = () => {
   const [currentHeadingIndex, setCurrentHeadingIndex] = useState(0);
   const swiperRef = React.useRef(null);
 
+  // Effect to reset Swiper slides when currentHeadingIndex changes
+  useEffect(() => {
+    swiperRef.current.swiper.slideTo(0);
+  }, [currentHeadingIndex]);
+
   const handleNext = () => {
     setCurrentHeadingIndex((prevIndex) => (prevIndex + 1) % headings.length);
-    swiperRef.current.swiper.slideNext();
   };
 
   const handlePrev = () => {
     setCurrentHeadingIndex((prevIndex) =>
       (prevIndex - 1 + headings.length) % headings.length
     );
-    swiperRef.current.swiper.slidePrev();
   };
 
   const currentKey = headings[currentHeadingIndex].key;
@@ -122,44 +126,44 @@ const PricingSlider = () => {
   return (
     <div className="flex relative flex-col items-center pt-10 bg-gradient-to-b from-blue-100 to-blue-200 p-6 rounded-tr-[70px] rounded-tl-[70px]">
       <h1 className="text-2xl lg:text-4xl font-bold mb-4 text-center">
-        {headings[currentHeadingIndex].text1} 
+        {headings[currentHeadingIndex].text1}
         <br />
         <h1 className="text-textColor">{headings[currentHeadingIndex].text2}</h1>
       </h1>
       <div className="w-full max-w-5xl">
         <Swiper
           ref={swiperRef}
-          key={currentKey} // Force re-render on section change
+          key={currentKey}
           modules={[Navigation, Pagination]}
           navigation
-          // pagination={{ clickable: true }}
           slidesPerView={1}
           spaceBetween={20}
+          effect="slide"  // Ensure smooth sliding transition
           breakpoints={{
-            640: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
           className="w-full"
         >
           {plans[currentKey].map((plan, index) => (
             <SwiperSlide key={index}>
-              <div className="flex flex-col justify-between bg-[#FFFFFF]/30 backdrop-blur-lg p-6 rounded-2xl shadow-lg h-full">
-                <h2 className="text-xl lg:text-2xl font-bold text-gray-800">
-                  {plan.title}
-                </h2>
-                <p className="text-sm lg:text-base text-gray-600 mt-2">
-                  Lorem ipsum dolor sit amet consectetur. Maecenas risus cras
-                  malesuada cursus.
+              <div
+                className={`flex flex-col justify-between bg-[#FFFFFF]/40 backdrop-blur-lg p-6 border-2 border-black border-opacity-20 rounded-2xl shadow-lg h-full
+                transition-transform duration-300 ${index === 1 ? "lg:scale-100" : "lg:scale-[0.8]"}`}
+              >
+                <h2 className="text-xl lg:text-3xl font-medium text-planColor">{plan.title}</h2>
+                <p className="text-xs lg:text-xs font-medium max-w-4/5 text-planColor mt-2">
+                  Lorem ipsum dolor sit amet consectetur. Maecenas risus cras malesuada cursus.
                 </p>
-                <h3 className="text-4xl lg:text-6xl font-black text-gray-800 my-4">
-                  ${plan.price}
+                <h3 className="text-4xl relative lg:text-9xl font-semibold text-center text-planColor my-4">
+                  <img className="h-7 absolute" src={dollar} alt="money" />{plan.price}
                 </h3>
-                <button className="bg-blue-500 text-white text-sm lg:text-base font-semibold py-2 rounded-full w-full">
+                <button className="bg-[#FFFFFF]/50 text-planColor text-sm lg:text-base font-semibold py-2 rounded-full w-full">
                   Get Started
                 </button>
-                <ul className="mt-4 space-y-2 text-sm lg:text-base text-gray-600">
+                <ul className="mt-4 space-y-2 text-sm lg:text-base text-center text-planColor">
                   {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-center">
+                    <li key={i} className="flex items-center text-center">
                       <span className="text-blue-500 mr-2">✔️</span>
                       {feature}
                     </li>
@@ -174,14 +178,11 @@ const PricingSlider = () => {
         <button
           className="swiper-button-prev bg-white p-3 h-5 !w-12 rounded-full shadow-md active:scale-90 hover:bg-blue-200 "
           onClick={handlePrev}
-        >
-          {/* ⬅️ */}
-        </button>
+        ></button>
         <button
           className="swiper-button-next bg-white p-3 h-5 !w-12 rounded-full shadow-md active:scale-90 hover:bg-blue-200 "
           onClick={handleNext}
-        >
-        </button>
+        ></button>
       </div>
     </div>
   );
