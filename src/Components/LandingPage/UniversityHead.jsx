@@ -1,6 +1,6 @@
 import React from "react";
 import illustration from "../../assets/images/confused.png"; 
-import arrowIcon from "../../assets/images/downArr.png";
+import arrowIcon from "../../assets/images/downarr.png";
 
 const UniversityHead = () => {
   return (
