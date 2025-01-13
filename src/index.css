@@ -273,3 +273,11 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, and Edge */
 }
+
+
+.swiper-button-prev::after{
+  transform: scale(0.5)!important;
+}
+.swiper-button-next::after{
+  transform: scale(0.5)!important;
+}
