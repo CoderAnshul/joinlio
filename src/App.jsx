@@ -13,7 +13,7 @@ const App = () => {
     // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
       smooth: true,
-      lerp: 0.06, // Adjust scrolling smoothness
+      lerp: 0.03, // Adjust scrolling smoothness
     });
 
     lenisRef.current = lenis;
