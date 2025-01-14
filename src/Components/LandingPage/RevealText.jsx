@@ -1,72 +1,74 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, {useEffect, useRef} from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitType from "split-type";
+import Lenis from "@studio-freight/lenis";
 
-const RevealText = ({ text, className = "" }) => {
-  if (!text) {
-    console.warn("RevealText component requires a valid 'text' prop.");
-    return null;
-  }
+gsap.registerPlugin(ScrollTrigger);
 
-  const words = text.split(" ");
+const RevealText = () => {
+  const containerRef = useRef(null);
 
-  const wordVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { opacity: { duration: 1 }, y: { duration: 0.75, ease: "easeOut" } }
-    },
-  };
+  useEffect(() => {
+    const lenis = new Lenis({
+      smooth: true,
+    });
 
-  const letterVariants = {
-    hidden: { opacity: 0, y: 20, color: "#808080" }, // Initial gray color
-    visible: {
-      opacity: 1,
-      y: 0,
-      color: "#000000", // Final black color when fully in view
-      transition: {
-        opacity: { duration: 0.5 },
-        y: { duration: 0.5, ease: "easeOut" },
-        color: { duration: 0.5 }, // Smooth color transition
-      },
-    },
-    scroll: {
-      opacity: 1,
-      color: "#000000",
-      transition: {
-        duration: 0.5, // Smooth color transition
-        ease: "easeOut"
-      },
+    const onScroll = (e) => {
+      lenis.raf(e);
+    };
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
-  };
+
+    requestAnimationFrame(raf);
+
+    // Initialize SplitType and animations
+    const splitTypes = containerRef.current.querySelectorAll(".reveal-type");
+
+    splitTypes.forEach((element) => {
+      const bgColor = element.dataset.bgColor;
+      const fgColor = element.dataset.fgColor;
+
+      const text = new SplitType(element, { types: "chars" });
+
+      gsap.fromTo(
+        text.chars,
+        {
+          color: bgColor,
+        },
+        {
+          color: fgColor,
+          duration: 0.3,
+          stagger: 0.02,
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+            end: "top 20%",
+            scrub: true,
+            toggleActions: "play play reverse reverse",
+          },
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.killAll();
+      lenis.destroy();
+    };
+  }, []);
 
   return (
-    <div
-      className={`reveal-text mt-20 text-4xl font-bold leading-relaxed ${className}`}
-    >
-      {words.map((word, wordIndex) => (
-        <motion.span
-          key={wordIndex}
-          className="word inline-block mr-2"
-          variants={wordVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.2 }}
-        >
-          {word.split("").map((letter, letterIndex) => (
-            <motion.span
-              key={letterIndex}
-              className="letter inline-block"
-              variants={letterVariants}
-              initial="hidden"
-              whileInView="scroll"
-              viewport={{ once: false, amount: 0.2 }} // Trigger the animation continuously as you scroll
-            >
-              {letter}
-            </motion.span>
-          ))}
-        </motion.span>
-      ))}
+    <div ref={containerRef} className="flex items-center min-h-[600px]">
+      <section>
+        <p className="reveal-type !leading-[5vw]  lg:text-6xl" data-bg-color="rgb(191 191 191)" data-fg-color="black">
+        The game-changing platform where students and alumni unlock global connections, businesses redefine engagement, and universities elevate student development like never before. Discover a world of collaboration, innovation, and boundless opportunities
+        </p>
+      </section>
+
+      <section></section>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react'
 import loop from "../../assets/images/loop.png"
 import search from "../../assets/images/search.png"
+import { Link } from 'react-router-dom';
 
 const FindInterest = () => {
 
@@ -70,9 +71,11 @@ const FindInterest = () => {
                         <h2 className="text-lg font-bold text-gray-900 mb-2 truncate">
                         {hub.name}
                         </h2>
+                       <Link to="/hubs">
                         <button className="bg-[#2CA2FB] text-white text-sm font-medium px-4 py-1 rounded-full flex items-center gap-1 hover:bg-blue-500 transition">
-                        Follow <span className="text-lg font-bold">+</span>
-                        </button>
+                          Follow <span className="text-lg font-bold">+</span>
+                          </button>
+                       </Link>
                     </div>
                     <p className="text-sm text-gray-600 mb-1">
                         Lorem ipsum dolor sit amet consectetur. Maecenas risus cras malesuada cursus.

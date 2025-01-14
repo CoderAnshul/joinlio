@@ -11,6 +11,7 @@ import UniversityHead from '../Components/LandingPage/UniversityHead'
 import UniversitiesFeat from '../Components/LandingPage/UniversitiesFeat'
 import WhyChooseUs from '../Components/LandingPage/WhyChooseUs'
 import Subscription from '../Components/LandingPage/Subscription'
+import RevealText from '../Components/LandingPage/RevealText'
 
 const Homepage = () => {
   const cardsData = [
@@ -71,6 +72,7 @@ const Homepage = () => {
     <div>
       <div className='px-[5vw]'>
       <Banner/>
+      <RevealText/>
       </div>
       <DevideSectionText title1 ="STUDENT &" title2 ="ALUMNI" description="Student life is not just a phase – it’s the foundation of your future. The habits you build, the connections you make, and the skills you develop today will define the opportunities you have tomorrow." highlight=" Make it count with JOINLIO."/>
       <div className='md:px-[5vw]'>

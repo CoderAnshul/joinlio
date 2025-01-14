@@ -13,6 +13,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@studio-freight/lenis": "^1.0.42",
     "framer-motion": "^11.17.0",
     "gsap": "^3.12.5",
     "lucide-react": "^0.471.0",
@@ -20,6 +21,7 @@
     "react-dom": "^18.3.1",
     "react-marquee-slider": "^1.1.5",
     "react-router-dom": "^7.1.1",
+    "split-type": "^0.3.4",
     "swiper": "^11.2.1"
   },
   "devDependencies": {

@@ -1,17 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Homepage from './Pages/Homepage';
 import Footer from './Components/Footer';
 import TravelHub from './Pages/TravelHub';
+import Lenis from '@studio-freight/lenis';
 
 const App = () => {
+  const lenisRef = useRef(null);
+
+  useEffect(() => {
+    // Initialize Lenis for smooth scrolling
+    const lenis = new Lenis({
+      smooth: true,
+      lerp: 0.06, // Adjust scrolling smoothness
+    });
+
+    lenisRef.current = lenis;
+
+    const onScroll = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(onScroll);
+    };
+
+    requestAnimationFrame(onScroll);
+
+    // Cleanup on unmount
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <div className="app-wrapper min-h-screen overflow-x-hidden">
       <div className="gradient-layer">
-  <div className="gradient-background"></div>
-  <div className="gradient-background outer"></div>
-</div>
+        <div className="gradient-background"></div>
+        <div className="gradient-background outer"></div>
+      </div>
 
       <BrowserRouter>
         <Navbar />
@@ -21,7 +46,7 @@ const App = () => {
             <Route path="/hubs" element={<TravelHub />} />
           </Routes>
         </div>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </div>
   );
