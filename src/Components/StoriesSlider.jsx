@@ -6,7 +6,7 @@ const ScrollableSection = () => {
   const items = Array(10).fill("Item"); // Replace with dynamic content if needed
 
   return (
-    <div className="w-full h-[194px] bg-gray-100 flex items-center justify-center overflow-hidden border-t-2 border-b-2 border-gray-700 border-opacity-55">
+    <div className="w-full h-[194px] relative z-[100] flex items-center justify-center overflow-hidden border-t-2 border-b-2 border-gray-700 border-opacity-55">
       <Marquee
         velocity={20}
         direction="rtl"
