@@ -3,7 +3,7 @@ import Marquee from "react-marquee-slider";
 
 const ScrollableSection = () => {
   const [isPaused, setIsPaused] = useState(false);
-  const items = Array(10).fill("Item"); // Replace with dynamic content if needed
+  const items = Array(11).fill("Item"); // Replace with dynamic content if needed
 
   return (
     <div className="w-full h-[194px] relative z-[100] flex items-center justify-center overflow-hidden border-t-2 border-b-2 border-gray-700 border-opacity-55">

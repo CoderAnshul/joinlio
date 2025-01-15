@@ -12,6 +12,7 @@ import UniversitiesFeat from '../Components/LandingPage/UniversitiesFeat'
 import WhyChooseUs from '../Components/LandingPage/WhyChooseUs'
 import Subscription from '../Components/LandingPage/Subscription'
 import RevealText from '../Components/LandingPage/RevealText'
+import CircleDetails from '../Components/LandingPage/CircleDetails'
 
 const Homepage = () => {
   const cardsData = [
@@ -68,6 +69,39 @@ const Homepage = () => {
     },
   ];
 
+  const studentData = {
+    boxTexts: [
+      "Trusted Connections",
+      "Your Digital Resume",
+      "Do Volunteer & Paid Projects",
+      "Meet like-minded People Globally",
+      "Get Reward & Recognitions",
+      "Connect With Opportunities",
+      "Journey Tracking",
+      "Activity Documentation",
+    ],
+    centerHeading: "All of this is Possible With",
+    centerSubHeading: " Peer Account",
+    centerDescription:
+      "The Peer Account is a dynamic digital profile that showcases your talents, skills, and achievements. More than a resume, it reflects your experiences, collaborations, and personal growth, embodying your unique personal brand.",
+  };
+  const businessData = {
+    boxTexts: [
+      "Direct Student Access",
+      "Risk-Free Payments",
+      "Monitor Feedback",
+      "Create Ad Campaigns",
+      "Track Sales Impact",
+      "Flexible Payment Options",
+      "Targeted Hubs",
+      "Advanced Analytics",
+    ],
+    centerHeading: "Why you should create a ",
+    centerSubHeading: "Business Account ",
+    centerDescription:
+      "Connect with a vibrant community of students and alumni, promote your offerings in targeted hubs, and build trust with exclusive deals. Boost your income, enhance brand visibility, and gain insights by aligning with a platform dedicated to growth and education.",
+  };
+
   return (
     <div>
       <div className='px-[5vw]'>
@@ -77,6 +111,7 @@ const Homepage = () => {
       <DevideSectionText title1 ="STUDENT &" title2 ="ALUMNI" description="Student life is not just a phase – it’s the foundation of your future. The habits you build, the connections you make, and the skills you develop today will define the opportunities you have tomorrow." highlight=" Make it count with JOINLIO."/>
       <div className='md:px-[5vw]'>
       <ScrollingOrGrowing/>
+      <CircleDetails {...studentData}/>
       <FindInterest/>
         <div className='px-6 lg:px-20 gap-[10px] mt-12 py-12 my-5'>
           <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
@@ -94,6 +129,7 @@ const Homepage = () => {
       <DevideSectionText title1 ="BUSINESSES" title2 =" " description=" "/>
       <div className='px-[5vw]'>
       <BussinessHead/>
+      <CircleDetails {...businessData}/>
       <div className='px-6 lg:px-20 gap-[10px]  py-12 '>
           <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
               Still not convinced?  <br />

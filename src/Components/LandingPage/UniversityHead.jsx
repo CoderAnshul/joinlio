@@ -1,67 +1,95 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import gsap from "gsap";
 import illustration from "../../assets/images/confused.png"; 
 import arrowIcon from "../../assets/images/downarr.png";
 
+// Sample array of objects with content for each slide
+const slides = [
+  {
+    title: "Be more than a university",
+    subTitle: "Be a catalyst for aspirations.",
+    description:
+      "JOINLIO is a cutting-edge platform designed to transform student development within universities, colleges, and institutes.",
+    image: illustration,
+  },
+  {
+    title: "Empower your students",
+    subTitle: "With tools for growth and success.",
+    description:
+      "By subscribing to JOINLIO, your institution gives students free access to advanced tools that foster personal growth, global collaboration, and professional success.",
+    image: illustration,
+  },
+  {
+    title: "Strengthen connections",
+    subTitle: "Equip students for a changing world.",
+    description:
+      "JOINLIO promotes innovation, strengthens connections, and equips students to lead in an ever-changing world.",
+    image: illustration,
+  },
+];
+
 const UniversityHead = () => {
+  // State to track the current slide index
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Function to go to the next slide
+  const goToNextSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length); // Loop back to the first slide after the last
+  };
+
+  // GSAP animation effect when the slide changes
+  useEffect(() => {
+    // Animate the title and subtitle of the current slide
+    gsap.fromTo(
+      ".slide-title",
+      { opacity: 0, y: -30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+    );
+
+    gsap.fromTo(
+      ".slide-description",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+    );
+
+    // Animate the image with a fade-in effect
+    gsap.fromTo(
+      ".slide-image",
+      { opacity: 0, scale: 0.95 },
+      { opacity: 1, scale: 1, duration: 1, ease: "power2.out" }
+    );
+  }, [currentSlide]); // Trigger the animation whenever the slide index changes
+
   return (
     <section className="flex flex-col md:flex-row items-start justify-between px-6 lg:px-20 gap-[10px] py-12 space-y-8 lg:space-y-0">
       {/* Left Section */}
-      <div className="relative max-w-2xl ">
-        
-
-        {/* Intro Text */}
-        {/* <p className="text-sm font-bold text-black">
-          JOINLIO: Where Students and Alumni Thrive.
-        </p> */}
-
+      <div className="relative max-w-2xl">
+        {/* Heading and Arrow Icon */}
         <div className="flex items-start relative mb-8">
-        {/* <div className="flex items-start relative mb-14"> */}
-            <img
+          <img
             src={arrowIcon}
             alt="Arrow"
-            className="absolute -left-10 top-3 -rotate-90 w-6 h-6"
-            />
-            <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
-            Be more than a university -  <br />
-            <span className="text-textColor">be a catalyst for aspirations."</span>
-            </h1>
+            className="absolute -left-10 top-3 -rotate-90 w-6 h-6 cursor-pointer"
+            onClick={goToNextSlide} // Slide to the next content
+          />
+          <h1 className="text-3xl lg:text-5xl font-bold leading-snug slide-title">
+            {slides[currentSlide].title} <br />
+            <span className="text-textColor">{slides[currentSlide].subTitle}</span>
+          </h1>
         </div>
 
-        {/* Statistics Boxes */}
-        {/* <div className="flex flex-wrap items-center gap-6 max-w-2xl !mt-12">
-          <div className="flex-1  px-3 pt-10 py-4 text-start min-w-[190px] xl:max-w-[190px] w-full min-h-[150px] max-h-[150px] gradient-border relative overflow-hidden ">
-            <h3 className="text-customBlue text-[1.5rem] leading-6 font-bold relative z-10">
-              Only <span className="text-blue-500 font-bold">8%</span> of
-              students achieve their dreams
-            </h3>
-          </div>
-          <div className="flex-1 px-3 pt-10 py-4 min-w-[190px] min-h-[150px] xl:max-w-[190px] w-full max-h-[150px] text-start gradient-border relative overflow-hidden  ">
-            <h3 className="text-customBlue text-[1.5rem] leading-6 font-bold relative z-10">
-              Almost <span className="text-blue-500 font-bold">92%</span> of
-              Students get distracted
-            </h3>
-          </div>
-          <div className="flex-1 px-3 lg:pt-10  text-start min-w-[190px] xl:max-w-[190px] relative min-h-[80px] max-h-[150px]  ">
-            <h3 className="text-customBlue relative font-bold leading-8 md:leading-6  text-[1.4rem] z-10">
-              Do you want to be in the top{" "}
-              <span className="text-blue-500  text-[2.2rem] font-bold">8%</span>?
-            </h3>
-          </div>
-        </div> */}
-
         {/* Subtext */}
-        <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl">
-        {/* <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl"> */}
-        JOINLIO is a cutting-edge platform designed to transform student development within universities, colleges, and institutes. By subscribing to JOINLIO, your institution gives students free access to advanced tools that foster personal growth, global collaboration, and professional success. Empower your students with a verified, future-ready ecosystem that promotes innovation, strengthens connections, and equips them to lead in an ever-changing world.
+        <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl slide-description">
+          {slides[currentSlide].description}
         </p>
       </div>
 
       {/* Right Section */}
       <div className="w-full lg:w-1/3">
         <img
-          src={illustration}
+          src={slides[currentSlide].image}
           alt="Confused Student"
-          className="w-full object-contain max-w-xs 2xl:max-w-xs mx-auto"
+          className="w-full object-contain max-w-xs 2xl:max-w-xs mx-auto slide-image"
         />
       </div>
     </section>

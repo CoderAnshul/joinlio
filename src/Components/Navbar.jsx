@@ -8,59 +8,102 @@ const Navbar = () => {
   const sidebarRef = useRef(null);
   const overlayRef = useRef(null);
   const linksRef = useRef([]);
-  const menuTimelineRef = useRef(null);
+  
+  // Store the initial body padding to restore it later
+  const [initialPadding, setInitialPadding] = useState('');
+
+  // Function to prevent body scroll
+  const lockScroll = () => {
+    // Get current scroll position
+    const scrollY = window.scrollY;
+    
+    // Store any existing padding
+    setInitialPadding(document.body.style.paddingRight);
+    
+    // Calculate the scrollbar width
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    
+    // Apply padding to prevent content shift
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+    
+    // Lock the body
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+  };
+
+  // Function to restore body scroll
+  const unlockScroll = () => {
+    // Get the scroll position from the body's top property
+    const scrollY = document.body.style.top;
+    
+    // Reset body styles
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.style.paddingRight = initialPadding;
+    
+    // Restore scroll position
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  };
 
   useEffect(() => {
-    // Initialize the GSAP timeline
-    menuTimelineRef.current = gsap.timeline({ paused: true });
-
-    // Animate overlay
-    menuTimelineRef.current.to(overlayRef.current, {
-      duration: 0.6,
-      opacity: 1,
-      ease: "power3.inOut",
-    });
-
-    // Animate sidebar
-    menuTimelineRef.current.to(
-      sidebarRef.current,
-      {
-        duration: 0.8,
-        x: "0%",
-        ease: "power3.out",
-      },
-      "-=0.6"
-    );
-
-    // Animate links
-    linksRef.current.forEach((link, index) => {
-      menuTimelineRef.current.from(
-        link,
-        {
-          duration: 0.4,
-          opacity: 0,
-          y: 20,
-          ease: "power3.out",
-        },
-        `-=0.3`
-      );
-    });
-
-    // Cleanup
-    return () => {
-      menuTimelineRef.current.kill();
-    };
-  }, []);
-
-  useEffect(() => {
+    const overlay = overlayRef.current;
+    const sidebar = sidebarRef.current;
+    
     if (isOpen) {
-      menuTimelineRef.current.play();
-      document.body.style.overflow = "hidden";
+      // Lock scroll first
+      lockScroll();
+      
+      // Open animation
+      gsap.to(overlay, {
+        duration: 0.3,
+        opacity: 1,
+        pointerEvents: "auto",
+        ease: "power2.out"
+      });
+      
+      gsap.to(sidebar, {
+        duration: 0.4,
+        x: "0%",
+        ease: "power2.out"
+      });
+
+      // Animate links
+      linksRef.current.forEach((link, index) => {
+        if (link) {
+          gsap.from(link, {
+            duration: 0.4,
+            opacity: 0,
+            y: 20,
+            delay: 0.2 + index * 0.1,
+            ease: "power2.out"
+          });
+        }
+      });
     } else {
-      menuTimelineRef.current.reverse();
-      document.body.style.overflow = "auto";
+      // Close animation
+      gsap.to(overlay, {
+        duration: 0.3,
+        opacity: 0,
+        pointerEvents: "none",
+        ease: "power2.in"
+      });
+      
+      gsap.to(sidebar, {
+        duration: 0.4,
+        x: "100%",
+        ease: "power2.in",
+        onComplete: unlockScroll // Unlock scroll after animation completes
+      });
     }
-  }, [isOpen]);
+
+    // Cleanup function
+    return () => {
+      gsap.killTweensOf([overlay, sidebar, ...linksRef.current]);
+      unlockScroll(); // Ensure scroll is unlocked when component unmounts
+    };
+  }, [isOpen, initialPadding]);
 
   return (
     <>
@@ -85,7 +128,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - Unchanged */}
         <div className="hidden md:flex items-center justify-between space-x-8 text-sm font-medium">
           <ul className="flex items-center space-x-8">
             <li>
@@ -111,21 +154,17 @@ const Navbar = () => {
           </ul>
 
           <div className="flex items-center space-x-8">
-            {/* Call Us */}
             <div className="flex items-center text-xs text-semibold">
               <div className="w-2 h-2 rounded-full text-xs bg-black mr-2"></div>
               <span>CALL US : +00 81 590 088</span>
             </div>
 
-            {/* Book a Demo Button */}
             <Link
               to="/book-demo"
               className="button-shadow px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
             >
               BOOK A DEMO
             </Link>
-
-
           </div>
         </div>
       </nav>
@@ -133,22 +172,29 @@ const Navbar = () => {
       {/* Overlay */}
       <div
         ref={overlayRef}
-        className={`fixed inset-0 bg-black bg-opacity-80 z-30 md:hidden ${
-          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity duration-300 md:hidden opacity-0 pointer-events-none`}
         onClick={() => setIsOpen(false)}
       />
 
       {/* Mobile Sidebar */}
-      <div
+      <aside
         ref={sidebarRef}
-        className="fixed top-0 right-0 h-full w-full bg-gray-600 z-40 transform translate-x-full md:hidden"
+        className="fixed top-0 right-0 h-full w-[80vw] max-w-sm bg-gray-800 z-40 transform translate-x-full md:hidden overflow-y-auto"
       >
-        <div className="p-12 h-full flex flex-col">
+        {/* Close button */}
+        <button
+          onClick={() => setIsOpen(false)}
+          className="absolute top-6 right-6 text-white p-2"
+          aria-label="Close menu"
+        >
+          <X className="w-6 h-6" />
+        </button>
+
+        <div className="p-8 h-full flex flex-col">
           {/* Mobile Navigation Links */}
-          <ul className="space-y-8 mt-16">
+          <ul className="space-y-6 mt-16">
             {[
-              { to: "/home", text: "HOME" },
+              { to: "/", text: "HOME" },
               { to: "/services", text: "SERVICE" },
               { to: "/case-studies", text: "CASE STUDIES" },
               { to: "/blog", text: "BLOG" },
@@ -157,7 +203,7 @@ const Navbar = () => {
                 <Link
                   ref={(el) => (linksRef.current[index] = el)}
                   to={link.to}
-                  className="block text-4xl text-white font-medium hover:text-gray-300 transition-colors duration-300"
+                  className="block text-2xl text-white font-medium hover:text-gray-300 transition-colors duration-300"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.text}
@@ -166,28 +212,26 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="mt-auto space-y-8">
-            {/* Mobile Call Us */}
+          <div className="mt-auto space-y-6 pb-8">
             <div 
-              className="text-lg text-white"
+              className="text-white"
               ref={(el) => (linksRef.current[4] = el)}
             >
-              <span className="block text-gray-300 mb-2">Call us</span>
-              <span>+00 81 590 088</span>
+              <span className="block text-gray-400 text-sm mb-1">Call us</span>
+              <span className="text-lg">+00 81 590 088</span>
             </div>
 
-            {/* Mobile Book a Demo Button */}
             <Link
               ref={(el) => (linksRef.current[5] = el)}
               to="/book-demo"
-              className="inline-block px-8 py-4 text-lg font-medium text-white border border-white rounded-md hover:bg-white hover:text-gray-600 transition-all duration-300"
+              className="inline-block w-full px-6 py-3 text-center text-white border border-white rounded-md hover:bg-white hover:text-gray-800 transition-all duration-300"
               onClick={() => setIsOpen(false)}
             >
               BOOK A DEMO
             </Link>
           </div>
         </div>
-      </div>
+      </aside>
     </>
   );
 };
