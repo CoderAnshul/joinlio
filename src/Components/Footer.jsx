@@ -149,7 +149,7 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="container max-w-[1100px] mx-auto px-6 mt-12 border-t border-gray-700 pt-6 flex justify-between items-center text-sm text-gray-500">
         <p>© 2022 Joinrio. All Rights Reserved.</p>
-        <a href="#top" className="text-gray-400 hover:text-white">
+        <a href="#" className="text-gray-400 hover:text-white">
           Scroll Top ↑
         </a>
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Motives = ({ cards }) => {
   return (
-    <div className="px-6 lg:px-20 py-12 my-5 mx-auto flex justify-center">
+    <div className="px-6 lg:px-20 py-12 my-5 mx-auto min-h-44 flex justify-center">
       <div
         className={`grid gap-6 p-4 border-2 w-full max-w-[1200px] border-gray-700 border-opacity-15 bg-[#EEEEEE]/40 backdrop-blur-xl rounded-2xl`}
         style={{
@@ -12,7 +12,7 @@ const Motives = ({ cards }) => {
         {cards.map((card, index) => (
           <div
             key={index}
-            className="flex flex-col h-32 relative justify-end overflow-hidden items-start bg-white rounded-3xl shadow-md p-4"
+            className="flex flex-col min-h-44 lg:min-h-40 relative justify-end overflow-hidden items-start bg-white rounded-3xl shadow-md p-4"
           >
             {/* Card header */}
             <div

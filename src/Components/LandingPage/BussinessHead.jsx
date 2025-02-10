@@ -6,21 +6,21 @@ import arrowIcon from "../../assets/images/downarr.png";
 const contentData = [
   {
     id: 1,
-    subtext: "Then JOINLIO is the platform for you! Showcase your business, connect directly with students,and grow your sales—all with zero upfront costs until you succeed",
-    changeHeading: "Offering student discounts? Want to reach ",
-    changeHeadingTwo: "more customers and build loyalty?",
-  },
-  {
-    id: 2,
-    subtext: "It’s simple—create a business account with JOINLIO. List your student-focused products or services, monitor your sales, get direct feedback from customers, and watch your business thrive. Best of all, it’s completely free to use until you start generating sales!",
-    changeHeading: "How can you grow your",
+    subtext: "JOINLIO connects your business with verified students, helping you grow sales and build loyalty—all with zero upfront costs until you succeed.",
+    changeHeading: "Looking to expand your",
     changeHeadingTwo: " student customer base?",
   },
   {
+    id: 2,
+    subtext: "Sign up for a free JOINLIO business account, list your student-focused offers, track sales, and engage directly with customers. Pay only when you make sales!",
+    changeHeading: "How can you reach more",
+    changeHeadingTwo: "student customers?",
+  },
+  {
     id: 3,
-    subtext: "“No worries! Every student on JOINLIO is a verified profile, ensuring you're connecting with real customers. Plus, all your sales and data are fully encrypted and compliant with GDPR standards. And the best part? You don’t pay a thing until JOINLIO delivers actual sales for your business. Trust us—it’s safe, secure, and built for your success!",
-    changeHeading: "Be more than a business—Got trust ",
-    changeHeadingTwo: " be an enabler of dreams.",
+    subtext: "Every JOINLIO student is verified, and your data is encrypted and GDPR-compliant. No hidden fees—you only pay when you earn.",
+    changeHeading: "Worried about trust",
+    changeHeadingTwo: "and security?",
   },
 ];
 
@@ -51,12 +51,21 @@ const BussinessHead = () => {
       <div className="relative max-w-2xl">
         {/* Intro Text */}
         <div className="flex items-start relative mb-4">
-          <img
+          {/* <img
             src={arrowIcon}
             alt="Arrow"
             className="absolute -left-10 top-3 -rotate-90 w-6 h-6 cursor-pointer"
             onClick={handleNext}
-          />
+          /> */}
+
+          <div
+            className="absolute left-0 -top-16 md:-left-10 md:top-3 -rotate-90 w-6 h-6 cursor-pointer arrow"
+            onClick={handleNext}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
             {contentData[currentIndex].changeHeading}
             <span className="text-textColor">{contentData[currentIndex].changeHeadingTwo}</span>

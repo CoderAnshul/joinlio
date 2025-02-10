@@ -5,6 +5,7 @@ import Homepage from './Pages/Homepage';
 import Footer from './Components/Footer';
 import TravelHub from './Pages/TravelHub';
 import Lenis from '@studio-freight/lenis';
+import ScrollToTop from './Components/ScrollToTop';
 
 const App = () => {
   const lenisRef = useRef(null);
@@ -39,6 +40,7 @@ const App = () => {
       </div>
 
       <BrowserRouter>
+      <ScrollToTop />
         <Navbar />
         <div className="content-container relative z-10">
           <Routes>

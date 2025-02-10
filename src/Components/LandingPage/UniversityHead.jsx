@@ -6,24 +6,38 @@ import arrowIcon from "../../assets/images/downarr.png";
 // Sample array of objects with content for each slide
 const slides = [
   {
-    title: "Be more than a university",
-    subTitle: "Be a catalyst for aspirations.",
+    title: "Do you want to stand out as ",
+    subTitle: "a forward-thinking institution?",
     description:
-      "JOINLIO is a cutting-edge platform designed to transform student development within universities, colleges, and institutes.",
+      "JOINLIO positions your university as a leader in student innovation and personal development,preparing graduates for real-world success.",
     image: illustration,
   },
   {
-    title: "Empower your students",
-    subTitle: "With tools for growth and success.",
+    title: "Do your students lack tools",
+    subTitle: " for personal development?",
     description:
-      "By subscribing to JOINLIO, your institution gives students free access to advanced tools that foster personal growth, global collaboration, and professional success.",
+      "JOINLIO offers advanced tools for goal tracking, skill building, and real-world project opportunities to enhance student success.",
     image: illustration,
   },
   {
-    title: "Strengthen connections",
-    subTitle: "Equip students for a changing world.",
+    title: " Do your students need a way",
+    subTitle: " to showcase their achievements?",
     description:
-      "JOINLIO promotes innovation, strengthens connections, and equips students to lead in an ever-changing world.",
+      "JOINLIO’s Peer Account lets students create digital portfolios to showcase skills, projects, and accomplishments to the world.",
+    image: illustration,
+  },
+  {
+    title: "Is student engagement and",
+    subTitle: "community-building a challenge?",
+    description:
+      "JOINLIO helps create a strong, connected community across departments and universities,fostering teamwork and inclusivity.",
+    image: illustration,
+  },
+  {
+    title: "Are your students struggling",
+    subTitle: " to connect and collaborate?",
+    description:
+      "JOINLIO builds a verified community where students can connect within and beyond their university, fostering collaboration and global networks.",
     image: illustration,
   },
 ];
@@ -66,12 +80,21 @@ const UniversityHead = () => {
       <div className="relative max-w-2xl">
         {/* Heading and Arrow Icon */}
         <div className="flex items-start relative mb-8">
-          <img
+          {/* <img
             src={arrowIcon}
             alt="Arrow"
             className="absolute -left-10 top-3 -rotate-90 w-6 h-6 cursor-pointer"
             onClick={goToNextSlide} // Slide to the next content
-          />
+          /> */}
+
+          <div
+            className="absolute left-0 -top-16 md:-left-10 md:top-3 -rotate-90 w-6 h-6 cursor-pointer arrow"
+            onClick={goToNextSlide}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <h1 className="text-3xl lg:text-5xl font-bold leading-snug slide-title">
             {slides[currentSlide].title} <br />
             <span className="text-textColor">{slides[currentSlide].subTitle}</span>
