@@ -134,7 +134,7 @@ const SubInterest = ({ category = "travel" }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 px-8 py-14">
+    <div className="min-h-screen relative bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 px-8 py-14">
       <div className="container mx-auto">
         <div className="w-full flex justify-between gap-4 mb-6 flex-wrap">
           <div className="w-auto max-w-xl">
@@ -193,8 +193,8 @@ const SubInterest = ({ category = "travel" }) => {
       </div>
       
       {modalOpen && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl w-96 relative">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[10000]">
+          <div className="bg-white absolute z-[10000] p-6 rounded-lg shadow-xl w-96 ">
             <button 
               onClick={() => setModalOpen(false)}
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
