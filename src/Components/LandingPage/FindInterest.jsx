@@ -81,11 +81,18 @@ const FindInterest = () => {
                                                 {hub.name}
                                             </h2>
                                             {index < 3 ? (
-                                                <Link to="/hubs">
-                                                    <button className="bg-[#2CA2FB] text-white text-sm font-medium px-4 py-1 rounded-full flex items-center gap-1 hover:bg-blue-500 transition">
-                                                        Follow <span className="text-lg font-bold">+</span>
-                                                    </button>
-                                                </Link>
+                                                <Link 
+                                                to="/hubs"
+                                                state={{ 
+                                                    hubData: {
+                                                        ...hub,
+                                                        index: index
+                                                    }
+                                                }}
+                                            ><button className="bg-[#2CA2FB] text-white text-sm font-medium px-4 py-1 rounded-full flex items-center gap-1 hover:bg-blue-500 transition">
+                                            Follow <span className="text-lg font-bold">+</span>
+                                        </button></Link>
+                                               
                                             ) : (
                                                 <button className="bg-gray-400 text-white text-sm font-medium px-4 py-1 rounded-full cursor-not-allowed">
                                                     Coming Soon
