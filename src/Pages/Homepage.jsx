@@ -134,7 +134,9 @@ const Homepage = () => {
       <DevideSectionText title1 ="STUDENT &" title2 ="ALUMNI" description="Student life is not just a phase – it’s the foundation of your future. The habits you build, the connections you make, and the skills you develop today will define the opportunities you have tomorrow." highlight=" Make it count with JOINLIO."/>
       <div className='md:px-[5vw] relative overflow-hidden'>
       <ScrollingOrGrowing/>
+      <div className='h-fit relative overflow-hidden'>
       <CircleDetails {...studentData} screenIndex={1}/>
+      </div>
       <FindInterest/>
         <div className='px-6 lg:px-20 gap-[10px] mt-12 py-12 my-5'>
           <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
@@ -155,7 +157,9 @@ platform. No upfront costs pay only when you start generating sales.
 "/>
       <div className='px-[5vw]'>
       <BussinessHead/>
-      <CircleDetails {...businessData} screenIndex={1}/>
+      <div className='h-fit relative overflow-hidden'>
+      <CircleDetails {...studentData} screenIndex={1}/>
+      </div>
       <div className='px-6 lg:px-20 gap-[10px]  py-12 '>
           <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
               Still not convinced?  <br />

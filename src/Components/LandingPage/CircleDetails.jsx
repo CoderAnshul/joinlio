@@ -103,10 +103,11 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
               {centerHeading}
               <span className="text-white">{centerSubHeading}</span>
             </h1>
-            <p className="py-3 px-2 rounded-2xl border border-gray-700 border-opacity-55 bg-[#EEEEEE]/20 backdrop-blur-sm max-w-[410px] text-customBlue text-opacity-80 text-sm mb-4">
+            {/* <p className="py-3 px-2 rounded-2xl border border-gray-700 border-opacity-55 bg-[#EEEEEE]/20 backdrop-blur-sm max-w-[410px] text-customBlue text-opacity-80 text-sm mb-4">
               {centerDescription}
-            </p>
-            <button
+            </p> */}
+           <div className='flex gap-4 mx-auto'>
+           <button
               ref={(el) => (buttonRefs.current[0] = el)}
               onClick={() => handleModal(0)}
               className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
@@ -120,6 +121,7 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
             >
               How it Works 
             </button>
+           </div>
           </div>
         </div>
       </div>
