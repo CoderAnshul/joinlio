@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import tools from "../../assets/images/tools.png";
+import support from "../../assets/images/support.png";
+import services from "../../assets/images/services.png";
 
 const HubInfo = () => {
   const [activeSection, setActiveSection] = useState('Tools');
@@ -10,6 +13,7 @@ const HubInfo = () => {
       description: 'Essential built-in tools to simplify and enhance travel planning and execution.',
       color: 'bg-green-50',
       textColor: 'text-green-800',
+      image: tools,
       subCategories: [
         {
           title: 'Travel Planning & Organization',
@@ -44,6 +48,7 @@ const HubInfo = () => {
       description: 'Direct assistance and community-driven support for every stage of travel.',
       color: 'bg-blue-50',
       textColor: 'text-blue-800',
+      image: support,
       subCategories: [
         {
           title: 'Planning & Guidance Support',
@@ -76,6 +81,7 @@ const HubInfo = () => {
       description: 'Third-party partnerships and offerings with exclusive benefits for student travelers.',
       color: 'bg-yellow-50',
       textColor: 'text-yellow-800',
+      image: services,
       subCategories: [
         {
           title: 'Travel & Accommodation Services',
@@ -123,14 +129,17 @@ const HubInfo = () => {
             onClick={() => setActiveSection(section)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`cursor-pointer mb-4 p-4 rounded-lg transition-all duration-300 ${
+            className={`cursor-pointer mb-4 p-4 rounded-lg transition-all duration-300 flex justify-between items-center ${
               activeSection === section 
                 ? 'bg-white shadow-lg' 
                 : 'hover:bg-gray-200'
             }`}
           >
+            <div>
             <div className={`text-6xl font-bold opacity-20 ${data.textColor}`}>{data.number}</div>
             <h2 className={`text-xl font-semibold mt-2 ${data.textColor}`}>{section}</h2>
+            </div>
+            <img src={data.image} className='h-12' alt="Optimage" />
           </motion.div>
         ))}
       </div>
@@ -140,15 +149,18 @@ const HubInfo = () => {
         {Object.entries(sectionData).map(([section, data]) => (
           <motion.div 
             key={section} 
-            className={`p-4 border-b ${data.color}`}
+            className={`p-4 cursor-pointer border-b ${data.color}`}
           >
             <div 
               className="flex justify-between items-center"
               onClick={() => setActiveSection(section === activeSection ? '' : section)}
             >
-              <div>
+              <div className='flex justify-between items-center w-full'>
+                <div>
                 <div className={`text-4xl font-bold opacity-20 ${data.textColor}`}>{data.number}</div>
                 <h2 className={`text-xl font-semibold ${data.textColor}`}>{section}</h2>
+                </div>
+                <img src={data.image} className='h-12 mr-4' alt="Optimage" />
               </div>
               <motion.span
                 animate={{ rotate: activeSection === section ? 180 : 0 }}
