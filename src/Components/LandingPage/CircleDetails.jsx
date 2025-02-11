@@ -1,11 +1,46 @@
 import React, { useState, useRef } from 'react';
 import rings from "../../assets/images/rings.png";
+import { X, Activity, Brain, MessageSquare, Globe, Layout, Briefcase } from 'lucide-react';
 
 const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHeading }) => {
   const [modalPosition, setModalPosition] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPeerModalOpen, setIsPeerModalOpen] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState(null); // New state for expanded box
   const buttonRefs = useRef([]);
+
+  const features = [
+    {
+      icon: <Activity className="w-5 h-5 text-blue-600" />,
+      title: "Activity Monitoring",
+      description: "Monitor personal achievements and projects through comprehensive activity tracking."
+    },
+    {
+      icon: <Brain className="w-5 h-5 text-blue-600" />,
+      title: "Advanced AI Tools",
+      description: "AI-powered progress evaluation and personalized opportunity discovery."
+    },
+    {
+      icon: <MessageSquare className="w-5 h-5 text-blue-600" />,
+      title: "Encrypted Messaging",
+      description: "Secure communication system for private conversations with global peers."
+    },
+    {
+      icon: <Globe className="w-5 h-5 text-blue-600" />,
+      title: "Global Networking",
+      description: "Connect and collaborate with professionals worldwide."
+    },
+    {
+      icon: <Layout className="w-5 h-5 text-blue-600" />,
+      title: "User-Friendly Interface",
+      description: "Clean, intuitive design for easy portfolio organization."
+    },
+    {
+      icon: <Briefcase className="w-5 h-5 text-blue-600" />,
+      title: "Project Opportunities",
+      description: "Access to paid and volunteer projects with fair agreements."
+    }
+  ];
 
   const handleButtonClick = (index) => {
     const button = buttonRefs.current[index];
@@ -18,6 +53,17 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
       setIsModalOpen(true);
     }
   };
+  const handleModal = (index) => {
+      const button = buttonRefs.current[index];
+      if (button) {
+        const rect = button.getBoundingClientRect();
+        setModalPosition({
+          top: rect.top + window.scrollY + rect.height / 2,
+          left: rect.left + window.scrollX + rect.width / 2
+        });
+        setIsPeerModalOpen(true);
+      }
+    };
 
   const handleBoxClick = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index); // Toggle expanded state
@@ -62,10 +108,17 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
             </p>
             <button
               ref={(el) => (buttonRefs.current[0] = el)}
+              onClick={() => handleModal(0)}
+              className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
+            >
+              Peer account
+            </button>
+            <button
+              ref={(el) => (buttonRefs.current[0] = el)}
               onClick={() => handleButtonClick(0)}
               className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
             >
-              How it Works
+              How it Works 
             </button>
           </div>
         </div>
@@ -104,24 +157,144 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
         </div>
       </div>
 
+
       {isModalOpen && (
-        <div className="fixed inset-0 z-40 bg-black backdrop-blur-sm bg-opacity-50 flex justify-center items-center">
-          <div
-            className="z-50 bg-white shadow-xl border border-gray-300 rounded-md p-4"
-            style={{ top: modalPosition.top, left: modalPosition.left, transform: 'translate(-50%, -50%)', position: 'absolute' }}
-          >
-            <h2 className="text-lg font-bold mb-2">How It Works</h2>
-            <p className="text-sm">This modal explains how the feature works in detail.</p>
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-            >
-              Close
-            </button>
+  <div className="fixed inset-0 z-40 bg-black backdrop-blur-sm bg-opacity-50 flex justify-center items-center">
+    <div
+      className="z-50 bg-white shadow-xl border border-gray-300 rounded-lg p-6 max-w-2xl w-full mx-4"
+      style={{ top: modalPosition.top, left: modalPosition.left, transform: 'translate(-50%, -50%)', position: 'absolute' }}
+    >
+      <h2 className="text-xl font-bold mb-6">How It Works</h2>
+      
+      <div className="space-y-6">
+        <div className="flex items-start gap-4">
+          <span className="text-2xl">🎓</span>
+          <div>
+            <h3 className="font-semibold text-gray-800 mb-1">Sign Up & Verify</h3>
+            <p className="text-gray-600 text-sm">Create your profile by verifying your student or alumni credentials.</p>
           </div>
         </div>
-      )}
+
+        <div className="flex items-start gap-4">
+          <span className="text-2xl">👤</span>
+          <div>
+            <h3 className="font-semibold text-gray-800 mb-1">Set Up Your Peer Account</h3>
+            <p className="text-gray-600 text-sm">Build your Peer Account to document your skills, achievements, and growth.</p>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-4">
+          <span className="text-2xl">🔍</span>
+          <div>
+            <h3 className="font-semibold text-gray-800 mb-1">Explore Hubs & Tools</h3>
+            <p className="text-gray-600 text-sm">Join predefined hubs or create your own based on your interests, and access tools, resources, and support tailored to your goals.</p>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-4">
+          <span className="text-2xl">🤝</span>
+          <div>
+            <h3 className="font-semibold text-gray-800 mb-1">Collaborate & Grow</h3>
+            <p className="text-gray-600 text-sm">Connect with like-minded peers, work on global projects, and gain real-world experience.</p>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-4">
+          <span className="text-2xl">🌟</span>
+          <div>
+            <h3 className="font-semibold text-gray-800 mb-1">Showcase & Succeed</h3>
+            <p className="text-gray-600 text-sm">Use your Peer Account link to share your portfolio with employers and networks, opening doors to opportunities.</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-6 flex justify-between">
+        <button
+          onClick={() => setIsModalOpen(false)}
+          className="text-gray-600 px-4 py-2 rounded-md hover:bg-gray-100"
+        >
+          Close
+        </button>
+        <button
+          className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600"
+        >
+          Sign Up
+        </button>
+      </div>
     </div>
+  </div>
+)}
+
+{isPeerModalOpen && (
+ <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+ <div className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+   {/* Close Button */}
+   <button
+        onClick={() => setIsPeerModalOpen(false)} 
+     className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+     aria-label="Close modal"
+   >
+     <X className="w-6 h-6 text-gray-500" />
+   </button>
+
+   <div className="p-8">
+     {/* Header Section */}
+     <div className="mb-8">
+       <h2 className="text-3xl font-bold text-gray-900 mb-4">What is a Peer Account?</h2>
+       <p className="text-gray-600 leading-relaxed">
+         The Peer Account serves as your tailored digital portfolio, presenting your abilities 
+         and accomplishments through an expanded approach to traditional resumes. It acts as 
+         an active mirror of your development, showcasing work relationships, individual 
+         achievements, and professional growth.
+       </p>
+     </div>
+
+     {/* Progress Section */}
+     <div className="bg-blue-50 rounded-xl p-6 mb-8">
+       <h3 className="text-xl font-semibold text-gray-900 mb-3">Your Progress</h3>
+       <div className="relative pt-1">
+         <div className="flex mb-2 items-center justify-between">
+           <div>
+             <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+               Goals Achieved
+             </span>
+           </div>
+           <div className="text-right">
+             <span className="text-xs font-semibold inline-block text-blue-600">
+               70%
+             </span>
+           </div>
+         </div>
+         <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
+           <div className="w-[70%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
+         </div>
+       </div>
+     </div>
+
+     {/* Features Grid */}
+     <div>
+       <h3 className="text-xl font-semibold text-gray-900 mb-6">Core Functionalities</h3>
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+         {features.map((feature, index) => (
+           <div
+             key={index}
+             className="p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 bg-white"
+           >
+             <div className="flex items-center gap-3 mb-3">
+               {feature.icon}
+               <h4 className="font-semibold text-gray-900">{feature.title}</h4>
+             </div>
+             <p className="text-gray-600 text-sm">{feature.description}</p>
+           </div>
+         ))}
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+)}
+
+</div>
   );
 };
 

@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{useState,useRef} from 'react'
 import loop from "../../assets/images/loop.png"
 import search from "../../assets/images/search.png"
 import { Link } from 'react-router-dom';
 
 const FindInterest = () => {
+      const [modalPosition, setModalPosition] = useState(null);
+      const [isModalOpen, setIsModalOpen] = useState(false);
 
     const hubs = [
         { name: "Travel Hub", description: "Explore stunning destinations and unique travel experiences.", subDescription: "Connect with fellow travelers and share your adventures." },
@@ -13,6 +15,13 @@ const FindInterest = () => {
         { name: "Fitness Hub", description: "Enhance your health and well-being.", subDescription: "Participate in fitness challenges and track your progress." },
         { name: "Cinema Hub", description: "Dive into the world of movies and storytelling.", subDescription: "Discuss your favorite films and discover new ones." },
     ];
+
+  const handleButtonClick = (index) => {
+ 
+      setIsModalOpen(true);
+    
+  };
+
 
   return (
     <div className=' px-6 lg:px-20 gap-[10px] py-12 my-5 '>
@@ -26,7 +35,8 @@ const FindInterest = () => {
 
             <button
                 className="button-shadow uppercase mt-2 md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
-                >
+                onClick={() => handleButtonClick(0)}
+                > 
                 how it works
             </button>
         </div>
@@ -93,6 +103,73 @@ const FindInterest = () => {
                 </div>
             </div>
         </div>
+
+        {isModalOpen && (
+    <div className="fixed inset-0 z-40 bg-black backdrop-blur-sm bg-opacity-50 flex justify-center items-center">
+        <div
+            className="z-50 bg-white shadow-xl border border-gray-300 rounded-lg p-6 max-w-2xl w-full mx-4"
+        >
+            <h2 className="text-xl font-bold mb-6 text-center">How It Works</h2>
+
+            <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                    <span className="text-2xl">🎓</span>
+                    <div>
+                        <h3 className="font-semibold text-gray-800 mb-1">Sign Up & Verify</h3>
+                        <p className="text-gray-600 text-sm">Create your profile by verifying your student or alumni credentials.</p>
+                    </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                    <span className="text-2xl">👤</span>
+                    <div>
+                        <h3 className="font-semibold text-gray-800 mb-1">Set Up Your Peer Account</h3>
+                        <p className="text-gray-600 text-sm">Build your Peer Account to document your skills, achievements, and growth.</p>
+                    </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                    <span className="text-2xl">🔍</span>
+                    <div>
+                        <h3 className="font-semibold text-gray-800 mb-1">Explore Hubs & Tools</h3>
+                        <p className="text-gray-600 text-sm">Join predefined hubs or create your own based on your interests, and access tools, resources, and support tailored to your goals.</p>
+                    </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                    <span className="text-2xl">🤝</span>
+                    <div>
+                        <h3 className="font-semibold text-gray-800 mb-1">Collaborate & Grow</h3>
+                        <p className="text-gray-600 text-sm">Connect with like-minded peers, work on global projects, and gain real-world experience.</p>
+                    </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                    <span className="text-2xl">🌟</span>
+                    <div>
+                        <h3 className="font-semibold text-gray-800 mb-1">Showcase & Succeed</h3>
+                        <p className="text-gray-600 text-sm">Use your Peer Account link to share your portfolio with employers and networks, opening doors to opportunities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="mt-6 flex justify-between">
+                <button
+                    onClick={() => setIsModalOpen(false)}
+                    className="text-gray-600 px-4 py-2 rounded-md hover:bg-gray-100"
+                >
+                    Close
+                </button>
+                <button
+                    className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600"
+                >
+                    Sign Up
+                </button>
+            </div>
+        </div>
+    </div>
+)}
+
     </div>
   )
 }
