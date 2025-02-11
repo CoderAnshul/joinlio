@@ -1,14 +1,50 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { X, Menu } from "lucide-react";
+import { X, Menu, ChevronDown } from "lucide-react";
 import gsap from "gsap";
 import logo from '../assets/images/logo512.png';
+
+
+const menuItems = [
+  { name: 'HOME', link: '/' },
+  { 
+    name: 'FEATURES', 
+    options: [
+      { label: 'Peer Account', link: '/features/peer-account' },
+      { label: 'Predefined Hubs', link: '/features/predefined-hubs' }
+    ]
+  },
+  { 
+    name: 'SOLUTIONS', 
+    options: [
+      { label: 'For Students/Alumni', link: '/solutions/students-alumni' },
+      { label: 'For Businesses', link: '/solutions/businesses' },
+      { label: 'For Universities', link: '/solutions/universities' }
+    ]
+  },
+  { 
+    name: 'RESOURCES', 
+    options: [
+      { label: 'Blogs', link: '/resources/blogs' }
+    ]
+  }
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef(null);
   const overlayRef = useRef(null);
   const linksRef = useRef([]);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [accordionOpen, setAccordionOpen] = useState(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
   
   // Store the initial body padding to restore it later
   const [initialPadding, setInitialPadding] = useState('');
@@ -130,44 +166,46 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Navigation - Unchanged */}
-        <div className="hidden md:flex items-center justify-between space-x-8 text-sm font-medium">
-          <ul className="flex items-center space-x-8">
-            <li>
-              <Link to="/" className="hover:text-gray-600 transition-colors text-xs duration-300">
-                HOME
-              </Link>
-            </li>
-            <li>
-              <Link to="/services" className="hover:text-gray-600 transition-colors text-xs duration-300">
-                SERVICE
-              </Link>
-            </li>
-            <li>
-              <Link to="/case-studies" className="hover:text-gray-600 transition-colors text-xs duration-300">
-                CASE STUDIES
-              </Link>
-            </li>
-            <li>
-              <Link to="/blog" className="hover:text-gray-600 transition-colors text-xs duration-300">
-                BLOG
-              </Link>
-            </li>
+        {/* Desktop Navigation - Updated */}
+<div className="hidden md:flex items-center justify-between space-x-8 text-sm font-medium">
+{menuItems.map((item, index) => (
+    <div 
+      key={index} 
+      className="relative group" 
+      onMouseEnter={() => setOpenDropdown(item.options ? item.name : null)}
+      onMouseLeave={() => setOpenDropdown(null)}
+    >
+      <button className="flex items-center gap-1 hover:text-gray-600">
+        {item.name} {item.options && <ChevronDown className="w-4 h-4" />}
+      </button>
+      {openDropdown === item.name && item.options && (
+        <div className="absolute left-0 top-full mt-2 w-48 bg-white shadow-lg p-4">
+          <ul className="space-y-2">
+            {item.options.map((option, idx) => (
+              <li key={idx}>
+                <Link to={option.link} className="block hover:text-blue-500">{option.label}</Link>
+              </li>
+            ))}
           </ul>
-
-          <div className="flex items-center space-x-8">
-            <div className="flex items-center text-xs text-semibold">
-              <div className="w-2 h-2 rounded-full text-xs bg-black mr-2"></div>
-              <span>CALL US : +00 81 590 088</span>
-            </div>
-
-            <Link
-              to="/book-demo"
-              className="button-shadow px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
-            >
-              BOOK A DEMO
-            </Link>
-          </div>
         </div>
+      )}
+    </div>
+  ))}
+  <div className="flex items-center space-x-8">
+    <div className="flex items-center text-xs text-semibold">
+      <div className="w-2 h-2 rounded-full text-xs bg-black mr-2"></div>
+      <span>CALL US : +00 81 590 088</span>
+    </div>
+
+    <Link
+      to="/book-demo"
+      className="button-shadow px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
+    >
+      BOOK A DEMO
+    </Link>
+  </div>
+</div>
+
       </nav>
 
       {/* Overlay */}
@@ -196,15 +234,19 @@ const Navbar = () => {
           <ul className="space-y-6 mt-16">
             {[
               { to: "/", text: "HOME" },
-              { to: "/services", text: "SERVICE" },
-              { to: "/case-studies", text: "CASE STUDIES" },
-              { to: "/blog", text: "BLOG" },
+              { to: "/peer-account", text: "PEER ACCOUNT" },
+              { to: "/services", text: "PREDEFINED HUBS" },
+              { to: "/resources", text: "RESOURCES" },
+              { to: "/student", text: " SUTDENT/ALUMINA" },
+              { to: "/business", text: " BUSINESS" },
+              { to: "/universities", text: " UNIVERSITIES" },
+              { to: "/blog", text: "FOR BLOGS" },
             ].map((link, index) => (
               <li key={link.to}>
                 <Link
                   ref={(el) => (linksRef.current[index] = el)}
                   to={link.to}
-                  className="block text-2xl text-white font-medium hover:text-gray-300 transition-colors duration-300"
+                  className="block text-xl text-white font-medium hover:text-gray-300 transition-colors duration-300"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.text}
