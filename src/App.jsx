@@ -6,6 +6,8 @@ import Footer from './Components/Footer';
 import TravelHub from './Pages/TravelHub';
 import Lenis from '@studio-freight/lenis';
 import ScrollToTop from './Components/ScrollToTop';
+import GetStarted from './Pages/GetStarted';
+import Policy from './Pages/Policy';
 
 const App = () => {
   const lenisRef = useRef(null);
@@ -46,6 +48,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/hubs" element={<TravelHub />} />
+            <Route path="/get-started" element={<GetStarted />} />
+            <Route path="/policy" element={<Policy/>} />
           </Routes>
         </div>
         <Footer />

@@ -11,9 +11,11 @@ const FindInterest = () => {
         { name: "Travel Hub", description: "Explore stunning destinations and unique travel experiences.", subDescription: "Connect with fellow travelers and share your adventures." },
         { name: "Media Hub", description: "Capture and create amazing content.", subDescription: "Join a community of photographers, videographers, and content creators." },
         { name: "Entrepreneurship Hub", description: "Fuel your business ideas and networking.", subDescription: "Meet like-minded entrepreneurs and exchange innovative strategies." },
-        { name: "Tech Hub", description: "Stay ahead with the latest tech trends.", subDescription: "Engage with developers, engineers, and tech enthusiasts." },
-        { name: "Fitness Hub", description: "Enhance your health and well-being.", subDescription: "Participate in fitness challenges and track your progress." },
-        { name: "Cinema Hub", description: "Dive into the world of movies and storytelling.", subDescription: "Discuss your favorite films and discover new ones." },
+        { name: "Finance & Investment Hub", description: "Enhances financial literacy with focus on investing and money management.", subDescription: "Engage with developers, engineers, and tech enthusiasts." },
+        { name: "Student Culinary Hub", description: "Centers on developing culinary skills and promoting healthy, budget-friendly eating", subDescription: "Participate in fitness challenges and track your progress." },
+        { name: "Gaming & Tech Hub", description: "Covers gaming, coding, e-sports, and technology innovations.", subDescription: "Discuss your favorite films and discover new ones." },
+        { name: "Research & Innovation Hub", description: "A space dedicated to academic research and scientific breakthroughs.", subDescription: "Discuss your favorite films and discover new ones." },
+        { name: "Social Good Hub", description: "Supports volunteering, social work, and community service projects.", subDescription: "Discuss your favorite films and discover new ones." },
     ];
 
   const handleButtonClick = (index) => {
@@ -29,7 +31,7 @@ const FindInterest = () => {
             <div className='w-auto max-w-xl'>
                 <h3 className='text-3xl relative font-semibold text-customBlue'>Find Your Interest <img className='absolute -bottom-4 scale-50' src={loop} alt="loop text" /></h3>
                 <p className="text-gray-700 text-[16px] leading-[20px] mt-[4vw] md:mt-[2vw] max-w-xl">
-                    What’s your passion? Whether it’s travel, entrepreneurship, or even night camping, JOINLIO brings it to life! Create your own hub or join one of our exciting topics to connect with like-minded students, gain exclusive tools, services, and support, and unlock endless opportunities. Your next big collaboration starts here – click on a hub and explore the possibilities!
+                What’s your passion? Whether it’s travel, entrepreneurship, or even night camping, JOINLIO transforms your dreams, talents, and interests into reality. Like an ocean of opportunities, our platform allows you to create your own hub or join existing topics. Connect with like-minded students, access exclusive tools, services, and support, and unlock limitless possibilities. Your next big collaboration starts here—click on a hub and explore all that JOINLIO has to offer!
                 </p>
             </div>
 
@@ -66,7 +68,7 @@ const FindInterest = () => {
                     </div>
 
                     {/* Scrollable Container */}
-                    <div className="h-full w-full hide-scrollbar max-h-[600px] overflow-y-scroll">
+                    <div className="h-full w-full pr-2 max-h-[600px] custom-scrollbar overflow-y-scroll">
                         {/* Grid Layout */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 pb-4">
                             {hubs.map((hub, index) => (

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import video from "../assets/video/dashboard.mp4";
+// import video from "../assets/video/dashboard.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,7 +33,7 @@ const VideoContainer = () => {
       <video
         ref={videoRef}
         className="w-full h-full object-cover"
-        src={video}
+        src=""
         muted
       >
         Your browser does not support the video tag.

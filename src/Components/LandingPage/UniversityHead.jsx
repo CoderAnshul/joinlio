@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import gsap from "gsap";
-import illustration from "../../assets/images/confused.png"; 
-import arrowIcon from "../../assets/images/downarr.png";
+import forward from "../../assets/images/forward.jpg"; 
+import personal from "../../assets/images/personal.jpg"; 
+import way from "../../assets/images/way.jpg"; 
+import community from "../../assets/images/student-community.jpg"; 
+import collab from "../../assets/images/collab.jpg"; 
 
 // Sample array of objects with content for each slide
 const slides = [
@@ -10,35 +13,35 @@ const slides = [
     subTitle: "a forward-thinking institution?",
     description:
       "JOINLIO positions your university as a leader in student innovation and personal development,preparing graduates for real-world success.",
-    image: illustration,
+    image: forward,
   },
   {
     title: "Do your students lack tools",
     subTitle: " for personal development?",
     description:
       "JOINLIO offers advanced tools for goal tracking, skill building, and real-world project opportunities to enhance student success.",
-    image: illustration,
+    image: personal,
   },
   {
     title: " Do your students need a way",
     subTitle: " to showcase their achievements?",
     description:
       "JOINLIO’s Peer Account lets students create digital portfolios to showcase skills, projects, and accomplishments to the world.",
-    image: illustration,
+    image: way,
   },
   {
     title: "Is student engagement and",
     subTitle: "community-building a challenge?",
     description:
       "JOINLIO helps create a strong, connected community across departments and universities,fostering teamwork and inclusivity.",
-    image: illustration,
+    image: community,
   },
   {
     title: "Are your students struggling",
     subTitle: " to connect and collaborate?",
     description:
       "JOINLIO builds a verified community where students can connect within and beyond their university, fostering collaboration and global networks.",
-    image: illustration,
+    image: collab,
   },
 ];
 

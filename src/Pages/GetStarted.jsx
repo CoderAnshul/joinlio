@@ -1,0 +1,144 @@
+import React, { useState } from 'react';
+import { ChevronDown, Bird, User } from 'lucide-react';
+
+const GetStarted = () => {
+  const [userCategory, setUserCategory] = useState('');
+
+  return (
+    <div className="min-h-screen p-6 flex items-center justify-center">
+      <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center">
+        {/* Left Section */}
+        <div className="space-y-6">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-400 via-pink-500 to-blue-600 rounded-3xl opacity-20" />
+            <div className="relative p-8">
+              <h1 className="text-3xl font-bold mb-6">Sign Up Early!</h1>
+              <p className="text-gray-700 mb-8">
+                As Joinlio prepares to launch, we're offering early sign-up opportunities so you can be among the first to experience all the benefits our platform has to offer once we go live.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 bg-blue-50 p-3 rounded-lg">
+                  <Bird className="text-blue-600 w-5 h-5" />
+                  <p className="text-sm">Joinlio provides free access to all users</p>
+                </div>
+                
+                <div className="flex items-center gap-3 bg-green-50 p-3 rounded-lg">
+                  <User className="text-green-600 w-5 h-5" />
+                  <p className="text-sm">Sign up early to stay updated and receive notifications when Joinlio goes live.</p>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <h2 className="font-semibold mb-4">Joinlio users include:</h2>
+                <ul className="space-y-3 text-sm text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <span className="font-medium min-w-6">1.</span>
+                    <span>Students/Alumni: For those in universities, colleges, and institutions looking to connect, collaborate, and grow.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="font-medium min-w-6">2.</span>
+                    <span>Businesses with Student Discounts: Ideal for businesses offering discounts to students, enhancing visibility and customer base.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="font-medium min-w-6">3.</span>
+                    <span>Educational Institutions: For universities and colleges interested in tools that boost student development and wish to partner with us.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Section - Form */}
+        <div className="bg-white p-8 rounded-2xl shadow-lg">
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              User Category
+            </label>
+            <div className="relative">
+              <select
+                className="w-full p-3 bg-white border border-gray-300 rounded-lg appearance-none pr-10"
+                value={userCategory}
+                onChange={(e) => setUserCategory(e.target.value)}
+              >
+                <option value="">Select category</option>
+                <option value="students">Students</option>
+                <option value="alumina">Alumina</option>
+                <option value="businesses">Businesses</option>
+                <option value="institutions">Universities/Institutions/colleges</option>
+              </select>
+              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                First Name
+              </label>
+              <input
+                type="text"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="Enter your first name"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Last Name
+              </label>
+              <input
+                type="text"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="Enter your last name"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Institution Name
+              </label>
+              <input
+                type="text"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="Enter your institution's name"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Mail ID
+              </label>
+              <input
+                type="email"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="Any.mail.IDs"
+              />
+            </div>
+          </div>
+
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Please enter your queries below
+            </label>
+            <textarea
+              className="w-full p-3 border border-gray-300 rounded-lg h-24"
+              placeholder="Enter your query here..."
+            />
+          </div>
+
+          <button className="w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition-colors">
+            Sign up
+          </button>
+
+          <p className="text-xs text-gray-500 mt-4">
+            By signing up, you agree to receive promotional messages from Joinlio directly shared by providers and partners.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default GetStarted;

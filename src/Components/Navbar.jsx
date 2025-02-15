@@ -198,10 +198,10 @@ const Navbar = () => {
     </div>
 
     <Link
-      to="/book-demo"
+      to="/get-started"
       className="button-shadow px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
     >
-      BOOK A DEMO
+      GET STARTED
     </Link>
   </div>
 </div>
@@ -266,11 +266,11 @@ const Navbar = () => {
 
             <Link
               ref={(el) => (linksRef.current[5] = el)}
-              to="/book-demo"
+              to="/get-started"
               className="inline-block w-full px-6 py-3 text-center text-white border border-white rounded-md hover:bg-white hover:text-gray-800 transition-all duration-300"
               onClick={() => setIsOpen(false)}
             >
-              BOOK A DEMO
+              GET STARTED
             </Link>
           </div>
         </div>
@@ -278,5 +278,7 @@ const Navbar = () => {
     </>
   );
 };
+
+
 
 export default Navbar;
