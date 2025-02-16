@@ -52,7 +52,7 @@ const FindInterest = () => {
                             Create your own <br />
                             <span className="text-textColor uppercase">interests</span>
                         </h1>
-                        <button className="bg-[#2CA2FB] py-1 px-4 mt-4 text-white active:scale-95 transform transition-all rounded-lg">
+                        <button className="bg-[#F7C28A] py-1 px-4 mt-4 text-white active:scale-95 transform transition-all rounded-lg">
                             Create
                         </button>
                     </div>
@@ -91,7 +91,7 @@ const FindInterest = () => {
                                                         index: index
                                                     }
                                                 }}
-                                            ><button className="bg-[#2CA2FB] text-white text-sm font-medium px-4 py-1 rounded-full flex items-center gap-1 hover:bg-blue-500 transition">
+                                            ><button className="bg-[#F7C28A] text-white text-sm font-medium px-4 py-1 rounded-full flex items-center gap-1 hover:bg-blue-500 transition">
                                             Follow <span className="text-lg font-bold">+</span>
                                         </button></Link>
                                                

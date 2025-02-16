@@ -267,7 +267,7 @@ const Navbar = () => {
             <Link
               ref={(el) => (linksRef.current[5] = el)}
               to="/get-started"
-              className="inline-block w-full px-6 py-3 text-center text-white border border-white rounded-md hover:bg-white hover:text-gray-800 transition-all duration-300"
+              className="inline-block w-full px-6 py-3 text-center text-white border border-white rounded-md hover:!bg-white hover:text-gray-800 transition-all duration-300"
               onClick={() => setIsOpen(false)}
             >
               GET STARTED

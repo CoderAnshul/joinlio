@@ -47,7 +47,7 @@ const Banner = () => {
 
         <h1 className="text-4xl relative z-[50] md:text-45xl lg:text-5xl xl:text-7xl font-archivo font-bold text-customBlue mb-6">
           Step into the <br /> future with{" "}
-          <span className="relative z-[50] text-blue-400">
+          <span className="relative z-[50] text-textColor">
             JOINLIO
             <img className="absolute -right-2 top-6 md:-right-2 md:top-6" src={knot} alt="" />
           </span>
@@ -57,7 +57,8 @@ const Banner = () => {
           Join a vibrant digital ecosystem where students, <br /> alumni & business thrive together.
         </p>
 
-        <button className="px-8 relative z-[50] py-3 text-sm font-medium text-black border border-black rounded-sm hover:bg-[#2CA2FB] hover:text-white transition-all duration-300 shadow-[0_4px_0px_0px_#007bff]">
+        <button className="px-8 relative z-[50] py-3 text-sm font-medium text-black border border-black rounded-sm hover:bg-[#2CA2FB] hover:text-white transition-all duration-300 shadow-[0_4px_0px_0px_#f7c28a]
+">
           CONTACT US TODAY
         </button>
 

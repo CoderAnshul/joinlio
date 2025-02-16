@@ -20,7 +20,7 @@ const Homepage = () => {
       title: "Our Mission",
       description:
         "To empower students and alumni with meaningful connections, real-world opportunities, and tools to thrive in their personal and professional journeys.",
-      bgColor: "bg-[#64B7F5]",
+      bgColor: "bg-[#F7C28A]",
       textColor: "text-white",
     },
     {
@@ -34,7 +34,7 @@ const Homepage = () => {
       title: "Our Vision",
       description:
         "To create a world where every student and alumni can fully discover their true potential, build meaningful lasting relationships, and turn their biggest dreams into reality.",
-      bgColor: "bg-[#64B7F5]",
+      bgColor: "bg-[#F7C28A]",
       textColor: "text-white",
     },
     {
@@ -50,7 +50,7 @@ const Homepage = () => {
       title: "Our Mission",
       description:
         "To empower businesses by connecting them with a thriving student community, driving growth through meaningful interactions, and fostering long-term success.",
-      bgColor: "bg-[#64B7F5]",
+      bgColor: "bg-[#F7C28A]",
       textColor: "text-white",
     },
     {
@@ -64,7 +64,7 @@ const Homepage = () => {
       title: "Our Motive",
       description:
         "JOINLIO believes every business deserves the right tools to grow, connect, thrive, succeed, innovate, streamline processes, enhance efficiency, and create a lasting, sustainable future.",
-      bgColor: "bg-[#64B7F5]",
+      bgColor: "bg-[#F7C28A]",
       textColor: "text-white",
     },
   ];
@@ -73,7 +73,7 @@ const Homepage = () => {
       title: "Our Mission",
       description:
         "To empower universities by providing a transformative platform that drives student growth, fosters collaboration, and builds a thriving community of future leaders.",
-      bgColor: "bg-[#64B7F5]",
+      bgColor: "bg-[#F7C28A]",
       textColor: "text-white",
     },
     {
@@ -87,7 +87,7 @@ const Homepage = () => {
       title: "Our Motive",
       description:
         "Our motive is to build a robust and powerful tool for universities, enabling them to enhance their students’ personal growth, create impactful connections, and ensure long-term success.",
-      bgColor: "bg-[#64B7F5]",
+      bgColor: "bg-[#F7C28A]",
       textColor: "text-white",
     },
   ];

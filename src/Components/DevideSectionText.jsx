@@ -3,7 +3,7 @@ import arr from "../assets/images/downArr.png";
 
 const DevideSectionText = ({ title1, title2, description, highlight , className }) => {
   return (
-    <section className="relative my-[50px] lg:mt-[150px] flex items-center justify-between h-auto">
+    <section className="relative pl-5 my-[50px] lg:mt-[150px] flex items-center justify-between h-auto">
       {/* Left Side: Title and Description */}
       <div className="max-w-2xl sm:max-w-lg md:max-w-2xl">
         <h1 className="text-5xl lg:text-8xl md:!leading-[50px]  lg:!leading-[80px] -ml-2 md:-ml-3 gradient-text-two whitespace-nowrap md:text-6xl font-bold text-blue-300">

@@ -1,16 +1,30 @@
 import React, { useState } from 'react';
 import { ChevronDown, Bird, User } from 'lucide-react';
+import j from "../assets/images/bigJTwo.png";
 
 const GetStarted = () => {
   const [userCategory, setUserCategory] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [institutionName, setInstitutionName] = useState('');
+  const [email, setEmail] = useState('');
+  const [query, setQuery] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ userCategory, firstName, lastName, institutionName, email, query });
+  };
 
   return (
     <div className="min-h-screen p-6 flex items-center justify-center">
+      <div>
+        <img className='max-h-[500px] hidden lg:block mr-10' src={j} alt="" />
+      </div>
       <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center">
         {/* Left Section */}
         <div className="space-y-6">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-400 via-pink-500 to-blue-600 rounded-3xl opacity-20" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#e0b3c1] via-[#e6d5b3] to-[#e0b3c1] rounded-3xl opacity-20" />
             <div className="relative p-8">
               <h1 className="text-3xl font-bold mb-6">Sign Up Early!</h1>
               <p className="text-gray-700 mb-8">
@@ -52,89 +66,97 @@ const GetStarted = () => {
 
         {/* Right Section - Form */}
         <div className="bg-white p-8 rounded-2xl shadow-lg">
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              User Category
-            </label>
-            <div className="relative">
-              <select
-                className="w-full p-3 bg-white border border-gray-300 rounded-lg appearance-none pr-10"
-                value={userCategory}
-                onChange={(e) => setUserCategory(e.target.value)}
-              >
-                <option value="">Select category</option>
-                <option value="students">Students</option>
-                <option value="alumina">Alumina</option>
-                <option value="businesses">Businesses</option>
-                <option value="institutions">Universities/Institutions/colleges</option>
-              </select>
-              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <div>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                First Name
+                User Category
               </label>
-              <input
-                type="text"
-                className="w-full p-3 border border-gray-300 rounded-lg"
-                placeholder="Enter your first name"
+              <div className="relative">
+                <select
+                  className="w-full p-3 bg-white border border-gray-300 rounded-lg appearance-none pr-10"
+                  value={userCategory}
+                  onChange={(e) => setUserCategory(e.target.value)}
+                >
+                  <option value="">Select category</option>
+                  <option value="students">Students</option>
+                  <option value="alumni">Alumni</option>
+                  <option value="businesses">Businesses</option>
+                  <option value="institutions">Universities/Institutions/Colleges</option>
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Enter your first name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Enter your last name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Institution Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Enter your institution's name"
+                  value={institutionName}
+                  onChange={(e) => setInstitutionName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Mail ID
+                </label>
+                <input
+                  type="email"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Any.mail.IDs"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Please enter your queries below
+              </label>
+              <textarea
+                className="w-full p-3 border border-gray-300 rounded-lg h-24"
+                placeholder="Enter your query here..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
               />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Last Name
-              </label>
-              <input
-                type="text"
-                className="w-full p-3 border border-gray-300 rounded-lg"
-                placeholder="Enter your last name"
-              />
-            </div>
-          </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Institution Name
-              </label>
-              <input
-                type="text"
-                className="w-full p-3 border border-gray-300 rounded-lg"
-                placeholder="Enter your institution's name"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Mail ID
-              </label>
-              <input
-                type="email"
-                className="w-full p-3 border border-gray-300 rounded-lg"
-                placeholder="Any.mail.IDs"
-              />
-            </div>
-          </div>
-
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Please enter your queries below
-            </label>
-            <textarea
-              className="w-full p-3 border border-gray-300 rounded-lg h-24"
-              placeholder="Enter your query here..."
-            />
-          </div>
-
-          <button className="w-full bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition-colors">
-            Sign up
-          </button>
-
-          <p className="text-xs text-gray-500 mt-4">
-            By signing up, you agree to receive promotional messages from Joinlio directly shared by providers and partners.
-          </p>
+            <button type="submit" className="w-full bg-[#F7C28A] text-Black py-3 px-6 rounded-lg hover:bg-[#c59057] transition-colors">
+              Sign up
+            </button>
+          </form>
         </div>
       </div>
     </div>
