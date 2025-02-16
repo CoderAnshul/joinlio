@@ -8,6 +8,7 @@ import Lenis from '@studio-freight/lenis';
 import ScrollToTop from './Components/ScrollToTop';
 import GetStarted from './Pages/GetStarted';
 import Policy from './Pages/Policy';
+import ConfidentialityPolicy from './Pages/ConfidentialityPolicy';
 
 const App = () => {
   const lenisRef = useRef(null);
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="/hubs" element={<TravelHub />} />
             <Route path="/get-started" element={<GetStarted />} />
             <Route path="/policy" element={<Policy/>} />
+            <Route path="/confidential-policy" element={<ConfidentialityPolicy/>} />
           </Routes>
         </div>
         <Footer />

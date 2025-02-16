@@ -1,5 +1,5 @@
 import React from "react";
-import {  definitions, introduction, scopeOfPolicy, dpoContactReasons, dataProtectionPrinciples, lawfulProcessingGrounds, consentDetails, transparencyDetails, dataProtectionPolicy  } from "../../src/assets/data/policyData";
+import {  definitions, introduction, scopeOfPolicy, dpoContactReasons, dataProtectionPrinciples, lawfulProcessingGrounds, consentDetails, transparencyDetails, dataProtectionPolicy, purposeLimitation, dataMinimization, accuracy, storageLimitation, securityIntegrityConfidentiality, reportingPersonalDataBreach, transferLimitation, dataSubjectRightsRequests, accountability, recordKeeping, trainingAndAudit, privacyByDesignAndDPIA, processingAndADM, directMarketing, sharingPersonalData, caldicottPrinciples, changesToPolicy  } from "../../src/assets/data/policyData";
 
 const Policy = () => {
   return (
@@ -24,7 +24,7 @@ const Policy = () => {
         </li>
       </ul>
       <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Interpretation</h2>
-      <h3 className="text-xl font-semibold mt-4 mb-2">Definitions:</h3>
+      <h3 className="text-xl font-semibold mt-8 mb-2">Definitions:</h3>
       <div className="space-y-4">
         {[
           { term: "Automated Decision-Making (ADM)", desc: "when a decision is made based solely on Automated Processing (including profiling), which produces legal effects or significantly affects an individual. The UK GDPR prohibits Automated Decision-Making (unless certain conditions are met) but not Automated Processing." },
@@ -65,7 +65,7 @@ const Policy = () => {
       ))}
 
       {/* DPO Contact Reasons */}
-      <h3 className="text-xl font-semibold mt-4 mb-2">When to Contact the DPO:</h3>
+      <h3 className="text-xl font-semibold mt-8 mb-2">When to Contact the DPO:</h3>
       <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
         {dpoContactReasons.map((reason, index) => (
           <li key={index}>{reason}</li>
@@ -81,6 +81,7 @@ const Policy = () => {
           </p>
         ))}
       </div>
+
       <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Data Protection Principles </h2>
       <div className="space-y-4">
         {dataProtectionPrinciples.map(({ term, desc }, index) => (
@@ -89,6 +90,167 @@ const Policy = () => {
           </p>
         ))}
       </div>
+
+      <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Lawful Processing Grounds</h2>
+      <div className="space-y-4">
+        {lawfulProcessingGrounds.map(({ term, desc }, index) => (
+          <p key={index} className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500">
+            <strong className="text-blue-600">{term}:</strong> {desc}
+          </p>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Consent</h2>
+      <div className="space-y-4">
+        {consentDetails.map(({ term, desc }, index) => (
+          <p key={index} className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500">
+            <strong className="text-blue-600">{term}:</strong> {desc}
+          </p>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Transparency Details</h2>
+      <div className="space-y-4">
+        {transparencyDetails.map(({ term, desc }, index) => (
+          <p key={index} className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500">
+            <strong className="text-blue-600">{term}:</strong> {desc}
+          </p>
+        ))}
+      </div>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">When to Contact the DPO:</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {dataProtectionPolicy.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Purpose Limitation</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {purposeLimitation.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Data Minimization</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {dataMinimization.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Accuracy</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {accuracy.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Storage Limitation</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {storageLimitation.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Storage Limitation</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {storageLimitation.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Security Integrity Confidentiality</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {securityIntegrityConfidentiality.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Reporting Personal Data Breach</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {reportingPersonalDataBreach.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Transfer Limitation</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {transferLimitation.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Data Subject Rights Requests</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {dataSubjectRightsRequests.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Accountability</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {accountability.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Record Keeping</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {recordKeeping.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Training And Audit</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {trainingAndAudit.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Privacy By Design And DPIA</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {privacyByDesignAndDPIA.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Processing And ADM</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {processingAndADM.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Direct Marketing</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {directMarketing.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Sharing Personal Data</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {sharingPersonalData.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Caldicott Principles</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {caldicottPrinciples.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-8 mb-2">Changes To Policy</h3>
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+        {changesToPolicy.map((reason, index) => (
+          <li key={index}>{reason}</li>
+        ))}
+      </ul>
+
       </div>
     </div>
   );
