@@ -444,7 +444,7 @@ const HubInfo = ({ category = "travel" }) => {
   return (
     <div className="h-fit flex flex-col lg:flex-row">
       {/* Sidebar for Large Screens */}
-      <div className="hidden h-fit lg:block w-1/4 bg-gray-100 p-8">
+      <div className="hidden h-fit lg:block w-1/4 bg-white/40 backdrop-blur-sm p-8">
         {Object.entries(sectionData).map(([section, data]) => (
           <motion.div 
             key={section}
@@ -453,7 +453,7 @@ const HubInfo = ({ category = "travel" }) => {
             whileTap={{ scale: 0.95 }}
             className={`cursor-pointer mb-4 p-4 rounded-lg transition-all duration-300 flex justify-between items-center ${
               activeSection === section 
-                ? 'bg-white shadow-lg' 
+                ? 'bg-white shadow-lg ' 
                 : 'hover:bg-gray-200'
             }`}
           >
@@ -502,7 +502,7 @@ const HubInfo = ({ category = "travel" }) => {
                 >
                   <p className="mt-4">{data.description}</p>
                   {data.subCategories.map((category, index) => (
-                    <div key={index} className="bg-white p-4 rounded-lg">
+                    <div key={index} className="bg-white p-4 rounded-lg ">
                       <h3 className="font-bold mb-2">{category.title}</h3>
                       <ul className="list-disc list-inside">
                         {category.items.map((item, idx) => (
@@ -519,7 +519,7 @@ const HubInfo = ({ category = "travel" }) => {
       </div>
 
       {/* Content Area for Large Screens */}
-      <div className="hidden lg:block w-3/4 p-8">
+      <div className="hidden lg:block w-3/4 p-8 pt-0">
         <AnimatePresence mode="wait">
           {Object.entries(sectionData).map(([section, data]) => (
             activeSection === section && (
@@ -536,7 +536,7 @@ const HubInfo = ({ category = "travel" }) => {
                 <p className={`text-xl mb-6 ${data.textColor}`}>{data.description}</p>
                 <div className="grid grid-cols-3 gap-4">
                   {data.subCategories.map((category, index) => (
-                    <div key={index} className="bg-white p-4 rounded-lg">
+                    <div key={index} className="bg-white p-4 rounded-lg border-2 border-black border-opacity-10">
                       <h3 className="font-bold mb-2">{category.title}</h3>
                       <ul className="list-disc list-inside">
                         {category.items.map((item, idx) => (

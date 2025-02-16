@@ -37,8 +37,9 @@ const TravelHub = () => {
   }, [category]);
 
   return (
-    <div>
-      <div className='px-[5vw]'>
+   
+    <div className='bg-gradient-to-r from-[#fbd4e0] to-[#fff5e1]'>
+      <div className='px-[5vw] '>
         <HubsHeading hubData={hubData} />
         <CreateSection />
       </div>

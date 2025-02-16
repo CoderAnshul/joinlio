@@ -134,7 +134,7 @@ const SubInterest = ({ category = "travel" }) => {
   };
 
   return (
-    <div className="min-h-screen relative bg-gradient-to-r from-purple-100 via-pink-100 to-orange-100 px-8 py-14">
+    <div className="min-h-screen relative px-8 py-14">
       <div className="container mx-auto">
         <div className="w-full flex justify-between gap-4 mb-6 flex-wrap">
           <div className="w-auto max-w-xl">
