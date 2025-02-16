@@ -37,10 +37,10 @@ const App = () => {
 
   return (
     <div className="app-wrapper min-h-screen overflow-x-hidden">
-      <div className="gradient-layer">
+      {/* <div className="gradient-layer">
         <div className="gradient-background"></div>
         <div className="gradient-background outer"></div>
-      </div>
+      </div> */}
 
       <BrowserRouter>
       <ScrollToTop />
