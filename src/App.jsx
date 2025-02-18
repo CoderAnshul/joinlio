@@ -9,6 +9,8 @@ import ScrollToTop from './Components/ScrollToTop';
 import GetStarted from './Pages/GetStarted';
 import Policy from './Pages/Policy';
 import ConfidentialityPolicy from './Pages/ConfidentialityPolicy';
+import Blogs from './Pages/Blogs';
+import BlogDetail from './Pages/BlogDetail';
 
 const App = () => {
   const lenisRef = useRef(null);
@@ -52,6 +54,8 @@ const App = () => {
             <Route path="/get-started" element={<GetStarted />} />
             <Route path="/policy" element={<Policy/>} />
             <Route path="/confidential-policy" element={<ConfidentialityPolicy/>} />
+            <Route path="/blogs" element={<Blogs/>} />
+            <Route path="/blog-detail/:id" element={<BlogDetail/>} />
           </Routes>
         </div>
         <Footer />

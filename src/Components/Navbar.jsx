@@ -10,22 +10,22 @@ const menuItems = [
   { 
     name: 'FEATURES', 
     options: [
-      { label: 'Peer Account', link: '/features/peer-account' },
-      { label: 'Predefined Hubs', link: '/features/predefined-hubs' }
+      { label: 'Peer Account', link: '/peer-account' },
+      { label: 'Predefined Hubs', link: '/predefined-hubs' }
     ]
   },
   { 
     name: 'SOLUTIONS', 
     options: [
-      { label: 'For Students/Alumni', link: '/solutions/students-alumni' },
-      { label: 'For Businesses', link: '/solutions/businesses' },
-      { label: 'For Universities', link: '/solutions/universities' }
+      { label: 'For Students/Alumni', link: '/students-alumni' },
+      { label: 'For Businesses', link: '/businesses' },
+      { label: 'For Universities', link: '/universities' }
     ]
   },
   { 
     name: 'RESOURCES', 
     options: [
-      { label: 'Blogs', link: '/resources/blogs' }
+      { label: 'Blogs', link: '/blogs' }
     ]
   }
 ];
@@ -179,7 +179,8 @@ const Navbar = () => {
         {item.name} {item.options && <ChevronDown className="w-4 h-4" />}
       </button>
       {openDropdown === item.name && item.options && (
-        <div className="absolute left-0 top-full mt-2 w-48 bg-white shadow-lg p-4">
+        <div className="absolute left-0 top-0 mt-2 w-48 bg-transparent py-4">
+          <div className="left-0 top-full mt-2 w-48 bg-white shadow-lg p-4">
           <ul className="space-y-2">
             {item.options.map((option, idx) => (
               <li key={idx}>
@@ -187,6 +188,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+          </div>
         </div>
       )}
     </div>

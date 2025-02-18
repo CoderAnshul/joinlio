@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import rings from "../../assets/images/rings.png";
 import { X, Activity, Brain, MessageSquare, Globe, Layout, Briefcase } from 'lucide-react';
 
@@ -6,8 +6,22 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
   const [modalPosition, setModalPosition] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPeerModalOpen, setIsPeerModalOpen] = useState(false);
-  const [expandedIndex, setExpandedIndex] = useState(null); // New state for expanded box
+  const [expandedIndex, setExpandedIndex] = useState(null);
   const buttonRefs = useRef([]);
+
+  // Updated effect to handle both modals
+  useEffect(() => {
+    // If either modal is open, prevent scrolling
+    if (isPeerModalOpen || isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isPeerModalOpen, isModalOpen]);
 
   const features = [
     {
@@ -66,7 +80,7 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
     };
 
   const handleBoxClick = (index) => {
-    setExpandedIndex(expandedIndex === index ? null : index); // Toggle expanded state
+    setExpandedIndex(expandedIndex === index ? null : index);
   };
 
   return (
@@ -78,7 +92,7 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
         <div className="h-[650px] flex justify-center items-center w-[650px] relative z-20 rounded-full bg-transparent">
           {boxTexts.map((text, index) => {
             const angle = (360 / boxTexts.length) * index;
-            const isExpanded = expandedIndex === index; // Check if current box is expanded
+            const isExpanded = expandedIndex === index;
             return (
               <div
                 key={index}
@@ -89,7 +103,7 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
                   transform: `rotate(${angle}deg) translate(325px) rotate(-${angle}deg)`,
                   transformOrigin: "center",
                 }}
-                onClick={() => handleBoxClick(index)} // Add click handler
+                onClick={() => handleBoxClick(index)}
               >
                 <div className="h-full w-full bg-white text-sm rounded-lg flex items-center justify-center text-gray-800 font-semibold text-center">
                   {text}
@@ -103,9 +117,6 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
               {centerHeading}
               <span className="text-white">{centerSubHeading}</span>
             </h1>
-            {/* <p className="py-3 px-2 rounded-2xl border border-gray-700 border-opacity-55 bg-[#EEEEEE]/20 backdrop-blur-sm max-w-[410px] text-customBlue text-opacity-80 text-sm mb-4">
-              {centerDescription}
-            </p> */}
            <div className='flex gap-4 mx-auto'>
            <button
               ref={(el) => (buttonRefs.current[0] = el)}
@@ -159,66 +170,45 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
         </div>
       </div>
 
-
       {isModalOpen && (
-  <div className="fixed inset-0 z-40 bg-black backdrop-blur-sm bg-opacity-50 flex justify-center items-center">
-    <div
-      className="z-50 bg-white shadow-xl border border-gray-300 rounded-lg p-6 max-w-2xl w-full mx-4"
-      style={{ top: modalPosition.top, left: modalPosition.left, transform: 'translate(-50%, -50%)', position: 'absolute' }}
-    >
-      <h2 className="text-xl font-bold mb-6">How It Works</h2>
-      
+  <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 backdrop-blur-lg p-6">
+    <div className="relative bg-white/70 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6 transition-transform scale-95 animate-fadeIn">
+      <button 
+        onClick={() => setIsModalOpen(false)}
+        className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 rounded-full p-2 text-gray-600 transition"
+      >
+        ✖
+      </button>
+
+      <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-6">🚀 How It Works</h2>
+
       <div className="space-y-6">
-        <div className="flex items-start gap-4">
-          <span className="text-2xl">🎓</span>
-          <div>
-            <h3 className="font-semibold text-gray-800 mb-1">Sign Up & Verify</h3>
-            <p className="text-gray-600 text-sm">Create your profile by verifying your student or alumni credentials.</p>
+        {[
+          { icon: "🎓", title: "Sign Up & Verify", desc: "Create your profile by verifying your student or alumni credentials." },
+          { icon: "👤", title: "Set Up Your Peer Account", desc: "Build your Peer Account to document your skills, achievements, and growth." },
+          { icon: "🔍", title: "Explore Hubs & Tools", desc: "Join predefined hubs or create your own based on your interests, and access tools, resources, and support tailored to your goals." },
+          { icon: "🤝", title: "Collaborate & Grow", desc: "Connect with like-minded peers, work on global projects, and gain real-world experience." },
+          { icon: "🌟", title: "Showcase & Succeed", desc: "Use your Peer Account link to share your portfolio with employers and networks, opening doors to opportunities." },
+        ].map((step, index) => (
+          <div key={index} className="flex items-start gap-4 p-4 bg-white/60 backdrop-blur-md rounded-xl shadow-sm hover:shadow-md transition-all">
+            <span className="text-3xl">{step.icon}</span>
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-1">{step.title}</h3>
+              <p className="text-gray-700 text-sm">{step.desc}</p>
+            </div>
           </div>
-        </div>
-
-        <div className="flex items-start gap-4">
-          <span className="text-2xl">👤</span>
-          <div>
-            <h3 className="font-semibold text-gray-800 mb-1">Set Up Your Peer Account</h3>
-            <p className="text-gray-600 text-sm">Build your Peer Account to document your skills, achievements, and growth.</p>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-4">
-          <span className="text-2xl">🔍</span>
-          <div>
-            <h3 className="font-semibold text-gray-800 mb-1">Explore Hubs & Tools</h3>
-            <p className="text-gray-600 text-sm">Join predefined hubs or create your own based on your interests, and access tools, resources, and support tailored to your goals.</p>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-4">
-          <span className="text-2xl">🤝</span>
-          <div>
-            <h3 className="font-semibold text-gray-800 mb-1">Collaborate & Grow</h3>
-            <p className="text-gray-600 text-sm">Connect with like-minded peers, work on global projects, and gain real-world experience.</p>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-4">
-          <span className="text-2xl">🌟</span>
-          <div>
-            <h3 className="font-semibold text-gray-800 mb-1">Showcase & Succeed</h3>
-            <p className="text-gray-600 text-sm">Use your Peer Account link to share your portfolio with employers and networks, opening doors to opportunities.</p>
-          </div>
-        </div>
+        ))}
       </div>
 
-      <div className="mt-6 flex justify-between">
-        <button
+      <div className="mt-6 flex justify-center gap-4">
+        <button 
           onClick={() => setIsModalOpen(false)}
-          className="text-gray-600 px-4 py-2 rounded-md hover:bg-gray-100"
+          className="px-5 py-2 text-gray-700 bg-white/70 backdrop-blur-lg border border-gray-300 rounded-lg hover:bg-gray-200 transition"
         >
           Close
         </button>
         <button
-          className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600"
+          className="px-6 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform"
         >
           Sign Up
         </button>
@@ -227,76 +217,90 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
   </div>
 )}
 
-{isPeerModalOpen && (
- <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
- <div className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-   {/* Close Button */}
-   <button
-        onClick={() => setIsPeerModalOpen(false)} 
-     className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-     aria-label="Close modal"
-   >
-     <X className="w-6 h-6 text-gray-500" />
-   </button>
 
-   <div className="p-8">
-     {/* Header Section */}
-     <div className="mb-8">
-       <h2 className="text-3xl font-bold text-gray-900 mb-4">What is a Peer Account?</h2>
-       <p className="text-gray-600 leading-relaxed">
-         The Peer Account serves as your tailored digital portfolio, presenting your abilities 
-         and accomplishments through an expanded approach to traditional resumes. It acts as 
-         an active mirror of your development, showcasing work relationships, individual 
-         achievements, and professional growth.
-       </p>
-     </div>
+      {isPeerModalOpen && (
+       <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+       <div className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+         {/* Close Button */}
+         <button
+              onClick={() => setIsPeerModalOpen(false)} 
+           className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+           aria-label="Close modal"
+         >
+           <X className="w-6 h-6 text-gray-500" />
+         </button>
 
-     {/* Progress Section */}
-     <div className="bg-blue-50 rounded-xl p-6 mb-8">
-       <h3 className="text-xl font-semibold text-gray-900 mb-3">Your Progress</h3>
-       <div className="relative pt-1">
-         <div className="flex mb-2 items-center justify-between">
-           <div>
-             <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
-               Goals Achieved
-             </span>
+         <div className="p-8">
+           {/* Header Section */}
+           <div className="mb-8">
+             <h2 className="text-3xl font-bold text-gray-900 mb-4">What is a Peer Account?</h2>
+             <p className="text-gray-600 leading-relaxed">
+             The Peer Account serves as your tailored digital portfolio because it presents
+
+      your abilities and accomplishments through an approach that expands traditional
+
+      resume approaches. Students and scholars need their personal Peer Accounts to
+
+      ensure their maximum growth potential in academics and careers. The peer
+
+      account exists as an active mirror of your development that illustrates work
+
+      relationships, individual accomplishments and professional advancement.
+
+      Through this platform you can monitor your activities along with sustaining
+
+      meaningful relationships while gaining access to worldwide possibilities in a
+
+      safe and user-friendly interface.
+             </p>
            </div>
-           <div className="text-right">
-             <span className="text-xs font-semibold inline-block text-blue-600">
-               70%
-             </span>
-           </div>
-         </div>
-         <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
-           <div className="w-[70%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
-         </div>
-       </div>
-     </div>
 
-     {/* Features Grid */}
-     <div>
-       <h3 className="text-xl font-semibold text-gray-900 mb-6">Core Functionalities</h3>
-       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-         {features.map((feature, index) => (
-           <div
-             key={index}
-             className="p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 bg-white"
-           >
-             <div className="flex items-center gap-3 mb-3">
-               {feature.icon}
-               <h4 className="font-semibold text-gray-900">{feature.title}</h4>
+           {/* Progress Section */}
+           <div className="bg-blue-50 rounded-xl p-6 mb-8">
+             <h3 className="text-xl font-semibold text-gray-900 mb-3">Your Progress</h3>
+             <div className="relative pt-1">
+               <div className="flex mb-2 items-center justify-between">
+                 <div>
+                   <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+                     Goals Achieved
+                   </span>
+                 </div>
+                 <div className="text-right">
+                   <span className="text-xs font-semibold inline-block text-blue-600">
+                     70%
+                   </span>
+                 </div>
+               </div>
+               <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
+                 <div className="w-[70%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
+               </div>
              </div>
-             <p className="text-gray-600 text-sm">{feature.description}</p>
            </div>
-         ))}
-       </div>
-     </div>
-   </div>
- </div>
-</div>
-)}
 
-</div>
+           {/* Features Grid */}
+           <div>
+             <h3 className="text-xl font-semibold text-gray-900 mb-6">Core Functionalities</h3>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+               {features.map((feature, index) => (
+                 <div
+                   key={index}
+                   className="p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 bg-white"
+                 >
+                   <div className="flex items-center gap-3 mb-3">
+                     {feature.icon}
+                     <h4 className="font-semibold text-gray-900">{feature.title}</h4>
+                   </div>
+                   <p className="text-gray-600 text-sm">{feature.description}</p>
+                 </div>
+               ))}
+             </div>
+           </div>
+         </div>
+       </div>
+      </div>
+      )}
+
+    </div>
   );
 };
 
