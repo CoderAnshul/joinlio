@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import rings from "../../assets/images/rings.png";
 import { X, Activity, Brain, MessageSquare, Globe, Layout, Briefcase } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHeading }) => {
   const [modalPosition, setModalPosition] = useState(null);
@@ -207,11 +208,13 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
         >
           Close
         </button>
+        <Link to="/get-started">
         <button
           className="px-6 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform"
         >
           Sign Up
         </button>
+        </Link>
       </div>
     </div>
   </div>
