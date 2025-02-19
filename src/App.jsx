@@ -11,9 +11,30 @@ import Policy from './Pages/Policy';
 import ConfidentialityPolicy from './Pages/ConfidentialityPolicy';
 import Blogs from './Pages/Blogs';
 import BlogDetail from './Pages/BlogDetail';
+import { useLocation } from 'react-router-dom';
 
 const App = () => {
   const lenisRef = useRef(null);
+
+  const ScrollManager = () => {
+    const { pathname, hash } = useLocation();
+  
+    useEffect(() => {
+      if (!hash) {
+        window.scrollTo(0, 0);
+      } else {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+    }, [pathname, hash]);
+  
+    return null;
+  };
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
@@ -45,7 +66,7 @@ const App = () => {
       </div> */}
 
       <BrowserRouter>
-      <ScrollToTop />
+      <ScrollManager />
         <Navbar />
         <div className="content-container relative z-10">
           <Routes>
