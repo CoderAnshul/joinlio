@@ -22,7 +22,6 @@ const HubsHeading = ({ hubData }) => {
           <p className="pb-14 mb-3 text-sm max-w-2xl">
             {hubData ? (
               <>
-                {hubData.description}
                 <br /><br />
                 {hubData.subDescription}
               </>

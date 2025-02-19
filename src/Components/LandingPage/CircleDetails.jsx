@@ -1,30 +1,62 @@
 import React, { useState, useRef, useEffect } from 'react';
 import rings from "../../assets/images/rings.png";
-import { X, Activity, Brain, MessageSquare, Globe, Layout, Briefcase } from 'lucide-react';
+import { X, Activity, Brain, MessageSquare, Globe, Layout, Briefcase, 
+         ChartBar, Users, Shield, Coins, Target, BarChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHeading }) => {
+const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescription, screenIndex }) => {
   const [modalPosition, setModalPosition] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPeerModalOpen, setIsPeerModalOpen] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState(null);
   const buttonRefs = useRef([]);
+  const modalRef = useRef(null);
+  const peerModalRef = useRef(null);
 
-  // Updated effect to handle both modals
+  // Body scroll lock effect
   useEffect(() => {
-    // If either modal is open, prevent scrolling
     if (isPeerModalOpen || isModalOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      // Save scroll position
+      const scrollY = window.scrollY;
+      
+      // Lock body
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        // Unlock body
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, scrollY);
+      };
     }
-  
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [isPeerModalOpen, isModalOpen]);
 
-  const features = [
+  // Handle clicks outside modal to close
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isModalOpen && modalRef.current && !modalRef.current.contains(event.target)) {
+        setIsModalOpen(false);
+      }
+      if (isPeerModalOpen && peerModalRef.current && !peerModalRef.current.contains(event.target)) {
+        setIsPeerModalOpen(false);
+      }
+    };
+
+    if (isModalOpen || isPeerModalOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalOpen, isPeerModalOpen]);
+
+  const studentFeatures = [
     {
       icon: <Activity className="w-5 h-5 text-blue-600" />,
       title: "Activity Monitoring",
@@ -57,6 +89,41 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
     }
   ];
 
+  const businessFeatures = [
+    {
+      icon: <ChartBar className="w-5 h-5 text-blue-600" />,
+      title: "Performance Dashboard",
+      description: "Track sales numbers, customer interactions, and gather essential feedback in real-time."
+    },
+    {
+      icon: <Users className="w-5 h-5 text-blue-600" />,
+      title: "Direct Student Interaction",
+      description: "Real-time communication with students and active participation in targeted discussions."
+    },
+    {
+      icon: <Shield className="w-5 h-5 text-blue-600" />,
+      title: "Customizable Business Profile",
+      description: "Showcase your brand identity, products, services, and student-specific offers."
+    },
+    {
+      icon: <BarChart className="w-5 h-5 text-blue-600" />,
+      title: "Targeted Advertising",
+      description: "Place products in specialized student zones for maximum visibility."
+    },
+    {
+      icon: <Target className="w-5 h-5 text-blue-600" />,
+      title: "Cost-Effective Marketing",
+      description: "Performance-based payment models to maximize your marketing budget efficiency."
+    },
+    {
+      icon: <Coins className="w-5 h-5 text-blue-600" />,
+      title: "Expansion Tools",
+      description: "Analytics system to help expand reach to new student groups and campuses."
+    }
+  ];
+
+  const features = screenIndex === 1 ? studentFeatures : businessFeatures;
+
   const handleButtonClick = (index) => {
     const button = buttonRefs.current[index];
     if (button) {
@@ -68,20 +135,43 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
       setIsModalOpen(true);
     }
   };
+
   const handleModal = (index) => {
-      const button = buttonRefs.current[index];
-      if (button) {
-        const rect = button.getBoundingClientRect();
-        setModalPosition({
-          top: rect.top + window.scrollY + rect.height / 2,
-          left: rect.left + window.scrollX + rect.width / 2
-        });
-        setIsPeerModalOpen(true);
-      }
-    };
+    const button = buttonRefs.current[index];
+    if (button) {
+      const rect = button.getBoundingClientRect();
+      setModalPosition({
+        top: rect.top + window.scrollY + rect.height / 2,
+        left: rect.left + window.scrollX + rect.width / 2
+      });
+      setIsPeerModalOpen(true);
+    }
+  };
 
   const handleBoxClick = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
+  const getModalSteps = () => {
+    return screenIndex === 1 ? [
+      { icon: "🎓", title: "Sign Up & Verify", desc: "Create your profile by verifying your student or alumni credentials." },
+      { icon: "👤", title: "Set Up Your Peer Account", desc: "Build your Peer Account to document your skills, achievements, and growth." },
+      { icon: "🔍", title: "Explore Hubs & Tools", desc: "Join predefined hubs or create your own based on your interests." },
+      { icon: "🤝", title: "Collaborate & Grow", desc: "Connect with like-minded peers and work on global projects." },
+      { icon: "🌟", title: "Showcase & Succeed", desc: "Share your portfolio with employers and networks." }
+    ] : [
+      { icon: "🏢", title: "Create Your Business Account", desc: "Sign up and set up your business profile in minutes. Add details about your products, services, and student-focused offers to attract the right audience." },
+      { icon: "🎯", title: "Showcase Your Offerings", desc: "List your student discounts, services, or products directly in targeted hubs where students are actively engaging. Tailor your promotions to specific interests for maximum impact." },
+      { icon: "💬", title: "Connect with Students", desc: "Interact directly with students through hubs and activities. Engage with your target audience, answer their questions, and build meaningful relationships with potential customers." },
+      { icon: "📊", title: "Monitor Sales and Feedback", desc: "Use the dashboard to track your sales performance and collect real-time feedback from customers. Gain insights into what works and refine your strategy to boost results." },
+      { icon: "💰", title: "Pay Only for Results", desc: "Enjoy risk-free advertising. With JOINLIO's zero upfront cost model, you only pay when you make a sale. It's a win-win for your business and students." },
+      { icon: "🚀", title: "Grow and Expand", desc: "Leverage JOINLIO's tools, analytics, and insights to grow your brand visibility, retain loyal customers, and expand your business across campuses and beyond." }
+    ];
+  };
+
+  // Stop propagation to prevent closing when clicking inside modal
+  const handleModalContentClick = (e) => {
+    e.stopPropagation();
   };
 
   return (
@@ -124,10 +214,10 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
               onClick={() => handleModal(0)}
               className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
             >
-              Peer account
+              {screenIndex === 1 ? "Peer Account" : "Business Account"}
             </button>
             <button
-              ref={(el) => (buttonRefs.current[0] = el)}
+              ref={(el) => (buttonRefs.current[1] = el)}
               onClick={() => handleButtonClick(0)}
               className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
             >
@@ -172,137 +262,148 @@ const CircleDetails = ({ boxTexts, centerHeading, centerDescription, centerSubHe
       </div>
 
       {isModalOpen && (
-  <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 backdrop-blur-lg p-6">
-    <div className="relative bg-white/70 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6 transition-transform scale-95 animate-fadeIn">
-      <button 
-        onClick={() => setIsModalOpen(false)}
-        className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 rounded-full p-2 text-gray-600 transition"
-      >
-        ✖
-      </button>
+        <div 
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 backdrop-blur-lg p-6"
+          aria-modal="true"
+          role="dialog"
+        >
+          <div 
+            ref={modalRef}
+            className="relative bg-white/70 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6" 
+            onClick={handleModalContentClick}
+          >
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 rounded-full p-2 text-gray-600 transition"
+              aria-label="Close modal"
+            >
+              <X className="w-6 h-6" />
+            </button>
 
-      <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-6">🚀 How It Works</h2>
+            <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-6">
+              🚀 How It Works - {screenIndex === 1 ? "Student" : "Business"} Account
+            </h2>
 
-      <div className="space-y-6">
-        {[
-          { icon: "🎓", title: "Sign Up & Verify", desc: "Create your profile by verifying your student or alumni credentials." },
-          { icon: "👤", title: "Set Up Your Peer Account", desc: "Build your Peer Account to document your skills, achievements, and growth." },
-          { icon: "🔍", title: "Explore Hubs & Tools", desc: "Join predefined hubs or create your own based on your interests, and access tools, resources, and support tailored to your goals." },
-          { icon: "🤝", title: "Collaborate & Grow", desc: "Connect with like-minded peers, work on global projects, and gain real-world experience." },
-          { icon: "🌟", title: "Showcase & Succeed", desc: "Use your Peer Account link to share your portfolio with employers and networks, opening doors to opportunities." },
-        ].map((step, index) => (
-          <div key={index} className="flex items-start gap-4 p-4 bg-white/60 backdrop-blur-md rounded-xl shadow-sm hover:shadow-md transition-all">
-            <span className="text-3xl">{step.icon}</span>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-1">{step.title}</h3>
-              <p className="text-gray-700 text-sm">{step.desc}</p>
+            <div className="space-y-6">
+              {getModalSteps().map((step, index) => (
+                <div key={index} className="flex items-start gap-4 p-4 bg-white/60 backdrop-blur-md rounded-xl shadow-sm hover:shadow-md transition-all">
+                  <span className="text-3xl flex-shrink-0">{step.icon}</span>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-1">{step.title}</h3>
+                    <p className="text-gray-700 text-sm">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 flex justify-center gap-4">
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="px-5 py-2 text-gray-700 bg-white/70 backdrop-blur-lg border border-gray-300 rounded-lg hover:bg-gray-200 transition"
+              >
+                Close
+              </button>
+              <Link to="/get-started">
+                <button className="px-6 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform">
+                  {screenIndex === 1 ? "Create Peer Account" : "Create Business Account"}
+                </button>
+              </Link>
             </div>
           </div>
-        ))}
-      </div>
-
-      <div className="mt-6 flex justify-center gap-4">
-        <button 
-          onClick={() => setIsModalOpen(false)}
-          className="px-5 py-2 text-gray-700 bg-white/70 backdrop-blur-lg border border-gray-300 rounded-lg hover:bg-gray-200 transition"
-        >
-          Close
-        </button>
-        <Link to="/get-started">
-        <button
-          className="px-6 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform"
-        >
-          Sign Up
-        </button>
-        </Link>
-      </div>
-    </div>
-  </div>
-)}
-
-
-      {isPeerModalOpen && (
-       <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-       <div className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-         {/* Close Button */}
-         <button
-              onClick={() => setIsPeerModalOpen(false)} 
-           className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-           aria-label="Close modal"
-         >
-           <X className="w-6 h-6 text-gray-500" />
-         </button>
-
-         <div className="p-8">
-           {/* Header Section */}
-           <div className="mb-8">
-             <h2 className="text-3xl font-bold text-gray-900 mb-4">What is a Peer Account?</h2>
-             <p className="text-gray-600 leading-relaxed">
-             The Peer Account serves as your tailored digital portfolio because it presents
-
-      your abilities and accomplishments through an approach that expands traditional
-
-      resume approaches. Students and scholars need their personal Peer Accounts to
-
-      ensure their maximum growth potential in academics and careers. The peer
-
-      account exists as an active mirror of your development that illustrates work
-
-      relationships, individual accomplishments and professional advancement.
-
-      Through this platform you can monitor your activities along with sustaining
-
-      meaningful relationships while gaining access to worldwide possibilities in a
-
-      safe and user-friendly interface.
-             </p>
-           </div>
-
-           {/* Progress Section */}
-           <div className="bg-blue-50 rounded-xl p-6 mb-8">
-             <h3 className="text-xl font-semibold text-gray-900 mb-3">Your Progress</h3>
-             <div className="relative pt-1">
-               <div className="flex mb-2 items-center justify-between">
-                 <div>
-                   <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
-                     Goals Achieved
-                   </span>
-                 </div>
-                 <div className="text-right">
-                   <span className="text-xs font-semibold inline-block text-blue-600">
-                     70%
-                   </span>
-                 </div>
-               </div>
-               <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
-                 <div className="w-[70%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
-               </div>
-             </div>
-           </div>
-
-           {/* Features Grid */}
-           <div>
-             <h3 className="text-xl font-semibold text-gray-900 mb-6">Core Functionalities</h3>
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-               {features.map((feature, index) => (
-                 <div
-                   key={index}
-                   className="p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 bg-white"
-                 >
-                   <div className="flex items-center gap-3 mb-3">
-                     {feature.icon}
-                     <h4 className="font-semibold text-gray-900">{feature.title}</h4>
-                   </div>
-                   <p className="text-gray-600 text-sm">{feature.description}</p>
-                 </div>
-               ))}
-             </div>
-           </div>
-         </div>
-       </div>
-      </div>
+        </div>
       )}
 
+      {isPeerModalOpen && (
+        <div 
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          aria-modal="true"
+          role="dialog"
+        >
+          <div 
+            ref={peerModalRef}
+            className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[85vh] overflow-y-auto"
+            onClick={handleModalContentClick}
+            style={{ 
+              maxHeight: "85vh",
+            }}
+          >
+            <button
+              onClick={() => setIsPeerModalOpen(false)} 
+              className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+              aria-label="Close modal"
+            >
+              <X className="w-6 h-6 text-gray-500" />
+            </button>
+
+            <div className="p-8">
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  {screenIndex === 1 ? "What is a Peer Account?" : "What is a Business Account in JOINLIO?"}
+                </h2>
+                <p className="text-gray-600 leading-relaxed">
+                  {screenIndex === 1 ? (
+                    "The Peer Account serves as your tailored digital portfolio because it presents your abilities and accomplishments through an approach that expands traditional resume approaches. Students and scholars need their personal Peer Accounts to ensure their maximum growth potential in academics and careers. The peer account exists as an active mirror of your development that illustrates work relationships, individual accomplishments and professional advancement. Through this platform you can monitor your activities along with sustaining meaningful relationships while gaining access to worldwide possibilities in a safe and user-friendly interface."
+                  ) : (
+                    "Business Account within JOINLIO represents a specific platform for companies to interact effectively with their student audience. JOINLIO provides Business Accounts that enable companies to establish direct marketing connections with university students. The platform delivers a strong toolset for presenting products and services combined with special student-oriented deals. The Business Account enables companies to develop strong customer brand relations while making targeted student engagement for higher sales results."
+                  )}
+                </p>
+              </div>
+c
+
+              {screenIndex === 1 && (
+                <div className="bg-blue-50 rounded-xl p-6 mb-8">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Your Progress</h3>
+                  <div className="relative pt-1">
+                    <div className="flex mb-2 items-center justify-between">
+                      <div>
+                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+                          Goals Achieved
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-xs font-semibold inline-block text-blue-600">
+                          70%
+                        </span>
+                      </div>
+                    </div>
+                    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
+                      <div className="w-[70%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                  {screenIndex === 1 ? "Core Functionalities" : "Features of the Business Account"}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {features.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 bg-white"
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        {feature.icon}
+                        <h4 className="font-semibold text-gray-900">{feature.title}</h4>
+                      </div>
+                      <p className="text-gray-600 text-sm">{feature.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-8 flex justify-center">
+                <Link to="/get-started">
+                  <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform font-medium">
+                    {screenIndex === 1 ? "Create Peer Account" : "Register Your Business"}
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

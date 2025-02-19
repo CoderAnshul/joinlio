@@ -7,20 +7,184 @@ const GetStarted = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [institutionName, setInstitutionName] = useState('');
+  const [businessName, setBusinessName] = useState('');
   const [email, setEmail] = useState('');
   const [query, setQuery] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ userCategory, firstName, lastName, institutionName, email, query });
+    console.log({ userCategory, firstName, lastName, institutionName, businessName, email, query });
+  };
+
+  const renderDynamicFields = () => {
+    switch(userCategory) {
+      case 'students':
+      case 'alumni':
+        return (
+          <>
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Enter your first name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Enter your last name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Institution Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Enter your institution's name"
+                  value={institutionName}
+                  onChange={(e) => setInstitutionName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Institutional Email
+                </label>
+                <input
+                  type="email"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="your.name@institution.edu"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+          </>
+        );
+      case 'businesses':
+        return (
+          <>
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Enter your first name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Enter your last name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Business Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Enter your business name"
+                  value={businessName}
+                  onChange={(e) => setBusinessName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Business Email
+                </label>
+                <input
+                  type="email"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="your.name@business.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+          </>
+        );
+      case 'institutions':
+        return (
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Institution Name
+              </label>
+              <input
+                type="text"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="Enter your institution's name"
+                value={institutionName}
+                onChange={(e) => setInstitutionName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Institutional Email
+              </label>
+              <input
+                type="email"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="admin@institution.edu"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
-    <div className="min-h-screen p-6 flex items-center justify-center">
+    <div className="min-h-fit p-6 flex items-center justify-center">
       <div>
         <img className='max-h-[500px] hidden lg:block mr-10' src={j} alt="" />
       </div>
-      <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center">
+      <div className="w-full h-full lg:ml-5 max-w-full grid md:grid-cols-2 gap-8 items-start">
         {/* Left Section */}
         <div className="space-y-6">
           <div className="relative">
@@ -76,6 +240,7 @@ const GetStarted = () => {
                   className="w-full p-3 bg-white border border-gray-300 rounded-lg appearance-none pr-10"
                   value={userCategory}
                   onChange={(e) => setUserCategory(e.target.value)}
+                  required
                 >
                   <option value="">Select category</option>
                   <option value="students">Students</option>
@@ -87,59 +252,7 @@ const GetStarted = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="Enter your first name"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="Enter your last name"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Institution Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="Enter your institution's name"
-                  value={institutionName}
-                  onChange={(e) => setInstitutionName(e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Mail ID
-                </label>
-                <input
-                  type="email"
-                  className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="Any.mail.IDs"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-            </div>
+            {renderDynamicFields()}
 
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">

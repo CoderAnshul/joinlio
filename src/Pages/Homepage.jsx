@@ -152,13 +152,13 @@ const Homepage = () => {
       </div>
 
       <DevideSectionText title1 ="BUSINESSES" title2 =" " description="JOINLIO connects your business directly with the student community, allowing you to
-offer exclusive discounts, boost sales, and gather real-time feedback all on one seamless
-platform. No upfront costs pay only when you start generating sales.
-"/>
+      offer exclusive discounts, boost sales, and gather real-time feedback all on one seamless
+      platform. No upfront costs pay only when you start generating sales.
+      "/>
       <div className='px-[5vw]'>
       <BussinessHead/>
       <div className='h-fit relative overflow-hidden'>
-      <CircleDetails {...studentData} screenIndex={1}/>
+      <CircleDetails {...businessData} screenIndex={2}/>
       </div>
       <div className='px-6 lg:px-20 gap-[10px]  py-12 '>
           <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
@@ -168,7 +168,7 @@ platform. No upfront costs pay only when you start generating sales.
           <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl">
             {/* <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl"> */}
             Why take our word for it when you can hear directly from businesses thriving with JOINLIO? Discover their success stories, see how they’ve expanded their reach, and built loyal customer bases—all by joining the platform. Your success story could be next!"
-           </p>
+          </p>
        </div>
       </div>
       <Stories/>
