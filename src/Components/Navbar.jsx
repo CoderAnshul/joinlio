@@ -162,7 +162,7 @@ const Navbar = () => {
       <nav className="relative right-0 z-20 flex h-20 items-center justify-between px-[6vw] lg:px-[5vw] py-4">
         {/* Logo */}
         <div className="text-xl font-bold">
-          <Link to="/"><img className="max-h-32" src={logo} alt="logo" /></Link>
+          <Link to="/"><img className="max-h-44" src={logo} alt="logo" /></Link>
         </div>
 
         {/* Hamburger Menu (Visible on Small Screens) */}
