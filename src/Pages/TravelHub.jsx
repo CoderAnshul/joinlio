@@ -40,7 +40,8 @@ const TravelHub = () => {
    
     <div className='bg-gradient-to-r from-[#fbd4e0] to-[#fff5e1]'>
       <div className='px-[5vw] '>
-        <HubsHeading hubData={hubData} />
+        <HubsHead
+        ing hubData={hubData} />
         <CreateSection />
       </div>
 
