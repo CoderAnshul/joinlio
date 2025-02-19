@@ -22,7 +22,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 <li>
                   <Link 
-                    href="/privacy-policy" 
+                    to="/privacy-policy" 
                     className="text-sm text-gray-500 transition-all duration-300 hover:text-blue-600 hover:scale-105 block"
                   >
                     Privacy Policy
@@ -30,7 +30,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link 
-                    href="/terms-and-condition" 
+                    to="/terms-and-condition" 
                     className="text-sm text-gray-500 transition-all duration-300 hover:text-blue-600 hover:scale-105 block"
                   >
                     Terms and Conditions
@@ -38,7 +38,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link 
-                    href="/send-message" 
+                    to="/send-message" 
                     className="text-sm text-gray-500 transition-all duration-300 hover:text-blue-600 hover:scale-105 block mb-5"
                   >
                     Send Message
