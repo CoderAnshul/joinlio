@@ -8,7 +8,7 @@ import mediagif from "../../assets/video/mediagif.gif"
 import entreprenuershipgif from "../../assets/video/Entrepreneurshipgif.gif"
 
 const FindInterest = () => {
-    const [modalPosition, setModalPosition] = useState(null);
+    // const [modalPosition, setModalPosition] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const hubs = [
