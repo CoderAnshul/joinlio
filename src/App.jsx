@@ -12,6 +12,7 @@ import ConfidentialityPolicy from './Pages/ConfidentialityPolicy';
 import Blogs from './Pages/Blogs';
 import BlogDetail from './Pages/BlogDetail';
 import { useLocation } from 'react-router-dom';
+import SendMessage from './Pages/SendMessage';
 
 const App = () => {
   const lenisRef = useRef(null);
@@ -40,7 +41,7 @@ const App = () => {
     // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
       smooth: true,
-      lerp: 0.03, // Adjust scrolling smoothness
+      lerp: 0.07, // Adjust scrolling smoothness
     });
 
     lenisRef.current = lenis;
@@ -77,6 +78,7 @@ const App = () => {
             <Route path="/terms-and-condition" element={<ConfidentialityPolicy/>} />
             <Route path="/blogs" element={<Blogs/>} />
             <Route path="/blog-detail/:id" element={<BlogDetail/>} />
+            <Route path="/send-message" element={<SendMessage/>} />
           </Routes>
         </div>
         <Footer />
