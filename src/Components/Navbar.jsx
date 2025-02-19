@@ -10,16 +10,16 @@ const menuItems = [
   { 
     name: 'FEATURES', 
     options: [
-      { label: 'Peer Account', link: '/peer-account' },
-      { label: 'Predefined Hubs', link: '/predefined-hubs' }
+      { label: 'Peer Account', link: '/#peer-account', isScroll: true },
+      { label: 'Predefined Hubs', link: '/#predefined-hubs', isScroll: true }
     ]
   },
   { 
     name: 'SOLUTIONS', 
     options: [
-      { label: 'For Students/Alumni', link: '/students-alumni' },
-      { label: 'For Businesses', link: '/businesses' },
-      { label: 'For Universities', link: '/universities' }
+      { label: 'For Students/Alumni', link: '/#section-data' },
+      { label: 'For Businesses', link: '/#section-data' },
+      { label: 'For Universities', link: '/#section-data' }
     ]
   },
   { 
@@ -37,6 +37,21 @@ const Navbar = () => {
   const linksRef = useRef([]);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [accordionOpen, setAccordionOpen] = useState(null);
+  
+  const handleScrollToSection = (e, link) => {
+    e.preventDefault();
+    const sectionId = link.split('#')[1];
+    const element = document.getElementById(sectionId);
+    
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setOpenDropdown(null);
+    } else if (window.location.pathname !== '/') {
+      // If we're not on the homepage, store the target section in sessionStorage
+      sessionStorage.setItem('scrollTarget', sectionId);
+      window.location.href = link;
+    }
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -167,33 +182,45 @@ const Navbar = () => {
 
         {/* Desktop Navigation - Unchanged */}
         {/* Desktop Navigation - Updated */}
-<div className="hidden md:flex items-center justify-between space-x-8 text-sm font-medium">
-{menuItems.map((item, index) => (
-    <div 
-      key={index} 
-      className="relative group" 
-      onMouseEnter={() => setOpenDropdown(item.options ? item.name : null)}
-      onMouseLeave={() => setOpenDropdown(null)}
-    >
-      <button className="flex items-center gap-1 hover:text-gray-600">
-        {item.name} {item.options && <ChevronDown className="w-4 h-4" />}
-      </button>
-      {openDropdown === item.name && item.options && (
-        <div className="absolute left-0 top-0 mt-2 w-48 bg-transparent py-4">
-          <div className="left-0 top-full mt-2 w-48 bg-white shadow-lg p-4">
-          <ul className="space-y-2">
-            {item.options.map((option, idx) => (
-              <li key={idx}>
-                <Link to={option.link} className="block hover:text-blue-500">{option.label}</Link>
-              </li>
-            ))}
-          </ul>
-          </div>
-        </div>
-      )}
-    </div>
-  ))}
-  <div className="flex items-center space-x-8">
+        <div className="hidden md:flex items-center justify-between space-x-8 text-sm font-medium">
+          {menuItems.map((item, index) => (
+            <div 
+              key={index} 
+              className="relative group" 
+              onMouseEnter={() => setOpenDropdown(item.options ? item.name : null)}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
+              <button className="flex items-center gap-1 hover:text-gray-600">
+                {item.name} {item.options && <ChevronDown className="w-4 h-4" />}
+              </button>
+              {openDropdown === item.name && item.options && (
+                <div className="absolute left-0 top-0 mt-2 w-48 bg-transparent py-4">
+                  <div className="left-0 top-full mt-2 w-48 bg-white shadow-lg p-4">
+                    <ul className="space-y-2">
+                      {item.options.map((option, idx) => (
+                        <li key={idx}>
+                          {option.isScroll ? (
+                            <a
+                              href={option.link}
+                              onClick={(e) => handleScrollToSection(e, option.link)}
+                              className="block hover:text-blue-500"
+                            >
+                              {option.label}
+                            </a>
+                          ) : (
+                            <Link to={option.link} className="block hover:text-blue-500">
+                              {option.label}
+                            </Link>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+            <div className="flex items-center space-x-8">
     <div className="flex items-center text-xs text-semibold">
       <div className="w-2 h-2 rounded-full text-xs bg-black mr-2"></div>
       <span>CALL US : +00 81 590 088</span>

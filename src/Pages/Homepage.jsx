@@ -13,6 +13,7 @@ import WhyChooseUs from '../Components/LandingPage/WhyChooseUs'
 import Subscription from '../Components/LandingPage/Subscription'
 import RevealText from '../Components/LandingPage/RevealText'
 import CircleDetails from '../Components/LandingPage/CircleDetails'
+import { useEffect } from 'react'
 
 const Homepage = () => {
   const cardsData = [
@@ -125,19 +126,38 @@ const Homepage = () => {
       "Connect with a vibrant community of students and alumni, promote your offerings in targeted hubs, and build trust with exclusive deals. Boost your income, enhance brand visibility, and gain insights by aligning with a platform dedicated to growth and education.",
   };
 
+  useEffect(() => {
+    const scrollTarget = sessionStorage.getItem('scrollTarget');
+    if (scrollTarget) {
+      const element = document.getElementById(scrollTarget);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+          sessionStorage.removeItem('scrollTarget');
+        }, 100);
+      }
+    }
+  }, []);
+
   return (
     <div>
       <div className='px-[5vw]'>
       <Banner/>
       <RevealText/>
       </div>
+      <div id="section-data" className='h-fit relative overflow-hidden'>
+
       <DevideSectionText title1 ="STUDENT &" title2 ="ALUMNI" description="Student life is not just a phase – it’s the foundation of your future. The habits you build, the connections you make, and the skills you develop today will define the opportunities you have tomorrow." highlight=" Make it count with JOINLIO."/>
-      <div className='md:px-[5vw] relative overflow-hidden'>
-      <ScrollingOrGrowing/>
-      <div className='h-fit relative overflow-hidden'>
-      <CircleDetails {...studentData} screenIndex={1}/>
       </div>
+      <div className='md:px-[5vw] relative overflow-hidden'>
+        <ScrollingOrGrowing/>
+        <div id="peer-account" className='h-fit relative overflow-hidden'>
+          <CircleDetails {...studentData} screenIndex={1}/>
+        </div>
+        <div id="predefined-hubs" className='h-fit relative overflow-hidden'>
+
       <FindInterest/>
+      </div>
         <div className='px-6 lg:px-20 gap-[10px] mt-12 py-12 my-5'>
           <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
               Still not convinced?  <br />
