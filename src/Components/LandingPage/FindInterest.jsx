@@ -3,7 +3,7 @@ import loop from "../../assets/images/loop.png"
 import search from "../../assets/images/search.png"
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
-import travelgif from "../../assets/video/travelgif.gif"
+import travelgif from "../../assets/video/Travelgif.gif"
 import mediagif from "../../assets/video/mediagif.gif"
 import entreprenuershipgif from "../../assets/video/Entrepreneurshipgif.gif"
 

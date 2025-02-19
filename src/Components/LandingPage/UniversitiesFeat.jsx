@@ -29,7 +29,7 @@ const UniversitiesFeat = () => {
   ];
 
   return (
-    <div className='px-6 lg:px-20 gap-[10px] py-12 my-5'>
+    <div className='px-6 xl:px-20 gap-[10px] py-12 my-5'>
       <div className="flex justify-center items-center h-auto min-h-[500px] rounded-2xl bg-[#EEEEEE]/40 backdrop-blur-lg ">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:p-6 rounded-xl">
           {features.map((feature, index) => (
@@ -40,7 +40,7 @@ const UniversitiesFeat = () => {
               <div className="w-full text-lg font-black text-black bg-white px-2 py-3 h-16 flex justify-center items-center rounded-xl">
                 {feature.title}
               </div>
-              <p className="mt-4 text-2xl text-start text-customBlue leading-8 text-xl sm:text-2xl lg:text-3xl opa font-bold">
+              <p className="mt-4 text-2xl text-start text-customBlue leading-8 text-xl sm:text-2xl lg:text-2xl font-bold">
                 {feature.description}
               </p>
             </div>

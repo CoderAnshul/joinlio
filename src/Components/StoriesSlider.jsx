@@ -69,7 +69,7 @@ const ScrollableSection = () => {
               onClick={(e) => e.stopPropagation()} // Prevent closing when clicking on video
             />
             <button
-              className="absolute top-5 right-5 bg-white text-black p-2 rounded-full text-lg font-bold shadow-md hover:bg-gray-300"
+              className="absolute top-5 right-5 bg-white text-black p-2 min-w-[44px] rounded-full text-lg font-bold shadow-md hover:bg-gray-300"
               onClick={closeVideo}
             >
               ✕
