@@ -14,6 +14,7 @@ const ConfidentialityPolicy = () => {
       {/* Introduction */}
       <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">
         Introduction
+        {/* Introduction */}
       </h2>
       <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
         <p>

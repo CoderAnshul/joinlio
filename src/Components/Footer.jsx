@@ -21,28 +21,28 @@ export default function Footer() {
               <h3 className="font-medium">Company</h3>
               <ul className="space-y-2">
                 <li>
-                  <a 
-                    href="/privacy-policy" 
+                  <Link 
+                    to="/privacy-policy" 
                     className="text-sm text-gray-500 transition-all duration-300 hover:text-blue-600 hover:scale-105 block"
                   >
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a 
-                    href="/terms-and-condition" 
+                  <Link 
+                    to="/terms-and-condition" 
                     className="text-sm text-gray-500 transition-all duration-300 hover:text-blue-600 hover:scale-105 block"
                   >
                     Terms and Conditions
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a 
-                    href="/send-message" 
+                  <Link 
+                    to="/send-message" 
                     className="text-sm text-gray-500 transition-all duration-300 hover:text-blue-600 hover:scale-105 block mb-5"
                   >
                     Send Message
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

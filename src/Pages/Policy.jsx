@@ -6,7 +6,7 @@ const Policy = () => {
     <div className="max-w-6xl mx-auto px-6 py-10 text-gray-800">
       <h1 className="text-4xl font-extrabold text-center mb-8 text-blue-600">Privacy Policy</h1>
       <p className="mb-6 text-lg leading-relaxed">
-        This Policy is specifically for Dental colleges in England and Wales and
+        This Policy is specifically for JoinLio and
         is a mutual agreement between the college entity and the staff
         (comprising of both employees and non-employed staff members).
       </p>
