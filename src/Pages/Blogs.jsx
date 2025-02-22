@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, MoreHorizontal, ChevronRight, Bell, BookOpen, Users, Mail, Heart, MessageSquare } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import tavelblog from "../assets/images/travel.jpg";
+import tavelblog from "../assets/images/Travel.jpg";
 import Entrepreneurshipblog from "../assets/images/Entrepreneurship.jpg";
 import Mediablog from "../assets/images/Media.jpg";
 
