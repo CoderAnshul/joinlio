@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import knot from "../../assets/svg/knot.svg";
 import VideoContainer from "../VideoContainer";
 import RevealText from "./RevealText";
 
@@ -49,7 +48,7 @@ const Banner = () => {
           Step into the <br /> future with{" "}
           <span className="relative z-[50] text-textColor">
             JOINLIO
-            <img className="absolute -right-2 top-6 md:-right-2 md:top-6" src={knot} alt="" />
+            {/* <img className="absolute -right-2 top-6 md:-right-2 md:top-6" src={knot} alt="" /> */}
           </span>
         </h1>
 
@@ -62,11 +61,11 @@ const Banner = () => {
           CONTACT US TODAY
         </button>
 
-        <div className="gradient-backgroundTwo outerTwo"></div>
-        <div className="gradient-backgroundTwo"></div>
+        {/* <div className="gradient-backgroundTwo outerTwo"></div>
+        <div className="gradient-backgroundTwo"></div> */}
       </div>
 
-      <VideoContainer />
+      {/* <VideoContainer /> */}
 
       {/* <RevealText text="The game-changing platform where students and alumni unlock global connections, businesses redefine engagement, and universities elevate student development like never before. Discover a world of collaboration, innovation, and boundless opportunities." /> */}
     </div>

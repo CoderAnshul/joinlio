@@ -27,7 +27,7 @@ const BlogDetail = () => {
 
   const handleBackClick = (e) => {
     e.preventDefault();
-    navigate('/');
+    navigate('/blogs');
   };
 
   const handleCommentSubmit = (e) => {
@@ -47,9 +47,9 @@ const BlogDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#fbd4e0] to-[#fff5e1] p-6 md:p-10">
+    <div className="min-h-screen bg-white p-6 md:p-10">
       <div className="max-w-7xl mx-auto relative z-10">
-        <a href="#" onClick={handleBackClick} className="inline-flex items-center space-x-2 text-gray-700 hover:text-[#e0b3c1] mb-8 transition-colors">
+        <a href="/blogs" onClick={handleBackClick} className="inline-flex items-center space-x-2 text-gray-700 hover:text-[#e0b3c1] mb-8 transition-colors">
           <ArrowLeft size={20} />
           <span>Back to all articles</span>
         </a>
@@ -103,14 +103,14 @@ const BlogDetail = () => {
           <div className="border-t border-gray-200 mt-10 pt-8">
             <div className="flex flex-wrap justify-between items-center">
               <div className="flex items-center space-x-4 mb-4 md:mb-0">
-                <button className="flex items-center space-x-1 text-gray-700 hover:text-[#e0b3c1] transition-colors">
+                {/* <button className="flex items-center space-x-1 text-gray-700 hover:text-[#e0b3c1] transition-colors">
                   <Heart size={20} />
                   <span>{likes} likes</span>
                 </button>
                 <button className="flex items-center space-x-1 text-gray-700 hover:text-[#e0b3c1] transition-colors">
                   <MessageSquare size={20} />
                   <span>{comments} comments</span>
-                </button>
+                </button> */}
               </div>
               <div className="flex items-center space-x-4">
                 <button className="flex items-center space-x-1 text-gray-700 hover:text-[#e0b3c1] transition-colors">
@@ -127,7 +127,7 @@ const BlogDetail = () => {
         </main>
 
         {/* Comments section */}
-        <section className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-2xl p-6 md:p-10 shadow-xl border border-white border-opacity-30 mb-12">
+        {/* <section className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-2xl p-6 md:p-10 shadow-xl border border-white border-opacity-30 mb-12">
           <h2 className="text-2xl font-bold text-gray-800 mb-8">Comments ({commentList.length})</h2>
           <div className="mb-10">
             <form onSubmit={handleCommentSubmit}>
@@ -173,7 +173,7 @@ const BlogDetail = () => {
               </div>
             </div>
           ))}
-        </section>
+        </section> */}
       </div>
     </div>
   );

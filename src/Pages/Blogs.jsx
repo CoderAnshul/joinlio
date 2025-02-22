@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Search, MoreHorizontal, ChevronRight, Bell, BookOpen, Users, Mail, Heart, MessageSquare } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import tavelblog from "../assets/images/travel.jpg";
+import Entrepreneurshipblog from "../assets/images/Entrepreneurship.jpg";
+import Mediablog from "../assets/images/Media.jpg";
 
 const Blogs = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -19,7 +22,7 @@ const Blogs = () => {
       readTime: "8 min read",
       likes: 423,
       comments: 56,
-      imageSrc: "/api/placeholder/600/400",
+      imageSrc: Mediablog,
       content: "Transform Your Creative Ideas into Reality with JOINLIO!\n\nAre you a student who wants to share your vision to the world through films, photos, musical compositions, or digital products? Are you eager to transform creative concepts into socially relevant projects?...",
       fullContent: [
         { type: 'paragraph', content: "Transform Your Creative Ideas into Reality with JOINLIO!\n\nAre you a student who wants to share your vision to the world through films, photos, musical compositions, or digital products? Are you eager to transform creative concepts into socially relevant projects? If you are looking for some inspiration, time to develop yourself, and a place to be inspired and inspire others, JOINLIO has created something for you namely Media Hub." },
@@ -72,7 +75,7 @@ const Blogs = () => {
       readTime: "7 min read",
       likes: 287,
       comments: 42,
-      imageSrc: "/api/placeholder/600/400",
+      imageSrc: Entrepreneurshipblog,
       content: "Where Ideas Ignite and Future Begin!\n\nCampus life is not only limited to classroom experience and good performance; it is also one of the best chances to make your dream come true...",
       fullContent: [
         { type: 'heading', content: "Why Student Entrepreneurship is the Key to Future Success" },
@@ -122,7 +125,7 @@ const Blogs = () => {
       readTime: "9 min read",
       likes: 356,
       comments: 28,
-      imageSrc: "/api/placeholder/600/400",
+      imageSrc: tavelblog,
       content: "Travel has the unique ability to transform us in ways we never imagined. Well noted by the American author Mark Twain this goes to say, \"Travel is fatal to prejudice, bigotry, and narrow-mindedness.\"...",
       fullContent: [
         { type: 'heading', content: "Wanderlust for Growth: How Travel Transforms Your Life" },
@@ -193,11 +196,11 @@ const Blogs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#fbd4e0] to-[#fff5e1] p-6 md:p-10">
+    <div className="min-h-screen bg-white p-6 md:p-10">
       {/* Decorative circles for background effect */}
-      <div className="fixed top-20 left-20 w-72 h-72 bg-[#e0b3c1] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      {/* <div className="fixed top-20 left-20 w-72 h-72 bg-[#e0b3c1] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
       <div className="fixed top-40 right-40 w-80 h-80 bg-[#e6d5b3] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-      <div className="fixed bottom-20 left-1/3 w-96 h-96 bg-[#e0b3c1] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      <div className="fixed bottom-20 left-1/3 w-96 h-96 bg-[#e0b3c1] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div> */}
       
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -247,66 +250,64 @@ const Blogs = () => {
         
         {/* Blog posts grid with glassmorphism cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {filteredPosts.map(post => (
-            <article
-              key={post.id}
-              className="group bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-1 border border-white border-opacity-30"
-            >
-              <div className="relative overflow-hidden">
-                <img 
-                  src={post.imageSrc} 
-                  alt={post.title} 
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-md text-white text-sm font-medium border border-white border-opacity-30">
-                  {post.category}
-                </span>
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-[#e0b3c1] transition-colors line-clamp-2">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 mb-4 line-clamp-2">
-                  {post.excerpt}
-                </p>
-                
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#e0b3c1] to-[#e6d5b3] flex items-center justify-center text-white text-xs font-medium">
-                      JT
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-800">{post.author}</p>
-                      <p className="text-xs text-gray-500">{post.date} · {post.readTime}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3 text-gray-500">
-                    <span className="flex items-center space-x-1">
-                      <Heart size={16} className="text-[#e0b3c1]" />
-                      <span className="text-xs">{post.likes}</span>
-                    </span>
-                    <span className="flex items-center space-x-1">
-                      <MessageSquare size={16} className="text-[#e6d5b3]" />
-                      <span className="text-xs">{post.comments}</span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="px-6 pb-6 pt-0">
-                <button 
-                  onClick={() => handleReadMore(post)}
-                  className="flex items-center space-x-1 text-[#e0b3c1] hover:text-[#d49dab] transition-colors group-hover:translate-x-1 transform transition-transform"
-                >
-                  <span className="text-sm font-medium">Read more</span>
-                  <ChevronRight size={16} />
-                </button>
-              </div>
-            </article>
-          ))}
+        {filteredPosts.map(post => (
+  <article
+    key={post.id}
+    onClick={() => handleReadMore(post)}
+    className="group bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:transform hover:-translate-y-1 border-2 border-black border-opacity-30 cursor-pointer"
+  >
+    <div className="relative overflow-hidden">
+      <img 
+        src={post.imageSrc} 
+        alt={post.title} 
+        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+      <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-md text-white text-sm font-medium border border-white border-opacity-30">
+        {post.category}
+      </span>
+    </div>
+    
+    <div className="p-6">
+      <h3 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-[#e0b3c1] transition-colors line-clamp-2">
+        {post.title}
+      </h3>
+      <p className="text-gray-600 mb-4 line-clamp-2">
+        {post.excerpt}
+      </p>
+      
+      <div className="flex justify-between items-center">
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#e0b3c1] to-[#e6d5b3] flex items-center justify-center text-white text-xs font-medium">
+            JT
+          </div>
+          <div>
+            <p className="text-sm font-medium text-gray-800">{post.author}</p>
+            <p className="text-xs text-gray-500">{post.date} · {post.readTime}</p>
+          </div>
+        </div>
+        
+        <div className="flex items-center space-x-3 text-gray-500">
+          <span className="flex items-center space-x-1">
+            <Heart size={16} className="text-[#e0b3c1]" />
+            <span className="text-xs">{post.likes}</span>
+          </span>
+          <span className="flex items-center space-x-1">
+            <MessageSquare size={16} className="text-[#e6d5b3]" />
+            <span className="text-xs">{post.comments}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div className="px-6 pb-6 pt-0">
+      <div className="flex items-center space-x-1 text-[#e0b3c1] group-hover:text-[#d49dab] transition-colors group-hover:translate-x-1 transform transition-transform">
+        <span className="text-sm font-medium">Read more</span>
+        <ChevronRight size={16} />
+      </div>
+    </div>
+  </article>
+))}
         </div>
         
         {/* View more button with glassmorphism */}

@@ -3,6 +3,7 @@ import rings from "../../assets/images/rings.png";
 import { X, Activity, Brain, MessageSquare, Globe, Layout, Briefcase, 
          ChartBar, Users, Shield, Coins, Target, BarChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import dashboardvideo from "../../assets/video/dashboard.mp4";
 
 const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescription, screenIndex }) => {
   const [modalPosition, setModalPosition] = useState(null);
@@ -16,21 +17,17 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
   // Body scroll lock effect
   useEffect(() => {
     if (isPeerModalOpen || isModalOpen) {
-      // Save scroll position
+      // Store current scroll position
       const scrollY = window.scrollY;
       
-      // Lock body
-      document.body.style.position = 'fixed';
+      // Add class to body instead of inline styles
+      document.body.classList.add('modal-open');
       document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
       
       return () => {
-        // Unlock body
-        document.body.style.position = '';
+        // Remove class and restore scroll position
+        document.body.classList.remove('modal-open');
         document.body.style.top = '';
-        document.body.style.width = '';
-        document.body.style.overflow = '';
         window.scrollTo(0, scrollY);
       };
     }
@@ -262,15 +259,21 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
       </div>
 
       {isModalOpen && (
-        <div 
-          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 backdrop-blur-lg p-6"
+          <div 
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/10 backdrop-blur-md"
           aria-modal="true"
           role="dialog"
         >
           <div 
             ref={modalRef}
-            className="relative bg-white/70 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6" 
+            className="relative p-4 bg-white/70 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl max-w-3xl w-full mx-4 my-6 max-h-[85vh] overflow-y-auto"
             onClick={handleModalContentClick}
+            onWheel={(e) => e.stopPropagation()}
+            style={{
+              scrollbarWidth: 'thin',
+              scrollbarColor: '#CBD5E0 transparent',
+              WebkitOverflowScrolling: 'touch'
+            }}
           >
             <button 
               onClick={() => setIsModalOpen(false)}
@@ -305,7 +308,7 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
               </button>
               <Link to="/get-started">
                 <button className="px-6 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform">
-                  {screenIndex === 1 ? "Create Peer Account" : "Create Business Account"}
+                  {screenIndex === 1 ? "sign up" : "sign up"}
                 </button>
               </Link>
             </div>
@@ -315,18 +318,21 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
 
       {isPeerModalOpen && (
         <div 
-          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
-          aria-modal="true"
-          role="dialog"
+        className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/10 backdrop-blur-md"
+        aria-modal="true"
+        role="dialog"
+      >
+        <div 
+          ref={peerModalRef}
+          className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full mx-4 my-6 max-h-[85vh] overflow-y-auto"
+          onClick={handleModalContentClick}
+          onWheel={(e) => e.stopPropagation()}
+          style={{
+            scrollbarWidth: 'thin',
+            scrollbarColor: '#CBD5E0 transparent',
+            WebkitOverflowScrolling: 'touch'
+          }}
         >
-          <div 
-            ref={peerModalRef}
-            className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[85vh] overflow-y-auto"
-            onClick={handleModalContentClick}
-            style={{ 
-              maxHeight: "85vh",
-            }}
-          >
             <button
               onClick={() => setIsPeerModalOpen(false)} 
               className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -348,7 +354,6 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
                   )}
                 </p>
               </div>
-c
 
               {screenIndex === 1 && (
                 <div className="bg-blue-50 rounded-xl p-6 mb-8">
@@ -396,7 +401,7 @@ c
               <div className="mt-8 flex justify-center">
                 <Link to="/get-started">
                   <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform font-medium">
-                    {screenIndex === 1 ? "Create Peer Account" : "Register Your Business"}
+                    {screenIndex === 1 ? "Sign up" : "Sign up"}
                   </button>
                 </Link>
               </div>

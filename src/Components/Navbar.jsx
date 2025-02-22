@@ -10,7 +10,7 @@ const menuItems = [
     name: 'FEATURES', 
     options: [
       { label: 'Peer Account', link: '/#peer-account', isScroll: true },
-      { label: 'Predefined Hubs', link: '/#predefined-hubs', isScroll: true }
+      { label: 'Joinlio Hubs', link: '/#predefined-hubs', isScroll: true }
     ]
   },
   { 

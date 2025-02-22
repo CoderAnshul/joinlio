@@ -52,7 +52,7 @@ const TravelHub = () => {
       {category && <SubInterest category={category} />}
       <DevideSectionText 
         title1="WHAT WE" 
-        title2="PROVIDE" 
+        title2="PROVIDE?" 
         description=" "
       />
       <HubInfo category={category} />

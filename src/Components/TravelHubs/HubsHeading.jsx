@@ -31,7 +31,7 @@ const HubsHeading = ({ hubData }) => {
           </p>
           <div className="gradient-backgroundTwo outerTwo"></div>
           <div className="gradient-backgroundTwo"></div>
-          <VideoContainer />
+          {/* <VideoContainer /> */}
         </div>
       </div>
     </div>
