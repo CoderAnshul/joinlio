@@ -266,7 +266,7 @@ const GetStarted = () => {
               />
             </div>
 
-            <button type="submit" className="w-full bg-[#F7C28A] text-Black py-3 px-6 rounded-lg hover:bg-[#c59057] transition-colors">
+            <button type="submit" className="w-full bg-[#00abff] text-Black py-3 px-6 rounded-lg hover:bg-[#c59057] transition-colors">
               Sign up
             </button>
           </form>
