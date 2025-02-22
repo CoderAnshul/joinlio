@@ -95,13 +95,13 @@ const HubVideo = ({ category }) => {
         )}
 
 <button
-  className="absolute bottom-4 right-4 p-2 rounded-full shadow-md flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110"
+  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 rounded-full shadow-md flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110"
   onClick={togglePlayPause}
 >
   <img
     src={isPlaying ? pauseIcon : playIcon}
     alt={isPlaying ? "Pause" : "Play"}
-    className="w-8 h-8 transition-opacity duration-300 ease-in-out"
+    className="w-14 h-14 transition-opacity duration-300 ease-in-out"
   />
 </button>
 

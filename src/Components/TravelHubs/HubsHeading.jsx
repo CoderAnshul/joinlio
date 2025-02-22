@@ -29,8 +29,8 @@ const HubsHeading = ({ hubData }) => {
               hubDescriptions["Travel Hub"]
             )}
           </p>
-          <div className="gradient-backgroundTwo outerTwo"></div>
-          <div className="gradient-backgroundTwo"></div>
+          {/* <div className="gradient-backgroundTwo outerTwo"></div>
+          <div className="gradient-backgroundTwo"></div> */}
           {/* <VideoContainer /> */}
         </div>
       </div>
