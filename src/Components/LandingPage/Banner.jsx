@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import VideoContainer from "../VideoContainer";
 import RevealText from "./RevealText";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const words = ["STUDENTS", "ALUMNI", "BUSINESS", "UNIVERSITIES"];
@@ -56,10 +57,12 @@ const Banner = () => {
           Join a vibrant digital ecosystem where students, <br /> alumni & business thrive together.
         </p>
 
+        <Link to="/send-message">
         <button className="px-8 relative z-[50] py-3 text-sm font-medium text-black border border-black rounded-sm hover:bg-[#2CA2FB] hover:text-white transition-all duration-300 shadow-[0_4px_0px_0px_#00abff]
 ">
           CONTACT US TODAY
         </button>
+        </Link>
 
         {/* <div className="gradient-backgroundTwo outerTwo"></div>
         <div className="gradient-backgroundTwo"></div> */}

@@ -173,10 +173,14 @@ const Homepage = () => {
           <Motives cards={cardsData}/>
       </div>
 
-      <DevideSectionText title1 ="BUSINESSES" title2 =" " description="JOINLIO connects your business directly with the student community, allowing you to
+      <div id="business-data">
+
+      <DevideSectionText  title1 ="BUSINESSES" title2 =" " description="JOINLIO connects your business directly with the student community, allowing you to
       offer exclusive discounts, boost sales, and gather real-time feedback all on one seamless
       platform. No upfront costs pay only when you start generating sales.
       "/>
+      </div>
+
       <div className='px-[5vw]'>
       <BussinessHead/>
       <div className='h-fit relative overflow-hidden'>
@@ -196,7 +200,10 @@ const Homepage = () => {
       <Stories isSecondInstance={true} />
       <Motives cards={cardsDataTwo}/>
       <RandomQuote/>
+      <div id="universites-data"> 
+
       <DevideSectionText title1 ="UNIVERSITIES" title2 ="" description="JOINLIO is a next-generation platform designed to revolutionize student development for universities, colleges, and institutes. By subscribing to JOINLIO, your institution provides students with free access to advanced tools for personal growth, global collaboration, and professional achievement. Empower your students with a verified, futuristic ecosystem that fosters innovation, builds lasting connections, and prepares them to lead in a rapidly evolving world." highlight=" "/>
+      </div>
 
       <div className='px-[5vw]'>
       <UniversityHead/>

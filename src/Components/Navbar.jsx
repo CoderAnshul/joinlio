@@ -16,9 +16,9 @@ const menuItems = [
   { 
     name: 'SOLUTIONS', 
     options: [
-      { label: 'For Students/Alumni', link: '/#section-data' },
-      { label: 'For Businesses', link: '/#section-data' },
-      { label: 'For Universities', link: '/#section-data' }
+      { label: 'For Students/Alumni', link: '/#section-data' ,isScroll: true},
+      { label: 'For Businesses', link: '/#business-data' ,isScroll: true},
+      { label: 'For Universities', link: '/#universites-data',isScroll: true }
     ]
   },
   { 

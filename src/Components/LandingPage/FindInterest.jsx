@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import loop from "../../assets/images/loop.png"
 import search from "../../assets/images/search.png"
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
@@ -59,7 +58,7 @@ const FindInterest = () => {
                 <div className='w-auto max-w-xl'>
                     <h3 className='text-3xl relative font-semibold text-customBlue'>
                         Find Your Interest 
-                        <img className='absolute -bottom-4 scale-50' src={loop} alt="loop text" />
+                        {/* <img className='absolute -bottom-4 scale-50' src={loop} alt="loop text" /> */}
                     </h3>
                     <p className="text-gray-700 text-[16px] leading-[20px] mt-[4vw] md:mt-[2vw] max-w-xl">
                         What's your passion? Whether it's travel, entrepreneurship, or even night camping, JOINLIO transforms your dreams, talents, and interests into reality. Like an ocean of opportunities, our platform allows you to create your own hub or join existing topics. Connect with like-minded students, access exclusive tools, services, and support, and unlock limitless possibilities. Your next big collaboration starts here—click on a hub and explore all that JOINLIO has to offer!
