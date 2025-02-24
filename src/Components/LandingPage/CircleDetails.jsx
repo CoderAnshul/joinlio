@@ -451,11 +451,82 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
                   )}
                 </>
               ) : (
-                <div className="mb-8">
-                  <p className="text-gray-600 leading-relaxed">
-                    Business Account within JOINLIO represents a specific platform for companies to interact effectively with their student audience.
-                  </p>
-                </div>
+                <>
+                 <div className="mb-8">
+      <p className="text-gray-600 leading-relaxed">
+        The Business Account within JOINLIO represents a specific platform for companies to interact 
+        effectively with their student audience. JOINLIO provides Business Accounts that enable 
+        companies to establish direct marketing connections with university students. The platform 
+        delivers a strong toolset for presenting products and services combined with special 
+        student-oriented deals. The Business Account enables companies to develop strong customer 
+        brand relations while making targeted student engagement for higher sales results.
+      </p>
+    </div>
+    
+    <div className="bg-blue-50 rounded-xl p-6 mb-8">
+      <h3 className="text-xl font-semibold text-gray-900 mb-3">Why Register with JOINLIO?</h3>
+      <ul className="space-y-2">
+        <li className="flex items-start gap-2">
+          <span className="text-blue-600 font-bold">•</span>
+          <span className="text-gray-700"><span className="font-semibold">Enhance Visibility:</span> Access to a unique platform that helps reach students as potential customers.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-blue-600 font-bold">•</span>
+          <span className="text-gray-700"><span className="font-semibold">Drive Engagement:</span> Establish direct interactions with potential customers, increasing conversion rates.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-blue-600 font-bold">•</span>
+          <span className="text-gray-700"><span className="font-semibold">Tailor Offers:</span> Create specific deals to accommodate student market requirements.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-blue-600 font-bold">•</span>
+          <span className="text-gray-700"><span className="font-semibold">Gain Valuable Insights:</span> Improve marketing strategy using real-time feedback and acquired data.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-blue-600 font-bold">•</span>
+          <span className="text-gray-700"><span className="font-semibold">Cost Efficiency:</span> Performance-based payment delivers superior value at minimal cost.</span>
+        </li>
+      </ul>
+      
+      <div className="relative pt-4 mt-4">
+        <div className="flex mb-2 items-center justify-between">
+          <div>
+            <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+              Average ROI
+            </span>
+          </div>
+          <div className="text-right">
+            <span className="text-xs font-semibold inline-block text-blue-600">
+              85%
+            </span>
+          </div>
+        </div>
+        <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
+          <div className="w-[85%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <h3 className="text-xl font-semibold text-gray-900 mb-6">
+        Features of the Business Account
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {businessFeatures.map((feature, index) => (
+          <div
+            key={index}
+            className="p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 bg-white"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              {feature.icon}
+              <h4 className="font-semibold text-gray-900">{feature.title}</h4>
+            </div>
+            <p className="text-gray-600 text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+                </>
               )}
 
             
