@@ -255,12 +255,41 @@ const definitions = [
     "7. The Duty to share information can be as important as the duty to protect patient confidentiality.",
     "8. Inform patients and service users about how their confidential information is used."
   ];
+  
+  const californiaResidentRights = [
+    "If you are a resident of the State of California, USA, you have the rights outlined in this section. Please see the “Exercising Your Rights” section below for instructions regarding how to exercise these rights. If there are any conflicts between this section and any other provision of this Policy and you are a California resident, the portion that is more protective of Personal Data shall control to the extent of such conflict. If you have any questions about this section or whether any of the following applies to you, please contact us at Contact@joinlio.com",
 
+    "You have the following rights under the USA state-specific legislation:"
+  ];
+
+  const californiaRightsDetails = [
+    { right: "Right to access", details: "You have the right to access Personal Data held by the Business, including a description of your data. Essential Personal Data held by the Business can be found in the profile section of your Unibuddy account, while further information is available on request. The categories of sources from which Personal Data was collected. The business or commercial purpose for collecting your Personal Data. The categories of third parties with whom we have shared your Personal Data. The specific pieces of Personal Data that we have collected about you. If we have disclosed your Personal Data for a business purpose over the past 12 months, we will identify the categories of Personal Data shared with each category of third party recipient." },
+    { right: "Right to correct inaccurate information", details: "You have the right to rectify any details to ensure that your personal information is accurate. In order to assist with this, you should notify the Business of any changes to the personal information that you have provided by sending a request to rectify your Personal Data where you believe the Personal Data collected is inaccurate or incomplete." },
+    { right: "Right of deletion", details: "Asking the Business to delete all of your Personal Data will result in the deletion of Personal Data held by that Business without undue delay (unless your Personal Data is required to provide you with the Platform or complete a transaction or other action you have requested). If your deletion request is subject to one of these exceptions, your deletion request may be denied, in which case you will be informed of this in writing." },
+    { right: "Right to know what data is being sold or shared and to whom", details: "We do not sell personal information to any third parties." },
+    { right: "Right to Opt-out of Sale and data sharing", details: "You have the right to request that the Business does not sell or share your Personal Data to third parties." },
+    { right: "Right to Opt-out of automated decision making", details: "We do not utilise automated decision making." },
+    { right: "Right to limit disclosure and use of sensitive information", details: "You have the right, at any time, to direct the Business that collects sensitive personal information about you to limit its use of your sensitive personal information to that use which is necessary to perform the services or provide the goods reasonably expected by an average consumer who requests such goods or services." },
+    { right: "Right of no retaliation", details: "We will not discriminate against you for exercising your rights. We will not deny you our goods or services, charge you different prices or rates, or provide you a lower quality of goods and services if you exercise your rights under the CCPA and CPRA." }
+  ];
+
+  const validRights = [
+    "To exercise the rights described above, you must send us a Subject Access Request/Valid Request that (1) provides sufficient information to allow us to verify that you are the person about whom we have collected Personal Data, and (2) describes your request in sufficient detail to allow us to understand, evaluate, and respond to it. Each request that meets both of these criteria will be considered a “Valid Request.” We may not respond to requests that do not meet these criteria. We will only use Personal Data provided in a Valid Request to verify you and complete your request. You do not need an account to submit a Valid Request.",
+
+    "Authorised Agents”: you may submit a request to know or a request to delete your Personal Information through an Authorised Agent. If you do so, the agent must present signed written permission to act on your behalf and you may also be required to independently verify your identity and submit proof of residency with us. If you have submitted a request via Authorised Agents and have followed the prescriptions above, we shall count these requests as Valid Requests.",
+
+    "We will work to respond to your Valid Request within a 30-day period of receipt for all Valid requests under the GDPR and DPA and 45 days of receipt under CPPA/CPRA. We will not charge you a fee for making a Valid Request unless your Valid Request(s) is excessive, repetitive, or manifestly unfounded. If we determine that your Valid Request warrants a fee, we will notify you of the fee and explain that decision before completing your request.",
+
+    "You may submit a Valid Request by sending an email to legal.team@unibuddy.com; or by post to: Unibuddy Ltd, 5 New Street Square, London, United Kingdom, EC4A 3TW"
+  ];
+
+  
   const changesToPolicy = [
     "We keep this Data Protection Policy under regular review."
   ];
+  
+  export { definitions, introduction, scopeOfPolicy, dpoContactReasons, dataProtectionPrinciples, lawfulProcessingGrounds, consentDetails, transparencyDetails, dataProtectionPolicy, purposeLimitation, dataMinimization, accuracy, storageLimitation, securityIntegrityConfidentiality, reportingPersonalDataBreach, transferLimitation, dataSubjectRightsRequests, accountability, recordKeeping, trainingAndAudit, privacyByDesignAndDPIA, processingAndADM, directMarketing, sharingPersonalData, caldicottPrinciples, californiaResidentRights,californiaRightsDetails,validRights, changesToPolicy };
 
-  export { definitions, introduction, scopeOfPolicy, dpoContactReasons, dataProtectionPrinciples, lawfulProcessingGrounds, consentDetails, transparencyDetails, dataProtectionPolicy, purposeLimitation, dataMinimization, accuracy, storageLimitation, securityIntegrityConfidentiality, reportingPersonalDataBreach, transferLimitation, dataSubjectRightsRequests, accountability, recordKeeping, trainingAndAudit, privacyByDesignAndDPIA, processingAndADM, directMarketing, sharingPersonalData, caldicottPrinciples, changesToPolicy };
 
 
 

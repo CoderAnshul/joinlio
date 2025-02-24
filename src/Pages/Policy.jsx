@@ -1,5 +1,5 @@
 import React from "react";
-import {  definitions, introduction, scopeOfPolicy, dpoContactReasons, dataProtectionPrinciples, lawfulProcessingGrounds, consentDetails, transparencyDetails, dataProtectionPolicy, purposeLimitation, dataMinimization, accuracy, storageLimitation, securityIntegrityConfidentiality, reportingPersonalDataBreach, transferLimitation, dataSubjectRightsRequests, accountability, recordKeeping, trainingAndAudit, privacyByDesignAndDPIA, processingAndADM, directMarketing, sharingPersonalData, caldicottPrinciples, changesToPolicy  } from "../../src/assets/data/policyData";
+import {  definitions, introduction, scopeOfPolicy, dpoContactReasons, dataProtectionPrinciples, lawfulProcessingGrounds, consentDetails, transparencyDetails, dataProtectionPolicy, purposeLimitation, dataMinimization, accuracy, storageLimitation, securityIntegrityConfidentiality, reportingPersonalDataBreach, transferLimitation, dataSubjectRightsRequests, accountability, recordKeeping, trainingAndAudit, privacyByDesignAndDPIA, processingAndADM, directMarketing, sharingPersonalData, caldicottPrinciples, californiaResidentRights, californiaRightsDetails, validRights,changesToPolicy  } from "../../src/assets/data/policyData";
 
 const Policy = () => {
   return (
@@ -243,6 +243,50 @@ const Policy = () => {
           <li key={index}>{reason}</li>
         ))}
       </ul>
+
+      {/* california Section */}
+      <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">State of California, USA – Resident Rights</h2>
+      {californiaResidentRights.map((para, index) => (
+        <p key={index} className="mb-6 text-lg leading-relaxed">{para}</p>
+      ))}
+
+
+
+    <div className="overflow-hidden rounded-lg my-8 max-w-6xl mx-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gradient-to-r from-blue-500 to-blue-600">
+              <tr>
+                <th className="py-4 px-6 text-left text-xs font-medium text-white uppercase tracking-wider">
+                  Right
+                </th>
+                <th className="py-4 px-6 text-left text-xs font-medium text-white uppercase tracking-wider">
+                  Details
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {californiaRightsDetails.map(({ right, details }, index) => (
+                <tr 
+                  key={index} 
+                  className="transition-colors hover:bg-gray-50"
+                >
+                  <td className="py-4 px-6  font-medium text-gray-800">
+                    {right}
+                  </td>
+                  <td className="py-4 px-6 text-gray-600 text-md leading-relaxed">
+                    {details}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+
+      <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Subject Access Request/Valid Request</h2>
+      {validRights.map((para, index) => (
+        <p key={index} className="mb-6 text-lg leading-relaxed">{para}</p>
+      ))}
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Changes To Policy</h3>
       <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">

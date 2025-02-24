@@ -281,7 +281,7 @@ const GetStarted = () => {
                   I agree to the{' '}
                   <a href="/privacy-policy" className="text-[#00abff] hover:underline">Privacy Policy</a>
                   {' '}and{' '}
-                  <a href="/terms" className="text-[#00abff] hover:underline">Terms & Conditions</a>*
+                  <a href="/terms-and-condition" className="text-[#00abff] hover:underline">Terms & Conditions</a>*
                 </label>
               </div>
             </div>

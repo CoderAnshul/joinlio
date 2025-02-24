@@ -35,7 +35,7 @@ const UniversitiesFeat = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col items-center lg:h-[250px] justify-start p-4 gap-4 bg-[#FFFFFF]/80 backdrop-blur-lg shadow-sm border-l-2 border-t-2 hover:shadow-md transition-all border-gray-200 rounded-2xl"
+              className="flex flex-col items-center lg:h-fit lg:min-h-[290px] xl:min-h-[250px] justify-start p-4 gap-4 bg-[#FFFFFF]/80 backdrop-blur-lg shadow-sm border-l-2 border-t-2 hover:shadow-md transition-all border-gray-200 rounded-2xl"
             >
               <div className="w-full text-lg font-black text-white bg-[#00ABFF] px-2 py-3 h-16 flex justify-center items-center rounded-xl">
                 {feature.title}
