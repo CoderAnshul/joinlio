@@ -153,13 +153,6 @@ const Policy = () => {
         ))}
       </ul>
 
-      <h3 className="text-xl font-semibold mt-8 mb-2">Storage Limitation</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
-        {storageLimitation.map((reason, index) => (
-          <li key={index}>{reason}</li>
-        ))}
-      </ul>
-
       <h3 className="text-xl font-semibold mt-8 mb-2">Security Integrity Confidentiality</h3>
       <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
         {securityIntegrityConfidentiality.map((reason, index) => (
