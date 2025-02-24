@@ -153,7 +153,7 @@ const Homepage = () => {
       </div>
       <div className='md:px-[5vw] relative overflow-hidden'>
         <ScrollingOrGrowing/>
-        <div id="peer-account" className='h-fit relative overflow-hidden'>
+        <div id="peer-account" className='h-fit relative md:min-h-[700px]'>
           <CircleDetails {...studentData} screenIndex={1}/>
         </div>
         <div id="predefined-hubs" className='h-fit relative overflow-hidden'>

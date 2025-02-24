@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Heart, MessageSquare, Share2, Bookmark } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import BlogDp from "/fav.png"
 
 const BlogDetail = () => {
   const location = useLocation();
@@ -49,7 +50,7 @@ const BlogDetail = () => {
   return (
     <div className="min-h-screen bg-white p-6 md:p-10">
       <div className="max-w-7xl mx-auto relative z-10">
-        <a href="/blogs" onClick={handleBackClick} className="inline-flex items-center space-x-2 text-gray-700 hover:text-[#e0b3c1] mb-8 transition-colors">
+        <a href="/blogs" onClick={handleBackClick} className="inline-flex items-center space-x-2 text-gray-700 hover:text-[#00ABFF] mb-8 transition-colors">
           <ArrowLeft size={20} />
           <span>Back to all articles</span>
         </a>
@@ -60,11 +61,11 @@ const BlogDetail = () => {
               <img src={mainImage} alt={title} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white">
-                <span className="px-3 py-1 rounded-full bg-[#e0b3c1] text-white text-sm font-medium">{category}</span>
+                <span className="px-3 py-1 rounded-full bg-[#00ABFF] text-white text-sm font-medium">{category}</span>
                 <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">{title}</h1>
                 <div className="flex flex-wrap items-center text-sm md:text-base text-gray-200 space-x-6">
                   <div className="flex items-center space-x-2">
-                    <img src={authorImage} alt={author} className="w-8 h-8 rounded-full" />
+                    <img src={BlogDp} className='h-8 ' alt="author" />
                     <span>{author}</span>
                   </div>
                   <span>{date}</span>
@@ -93,7 +94,7 @@ const BlogDetail = () => {
                     </div>
                   );
                 case 'quote':
-                  return <blockquote key={index} className="border-l-4 border-[#e0b3c1] pl-4 italic my-8 text-gray-700">{section.content}</blockquote>;
+                  return <blockquote key={index} className="border-l-4 border-[#00ABFF] pl-4 italic my-8 text-gray-700">{section.content}</blockquote>;
                 default:
                   return null;
               }
@@ -103,21 +104,21 @@ const BlogDetail = () => {
           <div className="border-t border-gray-200 mt-10 pt-8">
             <div className="flex flex-wrap justify-between items-center">
               <div className="flex items-center space-x-4 mb-4 md:mb-0">
-                {/* <button className="flex items-center space-x-1 text-gray-700 hover:text-[#e0b3c1] transition-colors">
+                {/* <button className="flex items-center space-x-1 text-gray-700 hover:text-[#00ABFF] transition-colors">
                   <Heart size={20} />
                   <span>{likes} likes</span>
                 </button>
-                <button className="flex items-center space-x-1 text-gray-700 hover:text-[#e0b3c1] transition-colors">
+                <button className="flex items-center space-x-1 text-gray-700 hover:text-[#00ABFF] transition-colors">
                   <MessageSquare size={20} />
                   <span>{comments} comments</span>
                 </button> */}
               </div>
               <div className="flex items-center space-x-4">
-                <button className="flex items-center space-x-1 text-gray-700 hover:text-[#e0b3c1] transition-colors">
+                <button className="flex items-center space-x-1 text-gray-700 hover:text-[#00ABFF] transition-colors">
                   <Share2 size={20} />
                   <span>Share</span>
                 </button>
-                <button className="flex items-center space-x-1 text-gray-700 hover:text-[#e0b3c1] transition-colors">
+                <button className="flex items-center space-x-1 text-gray-700 hover:text-[#00ABFF] transition-colors">
                   <Bookmark size={20} />
                   <span>Save</span>
                 </button>
@@ -132,18 +133,18 @@ const BlogDetail = () => {
           <div className="mb-10">
             <form onSubmit={handleCommentSubmit}>
               <div className="flex space-x-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#e0b3c1] to-[#e6d5b3] flex-shrink-0"></div>
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00ABFF] to-[#e6d5b3] flex-shrink-0"></div>
                 <div className="flex-grow">
                   <textarea
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
                     placeholder="Share your thoughts..."
-                    className="w-full px-4 py-3 bg-white bg-opacity-30 backdrop-filter backdrop-blur-sm rounded-xl border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-[#e0b3c1] focus:border-transparent placeholder-gray-500 text-gray-700 h-32 resize-none"
+                    className="w-full px-4 py-3 bg-white bg-opacity-30 backdrop-filter backdrop-blur-sm rounded-xl border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-[#00ABFF] focus:border-transparent placeholder-gray-500 text-gray-700 h-32 resize-none"
                   ></textarea>
                 </div>
               </div>
               <div className="flex justify-end">
-                <button type="submit" className="px-6 py-2 bg-gradient-to-r from-[#e0b3c1] to-[#e6d5b3] text-white rounded-full font-medium hover:shadow-lg transition-all">
+                <button type="submit" className="px-6 py-2 bg-gradient-to-r from-[#00ABFF] to-[#e6d5b3] text-white rounded-full font-medium hover:shadow-lg transition-all">
                   Post Comment
                 </button>
               </div>
@@ -153,7 +154,7 @@ const BlogDetail = () => {
           {commentList.map((comment) => (
             <div key={comment.id} className="mb-8 pb-8 border-b border-gray-200 last:border-0 last:mb-0 last:pb-0">
               <div className="flex space-x-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#e0b3c1] to-[#e6d5b3] flex-shrink-0 overflow-hidden">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00ABFF] to-[#e6d5b3] flex-shrink-0 overflow-hidden">
                   <img src={comment.userImage} alt={comment.username} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-grow">
@@ -163,8 +164,8 @@ const BlogDetail = () => {
                   </div>
                   <p className="text-gray-700 mb-3">{comment.text}</p>
                   <div className="flex items-center space-x-4 text-sm">
-                    <button className="text-gray-600 hover:text-[#e0b3c1] transition-colors">Reply</button>
-                    <button className="flex items-center space-x-1 text-gray-600 hover:text-[#e0b3c1] transition-colors">
+                    <button className="text-gray-600 hover:text-[#00ABFF] transition-colors">Reply</button>
+                    <button className="flex items-center space-x-1 text-gray-600 hover:text-[#00ABFF] transition-colors">
                       <Heart size={14} />
                       <span>{comment.likes}</span>
                     </button>

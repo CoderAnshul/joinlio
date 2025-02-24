@@ -35,8 +35,8 @@ const Banner = () => {
   }, [currentWord, isDeleting, wordIndex]);
 
   return (
-    <div className="relative z-[100] pb-[4vw]">
-      <div className="flex relative z-[50] flex-col items-center justify-center min-h-[calc(60vh-80px)] md:min-h-[calc(80vh-80px)] text-center px-4">
+    <div className="relative z-[100]">
+      <div className="flex relative z-[50] flex-col items-center pt-[54px] justify-center min-h-[calc(60vh-80px)] md:min-h-[calc(80vh-80px)] text-center px-4">
         <div className="text-sm flex items-end gap-1 font-medium text-black uppercase mb-4">
           FOR{" "}
           <span className="text-xl gradient-text">

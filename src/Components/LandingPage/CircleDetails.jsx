@@ -167,7 +167,7 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
 
   return (
     <div className="px-2 lg:px-20 gap-[10px] py-12 my-5">
-      <div className="relative w-full min-h-[500px] h-screen max-h-[700px] hidden md:scale-90 lg:scale-100 md:flex justify-center items-center">
+      <div className="relative w-full min-h-[500px] h-screen max-h-fit hidden md:scale-90 lg:scale-100 md:flex justify-center items-center">
         <img className="absolute z-10 h-full w-full object-contain" src={rings} alt="bgring" />
         <div className="gradient-circle-background"></div>
         <div className="gradient-circle-background outer"></div>
