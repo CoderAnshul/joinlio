@@ -10,6 +10,7 @@ const menuItems = [
     name: 'FEATURES', 
     options: [
       { label: 'Peer Account', link: '/#peer-account', isScroll: true },
+      { label: 'Business Account', link: '/#business-account', isScroll: true },
       { label: 'Joinlio Hubs', link: '/#predefined-hubs', isScroll: true }
     ]
   },
@@ -257,10 +258,10 @@ const Navbar = () => {
           ))}
           
           <div className="flex items-center space-x-8">
-            <div className="flex items-center text-xs text-semibold">
+            {/* <div className="flex items-center text-xs text-semibold">
               <div className="w-2 h-2 rounded-full text-xs bg-black mr-2"></div>
               <span>CALL US : +00 81 590 088</span>
-            </div>
+            </div> */}
 
             <Link
               to="/get-started"

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import tavelblog from "../assets/images/Travel.jpg";
 import Entrepreneurshipblog from "../assets/images/Entrepreneurship.jpg";
 import Mediablog from "../assets/images/Media.jpg";
+import BlogDp from "/fav.png"
 
 const Blogs = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -21,7 +22,6 @@ const Blogs = () => {
       date: "Feb 15, 2025",
       readTime: "8 min read",
       likes: 423,
-      comments: 56,
       imageSrc: Mediablog,
       content: "Transform Your Creative Ideas into Reality with JOINLIO!\n\nAre you a student who wants to share your vision to the world through films, photos, musical compositions, or digital products? Are you eager to transform creative concepts into socially relevant projects?...",
       fullContent: [
@@ -74,7 +74,6 @@ const Blogs = () => {
       date: "Feb 12, 2025",
       readTime: "7 min read",
       likes: 287,
-      comments: 42,
       imageSrc: Entrepreneurshipblog,
       content: "Where Ideas Ignite and Future Begin!\n\nCampus life is not only limited to classroom experience and good performance; it is also one of the best chances to make your dream come true...",
       fullContent: [
@@ -124,7 +123,6 @@ const Blogs = () => {
       date: "Feb 10, 2025",
       readTime: "9 min read",
       likes: 356,
-      comments: 28,
       imageSrc: tavelblog,
       content: "Travel has the unique ability to transform us in ways we never imagined. Well noted by the American author Mark Twain this goes to say, \"Travel is fatal to prejudice, bigotry, and narrow-mindedness.\"...",
       fullContent: [
@@ -207,7 +205,7 @@ const Blogs = () => {
         {/* Hero section with search */}
         <div className="mb-16 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
-            JOINLIO Blog
+            Joinlio Blogs
           </h2>
           <p className="text-gray-700 text-lg md:text-xl max-w-2xl mx-auto mb-10">
             Discover how JOINLIO helps students transform their ideas into reality through Media, Entrepreneurship, and Travel.
@@ -220,10 +218,10 @@ const Blogs = () => {
             </div>
             <input
               type="text"
-              className="block w-full pl-10 pr-4 py-4 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-full shadow-lg border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-[#e0b3c1] focus:border-transparent text-gray-700 placeholder-gray-500"
+              className="block w-full pl-10 pr-4 py-4 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-full shadow-lg border border-white border-opacity-30 focus:outline-none focus:ring-2 focus:ring-[#2CA2FB] focus:border-transparent text-gray-700 placeholder-gray-500"
               placeholder="Search for articles, topics, or authors..."
             />
-            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-[#e0b3c1] to-[#e6d5b3] text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
+            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-[#2CA2FB] text-white px-6 py-2 rounded-full hover:shadow-lg transition-all">
               Search
             </button>
           </div>
@@ -238,7 +236,7 @@ const Blogs = () => {
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-3 rounded-full ${
                   activeCategory === category 
-                    ? 'bg-gradient-to-r from-[#e0b3c1] to-[#e6d5b3] text-white' 
+                    ? 'bg-[#2CA2FB] text-white' 
                     : 'bg-white bg-opacity-30 backdrop-filter backdrop-blur-sm text-gray-700 hover:bg-opacity-50'
                 } transition-all whitespace-nowrap font-medium`}
               >
@@ -269,7 +267,7 @@ const Blogs = () => {
     </div>
     
     <div className="p-6">
-      <h3 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-[#e0b3c1] transition-colors line-clamp-2">
+      <h3 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-[#2CA2FB] transition-colors line-clamp-2">
         {post.title}
       </h3>
       <p className="text-gray-600 mb-4 line-clamp-2">
@@ -278,9 +276,10 @@ const Blogs = () => {
       
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#e0b3c1] to-[#e6d5b3] flex items-center justify-center text-white text-xs font-medium">
+          <img src={BlogDp} className='h-8 ' alt="blogAvatar" />
+          {/* <div className="w-8 h-8 rounded-full bg-[#2CA2FB] flex items-center justify-center text-white text-xs font-medium">
             JT
-          </div>
+          </div> */}
           <div>
             <p className="text-sm font-medium text-gray-800">{post.author}</p>
             <p className="text-xs text-gray-500">{post.date} · {post.readTime}</p>
@@ -292,20 +291,20 @@ const Blogs = () => {
             <Heart size={16} className="text-[#e0b3c1]" />
             <span className="text-xs">{post.likes}</span>
           </span>
-          <span className="flex items-center space-x-1">
+          {/* <span className="flex items-center space-x-1">
             <MessageSquare size={16} className="text-[#e6d5b3]" />
             <span className="text-xs">{post.comments}</span>
-          </span>
+          </span> */}
         </div>
       </div>
     </div>
     
-    <div className="px-6 pb-6 pt-0">
+    {/* <div className="px-6 pb-6 pt-0">
       <div className="flex items-center space-x-1 text-[#e0b3c1] group-hover:text-[#d49dab] transition-colors group-hover:translate-x-1 transform transition-transform">
         <span className="text-sm font-medium">Read more</span>
         <ChevronRight size={16} />
       </div>
-    </div>
+    </div> */}
   </article>
 ))}
         </div>
@@ -314,8 +313,8 @@ const Blogs = () => {
         <div className="flex justify-center">
           <button className="group px-8 py-4 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-full border border-white border-opacity-30 hover:bg-opacity-30 transition-all shadow-lg">
             <div className="flex items-center space-x-2">
-              <span className="font-medium text-gray-800 group-hover:text-[#e0b3c1] transition-colors">View more articles</span>
-              <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#e0b3c1] to-[#e6d5b3] flex items-center justify-center text-white transform group-hover:rotate-90 transition-transform">
+              <span className="font-medium text-gray-800 group-hover:text-[#2CA2FB] transition-colors">View more articles</span>
+              <div className="w-6 h-6 rounded-full bg-[#2CA2FB] flex items-center justify-center text-white transform group-hover:rotate-90 transition-transform">
                 <MoreHorizontal size={16} />
               </div>
             </div>

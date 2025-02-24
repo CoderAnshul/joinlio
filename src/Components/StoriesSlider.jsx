@@ -12,21 +12,30 @@ import travelstory from "../assets/video/travelstory.mp4";
 import mediastory from "../assets/video/mediastory.mp4";
 import entrepreneurstory from "../assets/video/entreprenershipstory.mp4";
 
+// Thumbnails
+import travelThumbnail from "../assets/images/travel_thumbnail.png";
+import mediaThumbnail from "../assets/images/media_thumbnail.png";
+import entrepreneurThumbnail from "../assets/images/entrepreneur_thumbnail.png";
+
+import travelstorybu from "../assets/images/travel_story.png";
+import mediastorybu from "../assets/images/media_story.png";
+import entrepreneurstorybu from "../assets/images/entrepreneur_story.png";
+
 const StoriesSlider = ({ isSecondInstance = false }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   // Define different sets of videos based on instance
   const firstSetVideos = [
-    { id: 1, video: travelVideo, title: "Travel" },
-    { id: 2, video: mediaVideo, title: "Media" },
-    { id: 3, video: entrepreneurVideo, title: "Business" }
+    { id: 1, video: travelVideo, title: "Travel", thumbnail: travelThumbnail },
+    { id: 2, video: mediaVideo, title: "Media", thumbnail: mediaThumbnail },
+    { id: 3, video: entrepreneurVideo, title: "Entrepreneurship", thumbnail: entrepreneurThumbnail }
   ];
 
   const secondSetVideos = [
-    { id: 4, video: travelstory, title: "Travel Story" },
-    { id: 5, video: mediastory, title: "Media Story" },
-    { id: 6, video: entrepreneurstory, title: "Entrepreneurship Story" }
+    { id: 4, video: travelstory, title: "Travel Story" ,thumbnail: travelstorybu },
+    { id: 5, video: mediastory, title: "Media Story" ,thumbnail: mediastorybu},
+    { id: 6, video: entrepreneurstory, title: "Entrepreneurship Story",thumbnail: entrepreneurstorybu }
   ];
 
   // Choose which set of videos to use
@@ -55,9 +64,7 @@ const StoriesSlider = ({ isSecondInstance = false }) => {
             onClick={() => setSelectedVideo(story.video)}
           >
             <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-blue-300 group-hover:scale-105 transform transition-all">
-              <video className="w-full h-full object-cover" muted loop>
-                <source src={story.video} type="video/mp4" />
-              </video>
+              <img src={story.thumbnail || playIcon} alt={story.title} className="w-full h-full object-cover" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black bg-opacity-50">
                 <img src={playIcon} alt="Play" className="w-8 h-8" />
               </div>
@@ -91,6 +98,7 @@ const StoriesSlider = ({ isSecondInstance = false }) => {
           </div>
         </div>
       )}
+
     </div>
   );
 };

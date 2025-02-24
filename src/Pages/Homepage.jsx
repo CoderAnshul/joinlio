@@ -183,7 +183,7 @@ const Homepage = () => {
 
       <div className='px-[5vw]'>
       <BussinessHead/>
-      <div className='h-fit relative overflow-hidden'>
+      <div id="business-account" className='h-fit relative overflow-hidden'>
       <CircleDetails {...businessData} screenIndex={2}/>
       </div>
       <div className='px-6 lg:px-20 gap-[10px]  py-12 '>

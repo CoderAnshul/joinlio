@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import search from "../../assets/images/search.png"
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
@@ -16,6 +16,9 @@ import festive from "../../assets/images/new-hubs/festive-background-jewish-holi
 
 const FindInterest = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const modalRef = useRef(null);
+
+const scrollRef = useRef(null);
 
     const hubs = [
         { 
@@ -47,20 +50,65 @@ const FindInterest = () => {
         { name: "Social Good Hub", description: "Engage in volunteering and community service for social impact.", image: social }
     ];
 
+    const modalSections = [
+        {
+            icon: "🎯",
+            title: "What are Hubs",
+            description: "In Joinlio, Hubs are central spaces designed to facilitate collaboration among students with similar interests and goals. These dynamic, structured environments enable students to share, learn, earn, connect, collaborate, and grow together."
+        },
+        {
+            icon: "🌟",
+            title: "Create or Join Hubs",
+            description: "Create your own hubs based on personal interests or join existing predefined hubs focusing on areas like Media, Technology, and Entrepreneurship."
+        },
+        {
+            icon: "💡",
+            title: "Engage and Share",
+            description: "Post content, engage in meaningful discussions, and utilize specialized tools designed for your hub's focus area."
+        },
+        {
+            icon: "🤝",
+            title: "Collaborate on Projects",
+            description: "Work on real-world projects with peers, develop practical skills, and build a portfolio of achievements."
+        },
+        {
+            icon: "🚀",
+            title: "Support and Network",
+            description: "Access mentorship opportunities, connect with industry professionals, and broaden both personal and professional horizons."
+        }
+    ];
+
     const handleButtonClick = () => {
         setIsModalOpen(true);
     };
+
+    useEffect(() => {
+        const handleWheel = (event) => {
+            if (scrollRef.current) {
+                scrollRef.current.scrollTop += event.deltaY;
+                event.preventDefault();
+            }
+        };
+        const element = scrollRef.current;
+        if (element) {
+            element.addEventListener("wheel", handleWheel);
+        }
+        return () => {
+            if (element) {
+                element.removeEventListener("wheel", handleWheel);
+            }
+        };
+    }, []);
 
     return (
         <div className='px-6 lg:px-20 gap-[10px] py-12 my-5'>
             {/* Header section */}
             <div className='w-full flex justify-between gap-4 flex-wrap'>
-                <div className='w-auto max-w-xl'>
+                <div className='w-auto max-w-xl xl:max-w-3xl'>
                     <h3 className='text-3xl relative font-semibold text-customBlue'>
                         Find Your Interest 
-                        {/* <img className='absolute -bottom-4 scale-50' src={loop} alt="loop text" /> */}
                     </h3>
-                    <p className="text-gray-700 text-[16px] leading-[20px] mt-[4vw] md:mt-[2vw] max-w-xl">
+                    <p className="text-gray-700 text-[16px] leading-[20px] mt-[4vw] md:mt-[2vw] max-w-xl lg:max-w-5xl">
                         What's your passion? Whether it's travel, entrepreneurship, or even night camping, JOINLIO transforms your dreams, talents, and interests into reality. Like an ocean of opportunities, our platform allows you to create your own hub or join existing topics. Connect with like-minded students, access exclusive tools, services, and support, and unlock limitless possibilities. Your next big collaboration starts here—click on a hub and explore all that JOINLIO has to offer!
                     </p>
                 </div>
@@ -74,12 +122,12 @@ const FindInterest = () => {
 
             <div className="lg:flex">
                 {/* Left Section */}
-                <div className="mt-20 lg:mr-4 flex-shrink-0 lg:w-1/3">
+                <div className="mt-20 lg:mr-4 flex-shrink-0 lg:w-1/4">
                     <div className="interest-banner relative w-full h-80 lg:h-full rounded-xl bg-white shadow-xl">
                         <div className="absolute bottom-9 left-5">
                             <h1 className="text-3xl lg:text-3xl font-bold leading-20">
-                                Create your own <br />
-                                <span className="text-textColor uppercase">interests</span>
+                                Transfrom your interests into a <br />
+                                <span className="text-textColor uppercase">Central hub.</span>
                             </h1>
                             <button className="bg-[#00abff] py-1 px-4 mt-4 text-white active:scale-95 transform transition-all rounded-lg">
                                 Create
@@ -96,7 +144,11 @@ const FindInterest = () => {
                             <img className="h-5" src={search} alt="search" />
                         </div>
 
-                        <div className="h-full w-full pr-2 max-h-[600px] custom-scrollbar overflow-y-scroll">
+                        <div 
+                            ref={scrollRef}
+                            className="h-full w-full pr-2 max-h-[600px] custom-scrollbar overflow-y-auto"
+                            onWheel={(e) => e.stopPropagation()} // Ensures smooth scrolling
+                        >          
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 pb-4">
                                 {hubs.map((hub, index) => (
                                     <div
@@ -144,7 +196,7 @@ const FindInterest = () => {
                                                     </button>
                                                 )}
                                             </div>
-                                            <p className="text-sm mb-1 text-white">
+                                            <p className="text-sm mb-1 h-8 text-white">
                                                 {hub.description}
                                             </p>
                                         </div>
@@ -163,9 +215,60 @@ const FindInterest = () => {
                         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
                         onClick={() => setIsModalOpen(false)}
                     />
-                    <div className="relative bg-white rounded-lg w-full max-w-2xl p-6 mx-4 max-h-[90vh] overflow-y-auto">
-                        {/* Modal content remains the same */}
-                        {/* ... */}
+                    <div 
+                        ref={modalRef}
+                        className="relative bg-white rounded-2xl shadow-xl max-w-2xl w-full mx-4 my-6 max-h-[85vh] overflow-y-auto"
+                        onClick={(e) => e.stopPropagation()}
+                        onWheel={(e) => e.stopPropagation()}
+                        style={{
+                            scrollbarWidth: 'thin',
+                            scrollbarColor: '#CBD5E0 transparent',
+                            WebkitOverflowScrolling: 'touch'
+                        }}
+                    >
+                        <div className="sticky top-0 bg-white z-50 px-8 pt-8 pb-4 border-b flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                                <span className="text-rose-500">🔍</span>
+                                <h2 className="text-2xl font-bold text-gray-900">How Hubs Work</h2>
+                            </div>
+                            <button
+                                onClick={() => setIsModalOpen(false)}
+                                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                                aria-label="Close modal"
+                            >
+                                <X className="w-6 h-6 text-gray-500" />
+                            </button>
+                        </div>
+
+                        <div className="px-8 pt-6">
+                            <p className="text-gray-600 leading-relaxed">
+                            In Joinlio, Hubs are central spaces designed to facilitate collaboration among students with similar interests and goals. These hubs are not just passive forums but are dynamic, structured environments where students can share, learn, earn, connect, collaborate, and grow together. They can create their own hubs based on personal interests or join existing predefined hubs, which focus on various areas like Media, Technology, and Entrepreneurship, promoting personal development and practical learning.
+                            </p>
+                        </div>
+
+                        <div className="px-6 pb-6 space-y-6 mt-6">
+                            {modalSections.map((section, index) => (
+                                <div key={index} className="flex items-start gap-4 hover:bg-gray-50 p-4 rounded-lg transition-all duration-200">
+                                    <span className="text-2xl">{section.icon}</span>
+                                    <div>
+                                        <h3 className="font-semibold text-gray-900">{section.title}</h3>
+                                        <p className="text-gray-600 mt-1">{section.description}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="px-8 py-6 border-t flex justify-end gap-4">
+                            <button
+                                onClick={() => setIsModalOpen(false)}
+                                className="px-6 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                            >
+                                Close
+                            </button>
+                            <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                Explore Hubs
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

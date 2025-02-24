@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import loop from "../../assets/images/loop.png";
 
 // Import videos for each category
 import travelVideo from "../../assets/video/travel.mp4";
@@ -17,6 +16,7 @@ const HubVideo = ({ category }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
+  const [showControls, setShowControls] = useState(true);
 
   // Map category to video source
   const getVideoSource = () => {
@@ -42,6 +42,7 @@ const HubVideo = ({ category }) => {
     setIsPlaying(false);
     setIsLoaded(false);
     setError(null);
+    setShowControls(true);
 
     const handleCanPlay = () => setIsLoaded(true);
     const handleError = (e) => {
@@ -69,6 +70,7 @@ const HubVideo = ({ category }) => {
       video.play();
     }
     setIsPlaying(!isPlaying);
+    setShowControls(false); // Hide button after playing
   };
 
   return (
@@ -76,11 +78,14 @@ const HubVideo = ({ category }) => {
       <div className="w-auto max-w-xl">
         <h3 className="text-3xl relative font-semibold text-customBlue mb-8">
           User's Journey
-          <img className="absolute -bottom-4 scale-50" src={loop} alt="loop text" />
         </h3>
       </div>
 
-      <div className="relative z-[50] w-full h-fit overflow-hidden rounded-3xl flex items-center justify-center bg-black">
+      <div 
+        className="relative z-[50] w-full h-[80vh] overflow-hidden rounded-3xl flex items-center justify-center bg-black"
+        onMouseEnter={() => setShowControls(true)}
+        onMouseLeave={() => isPlaying && setShowControls(false)}
+      >
         {error ? (
           <div className="p-4 text-red-500">{error}</div>
         ) : (
@@ -90,21 +95,22 @@ const HubVideo = ({ category }) => {
             src={videoSrc}
             playsInline
             preload="auto"
-            controls={false}
+            controls={true}
           />
         )}
 
-<button
-  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 rounded-full shadow-md flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110"
-  onClick={togglePlayPause}
->
-  <img
-    src={isPlaying ? pauseIcon : playIcon}
-    alt={isPlaying ? "Pause" : "Play"}
-    className="w-14 h-14 transition-opacity duration-300 ease-in-out"
-  />
-</button>
-
+        {showControls && (
+          <button
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 bg-white  -translate-y-1/2 p-5 rounded-full shadow-md flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110"
+            onClick={togglePlayPause}
+          >
+            <img
+              src={isPlaying ? pauseIcon : playIcon}
+              alt={isPlaying ? "Pause" : "Play"}
+              className="w-14 h-14 ml-1 transition-opacity duration-300 ease-in-out"
+            />
+          </button>
+        )}
       </div>
     </div>
   );

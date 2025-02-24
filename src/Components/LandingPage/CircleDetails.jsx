@@ -10,22 +10,18 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPeerModalOpen, setIsPeerModalOpen] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const [activeTab, setActiveTab] = useState('description');
   const buttonRefs = useRef([]);
   const modalRef = useRef(null);
   const peerModalRef = useRef(null);
 
-  // Body scroll lock effect
   useEffect(() => {
     if (isPeerModalOpen || isModalOpen) {
-      // Store current scroll position
       const scrollY = window.scrollY;
-      
-      // Add class to body instead of inline styles
       document.body.classList.add('modal-open');
       document.body.style.top = `-${scrollY}px`;
       
       return () => {
-        // Remove class and restore scroll position
         document.body.classList.remove('modal-open');
         document.body.style.top = '';
         window.scrollTo(0, scrollY);
@@ -33,7 +29,6 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
     }
   }, [isPeerModalOpen, isModalOpen]);
 
-  // Handle clicks outside modal to close
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isModalOpen && modalRef.current && !modalRef.current.contains(event.target)) {
@@ -166,7 +161,6 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
     ];
   };
 
-  // Stop propagation to prevent closing when clicking inside modal
   const handleModalContentClick = (e) => {
     e.stopPropagation();
   };
@@ -205,22 +199,22 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
               {centerHeading}
               <span className="text-white">{centerSubHeading}</span>
             </h1>
-           <div className='flex gap-4 mx-auto'>
-           <button
-              ref={(el) => (buttonRefs.current[0] = el)}
-              onClick={() => handleModal(0)}
-              className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
-            >
-              {screenIndex === 1 ? "Peer Account" : "Business Account"}
-            </button>
-            <button
-              ref={(el) => (buttonRefs.current[1] = el)}
-              onClick={() => handleButtonClick(0)}
-              className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
-            >
-              How it Works 
-            </button>
-           </div>
+            <div className='flex gap-4 mx-auto'>
+              <button
+                ref={(el) => (buttonRefs.current[0] = el)}
+                onClick={() => handleModal(0)}
+                className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
+              >
+                {screenIndex === 1 ? "Peer Account" : "Business Account"}
+              </button>
+              <button
+                ref={(el) => (buttonRefs.current[1] = el)}
+                onClick={() => handleButtonClick(0)}
+                className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
+              >
+                How it Works 
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -247,6 +241,14 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
             <p className="text-sm text-customBlue max-w-lg text-opacity-80 mb-4">
               {centerDescription}
             </p>
+            <div className='flex mx-auto gap-4'>
+            <button
+              ref={(el) => (buttonRefs.current[0] = el)}
+              onClick={() => handleModal(0)}
+              className="bg-white uppercase mx-auto h-10 px-6 py-2 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
+            >
+              {screenIndex === 1 ? "Peer Account" : "Business Account"}
+            </button>
             <button
               ref={(el) => (buttonRefs.current[1] = el)}
               onClick={() => handleButtonClick(1)}
@@ -254,12 +256,13 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
             >
               How it Works
             </button>
+            </div>
           </div>
         </div>
       </div>
 
       {isModalOpen && (
-          <div 
+        <div 
           className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/10 backdrop-blur-md"
           aria-modal="true"
           role="dialog"
@@ -288,7 +291,7 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
             </h2>
 
             <div className="space-y-6">
-              {getModalSteps().map((step, index) => (
+            {getModalSteps().map((step, index) => (
                 <div key={index} className="flex items-start gap-4 p-4 bg-white/60 backdrop-blur-md rounded-xl shadow-sm hover:shadow-md transition-all">
                   <span className="text-3xl flex-shrink-0">{step.icon}</span>
                   <div>
@@ -308,7 +311,7 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
               </button>
               <Link to="/get-started">
                 <button className="px-6 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform">
-                  {screenIndex === 1 ? "sign up" : "sign up"}
+                  {screenIndex === 1 ? "Sign up" : "Sign up"}
                 </button>
               </Link>
             </div>
@@ -318,67 +321,112 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
 
       {isPeerModalOpen && (
         <div 
-        className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/10 backdrop-blur-md"
-        aria-modal="true"
-        role="dialog"
-      >
-        <div 
-          ref={peerModalRef}
-          className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full mx-4 my-6 max-h-[85vh] overflow-y-auto"
-          onClick={handleModalContentClick}
-          onWheel={(e) => e.stopPropagation()}
-          style={{
-            scrollbarWidth: 'thin',
-            scrollbarColor: '#CBD5E0 transparent',
-            WebkitOverflowScrolling: 'touch'
-          }}
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/10 backdrop-blur-md"
+          aria-modal="true"
+          role="dialog"
         >
-            <button
-              onClick={() => setIsPeerModalOpen(false)} 
-              className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-              aria-label="Close modal"
-            >
-              <X className="w-6 h-6 text-gray-500" />
-            </button>
+          <div 
+            ref={peerModalRef}
+            className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full mx-4 my-6 max-h-[85vh] flex flex-col"
+            onClick={handleModalContentClick}
+            onWheel={(e) => e.stopPropagation()}
+          >
+            <div className="sticky top-0 bg-white z-50 px-8 pt-8 pb-0 border-b rounded-t-2xl">
+              <button
+                onClick={() => setIsPeerModalOpen(false)} 
+                className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="w-6 h-6 text-gray-500" />
+              </button>
 
-            <div className="p-8">
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  {screenIndex === 1 ? "What is a Peer Account?" : "What is a Business Account in JOINLIO?"}
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  {screenIndex === 1 ? (
-                    "The Peer Account serves as your tailored digital portfolio because it presents your abilities and accomplishments through an approach that expands traditional resume approaches. Students and scholars need their personal Peer Accounts to ensure their maximum growth potential in academics and careers. The peer account exists as an active mirror of your development that illustrates work relationships, individual accomplishments and professional advancement. Through this platform you can monitor your activities along with sustaining meaningful relationships while gaining access to worldwide possibilities in a safe and user-friendly interface."
-                  ) : (
-                    "Business Account within JOINLIO represents a specific platform for companies to interact effectively with their student audience. JOINLIO provides Business Accounts that enable companies to establish direct marketing connections with university students. The platform delivers a strong toolset for presenting products and services combined with special student-oriented deals. The Business Account enables companies to develop strong customer brand relations while making targeted student engagement for higher sales results."
-                  )}
-                </p>
-              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                {screenIndex === 1 ? "What is a Peer Account?" : "What is a Business Account in JOINLIO?"}
+              </h2>
 
               {screenIndex === 1 && (
-                <div className="bg-blue-50 rounded-xl p-6 mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Your Progress</h3>
-                  <div className="relative pt-1">
-                    <div className="flex mb-2 items-center justify-between">
-                      <div>
-                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
-                          Goals Achieved
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-xs font-semibold inline-block text-blue-600">
-                          70%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
-                      <div className="w-[70%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
-                    </div>
-                  </div>
+                <div className="flex space-x-4">
+                  <button
+                    className={`px-4 py-2 font-medium transition-colors relative ${
+                      activeTab === 'description'
+                        ? 'text-blue-600'
+                        : 'text-gray-600 hover:text-blue-600'
+                    }`}
+                    onClick={() => setActiveTab('description')}
+                  >
+                    Read Description
+                    {activeTab === 'description' && (
+                      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
+                    )}
+                  </button>
+                  <button
+                    className={`px-4 py-2 font-medium transition-colors relative ${
+                      activeTab === 'demo'
+                        ? 'text-blue-600'
+                        : 'text-gray-600 hover:text-blue-600'
+                    }`}
+                    onClick={() => setActiveTab('demo')}
+                  >
+                    See Demo
+                    {activeTab === 'demo' && (
+                      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
+                    )}
+                  </button>
                 </div>
               )}
+            </div>
 
-              <div>
+            <div className="overflow-y-auto flex-1 px-8 py-6">
+              {screenIndex === 1 ? (
+                <>
+                  {activeTab === 'demo' ? (
+                    <div className="mb-8">
+                      <video 
+                        className="w-full rounded-xl shadow-lg"
+                        controls
+                        autoPlay
+                        muted
+                      >
+                        <source src={dashboardvideo} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="mb-8">
+                        <p className="text-gray-600 leading-relaxed">
+                          The Peer Account serves as your tailored digital portfolio because it presents
+                          your abilities and accomplishments through an approach that expands traditional
+                          resume approaches. Students and scholars need their personal Peer Accounts to
+                          ensure their maximum growth potential in academics and careers. The peer
+                          account exists as an active mirror of your development that illustrates work
+                          relationships, individual accomplishments and professional advancement.
+                          Through this platform you can monitor your activities along with sustaining
+                          meaningful relationships while gaining access to worldwide possibilities in a
+                          safe and user-friendly interface.
+                        </p>
+                      </div>
+                      
+                      <div className="bg-blue-50 rounded-xl p-6 mb-8">
+                        <h3 className="text-xl font-semibold text-gray-900 mb-3">Your Progress</h3>
+                        <div className="relative pt-1">
+                          <div className="flex mb-2 items-center justify-between">
+                            <div>
+                              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+                                Goals Achieved
+                              </span>
+                            </div>
+                            <div className="text-right">
+                              <span className="text-xs font-semibold inline-block text-blue-600">
+                                70%
+                              </span>
+                            </div>
+                          </div>
+                          <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
+                            <div className="w-[70%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
+                          </div>
+                        </div>
+                        <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-6">
                   {screenIndex === 1 ? "Core Functionalities" : "Features of the Business Account"}
                 </h3>
@@ -398,6 +446,19 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
                 </div>
               </div>
 
+                      </div>
+                    </>
+                  )}
+                </>
+              ) : (
+                <div className="mb-8">
+                  <p className="text-gray-600 leading-relaxed">
+                    Business Account within JOINLIO represents a specific platform for companies to interact effectively with their student audience.
+                  </p>
+                </div>
+              )}
+
+            
               <div className="mt-8 flex justify-center">
                 <Link to="/get-started">
                   <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform font-medium">

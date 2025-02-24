@@ -7,7 +7,7 @@ const FeaturesGrid = () => {
         
         {/* Students */}
         <div className='flex gap-4 flex-col sm:flex-row'>
-        <div className="flex flex-col justify-between min-h-60 bg-gradient-to-br from-sky-400 to-sky-100 rounded-2xl p-6 w-full sm:w-1/2 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div className="flex flex-col justify-start min-h-30 bg-gradient-to-br from-sky-400 to-sky-100 rounded-2xl p-6 w-full sm:w-1/2 overflow-hidden hover:shadow-lg transition-shadow duration-300">
           <h3 className="text-lg lg:text-2xl font-black text-black">Students</h3>
           <p className="mt-2 text-sm lg:text-base text-gray-600 w-full break-normal">
             Access everything for free! Dive into a world of global connections,
@@ -18,7 +18,7 @@ const FeaturesGrid = () => {
         </div>
 
         {/* Business Owners */}
-        <div className="flex flex-col justify-between min-h-60 bg-gradient-to-br from-sky-100 to-sky-400 rounded-2xl p-6 w-full sm:w-1/2 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div className="flex flex-col justify-start min-h-30 bg-gradient-to-br from-sky-100 to-sky-400 rounded-2xl p-6 w-full sm:w-1/2 overflow-hidden hover:shadow-lg transition-shadow duration-300">
           <h3 className="text-lg lg:text-2xl font-black text-black">Business Owners</h3>
           <p className="mt-2 text-sm lg:text-base text-gray-600 w-full break-normal">
             Only pay when you earn! Use JoinLIO's commission-only model to
@@ -30,9 +30,9 @@ const FeaturesGrid = () => {
         </div>
 
         {/* University Administrators */}
-        <div className="flex flex-col justify-between min-h-60 bg-gradient-to-br from-sky-100 to-sky-400 rounded-2xl p-6 w-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div className="flex flex-col justify-start min-h-30 bg-gradient-to-br from-sky-100 to-sky-400 rounded-2xl p-6 w-full overflow-hidden hover:shadow-lg transition-shadow duration-300">
           <h3 className="text-lg lg:text-2xl font-black text-black">University Administrators</h3>
-          <p className="mt-2 text-sm lg:text-base text-gray-600 w-full break-normal">
+          <p className="mt-2 text-sm lg:text-base text-gray-600 w-full lg:w-4/5 break-normal">
             Start with a free trial. Experience how JoinLIO can enhance
             student engagement and success at your institution with no initial financial commitment.
             Evaluate our platform's effectiveness with complete confidence in our commitment to

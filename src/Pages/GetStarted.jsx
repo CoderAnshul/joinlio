@@ -10,10 +10,15 @@ const GetStarted = () => {
   const [businessName, setBusinessName] = useState('');
   const [email, setEmail] = useState('');
   const [query, setQuery] = useState('');
+  const [acceptTerms, setAcceptTerms] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ userCategory, firstName, lastName, institutionName, businessName, email, query });
+    if (!acceptTerms) {
+      alert('Please accept the Privacy Policy and Terms & Conditions to proceed');
+      return;
+    }
+    console.log({ userCategory, firstName, lastName, institutionName, businessName, email, query, acceptTerms });
   };
 
   const renderDynamicFields = () => {
@@ -33,7 +38,6 @@ const GetStarted = () => {
                   placeholder="Enter your first name"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  required
                 />
               </div>
               <div>
@@ -46,7 +50,6 @@ const GetStarted = () => {
                   placeholder="Enter your last name"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  required
                 />
               </div>
             </div>
@@ -54,7 +57,7 @@ const GetStarted = () => {
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Institution Name
+                  Institution Name*
                 </label>
                 <input
                   type="text"
@@ -67,7 +70,7 @@ const GetStarted = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Institutional Email
+                  Institutional Email*
                 </label>
                 <input
                   type="email"
@@ -95,7 +98,6 @@ const GetStarted = () => {
                   placeholder="Enter your first name"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  required
                 />
               </div>
               <div>
@@ -108,7 +110,6 @@ const GetStarted = () => {
                   placeholder="Enter your last name"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  required
                 />
               </div>
             </div>
@@ -116,7 +117,7 @@ const GetStarted = () => {
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Business Name
+                  Business Name*
                 </label>
                 <input
                   type="text"
@@ -129,7 +130,7 @@ const GetStarted = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Business Email
+                  Business Email*
                 </label>
                 <input
                   type="email"
@@ -148,7 +149,7 @@ const GetStarted = () => {
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Institution Name
+                Institution Name*
               </label>
               <input
                 type="text"
@@ -161,7 +162,7 @@ const GetStarted = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Institutional Email
+                Institutional Email*
               </label>
               <input
                 type="email"
@@ -188,7 +189,7 @@ const GetStarted = () => {
         {/* Left Section */}
         <div className="space-y-6">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#e0b3c1] via-[#e6d5b3] to-[#e0b3c1] rounded-3xl opacity-20" />
+            <div className="absolute inset-0  rounded-3xl opacity-20" />
             <div className="relative p-8">
               <h1 className="text-3xl font-bold mb-6">Sign Up Early!</h1>
               <p className="text-gray-700 mb-8">
@@ -233,7 +234,7 @@ const GetStarted = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                User Category
+                User Category*
               </label>
               <div className="relative">
                 <select
@@ -266,7 +267,34 @@ const GetStarted = () => {
               />
             </div>
 
-            <button type="submit" className="w-full bg-[#00abff] text-Black py-3 px-6 rounded-lg hover:bg-[#c59057] transition-colors">
+            <div className="mb-6">
+              <div className="flex items-start gap-2">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  className="mt-1"
+                  checked={acceptTerms}
+                  onChange={(e) => setAcceptTerms(e.target.checked)}
+                  required
+                />
+                <label htmlFor="terms" className="text-sm text-gray-600">
+                  I agree to the{' '}
+                  <a href="/privacy-policy" className="text-[#00abff] hover:underline">Privacy Policy</a>
+                  {' '}and{' '}
+                  <a href="/terms" className="text-[#00abff] hover:underline">Terms & Conditions</a>*
+                </label>
+              </div>
+            </div>
+
+            <button 
+              type="submit" 
+              className={`w-full py-3 px-6 rounded-lg transition-colors ${
+                acceptTerms 
+                  ? 'bg-[#00abff] hover:bg-[#c59057] text-black cursor-pointer' 
+                  : 'bg-gray-300 text-gray-600 cursor-not-allowed'
+              }`}
+              disabled={!acceptTerms}
+            >
               Sign up
             </button>
           </form>

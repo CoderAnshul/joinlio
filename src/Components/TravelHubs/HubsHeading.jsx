@@ -15,11 +15,11 @@ const HubsHeading = ({ hubData }) => {
   return (
     <div>
       <div className="relative z-[100]">
-        <div className="flex relative z-[50] flex-col items-center justify-start pt-16 min-h-[calc(60vh-80px)] md:min-h-[calc(80vh-80px)] text-center px-4">
-          <h1 className="text-6xl pb-2 relative z-[50] md:text-4xl lg:text-5xl xl:text-8xl font-montserrat uppercase font- text-customBlue mb-2">
+        <div className="flex relative z-[50] flex-col items-center justify-start pt-16 min-h-[calc(60vh-80px)] md:min-h-[calc(20vh-80px)] text-center px-4">
+          <h1 className="text-6xl relative z-[50] md:text-4xl lg:text-5xl xl:text-8xl font-montserrat uppercase font- text-customBlue ">
             {hubData?.name || "Travel Hub"}
           </h1>
-          <p className="pb-14 mb-3 text-sm max-w-2xl">
+          <p className="pb-2 h-fit mb-3 text-sm lg:text-lg max-w-5xl">
             {hubData ? (
               <>
                 <br /><br />

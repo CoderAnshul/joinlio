@@ -36,12 +36,18 @@ const TravelHub = () => {
     console.log("Current page category:", category);
   }, [category]);
 
+  // Define background gradients based on category
+  const categoryGradients = {
+    travel: 'bg-gradient-to-b from-[#FEB478] via-[#F58C77] via-[#D4858B] via-[#A28093] via-[#596385] to-[#365886]',
+    media: 'bg-gradient-to-b from-[#CBE7FE] to-[#50A2FB]',
+    entrepreneur: 'bg-gradient-to-b from-[#3145AB] to-[#BD20AB]',
+  };
+
   return (
-   
-    <div className='bg-gradient-to-r from-[#fbd4e0] to-[#fff5e1]'>
-      <div className='px-[5vw] '>
+    <div className={`${categoryGradients[category] || 'bg-white'} min-h-screen`}>
+      <div className='px-[5vw]'>
         <HubsHeading hubData={hubData} />
-        <CreateSection />
+        <CreateSection category={category} />
       </div>
 
       <div className='px-[5vw]'>
