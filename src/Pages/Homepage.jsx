@@ -13,7 +13,9 @@ import WhyChooseUs from '../Components/LandingPage/WhyChooseUs'
 import Subscription from '../Components/LandingPage/Subscription'
 import RevealText from '../Components/LandingPage/RevealText'
 import CircleDetails from '../Components/LandingPage/CircleDetails'
+
 import { useEffect } from 'react'
+import ChatButton from '../Components/LandingPage/ChatButton'
 
 const Homepage = () => {
   const cardsData = [
@@ -21,7 +23,7 @@ const Homepage = () => {
       title: "Our Mission",
       description:
         "To empower students and alumni with meaningful connections, real-world opportunities, and tools to thrive in their personal and professional journeys.",
-      bgColor: "bg-[#F7C28A]",
+      bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
     {
@@ -35,7 +37,7 @@ const Homepage = () => {
       title: "Our Vision",
       description:
         "To create a world where every student and alumni can fully discover their true potential, build meaningful lasting relationships, and turn their biggest dreams into reality.",
-      bgColor: "bg-[#F7C28A]",
+      bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
     {
@@ -51,7 +53,7 @@ const Homepage = () => {
       title: "Our Mission",
       description:
         "To empower businesses by connecting them with a thriving student community, driving growth through meaningful interactions, and fostering long-term success.",
-      bgColor: "bg-[#F7C28A]",
+      bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
     {
@@ -65,7 +67,7 @@ const Homepage = () => {
       title: "Our Motive",
       description:
         "JOINLIO believes every business deserves the right tools to grow, connect, thrive, succeed, innovate, streamline processes, enhance efficiency, and create a lasting, sustainable future.",
-      bgColor: "bg-[#F7C28A]",
+      bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
   ];
@@ -74,7 +76,7 @@ const Homepage = () => {
       title: "Our Mission",
       description:
         "To empower universities by providing a transformative platform that drives student growth, fosters collaboration, and builds a thriving community of future leaders.",
-      bgColor: "bg-[#F7C28A]",
+      bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
     {
@@ -88,7 +90,7 @@ const Homepage = () => {
       title: "Our Motive",
       description:
         "Our motive is to build a robust and powerful tool for universities, enabling them to enhance their students’ personal growth, create impactful connections, and ensure long-term success.",
-      bgColor: "bg-[#F7C28A]",
+      bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
   ];
@@ -151,7 +153,7 @@ const Homepage = () => {
       </div>
       <div className='md:px-[5vw] relative overflow-hidden'>
         <ScrollingOrGrowing/>
-        <div id="peer-account" className='h-fit relative overflow-hidden'>
+        <div id="peer-account" className='h-fit relative md:min-h-[700px]'>
           <CircleDetails {...studentData} screenIndex={1}/>
         </div>
         <div id="predefined-hubs" className='h-fit relative overflow-hidden'>
@@ -171,13 +173,17 @@ const Homepage = () => {
           <Motives cards={cardsData}/>
       </div>
 
-      <DevideSectionText title1 ="BUSINESSES" title2 =" " description="JOINLIO connects your business directly with the student community, allowing you to
+      <div id="business-data">
+
+      <DevideSectionText  title1 ="BUSINESSES" title2 =" " description="JOINLIO connects your business directly with the student community, allowing you to
       offer exclusive discounts, boost sales, and gather real-time feedback all on one seamless
       platform. No upfront costs pay only when you start generating sales.
       "/>
+      </div>
+
       <div className='px-[5vw]'>
       <BussinessHead/>
-      <div className='h-fit relative overflow-hidden'>
+      <div id="business-account" className='h-fit relative overflow-hidden'>
       <CircleDetails {...businessData} screenIndex={2}/>
       </div>
       <div className='px-6 lg:px-20 gap-[10px]  py-12 '>
@@ -191,18 +197,23 @@ const Homepage = () => {
           </p>
        </div>
       </div>
-      <Stories/>
+      <Stories isSecondInstance={true} />
       <Motives cards={cardsDataTwo}/>
       <RandomQuote/>
+      <div id="universites-data"> 
+
       <DevideSectionText title1 ="UNIVERSITIES" title2 ="" description="JOINLIO is a next-generation platform designed to revolutionize student development for universities, colleges, and institutes. By subscribing to JOINLIO, your institution provides students with free access to advanced tools for personal growth, global collaboration, and professional achievement. Empower your students with a verified, futuristic ecosystem that fosters innovation, builds lasting connections, and prepares them to lead in a rapidly evolving world." highlight=" "/>
+      </div>
 
       <div className='px-[5vw]'>
       <UniversityHead/>
       <UniversitiesFeat/>
+      <Motives cards={cardsDataThree}/>
 
 
       <WhyChooseUs/>
-      <Motives cards={cardsDataThree}/>
+      <ChatButton/>
+      
       </div>
 
       {/* <DevideSectionText title1 ="CHOOSE YOUR" title2 ="PLAN" description=" " highlight=" " className="hidden"/> */}

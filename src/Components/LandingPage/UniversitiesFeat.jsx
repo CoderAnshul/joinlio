@@ -30,14 +30,14 @@ const UniversitiesFeat = () => {
 
   return (
     <div className='px-6 xl:px-20 gap-[10px] py-12 my-5'>
-      <div className="flex justify-center items-center h-auto min-h-[500px] rounded-2xl bg-[#EEEEEE]/40 backdrop-blur-lg ">
+      <div className="flex justify-center items-center h-auto min-h-[500px] rounded-2xl bg-gradient-to-r from-white to-[#d0edfc]  ">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:p-6 rounded-xl">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col items-center lg:h-[300px] justify-between p-4 gap-4 bg-gray-300 rounded-2xl"
+              className="flex flex-col items-center lg:h-fit lg:min-h-[290px] xl:min-h-[250px] justify-start p-4 gap-4 bg-[#FFFFFF]/80 backdrop-blur-lg shadow-sm border-l-2 border-t-2 hover:shadow-md transition-all border-gray-200 rounded-2xl"
             >
-              <div className="w-full text-lg font-black text-black bg-white px-2 py-3 h-16 flex justify-center items-center rounded-xl">
+              <div className="w-full text-lg font-black text-white bg-[#00ABFF] px-2 py-3 h-16 flex justify-center items-center rounded-xl">
                 {feature.title}
               </div>
               <p className="mt-4 text-2xl text-start text-customBlue leading-8 text-xl sm:text-2xl lg:text-2xl font-bold">

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState }, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 
 const SendMessage = () => {
@@ -55,9 +56,11 @@ const SendMessage = () => {
   return (
     <div className="flex flex-col md:flex-row items-center min-h-[80vh] max-w-full justify-around mx-auto p-6">
       {/* Left Side: Form */}
-      <div className="md:w-2/3 w-full max-w-xl">
-        <h4 className="text-sm font-semibold text-purple-600 uppercase">Contact Us</h4>
-        <h1 className="text-4xl font-bold text-gray-900 mt-2">Get in touch</h1>
+      <div className="w-full lg:w-2/3 p-6 bg-white rounded-xl shadow-lg">
+        <div className="space-y-2">
+          <p className="text-sm font-semibold text-blue-500 tracking-wider">CONTACT US</p>
+          <h1 className="text-4xl font-bold text-gray-900">Get in touch</h1>
+        </div>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -108,9 +111,23 @@ const SendMessage = () => {
           We're always here to help. Contact us if you need any help with Swarm
           or have any questions.
         </p>
-        <a href="#" className="text-purple-600 font-semibold mt-3 inline-flex items-center">
-          See a demo →
-        </a>
+        <Link 
+          to="/get-started" 
+          className="inline-flex items-center text-blue-500 font-semibold group hover:text-blue-600 transition-colors duration-200"
+        >
+          See a demo 
+          <svg 
+            className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </Link>
       </div>
     </div>
   );

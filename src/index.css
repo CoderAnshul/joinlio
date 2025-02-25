@@ -63,7 +63,7 @@ p{
 
 
   .button-shadow {
-    box-shadow: 0 4px 0px #f7c28a;
+    box-shadow: 0 4px 0px #00abff;
     transition: box-shadow 0.3s ease;
   }
   
@@ -89,30 +89,25 @@ p{
   }
   
   @keyframes gradient-animationTwo {
-    0% {
-      background: radial-gradient(circle at 50% 50%, #e0b3c1 0%, #e6d5b3 100%, #e0b3c1 200%);
+      0% {
+      background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
       transform: translate(0, 0) scale(1);
-      border-radius: 50%;
     }
-    20% {
-      background: radial-gradient(ellipse at 40% 60%, #e0b3c1 10%, #e6d5b3 90%, #e0b3c1 200%);
-      transform: translate(15px, 35px) scale(1.1);
-      border-radius: 45% 55%;
+    25% {
+      background: radial-gradient(circle at 30% 70%, #00abff 10%, #00aaff 90%);
+      transform: translate(10px, 20px) scale(1.1);
     }
     50% {
-      background: radial-gradient(circle at 70% 30%, #e0b3c1 20%, #e6d5b3 80%, #e0b3c1 200%);
-      transform: translate(-25px, -15px) scale(1.25);
-      border-radius: 55% 45%;
+      background: radial-gradient(circle at 70% 30%, #00abff 20%, #00aaff 80%);
+      transform: translate(-20px, -10px) scale(1.2);
     }
     75% {
-      background: radial-gradient(ellipse at 50% 50%, #e0b3c1 0%, #e6d5b3 100%, #e0b3c1 200%);
-      transform: translate(10px, -10px) scale(1.15);
-      border-radius: 60% 40%;
+      background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
+      transform: translate(15px, -15px) scale(1.1);
     }
     100% {
-      background: radial-gradient(circle at 50% 50%, #e0b3c1 0%, #e6d5b3 100%, #e0b3c1 200%);
+      background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
       transform: translate(0, 0) scale(1);
-      border-radius: 50%;
     }
 
   }
@@ -127,34 +122,32 @@ p{
   
   @keyframes gradient-animationTwo-outer {
       0% {
-        background: radial-gradient(circle at 50% 50%, #e0b3c1 0%, #e6d5b3 100%, #e0b3c1 200%);
+        background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
         transform: translate(0, 0) scale(1);
         border-radius: 50%;
       }
       20% {
-        background: radial-gradient(ellipse at 40% 60%, #e0b3c1 10%, #e6d5b3 90%, #e0b3c1 200%);
+        background: radial-gradient(ellipse at 40% 60%, #00abff 10%, #00aaff 90%);
         transform: translate(15px, 35px) scale(1.1);
         border-radius: 45% 55%;
       }
       50% {
-        background: radial-gradient(circle at 70% 30%, #e0b3c1 20%, #e6d5b3 80%, #e0b3c1 200%);
+        background: radial-gradient(circle at 70% 30%, #00abff 20%, #00aaff 80%);
         transform: translate(-25px, -15px) scale(1.25);
         border-radius: 55% 45%;
       }
       75% {
-        background: radial-gradient(ellipse at 50% 50%, #e0b3c1 0%, #e6d5b3 100%, #e0b3c1 200%);
+        background: radial-gradient(ellipse at 50% 50%, #00abff 0%, #00aaff 100%);
         transform: translate(10px, -10px) scale(1.15);
         border-radius: 60% 40%;
       }
       100% {
-        background: radial-gradient(circle at 50% 50%, #e0b3c1 0%, #e6d5b3 100%, #e0b3c1 200%);
+        background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
         transform: translate(0, 0) scale(1);
         border-radius: 50%;
       }
-
-    
-    
-  }
+    }
+  
   
 
   @media(max-width:500px){
@@ -209,8 +202,8 @@ p{
 
   
   .gradient-text {
-    background: linear-gradient(90deg, #e0b3c1, #e6d5b3, #e0b3c1);
-    /* background: linear-gradient(90deg, #098dd0 0%, #80d5ff 60%, #80d5ff 90%, #bfeaff 150%); */
+    /* background: linear-gradient(90deg, #e0b3c1, #e6d5b3, #e0b3c1); */
+    background: linear-gradient(90deg, #098dd0 0%, #80d5ff 60%, #80d5ff 90%, #bfeaff 150%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient-scroll 3s ease-in-out infinite;
@@ -229,8 +222,8 @@ p{
   }
 
   .gradient-text-two {
-    /* background: linear-gradient(90deg, #7EC8FF 0%, #EDF7FF 150%); */
-    background: linear-gradient(90deg, #e0b3c1, #e6d5b3, #e0b3c1);
+    background: linear-gradient(90deg, #7EC8FF 0%, #EDF7FF 150%);
+    /* background: linear-gradient(90deg, #e0b3c1, #e6d5b3, #e0b3c1); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -316,27 +309,27 @@ p{
 
 @keyframes gradient-animation {
   0% {
-    background: radial-gradient(circle at 50% 50%, #e0b3c1 0%, #e6d5b3 100%, #e0b3c1 200%);
+    background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
     transform: translate(0, 0) scale(1);
     border-radius: 50%;
   }
   20% {
-    background: radial-gradient(ellipse at 40% 60%, #e0b3c1 10%, #e6d5b3 90%, #e0b3c1 200%);
+    background: radial-gradient(ellipse at 40% 60%, #00abff 10%, #00aaff 90%);
     transform: translate(15px, 35px) scale(1.1);
     border-radius: 45% 55%;
   }
   50% {
-    background: radial-gradient(circle at 70% 30%, #e0b3c1 20%, #e6d5b3 80%, #e0b3c1 200%);
+    background: radial-gradient(circle at 70% 30%, #00abff 20%, #00aaff 80%);
     transform: translate(-25px, -15px) scale(1.25);
     border-radius: 55% 45%;
   }
   75% {
-    background: radial-gradient(ellipse at 50% 50%, #e0b3c1 0%, #e6d5b3 100%, #e0b3c1 200%);
+    background: radial-gradient(ellipse at 50% 50%, #00abff 0%, #00aaff 100%);
     transform: translate(10px, -10px) scale(1.15);
     border-radius: 60% 40%;
   }
   100% {
-    background: radial-gradient(circle at 50% 50%, #e0b3c1 0%, #e6d5b3 100%, #e0b3c1 200%);
+    background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
     transform: translate(0, 0) scale(1);
     border-radius: 50%;
   }
@@ -498,7 +491,7 @@ p{
   }
 }
 
-.custom-scrollbar::-webkit-scrollbar {
+/* .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
 }
 
@@ -514,8 +507,60 @@ p{
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #1B87E5, #003B7A);
+} */
+
+
+.custom-scrollbar {
+  /* Enable smooth scrolling behavior */
+  scroll-behavior: smooth;
+  /* Ensure the container can be scrolled */
+  overflow-y: auto;
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #2CA2FB #e0e0e0;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #e0e0e0, #f5f5f5);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #2CA2FB, #0056b3);
+  border-radius: 10px;
+  /* Add these properties to improve grab behavior */
+  cursor: pointer;
+  /* Ensure the thumb has enough surface to grab */
+  min-height: 40px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #1B87E5, #003B7A);
+}
+
+/* Enable touch scrolling for mobile devices */
+@media (pointer: coarse) {
+  .custom-scrollbar {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 
+/* Add these to your global CSS */
+@keyframes gradient-x {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
+.bg-size-200 {
+  background-size: 200% auto;
+}
 
+.animate-gradient-x {
+  animation: gradient-x 3s linear infinite;
+}

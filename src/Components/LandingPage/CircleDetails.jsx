@@ -3,40 +3,32 @@ import rings from "../../assets/images/rings.png";
 import { X, Activity, Brain, MessageSquare, Globe, Layout, Briefcase, 
          ChartBar, Users, Shield, Coins, Target, BarChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import dashboardvideo from "../../assets/video/dashboard.mp4";
 
 const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescription, screenIndex }) => {
   const [modalPosition, setModalPosition] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPeerModalOpen, setIsPeerModalOpen] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const [activeTab, setActiveTab] = useState('description');
   const buttonRefs = useRef([]);
   const modalRef = useRef(null);
   const peerModalRef = useRef(null);
 
-  // Body scroll lock effect
   useEffect(() => {
     if (isPeerModalOpen || isModalOpen) {
-      // Save scroll position
       const scrollY = window.scrollY;
-      
-      // Lock body
-      document.body.style.position = 'fixed';
+      document.body.classList.add('modal-open');
       document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
       
       return () => {
-        // Unlock body
-        document.body.style.position = '';
+        document.body.classList.remove('modal-open');
         document.body.style.top = '';
-        document.body.style.width = '';
-        document.body.style.overflow = '';
         window.scrollTo(0, scrollY);
       };
     }
   }, [isPeerModalOpen, isModalOpen]);
 
-  // Handle clicks outside modal to close
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isModalOpen && modalRef.current && !modalRef.current.contains(event.target)) {
@@ -169,14 +161,13 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
     ];
   };
 
-  // Stop propagation to prevent closing when clicking inside modal
   const handleModalContentClick = (e) => {
     e.stopPropagation();
   };
 
   return (
     <div className="px-2 lg:px-20 gap-[10px] py-12 my-5">
-      <div className="relative w-full min-h-[500px] h-screen max-h-[700px] hidden md:scale-90 lg:scale-100 md:flex justify-center items-center">
+      <div className="relative w-full min-h-[500px] h-screen max-h-fit hidden md:scale-90 lg:scale-100 md:flex justify-center items-center">
         <img className="absolute z-10 h-full w-full object-contain" src={rings} alt="bgring" />
         <div className="gradient-circle-background"></div>
         <div className="gradient-circle-background outer"></div>
@@ -208,22 +199,22 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
               {centerHeading}
               <span className="text-white">{centerSubHeading}</span>
             </h1>
-           <div className='flex gap-4 mx-auto'>
-           <button
-              ref={(el) => (buttonRefs.current[0] = el)}
-              onClick={() => handleModal(0)}
-              className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
-            >
-              {screenIndex === 1 ? "Peer Account" : "Business Account"}
-            </button>
-            <button
-              ref={(el) => (buttonRefs.current[1] = el)}
-              onClick={() => handleButtonClick(0)}
-              className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
-            >
-              How it Works 
-            </button>
-           </div>
+            <div className='flex gap-4 mx-auto'>
+              <button
+                ref={(el) => (buttonRefs.current[0] = el)}
+                onClick={() => handleModal(0)}
+                className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
+              >
+                {screenIndex === 1 ? "Peer Account" : "Business Account"}
+              </button>
+              <button
+                ref={(el) => (buttonRefs.current[1] = el)}
+                onClick={() => handleButtonClick(0)}
+                className="button-shadow bg-white uppercase mx-auto md:mt-0 h-12 px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
+              >
+                How it Works 
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -250,6 +241,14 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
             <p className="text-sm text-customBlue max-w-lg text-opacity-80 mb-4">
               {centerDescription}
             </p>
+            <div className='flex mx-auto gap-4'>
+            <button
+              ref={(el) => (buttonRefs.current[0] = el)}
+              onClick={() => handleModal(0)}
+              className="bg-white uppercase mx-auto h-10 px-6 py-2 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
+            >
+              {screenIndex === 1 ? "Peer Account" : "Business Account"}
+            </button>
             <button
               ref={(el) => (buttonRefs.current[1] = el)}
               onClick={() => handleButtonClick(1)}
@@ -257,20 +256,27 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
             >
               How it Works
             </button>
+            </div>
           </div>
         </div>
       </div>
 
       {isModalOpen && (
         <div 
-          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 backdrop-blur-lg p-6"
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/10 backdrop-blur-md"
           aria-modal="true"
           role="dialog"
         >
           <div 
             ref={modalRef}
-            className="relative bg-white/70 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6" 
+            className="relative p-4 bg-white/70 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl max-w-3xl w-full mx-4 my-6 max-h-[85vh] overflow-y-auto"
             onClick={handleModalContentClick}
+            onWheel={(e) => e.stopPropagation()}
+            style={{
+              scrollbarWidth: 'thin',
+              scrollbarColor: '#CBD5E0 transparent',
+              WebkitOverflowScrolling: 'touch'
+            }}
           >
             <button 
               onClick={() => setIsModalOpen(false)}
@@ -285,7 +291,7 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
             </h2>
 
             <div className="space-y-6">
-              {getModalSteps().map((step, index) => (
+            {getModalSteps().map((step, index) => (
                 <div key={index} className="flex items-start gap-4 p-4 bg-white/60 backdrop-blur-md rounded-xl shadow-sm hover:shadow-md transition-all">
                   <span className="text-3xl flex-shrink-0">{step.icon}</span>
                   <div>
@@ -305,7 +311,7 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
               </button>
               <Link to="/get-started">
                 <button className="px-6 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform">
-                  {screenIndex === 1 ? "Create Peer Account" : "Create Business Account"}
+                  {screenIndex === 1 ? "Sign up" : "Sign up"}
                 </button>
               </Link>
             </div>
@@ -315,65 +321,112 @@ const CircleDetails = ({ boxTexts, centerHeading, centerSubHeading, centerDescri
 
       {isPeerModalOpen && (
         <div 
-          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/10 backdrop-blur-md"
           aria-modal="true"
           role="dialog"
         >
           <div 
             ref={peerModalRef}
-            className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full max-h-[85vh] overflow-y-auto"
+            className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full mx-4 my-6 max-h-[85vh] flex flex-col"
             onClick={handleModalContentClick}
-            style={{ 
-              maxHeight: "85vh",
-            }}
+            onWheel={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setIsPeerModalOpen(false)} 
-              className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-              aria-label="Close modal"
-            >
-              <X className="w-6 h-6 text-gray-500" />
-            </button>
+            <div className="sticky top-0 bg-white z-50 px-8 pt-8 pb-0 border-b rounded-t-2xl">
+              <button
+                onClick={() => setIsPeerModalOpen(false)} 
+                className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="w-6 h-6 text-gray-500" />
+              </button>
 
-            <div className="p-8">
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  {screenIndex === 1 ? "What is a Peer Account?" : "What is a Business Account in JOINLIO?"}
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  {screenIndex === 1 ? (
-                    "The Peer Account serves as your tailored digital portfolio because it presents your abilities and accomplishments through an approach that expands traditional resume approaches. Students and scholars need their personal Peer Accounts to ensure their maximum growth potential in academics and careers. The peer account exists as an active mirror of your development that illustrates work relationships, individual accomplishments and professional advancement. Through this platform you can monitor your activities along with sustaining meaningful relationships while gaining access to worldwide possibilities in a safe and user-friendly interface."
-                  ) : (
-                    "Business Account within JOINLIO represents a specific platform for companies to interact effectively with their student audience. JOINLIO provides Business Accounts that enable companies to establish direct marketing connections with university students. The platform delivers a strong toolset for presenting products and services combined with special student-oriented deals. The Business Account enables companies to develop strong customer brand relations while making targeted student engagement for higher sales results."
-                  )}
-                </p>
-              </div>
-c
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                {screenIndex === 1 ? "What is a Peer Account?" : "What is a Business Account in JOINLIO?"}
+              </h2>
 
               {screenIndex === 1 && (
-                <div className="bg-blue-50 rounded-xl p-6 mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Your Progress</h3>
-                  <div className="relative pt-1">
-                    <div className="flex mb-2 items-center justify-between">
-                      <div>
-                        <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
-                          Goals Achieved
-                        </span>
-                      </div>
-                      <div className="text-right">
-                        <span className="text-xs font-semibold inline-block text-blue-600">
-                          70%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
-                      <div className="w-[70%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
-                    </div>
-                  </div>
+                <div className="flex space-x-4">
+                  <button
+                    className={`px-4 py-2 font-medium transition-colors relative ${
+                      activeTab === 'description'
+                        ? 'text-blue-600'
+                        : 'text-gray-600 hover:text-blue-600'
+                    }`}
+                    onClick={() => setActiveTab('description')}
+                  >
+                    Read Description
+                    {activeTab === 'description' && (
+                      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
+                    )}
+                  </button>
+                  <button
+                    className={`px-4 py-2 font-medium transition-colors relative ${
+                      activeTab === 'demo'
+                        ? 'text-blue-600'
+                        : 'text-gray-600 hover:text-blue-600'
+                    }`}
+                    onClick={() => setActiveTab('demo')}
+                  >
+                    See Demo
+                    {activeTab === 'demo' && (
+                      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
+                    )}
+                  </button>
                 </div>
               )}
+            </div>
 
-              <div>
+            <div className="overflow-y-auto flex-1 px-8 py-6">
+              {screenIndex === 1 ? (
+                <>
+                  {activeTab === 'demo' ? (
+                    <div className="mb-8">
+                      <video 
+                        className="w-full rounded-xl shadow-lg"
+                        controls
+                        autoPlay
+                        muted
+                      >
+                        <source src={dashboardvideo} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="mb-8">
+                        <p className="text-gray-600 leading-relaxed">
+                          The Peer Account serves as your tailored digital portfolio because it presents
+                          your abilities and accomplishments through an approach that expands traditional
+                          resume approaches. Students and scholars need their personal Peer Accounts to
+                          ensure their maximum growth potential in academics and careers. The peer
+                          account exists as an active mirror of your development that illustrates work
+                          relationships, individual accomplishments and professional advancement.
+                          Through this platform you can monitor your activities along with sustaining
+                          meaningful relationships while gaining access to worldwide possibilities in a
+                          safe and user-friendly interface.
+                        </p>
+                      </div>
+                      
+                      <div className="bg-blue-50 rounded-xl p-6 mb-8">
+                        <h3 className="text-xl font-semibold text-gray-900 mb-3">Your Progress</h3>
+                        <div className="relative pt-1">
+                          <div className="flex mb-2 items-center justify-between">
+                            <div>
+                              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+                                Goals Achieved
+                              </span>
+                            </div>
+                            <div className="text-right">
+                              <span className="text-xs font-semibold inline-block text-blue-600">
+                                70%
+                              </span>
+                            </div>
+                          </div>
+                          <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
+                            <div className="w-[70%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
+                          </div>
+                        </div>
+                        <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-6">
                   {screenIndex === 1 ? "Core Functionalities" : "Features of the Business Account"}
                 </h3>
@@ -393,10 +446,94 @@ c
                 </div>
               </div>
 
+                      </div>
+                    </>
+                  )}
+                </>
+              ) : (
+                <>
+                 <div className="mb-8">
+      <p className="text-gray-600 leading-relaxed">
+        The Business Account within JOINLIO represents a specific platform for companies to interact 
+        effectively with their student audience. JOINLIO provides Business Accounts that enable 
+        companies to establish direct marketing connections with university students. The platform 
+        delivers a strong toolset for presenting products and services combined with special 
+        student-oriented deals. The Business Account enables companies to develop strong customer 
+        brand relations while making targeted student engagement for higher sales results.
+      </p>
+    </div>
+    
+    <div className="bg-blue-50 rounded-xl p-6 mb-8">
+      <h3 className="text-xl font-semibold text-gray-900 mb-3">Why Register with JOINLIO?</h3>
+      <ul className="space-y-2">
+        <li className="flex items-start gap-2">
+          <span className="text-blue-600 font-bold">•</span>
+          <span className="text-gray-700"><span className="font-semibold">Enhance Visibility:</span> Access to a unique platform that helps reach students as potential customers.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-blue-600 font-bold">•</span>
+          <span className="text-gray-700"><span className="font-semibold">Drive Engagement:</span> Establish direct interactions with potential customers, increasing conversion rates.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-blue-600 font-bold">•</span>
+          <span className="text-gray-700"><span className="font-semibold">Tailor Offers:</span> Create specific deals to accommodate student market requirements.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-blue-600 font-bold">•</span>
+          <span className="text-gray-700"><span className="font-semibold">Gain Valuable Insights:</span> Improve marketing strategy using real-time feedback and acquired data.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="text-blue-600 font-bold">•</span>
+          <span className="text-gray-700"><span className="font-semibold">Cost Efficiency:</span> Performance-based payment delivers superior value at minimal cost.</span>
+        </li>
+      </ul>
+      
+      <div className="relative pt-4 mt-4">
+        <div className="flex mb-2 items-center justify-between">
+          <div>
+            <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
+              Average ROI
+            </span>
+          </div>
+          <div className="text-right">
+            <span className="text-xs font-semibold inline-block text-blue-600">
+              85%
+            </span>
+          </div>
+        </div>
+        <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
+          <div className="w-[85%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <h3 className="text-xl font-semibold text-gray-900 mb-6">
+        Features of the Business Account
+      </h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {businessFeatures.map((feature, index) => (
+          <div
+            key={index}
+            className="p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 bg-white"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              {feature.icon}
+              <h4 className="font-semibold text-gray-900">{feature.title}</h4>
+            </div>
+            <p className="text-gray-600 text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+                </>
+              )}
+
+            
               <div className="mt-8 flex justify-center">
                 <Link to="/get-started">
                   <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-md hover:scale-105 transition-transform font-medium">
-                    {screenIndex === 1 ? "Create Peer Account" : "Register Your Business"}
+                    {screenIndex === 1 ? "Sign up" : "Sign up"}
                   </button>
                 </Link>
               </div>
