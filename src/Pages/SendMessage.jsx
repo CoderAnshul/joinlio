@@ -1,4 +1,4 @@
-import React, { useState }, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 
@@ -31,7 +31,7 @@ const SendMessage = () => {
 
 
       await emailjs.send(
-        'service_ypyuhqa',
+        'service_b5p6b5g',
         'template_s1pmj5l',
         templateParams,
         'qf9TWxuatyoqyCvLk',
@@ -46,7 +46,7 @@ const SendMessage = () => {
       
       alert('Message sent successfully!');
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error sending message:', error.message);
       alert('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -54,7 +54,7 @@ const SendMessage = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center min-h-[80vh] max-w-full justify-around mx-auto p-6">
+    <div className="flex flex-col lg:flex-row items-start min-h-[80vh] max-w-7xl mx-auto p-6 py-24 gap-12">
       {/* Left Side: Form */}
       <div className="w-full lg:w-2/3 p-6 bg-white rounded-xl shadow-lg">
         <div className="space-y-2">
@@ -97,8 +97,7 @@ const SendMessage = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-black text-white p-3 rounded-md font-semibold hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
+            className="w-full bg-blue-500 text-white p-4 rounded-lg font-medium hover:bg-blue-600 transition-colors duration-200 flex items-center justify-center gap-2 group"          >
             {isSubmitting ? 'Sending...' : 'Send Message'}
           </button>
         </form>
@@ -106,10 +105,9 @@ const SendMessage = () => {
 
       {/* Right Side: Info */}
       <div className="md:w-1/3 w-full mt-10 md:mt-0">
-        <h2 className="text-xl font-bold text-gray-900">Get in touch</h2>
-        <p className="text-gray-600 mt-2">
-          We're always here to help. Contact us if you need any help with Swarm
-          or have any questions.
+        <h1 className="text-5xl font-bold text-gray-900 leading-tight">Let's start a conversation</h1>
+        <p className="text-gray-600 text-lg">
+        We're always here to help. Contact us if you need any help with Joinlio or have any questions.
         </p>
         <Link 
           to="/get-started" 

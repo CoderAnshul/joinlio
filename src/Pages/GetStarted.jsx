@@ -35,7 +35,7 @@ const GetStarted = () => {
 
     try {
       await emailjs.send(
-        'service_ypyuhqa',
+        'service_b5p6b5g',
         'template_qi88j3i',
         templateParams,
         'qf9TWxuatyoqyCvLk'
@@ -329,7 +329,9 @@ const GetStarted = () => {
               type="submit" 
               className="w-full bg-[#F7C28A] text-Black py-3 px-6 rounded-lg hover:bg-[#c59057] transition-colors disabled:opacity-50"
               disabled={isSubmitting}
-            />
+            >
+                            {isSubmitting ? 'Signing up...' : 'Sign up'}
+            </button>
           </form>
         </div>
       </div>
