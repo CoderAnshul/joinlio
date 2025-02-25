@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, Bird, User } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import j from "../assets/images/bigJTwo.png";
 
 const GetStarted = () => {
@@ -10,10 +11,47 @@ const GetStarted = () => {
   const [businessName, setBusinessName] = useState('');
   const [email, setEmail] = useState('');
   const [query, setQuery] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ userCategory, firstName, lastName, institutionName, businessName, email, query });
+    setIsSubmitting(true);
+
+    // Prepare template parameters
+    const templateParams = {
+      user_category: userCategory || '',
+      first_name: firstName || 'N/A',
+      last_name: lastName || 'N/A',
+      institution_name: institutionName || 'N/A',
+      business_name: businessName || 'N/A',
+      email: email || 'N/A',
+      query: query || 'N/A'
+    };
+
+    try {
+      await emailjs.send(
+        'service_ypyuhqa',
+        'template_qi88j3i',
+        templateParams,
+        'qf9TWxuatyoqyCvLk'
+      );
+
+      // Reset form
+      setUserCategory('');
+      setFirstName('');
+      setLastName('');
+      setInstitutionName('');
+      setBusinessName('');
+      setEmail('');
+      setQuery('');
+
+      alert('Thank you for signing up! We will contact you soon.');
+    } catch (error) {
+      console.error('Error sending email:', error.message);
+      alert('There was an error sending your registration. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const renderDynamicFields = () => {
@@ -266,8 +304,12 @@ const GetStarted = () => {
               />
             </div>
 
-            <button type="submit" className="w-full bg-[#F7C28A] text-Black py-3 px-6 rounded-lg hover:bg-[#c59057] transition-colors">
-              Sign up
+            <button 
+              type="submit" 
+              className="w-full bg-[#F7C28A] text-Black py-3 px-6 rounded-lg hover:bg-[#c59057] transition-colors disabled:opacity-50"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Signing up...' : 'Sign up'}
             </button>
           </form>
         </div>
