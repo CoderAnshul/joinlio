@@ -2,9 +2,10 @@ import React, { useState, useRef, useEffect } from 'react'
 import search from "../../assets/images/search.png"
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
-import travelgif from "../../assets/video/Travelgif.gif"
-import mediagif from "../../assets/video/mediagif.gif"
-import entreprenuershipgif from "../../assets/video/Entrepreneurshipgif.gif"
+import travelgif from "../../assets/video/travel.gif"
+import mediagif from "../../assets/video/media.gif"
+import entreprenuershipgif from "../../assets/video/entreprenuer.gif"
+import main from '../../assets/video/main.mp4'
 import ai from "../../assets/images/new-hubs/AI.jpg"
 import flags from "../../assets/images/new-hubs/flags.jpg"
 import gaming from "../../assets/images/new-hubs/gaming.jpg"
@@ -124,6 +125,7 @@ const scrollRef = useRef(null);
                 {/* Left Section */}
                 <div className="mt-20 lg:mr-4 flex-shrink-0 lg:w-1/4">
                     <div className="interest-banner relative w-full h-80 lg:h-full rounded-xl bg-white shadow-xl">
+                        <video src={main}></video>
                         <div className="absolute bottom-9 left-5">
                             <h1 className="text-3xl lg:text-3xl font-bold leading-20">
                                 Transfrom your interests into a <br />
