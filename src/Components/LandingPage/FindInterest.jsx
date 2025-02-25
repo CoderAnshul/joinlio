@@ -125,7 +125,15 @@ const scrollRef = useRef(null);
                 {/* Left Section */}
                 <div className="mt-20 lg:mr-4 flex-shrink-0 lg:w-1/4">
                     <div className="interest-banner relative w-full h-80 lg:h-full rounded-xl bg-white shadow-xl">
-                        <video src={main}></video>
+                        <video 
+                            className="w-full rounded-xl"
+                            loop
+                            autoPlay
+                            muted
+                        >
+                        <source src={main} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
                         <div className="absolute bottom-9 left-5">
                             <h1 className="text-3xl lg:text-3xl font-bold leading-20">
                                 Transfrom your interests into a <br />
