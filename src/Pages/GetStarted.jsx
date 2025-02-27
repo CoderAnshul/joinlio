@@ -1,69 +1,68 @@
-import React, { useState } from 'react';
-import { ChevronDown, Bird, User } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import React, { useState } from "react";
+import { ChevronDown, Bird, User } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import j from "../assets/images/bigJTwo.png";
 
 const GetStarted = () => {
-  const [userCategory, setUserCategory] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [institutionName, setInstitutionName] = useState('');
-  const [businessName, setBusinessName] = useState('');
-  const [email, setEmail] = useState('');
-  const [query, setQuery] = useState('');
+  const [userCategory, setUserCategory] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [institutionName, setInstitutionName] = useState("");
+  const [businessName, setBusinessName] = useState("");
+  const [email, setEmail] = useState("");
+  const [query, setQuery] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!acceptTerms) {
-      alert('Please accept the terms and conditions to proceed.');
+      alert("Please accept the terms and conditions to proceed.");
       return;
     }
     setIsSubmitting(true);
 
     // Prepare template parameters
     const templateParams = {
-      user_category: userCategory || '',
-      first_name: firstName || 'N/A',
-      last_name: lastName || 'N/A',
-      institution_name: institutionName || 'N/A',
-      business_name: businessName || 'N/A',
-      email: email || 'N/A',
-      query: query || 'N/A'
+      user_category: userCategory || "",
+      first_name: firstName || "N/A",
+      last_name: lastName || "N/A",
+      institution_name: institutionName || "N/A",
+      business_name: businessName || "N/A",
+      email: email || "N/A",
+      query: query || "N/A",
     };
 
     try {
       await emailjs.send(
-        'service_b5p6b5g',
-        'template_qi88j3i',
+        "service_b5p6b5g",
+        "template_qi88j3i",
         templateParams,
-        'qf9TWxuatyoqyCvLk'
+        "qf9TWxuatyoqyCvLk"
       );
 
       // Reset form
-      setUserCategory('');
-      setFirstName('');
-      setLastName('');
-      setInstitutionName('');
-      setBusinessName('');
-      setEmail('');
-      setQuery('');
+      setUserCategory("");
+      setFirstName("");
+      setLastName("");
+      setInstitutionName("");
+      setBusinessName("");
+      setEmail("");
+      setQuery("");
 
-      alert('Thank you for signing up! We will contact you soon.');
+      alert("Thank you for signing up! We will contact you soon.");
     } catch (error) {
-      console.error('Error sending email:', error.message);
-      alert('There was an error sending your registration. Please try again.');
+      console.error("Error sending email:", error.message);
+      alert("There was an error sending your registration. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-
   const renderDynamicFields = () => {
-    switch(userCategory) {
-      case 'students':
-      case 'alumni':
+    switch (userCategory) {
+      case "students":
+      case "alumni":
         return (
           <>
             <div className="grid grid-cols-2 gap-4 mb-6">
@@ -123,7 +122,7 @@ const GetStarted = () => {
             </div>
           </>
         );
-      case 'businesses':
+      case "businesses":
         return (
           <>
             <div className="grid grid-cols-2 gap-4 mb-6">
@@ -183,7 +182,7 @@ const GetStarted = () => {
             </div>
           </>
         );
-      case 'institutions':
+      case "institutions":
         return (
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div>
@@ -222,7 +221,7 @@ const GetStarted = () => {
   return (
     <div className="min-h-fit p-6 flex items-center justify-center">
       <div>
-        <img className='max-h-[500px] hidden lg:block mr-10' src={j} alt="" />
+        <img className="max-h-[500px] hidden lg:block mr-10" src={j} alt="" />
       </div>
       <div className="w-full h-full lg:ml-5 max-w-full grid md:grid-cols-2 gap-8 items-start">
         {/* Left Section */}
@@ -232,18 +231,25 @@ const GetStarted = () => {
             <div className="relative p-8">
               <h1 className="text-3xl font-bold mb-6">Sign Up Early!</h1>
               <p className="text-gray-700 mb-8">
-                As Joinlio prepares to launch, we're offering early sign-up opportunities so you can be among the first to experience all the benefits our platform has to offer once we go live.
+                As Joinlio prepares to launch, we're offering early sign-up
+                opportunities so you can be among the first to experience all
+                the benefits our platform has to offer once we go live.
               </p>
 
               <div className="space-y-4">
                 <div className="flex items-center gap-3 bg-blue-50 p-3 rounded-lg">
                   <Bird className="text-blue-600 w-5 h-5" />
-                  <p className="text-sm">Joinlio provides free access to all users</p>
+                  <p className="text-sm">
+                    Joinlio provides free access to all users
+                  </p>
                 </div>
-                
+
                 <div className="flex items-center gap-3 bg-green-50 p-3 rounded-lg">
                   <User className="text-green-600 w-5 h-5" />
-                  <p className="text-sm">Sign up early to stay updated and receive notifications when Joinlio goes live.</p>
+                  <p className="text-sm">
+                    Sign up early to stay updated and receive notifications when
+                    Joinlio goes live.
+                  </p>
                 </div>
               </div>
 
@@ -252,15 +258,26 @@ const GetStarted = () => {
                 <ul className="space-y-3 text-sm text-gray-700">
                   <li className="flex items-start gap-2">
                     <span className="font-medium min-w-6">1.</span>
-                    <span>Students/Alumni: For those in universities, colleges, and institutions looking to connect, collaborate, and grow.</span>
+                    <span>
+                      Students/Alumni: For those in universities, colleges, and
+                      institutions looking to connect, collaborate, and grow.
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="font-medium min-w-6">2.</span>
-                    <span>Businesses with Student Discounts: Ideal for businesses offering discounts to students, enhancing visibility and customer base.</span>
+                    <span>
+                      Businesses with Student Discounts: Ideal for businesses
+                      offering discounts to students, enhancing visibility and
+                      customer base.
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="font-medium min-w-6">3.</span>
-                    <span>Educational Institutions: For universities and colleges interested in tools that boost student development and wish to partner with us.</span>
+                    <span>
+                      Educational Institutions: For universities and colleges
+                      interested in tools that boost student development and
+                      wish to partner with us.
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -275,9 +292,13 @@ const GetStarted = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 User Category*
               </label>
-              <div className="relative">
+              <div
+                className="relative"
+                onClick={() => document.getElementById("userCategory").focus()}
+              >
                 <select
-                  className="w-full p-3 bg-white border border-gray-300 rounded-lg appearance-none pr-10"
+                  id="userCategory"
+                  className="w-full p-3 border border-gray-300 rounded-lg appearance-none pr-10 cursor-pointer"
                   value={userCategory}
                   onChange={(e) => setUserCategory(e.target.value)}
                   required
@@ -286,9 +307,11 @@ const GetStarted = () => {
                   <option value="students">Students</option>
                   <option value="alumni">Alumni</option>
                   <option value="businesses">Businesses</option>
-                  <option value="institutions">Universities/Institutions/Colleges</option>
+                  <option value="institutions">
+                    Universities/Institutions/Colleges
+                  </option>
                 </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 cursor-pointer pointer-events-none" />
               </div>
             </div>
 
@@ -317,20 +340,31 @@ const GetStarted = () => {
                   required
                 />
                 <label htmlFor="terms" className="text-sm text-gray-600">
-                  I agree to the{' '}
-                  <a href="/privacy-policy" className="text-[#00abff] hover:underline">Privacy Policy</a>
-                  {' '}and{' '}
-                  <a href="/terms-and-condition" className="text-[#00abff] hover:underline">Terms & Conditions</a>*
+                  I agree to the{" "}
+                  <a
+                    href="/privacy-policy"
+                    className="text-[#00abff] hover:underline"
+                  >
+                    Privacy Policy
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="/terms-and-condition"
+                    className="text-[#00abff] hover:underline"
+                  >
+                    Terms & Conditions
+                  </a>
+                  *
                 </label>
               </div>
             </div>
-            
-             <button 
-              type="submit" 
+
+            <button
+              type="submit"
               className="w-full bg-[#F7C28A] text-Black py-3 px-6 rounded-lg hover:bg-[#c59057] transition-colors disabled:opacity-50"
               disabled={isSubmitting}
             >
-                            {isSubmitting ? 'Signing up...' : 'Sign up'}
+              {isSubmitting ? "Signing up..." : "Sign up"}
             </button>
           </form>
         </div>

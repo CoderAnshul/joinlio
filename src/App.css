@@ -1,8 +1,9 @@
-*{
-    min-width: 355px;
-   
+
+* {
+  min-width: 355px;
 }
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
+

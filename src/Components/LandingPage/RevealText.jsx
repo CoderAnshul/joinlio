@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -61,10 +61,17 @@ const RevealText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="flex py-12 items-center min-h-[600px]">
+    <div ref={containerRef} className="flex py-12 items-center min-h-[600px] ">
       <section>
-        <p className="reveal-type lg:!leading-[80px] text-3xl leading-[12vw] xs:text-4xl xs:leading-[9vw] sm:text-5xl sm:leading-[8vw] md:text-5xl md:leading-[8vw] lg:text-6xl" data-bg-color="rgb(191 191 191)" data-fg-color="black">
-        The game-changing platform where students and alumni unlock global connections, businesses redefine engagement, and universities elevate student development like never before. Discover a world of collaboration, innovation, and boundless opportunities
+        <p
+          className="reveal-type @container @8xl:bg-blue-500 text-3xl leading-[12vw] xs:text-4xl xs:leading-[9vw] sm:text-5xl sm:leading-[8vw] md:text-5xl md:leading-[8vw] lg:text-6xl"
+          data-bg-color="rgb(191 191 191)"
+          data-fg-color="black"
+        >
+          The game-changing platform where students and alumni unlock global
+          connections, businesses redefine engagement, and universities elevate
+          student development like never before. Discover a world of
+          collaboration, innovation, and boundless opportunities
         </p>
       </section>
 

@@ -1,7 +1,13 @@
 import React from "react";
 import arr from "../assets/images/downArr.png";
 
-const DevideSectionText = ({ title1, title2, description, highlight , className }) => {
+const DevideSectionText = ({
+  title1,
+  title2,
+  description,
+  highlight,
+  className,
+}) => {
   return (
     <section className="relative pl-5 my-[50px] lg:mt-[150px] flex items-center justify-between h-auto">
       {/* Left Side: Title and Description */}
@@ -16,7 +22,9 @@ const DevideSectionText = ({ title1, title2, description, highlight , className 
       </div>
 
       {/* Right Side: Circle with Arrow */}
-      <div className={`${className} absolute right-2 -bottom-24 sm:bottom-auto sm:top-0 md:right-16 lg:right-16 flex items-center justify-center`}>
+      <div
+        className={`${className} absolute right-2 -bottom-24 sm:bottom-auto sm:top-0 md:right-16 lg:right-16 flex items-center justify-center`}
+      >
         <div className="relative w-32 h-32 rounded-full flex items-center justify-center">
           <svg
             className="absolute w-full h-full rotate-animation"
@@ -37,7 +45,8 @@ const DevideSectionText = ({ title1, title2, description, highlight , className 
                 method="align"
                 spacing="auto"
               >
-                explore the portal | the possibilities explore the portal | the possibilities
+                explore the portal | the possibilities explore the portal | the
+                possibilities
               </textPath>
             </text>
           </svg>

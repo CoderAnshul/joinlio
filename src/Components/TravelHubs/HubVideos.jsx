@@ -63,7 +63,7 @@ const HubVideo = ({ category }) => {
   const togglePlayPause = () => {
     const video = videoRef.current;
     if (!video) return;
-    
+
     if (isPlaying) {
       video.pause();
     } else {
@@ -81,8 +81,8 @@ const HubVideo = ({ category }) => {
         </h3>
       </div>
 
-      <div 
-        className="relative z-[50] w-full h-[80vh] overflow-hidden rounded-3xl flex items-center justify-center bg-black"
+      <div
+        className="relative z-[50] w-full h-[80vh] max-sm:h-fit overflow-hidden rounded-3xl flex items-center justify-center bg-black"
         onMouseEnter={() => setShowControls(true)}
         onMouseLeave={() => isPlaying && setShowControls(false)}
       >
@@ -91,7 +91,7 @@ const HubVideo = ({ category }) => {
         ) : (
           <video
             ref={videoRef}
-            className="w-full h-full object-cover"
+            className="w-full h-full  object-cover"
             src={videoSrc}
             playsInline
             preload="auto"
@@ -101,13 +101,13 @@ const HubVideo = ({ category }) => {
 
         {showControls && (
           <button
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 bg-white  -translate-y-1/2 p-5 rounded-full shadow-md flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 bg-white  -translate-y-1/2 h-12 w-12 rounded-full shadow-md flex items-center justify-center transition-all duration-300 ease-in-out hover:scale-110"
             onClick={togglePlayPause}
           >
             <img
               src={isPlaying ? pauseIcon : playIcon}
               alt={isPlaying ? "Pause" : "Play"}
-              className="w-14 h-14 ml-1 transition-opacity duration-300 ease-in-out"
+              className="w-4 h-4 ml-1 transition-opacity duration-300 ease-in-out"
             />
           </button>
         )}

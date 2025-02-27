@@ -1,26 +1,174 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+  --container-8xl: 1250;
+  --container-9xl: 1280;
+}
 
 @layer utilities {
   .bluetxt {
-    color: #000E29;
+    color: #000e29;
   }
 }
 
-p{
-  font-family: 'Archivo', sans-serif;
+p {
+  font-family: "Archivo", sans-serif;
 }
 
-
-
 .gradient-background {
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #00abff 0%, #00aaff 100%);
+  border-radius: 50%; /* Makes the shape circular */
+  filter: blur(60px); /* Adds blur effect */
+  animation: gradient-animation 4s infinite alternate ease-in-out;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    background: radial-gradient(circle at 30% 70%, #00abff 10%, #00aaff 90%);
+    transform: translate(10px, 20px) scale(1.1);
+  }
+  50% {
+    background: radial-gradient(circle at 70% 30%, #00abff 20%, #00aaff 80%);
+    transform: translate(-20px, -10px) scale(1.2);
+  }
+  75% {
+    background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
+    transform: translate(15px, -15px) scale(1.1);
+  }
+  100% {
+    background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.gradient-background.outer {
+  width: 200px; /* Larger outer circle */
+  height: 200px;
+  filter: blur(80px); /* Slightly more blur for the outer layer */
+  animation: gradient-animation 8s infinite alternate ease-in-out;
+}
+
+.button-shadow {
+  box-shadow: 0 4px 0px #00abff;
+  transition: box-shadow 0.3s ease;
+}
+
+.button-shadow:hover {
+  box-shadow: 0 2px 0px #2ca2fb;
+}
+
+/* ------------------------ second gradient --------------------- */
+
+.gradient-backgroundTwo {
+  position: absolute;
+  bottom: -80px;
+  right: -100px;
+  width: 200px;
+  height: 200px;
+  z-index: 40;
+  background: radial-gradient(circle, #e0b3c1, #e6d5b3, #e0b3c1);
+  border-radius: 50%; /* Circle shape */
+  filter: blur(30px); /* Blur effect */
+  animation: gradient-animationTwo 6s infinite ease-in-out;
+}
+
+@keyframes gradient-animationTwo {
+  0% {
+    background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    background: radial-gradient(circle at 30% 70%, #00abff 10%, #00aaff 90%);
+    transform: translate(10px, 20px) scale(1.1);
+  }
+  50% {
+    background: radial-gradient(circle at 70% 30%, #00abff 20%, #00aaff 80%);
+    transform: translate(-20px, -10px) scale(1.2);
+  }
+  75% {
+    background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
+    transform: translate(15px, -15px) scale(1.1);
+  }
+  100% {
+    background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* For the outer larger circle */
+.gradient-backgroundTwo.outerTwo {
+  width: 300px;
+  height: 300px;
+  filter: blur(50px); /* More blur for outer effect */
+  animation: gradient-animationTwo-outer 8s infinite ease-in-out;
+}
+
+@keyframes gradient-animationTwo-outer {
+  0% {
+    background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
+    transform: translate(0, 0) scale(1);
+    border-radius: 50%;
+  }
+  20% {
+    background: radial-gradient(ellipse at 40% 60%, #00abff 10%, #00aaff 90%);
+    transform: translate(15px, 35px) scale(1.1);
+    border-radius: 45% 55%;
+  }
+  50% {
+    background: radial-gradient(circle at 70% 30%, #00abff 20%, #00aaff 80%);
+    transform: translate(-25px, -15px) scale(1.25);
+    border-radius: 55% 45%;
+  }
+  75% {
+    background: radial-gradient(ellipse at 50% 50%, #00abff 0%, #00aaff 100%);
+    transform: translate(10px, -10px) scale(1.15);
+    border-radius: 60% 40%;
+  }
+  100% {
+    background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
+    transform: translate(0, 0) scale(1);
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  .gradient-backgroundTwo {
     position: absolute;
-    top: -20px;
-    left: -30px;
+    bottom: -70px;
+    right: -70px;
+    width: 100px;
+    height: 100px;
+    z-index: 40;
+    background: radial-gradient(circle, #64abe2 0%, #00aaff 50%, #b5e6ff 100%);
+    border-radius: 50%; /* Circle shape */
+    filter: blur(30px); /* Blur effect */
+    animation: gradient-animationTwo 6s infinite ease-in-out;
+  }
+
+  .gradient-backgroundTwo.outerTwo {
+    width: 200px;
+    height: 200px;
+    filter: blur(50px); /* More blur for outer effect */
+    animation: gradient-animationTwo-outer 8s infinite ease-in-out;
+  }
+
+  .gradient-background {
+    position: absolute;
+    top: -60px;
+    left: -80px;
     width: 100px;
     height: 100px;
     background: radial-gradient(circle, #00abff 0%, #00aaff 100%);
@@ -28,254 +176,102 @@ p{
     filter: blur(60px); /* Adds blur effect */
     animation: gradient-animation 4s infinite alternate ease-in-out;
   }
-  
+}
 
+/* --------------- blinking cursor ------------------ */
 
-  @keyframes gradient-animation {
-    0% {
-      background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      background: radial-gradient(circle at 30% 70%, #00abff 10%, #00aaff 90%);
-      transform: translate(10px, 20px) scale(1.1);
-    }
-    50% {
-      background: radial-gradient(circle at 70% 30%, #00abff 20%, #00aaff 80%);
-      transform: translate(-20px, -10px) scale(1.2);
-    }
-    75% {
-      background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
-      transform: translate(15px, -15px) scale(1.1);
-    }
-    100% {
-      background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
-      transform: translate(0, 0) scale(1);
-    }
+.blinking-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: currentColor;
+  animation: blink 0.8s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
+}
 
-  .gradient-background.outer {
-    width: 200px; /* Larger outer circle */
-    height: 200px;
-    filter: blur(80px); /* Slightly more blur for the outer layer */
-    animation: gradient-animation 8s infinite alternate ease-in-out;
+.gradient-text {
+  /* background: linear-gradient(90deg, #e0b3c1, #e6d5b3, #e0b3c1); */
+  background: linear-gradient(
+    90deg,
+    #098dd0 0%,
+    #80d5ff 60%,
+    #80d5ff 90%,
+    #bfeaff 150%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-scroll 3s ease-in-out infinite;
+}
+
+@keyframes gradient-scroll {
+  0% {
+    background-position: 0% 50%;
   }
-
-
-  .button-shadow {
-    box-shadow: 0 4px 0px #00abff;
-    transition: box-shadow 0.3s ease;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .button-shadow:hover {
-    box-shadow: 0 2px 0px #2CA2FB;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  
+}
 
-  /* ------------------------ second gradient --------------------- */
+.gradient-text-two {
+  background: linear-gradient(90deg, #7ec8ff 0%, #edf7ff 150%);
+  /* background: linear-gradient(90deg, #e0b3c1, #e6d5b3, #e0b3c1); */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-three {
+  background: linear-gradient(180deg, #7ec8ff 0%, #edf7ff 150%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-  .gradient-backgroundTwo {
-    position: absolute;
-    bottom: -80px;
-    right: -100px;
-    width: 200px;
-    height: 200px;
-    z-index: 40;
-    background: radial-gradient(circle, #e0b3c1, #e6d5b3, #e0b3c1);
-    border-radius: 50%; /* Circle shape */
-    filter: blur(30px); /* Blur effect */
-    animation: gradient-animationTwo 6s infinite ease-in-out;
+/* ------------------- circluar animation text-------------------- */
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes gradient-animationTwo {
-      0% {
-      background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      background: radial-gradient(circle at 30% 70%, #00abff 10%, #00aaff 90%);
-      transform: translate(10px, 20px) scale(1.1);
-    }
-    50% {
-      background: radial-gradient(circle at 70% 30%, #00abff 20%, #00aaff 80%);
-      transform: translate(-20px, -10px) scale(1.2);
-    }
-    75% {
-      background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
-      transform: translate(15px, -15px) scale(1.1);
-    }
-    100% {
-      background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
-      transform: translate(0, 0) scale(1);
-    }
-
+  100% {
+    transform: rotate(360deg);
   }
-  
-  /* For the outer larger circle */
-  .gradient-backgroundTwo.outerTwo {
-    width: 300px;
-    height: 300px;
-    filter: blur(50px); /* More blur for outer effect */
-    animation: gradient-animationTwo-outer 8s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  
-  @keyframes gradient-animationTwo-outer {
-      0% {
-        background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
-        transform: translate(0, 0) scale(1);
-        border-radius: 50%;
-      }
-      20% {
-        background: radial-gradient(ellipse at 40% 60%, #00abff 10%, #00aaff 90%);
-        transform: translate(15px, 35px) scale(1.1);
-        border-radius: 45% 55%;
-      }
-      50% {
-        background: radial-gradient(circle at 70% 30%, #00abff 20%, #00aaff 80%);
-        transform: translate(-25px, -15px) scale(1.25);
-        border-radius: 55% 45%;
-      }
-      75% {
-        background: radial-gradient(ellipse at 50% 50%, #00abff 0%, #00aaff 100%);
-        transform: translate(10px, -10px) scale(1.15);
-        border-radius: 60% 40%;
-      }
-      100% {
-        background: radial-gradient(circle at 50% 50%, #00abff 0%, #00aaff 100%);
-        transform: translate(0, 0) scale(1);
-        border-radius: 50%;
-      }
-    }
-  
-  
-
-  @media(max-width:500px){
-    .gradient-backgroundTwo {
-      position: absolute;
-      bottom: -70px;
-      right: -70px;
-      width: 100px;
-      height: 100px;
-      z-index: 40;
-      background: radial-gradient(circle, #64ABE2 0%, #00AAFF 50%, #B5E6FF 100%);
-      border-radius: 50%; /* Circle shape */
-      filter: blur(30px); /* Blur effect */
-      animation: gradient-animationTwo 6s infinite ease-in-out;
-    }
-
-    .gradient-backgroundTwo.outerTwo {
-      width: 200px;
-      height: 200px;
-      filter: blur(50px); /* More blur for outer effect */
-      animation: gradient-animationTwo-outer 8s infinite ease-in-out;
-    }
-
-    .gradient-background {
-      position: absolute;
-      top: -60px;
-      left: -80px;
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle, #00abff 0%, #00aaff 100%);
-      border-radius: 50%; /* Makes the shape circular */
-      filter: blur(60px); /* Adds blur effect */
-      animation: gradient-animation 4s infinite alternate ease-in-out;
-    }
+  50% {
+    transform: translateY(-10px);
   }
+}
 
-  /* --------------- blinking cursor ------------------ */
+.rotate-animation {
+  animation: rotate 10s linear infinite;
+}
 
-  .blinking-cursor {
-    display: inline-block;
-    width: 2px;
-    height: 1em;
-    background-color: currentColor;
-    animation: blink 0.8s steps(2, start) infinite;
-  }
-  
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
+.bounce-animation {
+  animation: bounce 1s ease-in-out infinite;
+}
 
-  
-  .gradient-text {
-    /* background: linear-gradient(90deg, #e0b3c1, #e6d5b3, #e0b3c1); */
-    background: linear-gradient(90deg, #098dd0 0%, #80d5ff 60%, #80d5ff 90%, #bfeaff 150%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient-scroll 3s ease-in-out infinite;
-  }
-  
-  @keyframes gradient-scroll {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  .gradient-text-two {
-    background: linear-gradient(90deg, #7EC8FF 0%, #EDF7FF 150%);
-    /* background: linear-gradient(90deg, #e0b3c1, #e6d5b3, #e0b3c1); */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .gradient-text-three {
-    background: linear-gradient(180deg, #7EC8FF 0%, #EDF7FF 150%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-
-
-  /* ------------------- circluar animation text-------------------- */
-
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-  .rotate-animation {
-    animation: rotate 10s linear infinite;
-  }
-  
-  .bounce-animation {
-    animation: bounce 1s ease-in-out infinite;
-  }
-
-
-
-  /* ------------ stats box --------------- */
- .gradient-border{
-  border:3px solid transparent;
-  background: linear-gradient(to top,#ffffff, #ffffff ) padding-box,linear-gradient(to top,#BFE4FF,#336E9A,#2670A8,#1A72B5 ) border-box;
+/* ------------ stats box --------------- */
+.gradient-border {
+  border: 3px solid transparent;
+  background: linear-gradient(to top, #ffffff, #ffffff) padding-box,
+    linear-gradient(to top, #bfe4ff, #336e9a, #2670a8, #1a72b5) border-box;
   border-radius: 30px;
- }
-  
+}
 
- /* -------------- hide scrollbar ---------------- */
+/* -------------- hide scrollbar ---------------- */
 
- .hide-scrollbar {
+.hide-scrollbar {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
@@ -284,15 +280,12 @@ p{
   display: none; /* Chrome, Safari, and Edge */
 }
 
-
-.swiper-button-prev::after{
-  transform: scale(0.5)!important;
+.swiper-button-prev::after {
+  transform: scale(0.5) !important;
 }
-.swiper-button-next::after{
-  transform: scale(0.5)!important;
+.swiper-button-next::after {
+  transform: scale(0.5) !important;
 }
-
-
 
 .gradient-circle-background {
   position: absolute;
@@ -336,13 +329,13 @@ p{
 }
 
 .gradient-circle-background.outer {
-  width:300px; /* Larger outer circle */
+  width: 300px; /* Larger outer circle */
   height: 300px;
   filter: blur(80px); /* Slightly more blur for the outer layer */
   animation: gradient-animation 8s infinite alternate ease-in-out;
 }
 
-@media(min-width:1600px){
+@media (min-width: 1600px) {
   .gradient-circle-background {
     position: absolute;
     top: 35%;
@@ -356,7 +349,7 @@ p{
     animation: gradient-animation 4s infinite alternate ease-in-out;
   }
 }
-@media(max-width:500px){
+@media (max-width: 500px) {
   .gradient-circle-background {
     position: absolute;
     top: 35%;
@@ -370,13 +363,13 @@ p{
     animation: gradient-animation 4s infinite alternate ease-in-out;
   }
   .gradient-circle-background.outer {
-    width:1200px; /* Larger outer circle */
+    width: 1200px; /* Larger outer circle */
     height: 1200px;
     filter: blur(80px); /* Slightly more blur for the outer layer */
     animation: gradient-animation 8s infinite alternate ease-in-out;
   }
 }
-@media(min-width:501px) and (max-width:750px){
+@media (min-width: 501px) and (max-width: 750px) {
   .gradient-circle-background {
     position: absolute;
     top: 35%;
@@ -390,13 +383,12 @@ p{
     animation: gradient-animation 4s infinite alternate ease-in-out;
   }
   .gradient-circle-background.outer {
-    width:1200px; /* Larger outer circle */
+    width: 1200px; /* Larger outer circle */
     height: 1700px;
     filter: blur(80px); /* Slightly more blur for the outer layer */
     animation: gradient-animation 8s infinite alternate ease-in-out;
   }
 }
-
 
 /* ------------------------  round gradient bg ----------------------- */
 
@@ -409,9 +401,16 @@ p{
   left: 0;
   right: 0;
   bottom: 0;
-  background: conic-gradient(from 90deg, #ff7f50, #ff6347, #ff7f50, #ff6347, #ff7f50);
+  background: conic-gradient(
+    from 90deg,
+    #ff7f50,
+    #ff6347,
+    #ff7f50,
+    #ff6347,
+    #ff7f50
+  );
   border-radius: 50%;
-  z-index: -1;  /* Ensure it's in the background */
+  z-index: -1; /* Ensure it's in the background */
   animation: spin 5s linear infinite;
 }
 
@@ -425,12 +424,11 @@ p{
   }
 }
 
-
 .arrow {
   position: absolute;
   /* top: 50%;
   left: 50%; */
-  transform: translate(-50%, -50%) rotate(-90deg); 
+  transform: translate(-50%, -50%) rotate(-90deg);
   cursor: pointer;
 }
 
@@ -467,16 +465,14 @@ p{
   }
 }
 
-
-
 .new-page-container {
   min-height: 100vh; /* Ensure the container spans the full viewport height */
-  display: flex;     /* Use if alignment is needed */
+  display: flex; /* Use if alignment is needed */
   flex-direction: column;
 }
 
-@media(max-width:768px){
-  .arrow{
+@media (max-width: 768px) {
+  .arrow {
     left: 5%;
   }
   .arrow span {
@@ -509,7 +505,6 @@ p{
   background: linear-gradient(to bottom, #1B87E5, #003B7A);
 } */
 
-
 .custom-scrollbar {
   /* Enable smooth scrolling behavior */
   scroll-behavior: smooth;
@@ -517,7 +512,7 @@ p{
   overflow-y: auto;
   /* For Firefox */
   scrollbar-width: thin;
-  scrollbar-color: #2CA2FB #e0e0e0;
+  scrollbar-color: #2ca2fb #e0e0e0;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -530,7 +525,7 @@ p{
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #2CA2FB, #0056b3);
+  background: linear-gradient(to bottom, #2ca2fb, #0056b3);
   border-radius: 10px;
   /* Add these properties to improve grab behavior */
   cursor: pointer;
@@ -539,7 +534,7 @@ p{
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #1B87E5, #003B7A);
+  background: linear-gradient(to bottom, #1b87e5, #003b7a);
 }
 
 /* Enable touch scrolling for mobile devices */
@@ -549,12 +544,17 @@ p{
   }
 }
 
-
 /* Add these to your global CSS */
 @keyframes gradient-x {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .bg-size-200 {

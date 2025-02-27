@@ -5,6 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    
     extend: {
       backgroundImage: {
         'custom-gradient': 'linear-gradient(90deg, #64ACE2 0%, #B7E6FE 47%, #FFFFFF 100%)',

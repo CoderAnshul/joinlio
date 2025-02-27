@@ -47,13 +47,11 @@ const Banner = () => {
 
         <h1 className="text-4xl relative z-[50] md:text-45xl lg:text-5xl xl:text-7xl font-archivo font-bold text-customBlue mb-6">
           Step into the <br /> future with{" "}
-          <span className="relative z-[50] text-textColor">
-            JOINLIO
-          </span>
+          <span className="relative z-[50] text-textColor">JOINLIO</span>
         </h1>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 font-archivo font-bold text-2xl md:text-3xl mb-8">
-          <div className="group relative overflow-hidden">
+          <div className="group relative overflow-hidden max-sm:w-full">
             <span className="relative z-10 bg-gradient-to-r from-[#2CA2FB] to-[#00D4FF] bg-clip-text text-transparent transform transition-transform duration-500 group-hover:scale-110 inline-block">
               Connect
             </span>
@@ -62,7 +60,7 @@ const Banner = () => {
 
           <div className="hidden md:block w-2 h-2 rounded-full bg-gradient-to-r from-[#2CA2FB] to-[#00D4FF] animate-pulse"></div>
 
-          <div className="group relative overflow-hidden">
+          <div className="group relative overflow-hidden  max-sm:w-full">
             <span className="relative z-10 bg-gradient-to-r from-[#2CA2FB] via-[#00D4FF] to-[#2CA2FB] bg-clip-text text-transparent bg-size-200 animate-gradient-x transform transition-transform duration-500 group-hover:scale-110 inline-block">
               Collaborate
             </span>
@@ -71,7 +69,7 @@ const Banner = () => {
 
           <div className="hidden md:block w-2 h-2 rounded-full bg-gradient-to-r from-[#2CA2FB] to-[#00D4FF] animate-pulse"></div>
 
-          <div className="group relative overflow-hidden">
+          <div className="group relative overflow-hidden  max-sm:w-full">
             <span className="relative z-10 bg-gradient-to-r from-[#00D4FF] to-[#2CA2FB] bg-clip-text text-transparent transform transition-transform duration-500 group-hover:scale-110 inline-block">
               Grow
             </span>
@@ -80,7 +78,8 @@ const Banner = () => {
         </div>
 
         <p className="relative z-[50] font-archivo text-customBlue max-w-md md:max-w-xl font-semibold mb-8">
-          Join a vibrant digital ecosystem where students, <br /> alumni & business thrive together.
+          Join a vibrant digital ecosystem where students, <br /> alumni &
+          business thrive together.
         </p>
 
         <Link to="/send-message">
