@@ -40,7 +40,7 @@ export default function Footer() {
             <div>
               <h3 className="font-medium mb-2">How Can We Help?</h3>
               <p className="text-sm text-gray-500 mb-1">
-                joinlio.tech@gmail.com
+                contact@joinlio.com
               </p>
               <h2 className="text-sm mb-4 font-medium">
                 Please feel free to get in <br /> touch with us

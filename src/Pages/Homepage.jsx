@@ -147,7 +147,7 @@ const Homepage = () => {
       <Banner/>
       <RevealText/>
       </div>
-      <div id="section-data" className='h-fit relative overflow-hidden'>
+      <div id="section-data" >
 
       <DevideSectionText title1 ="STUDENT &" title2 ="ALUMNI" description="Student life is not just a phase – it’s the foundation of your future. The habits you build, the connections you make, and the skills you develop today will define the opportunities you have tomorrow." highlight=" Make it count with JOINLIO."/>
       </div>
@@ -160,7 +160,7 @@ const Homepage = () => {
 
       <FindInterest/>
       </div>
-        <div className='px-6 lg:px-20 gap-[10px] mt-12 py-12 my-5'>
+        <div className='px-6 lg:px-20 gap-[10px] md:mt-12 md:py-12 py-2 my-5'>
           <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
               Still not convinced?  <br />
               <span className="text-textColor">“Hear it straight from our users”</span>
@@ -173,7 +173,7 @@ const Homepage = () => {
           <Motives cards={cardsData}/>
       </div>
 
-      <div id="business-data">
+      <div id="business-data" >
 
       <DevideSectionText  title1 ="BUSINESSES" title2 =" " description="JOINLIO connects your business directly with the student community, allowing you to
       offer exclusive discounts, boost sales, and gather real-time feedback all on one seamless
@@ -183,7 +183,7 @@ const Homepage = () => {
 
       <div className='px-[5vw]'>
       <BussinessHead/>
-      <div id="business-account" className='h-fit relative overflow-hidden'>
+      <div id="business-account" className='h-fit relative'>
       <CircleDetails {...businessData} screenIndex={2}/>
       </div>
       <div className='px-6 lg:px-20 gap-[10px]  py-12 '>
@@ -193,7 +193,7 @@ const Homepage = () => {
           </h1>
           <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl">
             {/* <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl"> */}
-            Why take our word for it when you can hear directly from businesses thriving with JOINLIO? Discover their success stories, see how they’ve expanded their reach, and built loyal customer bases—all by joining the platform. Your success story could be next!"
+            Why take our word for it when you can hear directly from businesses thriving with JOINLIO? Discover their success stories, see how they’ve expanded their reach, and built loyal customer bases—all by joining the platform. <span className='italic font-medium text-black'>Your success story could be next!</span>
           </p>
        </div>
       </div>

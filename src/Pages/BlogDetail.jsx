@@ -113,7 +113,7 @@ const BlogDetail = () => {
                   <span>{comments} comments</span>
                 </button> */}
               </div>
-              <div className="flex items-center space-x-4">
+              {/* <div className="flex items-center space-x-4">
                 <button className="flex items-center space-x-1 text-gray-700 hover:text-[#00ABFF] transition-colors">
                   <Share2 size={20} />
                   <span>Share</span>
@@ -122,7 +122,7 @@ const BlogDetail = () => {
                   <Bookmark size={20} />
                   <span>Save</span>
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </main>

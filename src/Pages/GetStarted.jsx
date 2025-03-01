@@ -95,7 +95,7 @@ const GetStarted = () => {
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Institution Name*
+                  Institution Name <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -108,7 +108,7 @@ const GetStarted = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Institutional Email*
+                  Institutional Email<span className="text-red-600">*</span>
                 </label>
                 <input
                   type="email"
@@ -155,7 +155,7 @@ const GetStarted = () => {
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Business Name*
+                  Business Name<span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -168,7 +168,7 @@ const GetStarted = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Business Email*
+                  Business Email<span className="text-red-600">*</span>
                 </label>
                 <input
                   type="email"
@@ -240,7 +240,7 @@ const GetStarted = () => {
                 <div className="flex items-center gap-3 bg-blue-50 p-3 rounded-lg">
                   <Bird className="text-blue-600 w-5 h-5" />
                   <p className="text-sm">
-                    Joinlio provides free access to all users
+                    Joinlio provides free access to all users!
                   </p>
                 </div>
 

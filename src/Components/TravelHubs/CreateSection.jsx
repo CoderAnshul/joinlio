@@ -26,8 +26,8 @@ const CreateSection = ({ category }) => {
   const buttons = buttonConfig[category] || [];
 
   return (
-    <div className="w-full mt-8 relative z-[100]">
-      <div className="py-12 my-5 mx-auto flex flex-col  md:flex-row justify-between gap-5">
+    <div className="w-full  relative z-[100]">
+      <div className="py-12 pt-2 my-5 mx-auto flex flex-col  md:flex-row justify-between gap-5">
         <div className="flex max-sm:flex-col flex-wrap gap-6 p-4 border-2 w-full max-w-[1200px] border-gray-700 border-opacity-15 bg-[#EEEEEE]/40 backdrop-blur-xl rounded-2xl mx-auto">
           {buttons.map((btn, index) => (
             <div

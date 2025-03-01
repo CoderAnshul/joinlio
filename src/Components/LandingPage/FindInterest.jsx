@@ -40,22 +40,25 @@ const FindInterest = () => {
       name: "Travel Hub",
       description:
         "Explore stunning destinations and unique travel experiences.",
+        heading:"Explore the World with the Travel Hub on Joinlio",
       subDescription:
-        "The Travel Hub that operates through JOINLIO serves as the perfect platform for all matters concerning travel and outdoor recreation. The platform exists for those who love adventure and travel because it provides information on solo backpacking alongside resources for road trips and group hiking along with camping guidelines. Whoever plans travel or seeks cost-saving travel advice will discover all necessary resources and collaborative support through this one hub.",
+        "Designed specifically for those who love to travel, the Travel Hub offers a dynamic community where students can dive into everything related to travel. Whether you're planning a solo adventure, organizing a group trip, or just looking to share experiences, this hub connects you with like-minded adventurers. Create or join sub-hubs to meet peers with similar interests, access exclusive travel planning tools, and collaborate on travel-related projects. Get inspired, find practical support, and start your journey with us today!",
       gif: travelgif,
     },
     {
       name: "Media Hub",
       description: "Capture and create amazing content.",
+      heading:"Dive into Creativity with the Media Hub on Joinlio",
       subDescription:
-        "The Media Hub functions as an arts and media creative environment mainly meant for interested student members. This hub enables creative people who work in filmmaking, photography, music production and other creative disciplines to build their abilities through collaborative opportunities with other artists on innovative projects. The perfect environment for developing your medium abilities while forming enduring professional relationships exists here.",
+        "Tailored for enthusiasts in the media field, the Media Hub provides a vibrant platform to explore and engage in various aspects of media, including filmmaking, podcasting, photography, and more. Whether you're an experienced creator or a budding artist, you can discover and join pre-defined sub-hubs that match your interests or establish your own. Within these sub-hubs, create groups, collaborate on projects, produce podcasts, and more with peers who share your passion. Gain access to specialized tools, services, and support provided by Joinlio to enhance your creative projects and bring your visions to life.",
       gif: mediagif,
     },
     {
       name: "Entrepreneurship Hub",
       description: "Fuel your business ideas and networking.",
+      heading:"Fuel Your Business Dreams with the Entrepreneurship Hub on Joinlio",
       subDescription:
-        "Innovation finds its meeting point with opportunity at the Entrepreneurship Hub. The Entrepreneurship Hub gives both rising entrepreneurs and potential business founders an environment to experiment with ideas and develop productive business plans along with mentorship and funding connections. This space brings together new entrepreneurs to collaborate with experienced professionals who facilitate idea exchange toward startup success.",
+        "Specifically crafted for aspiring entrepreneurs, this hub provides a supportive environment where students eager to launch their startups can thrive. Engage with various sub-hubs related to entrepreneurship, where you can either join existing ones or create new ones tailored to your business vision. Connect with like-minded peers to form groups, participate in business projects, or start your own ventures. Joinlio supports your entrepreneurial journey with a wealth of resources, including specialized tools, services, and guidance, all designed to help you achieve business success.",
       gif: entreprenuershipgif,
     },
     {
@@ -112,12 +115,6 @@ const FindInterest = () => {
 
   const modalSections = [
     {
-      icon: "🎯",
-      title: "What are Hubs",
-      description:
-        "In Joinlio, Hubs are central spaces designed to facilitate collaboration among students with similar interests and goals. These dynamic, structured environments enable students to share, learn, earn, connect, collaborate, and grow together.",
-    },
-    {
       icon: "🌟",
       title: "Create or Join Hubs",
       description:
@@ -131,15 +128,15 @@ const FindInterest = () => {
     },
     {
       icon: "🤝",
-      title: "Collaborate on Projects",
+      title: "Collaborate",
       description:
-        "Work on real-world projects with peers, develop practical skills, and build a portfolio of achievements.",
+        "Hubs facilitate real-world projects and skill development.",
     },
     {
       icon: "🚀",
       title: "Support and Network",
       description:
-        "Access mentorship opportunities, connect with industry professionals, and broaden both personal and professional horizons.",
+        "Provides mentorship and networking opportunities, broadening both personal and professional growth.",
     },
   ];
 
@@ -162,7 +159,7 @@ const FindInterest = () => {
   }, []);
 
   return (
-    <div className="px-6 lg:px-20 gap-[10px] py-12 my-5">
+    <div className="px-6 lg:px-20 gap-[10px] md:py-12 my-5">
       {/* Header section */}
       <div className="w-full flex justify-between gap-4 flex-wrap">
         <div className="w-auto max-w-xl xl:max-w-3xl">
@@ -175,9 +172,9 @@ const FindInterest = () => {
             interests into reality. Like an ocean of opportunities, our platform
             allows you to create your own hub or join existing topics. Connect
             with like-minded students, access exclusive tools, services, and
-            support, and unlock limitless possibilities. Your next big
+            support, and unlock limitless possibilities. <span className="italic font-medium text-black">Your next big
             collaboration starts here—click on a hub and explore all that
-            JOINLIO has to offer!
+            JOINLIO has to offer!</span>
           </p>
         </div>
         <button
@@ -241,10 +238,13 @@ const FindInterest = () => {
                       <div className="absolute inset-0 bg-black bg-opacity-40"></div>
                     </div>
                     <div className="hub-container  z-10">
-                      <div className="flex justify-between gap-3 items-center mb-3">
+                      <div className="mb-3">
                         <h2 className="text-lg font-bold  truncate text-white">
                           {hub.name}
                         </h2>
+                        <p className="text-sm mb-2 line-clamp-2 h-10 text-white">
+                        {hub.description}
+                      </p>
                         {index < 3 ? (
                           <Link
                             to="/hubs"
@@ -255,20 +255,18 @@ const FindInterest = () => {
                               },
                             }}
                           >
-                            <button className="absolute top-4 right-4 bg-[#00abff] text-white text-sm font-medium px-4 py-1 rounded-full flex items-center gap-1 hover:bg-blue-500 transition">
+                            <button className="w-full bg-[#00abff] text-white text-sm text-center font-medium px-4 py-1 rounded-full gap-1 hover:bg-blue-500 transition">
                               Follow{" "}
-                              {/* <span className="text-lg font-bold">+</span> */}
+                              <span className="text-lg font-bold">+</span>
                             </button>
                           </Link>
                         ) : (
-                          <button className="absolute top-4 right-4  bg-gray-400 text-white text-sm font-medium px-4 py-1 rounded-full cursor-not-allowed">
+                          <button className="w-full bg-gray-400 text-white text-sm font-medium px-4 py-1 rounded-full cursor-not-allowed">
                             Coming Soon
                           </button>
                         )}
                       </div>
-                      <p className="text-sm mb-2 line-clamp-2 h-10 text-white">
-                        {hub.description}
-                      </p>
+                      
                     </div>
                   </div>
                 ))}
@@ -311,7 +309,7 @@ const FindInterest = () => {
                 <X className="w-6 h-6 text-gray-500" />
               </button>
             </div>
-
+            
             <div className="px-8 pt-6">
               <p className="text-gray-600 leading-relaxed">
                 In Joinlio, Hubs are central spaces designed to facilitate
@@ -323,6 +321,14 @@ const FindInterest = () => {
                 hubs, which focus on various areas like Media, Technology, and
                 Entrepreneurship, promoting personal development and practical
                 learning.
+              </p>
+            </div>
+            <div className="px-8 pt-6 ">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Purpose of Hubs
+                </h2>
+              <p className="text-gray-600 leading-relaxed">
+              The primary purpose of Hubs in Joinlio is to help students discover and pursue their interests and dreams alongside like-minded peers. This approach not only fosters a community of shared interests but also supports personal and professional growth through collaboration. Students can inspire and motivate each other, gaining access to additional tools, support, and services provided by Joinlio to enhance their hub activities.
               </p>
             </div>
 

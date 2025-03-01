@@ -4,7 +4,7 @@ import block from "../../assets/images/blockimg.png"
 const RandomQuote = () => {
   return (
     <div className="px-6 lg:px-20 gap-[10px] py-12 my-5 ">
-      <div className='border-gray-700 border-opacity-15 bg-[#EEEEEE]/40 backdrop-blur-xl rounded-2xl p-6 md:p-12'>
+      <div className='border-gray-700 border-opacity-15 bg-[#7ec8ff]/40 backdrop-blur-xl rounded-2xl p-6 md:p-12'>
 
       <div className="flex items-center justify-evenly w-full flex-wrap-reverse md:flex-nowrap mx-auto p-4 bg-white rounded-3xl shadow-md border border-gray-200">
         {/* Text Section */}

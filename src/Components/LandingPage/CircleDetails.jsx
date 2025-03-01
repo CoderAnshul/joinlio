@@ -314,11 +314,11 @@ const CircleDetails = ({
             alt="bgring"
           />
           <div className="gradient-circle-background"></div>  
-          <div className="h-full max-sm:mt-14 min-w-[150px] w-full p-2 flex-wrap relative z-20 gap-6 rounded-full bg-transparent flex justify-center items-center">
+          <div className="h-full max-sm:mt-2 min-w-[150px] w-full p-2 flex-wrap relative z-20 gap-2 mt-10 rounded-full bg-transparent flex justify-center items-center">
             {boxTexts.map((text, index) => (
               <div
                 key={index}
-                className="h-[200px] flex-1 min-w-[170px] max-w-[400px] w-full mb-2 overflow-hidden p-3 border border-gray-700 border-opacity-55 bg-[#EEEEEE]/40 backdrop-blur-xl rounded-2xl text-black flex items-center justify-center text-sm font-semibold text-center"
+                className="h-[80px] flex-1 min-w-[170px] max-w-[400px] w-full mb-2 overflow-hidden p-3 border border-gray-700 border-opacity-55 bg-[#EEEEEE]/40 backdrop-blur-xl rounded-2xl text-black flex items-center justify-center text-sm font-semibold text-center"
               >
                 <div className="w-full h-full bg-white rounded-lg text-lg flex items-center justify-center">
                   {text}

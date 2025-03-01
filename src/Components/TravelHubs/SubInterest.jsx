@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
 
-const SubInterest = ({ category = "travel" }) => {
+const SubInterest = ({ category = "travel" ,className = "" }) => {
   const travelCategories = [
     {
       title: "Road Trips",
@@ -553,23 +553,23 @@ const SubInterest = ({ category = "travel" }) => {
   };
 
   return (
-    <div className="min-h-screen relative px-8 py-14">
+    <div className="min-h-screen relative px-3 md:px-8 pt-20">
       <div className="container mx-auto">
         <div className="w-full flex justify-between gap-4 mb-6 flex-wrap">
           <div className="w-auto max-w-xl">
-            <h3 className="text-3xl font-semibold text-gray-800">
-              {category.charAt(0).toUpperCase() + category.slice(1)} Hubs
+            <h3 className={`text-3xl font-semibold text-gray-800 ${className}`}>
+              {category.charAt(0).toUpperCase() + category.slice(1)} Sub Hubs
             </h3>
           </div>
           <div className="flex gap-4">
             <input
               type="text"
               placeholder={`Search ${category} hubs`}
-              className="p-2 border rounded"
+              className="p-2 border rounded-full"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <button
-              className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+              className="p-2 md:px-6 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
               onClick={() => setModalOpen(true)}
             >
               Create Hub
@@ -577,39 +577,44 @@ const SubInterest = ({ category = "travel" }) => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
-          {categoryGroups.map((group, index) => (
-            <div key={index} className="flex flex-wrap gap-6 justify-center">
-              {group.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex min-w-[250px]  cursor-pointer max-sm:max-w-full max-w-fit h-fit flex-1 bg-white rounded-xl p-6 items-center space-x-4 shadow-lg 
-                    transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-transparent 
-                    hover:bg-gradient-to-r hover:from-indigo-300 hover:to-pink-300 group"
-                >
-                  <div className="flex-shrink-0">
-                    <div
-                      className={`w-16 h-16 ${item.bgColor} rounded-full flex items-center justify-center 
-                      transition-all duration-300 group-hover:scale-110`}
-                    >
-                      <span className="text-2xl group-hover:rotate-12 transition-all duration-300">
-                        {item.icon}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h2 className="text-xl font-bold text-gray-900 group-hover:text-white transition-all duration-300">
-                      {item.title}
-                    </h2>
-                    <p className="mt-1 text-gray-600 text-sm group-hover:text-white transition-all duration-300">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+        <div className="relative">
+  <div className="flex flex-col gap-6 max-h-[500px] md:max-h-fit overflow-y-scroll md:overflow-hidden">
+    {categoryGroups.map((group, index) => (
+      <div key={index} className="flex flex-wrap gap-6 justify-center ">
+        {group.map((item, idx) => (
+          <div
+            key={idx}
+            className="flex min-w-[250px] cursor-pointer max-sm:max-w-full max-w-fit h-fit flex-1 bg-white rounded-xl md:rounded-full p-6 items-center space-x-4 shadow-lg
+               transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-transparent
+               hover:bg-gradient-to-r hover:from-indigo-300 hover:to-pink-300 group"
+          >
+            <div className="flex-shrink-0">
+              <div
+                className={`w-16 h-16 ${item.bgColor} rounded-full flex items-center justify-center
+                 transition-all duration-300 group-hover:scale-110`}
+              >
+                <span className="text-2xl group-hover:rotate-12 transition-all duration-300">
+                  {item.icon}
+                </span>
+              </div>
             </div>
-          ))}
-        </div>
+            <div className="flex-1">
+              <h2 className="text-xl font-bold text-gray-900 group-hover:text-white transition-all duration-300">
+                {item.title}
+              </h2>
+              <p className="mt-1 text-gray-600 text-sm group-hover:text-white transition-all duration-300">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+  
+  {/* Fog effect overlay */}
+  <div className="absolute md:hidden bottom-0 left-0 right-0 h-20 rounded-br-lg rounded-bl-lg bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+</div>
       </div>
 
       {modalOpen && (

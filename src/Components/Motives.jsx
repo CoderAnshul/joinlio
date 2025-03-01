@@ -2,7 +2,7 @@ import React from "react";
 
 const Motives = ({ cards }) => {
   return (
-    <div className="px-6 lg:px-20 py-12 my-5 mx-auto min-h-44 flex justify-center">
+    <div className="px-0 lg:px-20 py-12 my-5 mx-auto min-h-44 flex justify-center">
       <div
         className={`grid gap-6 p-4 border-2 w-full max-w-[1200px] border-gray-700 border-opacity-15 bg-[#EEEEEE]/40 backdrop-blur-xl rounded-2xl`}
         style={{

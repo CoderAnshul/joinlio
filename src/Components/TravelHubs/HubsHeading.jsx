@@ -1,11 +1,11 @@
 import React from "react";
 import VideoContainer from "../VideoContainer";
 
-const HubsHeading = ({ hubData }) => {
+const HubsHeading = ({ hubData, className = "" }) => {
   // Static hub descriptions
   const hubDescriptions = {
     "Travel Hub":
-      "The Travel Hub that operates through JOINLIO serves as the perfect platform for all matters concerning travel and outdoor recreation. The platform exists for those who love adventure and travel because it provides information on solo backpacking alongside resources for road trips and group hiking along with camping guidelines. Whoever plans travel or seeks cost-saving travel advice will discover all necessary resources and collaborative support through this one hub.",
+      " serves as the perfect platform for all matters concerning travel and outdoor recreation. The platform exists for those who love adventure and travel because it provides information on solo backpacking alongside resources for road trips and group hiking along with camping guidelines. Whoever plans travel or seeks cost-saving travel advice will discover all necessary resources and collaborative support through this one hub.",
     "Media Hub":
       "The Media Hub on JOINLIO is your creative sanctuary for content creation and sharing. Here, you'll find resources for photography, videography, and digital storytelling. Connect with fellow creators, learn new techniques, and showcase your work. Whether you're a beginner or a seasoned content creator, this hub provides tools and community support to help you grow your media skills.",
     "Entrepreneurship Hub":
@@ -22,14 +22,13 @@ const HubsHeading = ({ hubData }) => {
     <div>
       <div className="relative z-[100]">
         <div className="flex relative z-[50] flex-col items-center justify-start pt-16 min-h-[calc(60vh-80px)] md:min-h-[calc(20vh-80px)] text-center px-4">
-          <h1 className="text-6xl relative z-[50] max-sm:text-3xl md:text-4xl lg:text-5xl xl:text-8xl font-montserrat uppercase font- text-customBlue ">
+          <h1 className={`text-6xl relative z-[50] max-sm:text-3xl md:text-4xl lg:text-5xl xl:text-8xl font-montserrat uppercase font- text-customBlue ${className}`}>
             {hubData?.name || "Travel Hub"}
           </h1>
-          <p className="pb-2 h-fit mb-3 text-sm lg:text-lg max-w-5xl">
+          <p className={`pb-2 h-fit text-sm lg:text-lg max-w-5xl mb-10 ${className}`}>
             {hubData ? (
               <>
-                <br />
-                <br />
+                {hubData.heading}
                 {hubData.subDescription}
               </>
             ) : (

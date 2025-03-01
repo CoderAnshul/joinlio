@@ -4,6 +4,8 @@ import illustration from "../../assets/images/confused.png";
 import struggle from "../../assets/images/struggle.png";
 import worried from "../../assets/images/worried.png";
 import relation from "../../assets/images/relation.png";
+import idea from "../../assets/images/idea.jpg";
+import job from "../../assets/images/job.jpg";
 
 const contentData = [
   {
@@ -37,6 +39,22 @@ const contentData = [
     changeHeading: "Finding It Hard to Build ",
     changeHeadingTwo: "Valuable Relationships?",
     image: relation,
+  },
+  {
+    id: 5,
+    heading: "Only 8% achieve their dreams. Are you part of it?",
+    subtext: "JOINLIO serves as a dynamic ecosystem that offers a comprehensive range of hubs, valuable resources, and experienced mentors, all dedicated to empowering individuals and teams in transforming their innovative ideas into tangible and successful realities.",
+    changeHeading: "Lacking Tools to Bring ",
+    changeHeadingTwo: "Ideas to Life?",
+    image: idea,
+  },
+  {
+    id: 5,
+    heading: "Only 8% achieve their dreams. Are you part of it?",
+    subtext: "JOINLIO enables you to present your expertise, accomplishments, and professional journey in a structured and compelling manner through a dedicated Peer Account, allowing you to highlight your skills and achievements to a broader audience.",
+    changeHeading: "Struggling to Land ",
+    changeHeadingTwo: "Your First Job?",
+    image: job,
   },
 ];
 

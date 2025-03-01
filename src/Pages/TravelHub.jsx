@@ -9,7 +9,7 @@ import HubVideo from '../Components/TravelHubs/HubVideos';
 
 const TravelHub = () => {
   const location = useLocation();
-  const hubData = location.state?.hubData || null; // Ensure hubData is not undefined
+  const hubData = location.state?.hubData || null;
 
   useEffect(() => {
     if (hubData) {
@@ -43,25 +43,47 @@ const TravelHub = () => {
     entrepreneur: 'bg-gradient-to-b from-[#3145AB] to-[#BD20AB]',
   };
 
+  // Only add text-white class if the category is entrepreneur
+  const textColorClass = category === 'entrepreneur' ? 'text-white' : '';
+
   return (
     <div className={`${categoryGradients[category] || 'bg-white'} min-h-screen`}>
-      <div className='px-[5vw]'>
-        <HubsHeading hubData={hubData} />
-        <CreateSection category={category} />
+      <div className="px-[5vw]">
+        <HubsHeading 
+          hubData={hubData} 
+          className={textColorClass}
+        />
+        <CreateSection 
+          category={category} 
+          className={textColorClass}
+        />
       </div>
 
-      <div className='px-[5vw]'>
-        {/* Pass category to HubVideo so it can load the correct video */}
-        <HubVideo category={category} />
+      <div className="px-[5vw]">
+        <HubVideo 
+          category={category} 
+          className={textColorClass}
+        />
       </div>
 
-      {category && <SubInterest category={category} />}
+      {category && 
+        <SubInterest 
+          category={category} 
+          className={textColorClass}
+        />
+      }
+      
       <DevideSectionText 
         title1="WHAT WE" 
         title2="PROVIDE?" 
         description=" "
+        className={category === 'entrepreneur' ? 'text-white' : ''}
       />
-      <HubInfo category={category} />
+      
+      <HubInfo 
+        category={category} 
+        className={textColorClass}
+      />
     </div>
   );
 };

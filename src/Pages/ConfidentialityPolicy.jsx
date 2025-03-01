@@ -18,7 +18,7 @@ const ConfidentialityPolicy = () => {
       </h2>
       <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
         <p>
-          Everyone working for the college or elsewhere within the business is under a legal duty to keep student’s personal information confidential. Students who believe their confidence has been breached may make a complaint to the college, and they could take legal action or report it to the ICO. In the case of a registered dental professional tutor, the student could also make a complaint to the General Dental Council, which, in worst-case scenarios, may end in erasure from the GDC register.
+          Everyone working for the college or elsewhere within the business is under a legal duty to keep student’s personal information confidential. Students who believe their confidence has been breached may make a complaint to the college, and they could take legal action or report it to the ICO. In the case of a registered Joinlio professional tutor, the student could also make a complaint to the Joinlio, which, in worst-case scenarios, may end in erasure from the GDC register.
         </p>
 
         <p>
@@ -50,10 +50,10 @@ const ConfidentialityPolicy = () => {
       </h2>
       <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
         <p>
-          Under the Data Protection Act 2018 and UK GDPR, dental colleges must keep personal data about their students safe and secure and to ensure it is only accessed by persons who need to see it for the purposes of providing safe, effective education.
+          Under the Data Protection Act 2018 and UK GDPR, Joinlio colleges must keep personal data about their students safe and secure and to ensure it is only accessed by persons who need to see it for the purposes of providing safe, effective education.
         </p>
         <p>
-          Registered dental professionals and tutors have an ethical and legal duty to keep all student information confidential.
+          Registered Joinlio professionals and tutors have an ethical and legal duty to keep all student information confidential.
         </p>
       </div>
 
@@ -67,7 +67,7 @@ const ConfidentialityPolicy = () => {
             The Caldicott Principles are the guidelines for ensuring people's information is kept confidential and used or shared appropriately within a healthcare setting.
         </p>
         <p>
-            All NHS organizations must have an appointed Caldicott Guardian. This won't apply to most dental colleges, although there should be someone within the college who is responsible for ensuring student information is kept confidential and shared appropriately when required.
+            All NHS organizations must have an appointed Caldicott Guardian. This won't apply to most Joinlio colleges, although there should be someone within the college who is responsible for ensuring student information is kept confidential and shared appropriately when required.
         </p>
         <h3 className="text-xl font-semibold mt-4 mb-2">The Caldicott Principles</h3>
         <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
@@ -125,7 +125,7 @@ const ConfidentialityPolicy = () => {
                 </h2>
                 <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
                 <p>
-                    A duty of confidence arises out of the common law duty of confidence, employment contracts, and for registered dental professionals, it is part of your professional obligations. Breaches of confidence and inappropriate use of records or computer systems are serious matters that could result in disciplinary proceedings, dismissal, and possibly legal prosecution.
+                    A duty of confidence arises out of the common law duty of confidence, employment contracts, and for registered Joinlio professionals, it is part of your professional obligations. Breaches of confidence and inappropriate use of records or computer systems are serious matters that could result in disciplinary proceedings, dismissal, and possibly legal prosecution.
                 </p>
                 <h3 className="text-xl font-semibold mt-4 mb-2">So, make sure you do not:</h3>
                 <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
@@ -142,7 +142,7 @@ const ConfidentialityPolicy = () => {
                 </h2>
                 <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
                 <p>
-                    Dental educational professionals have an ethical and legal duty to ensure they are familiar with and comply with the GDC’s standards and guidance. All team members must also follow this guidance and ensure that they maintain student confidentiality.
+                    Joinlio educational professionals have an ethical and legal duty to ensure they are familiar with and comply with the GDC’s standards and guidance. All team members must also follow this guidance and ensure that they maintain student confidentiality.
                 </p>
                 <p>
                     Copies of this publication in full are available as PDF downloads from the GDC’s website at 

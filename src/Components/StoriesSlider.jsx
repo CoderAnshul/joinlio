@@ -27,9 +27,9 @@ const StoriesSlider = ({ isSecondInstance = false }) => {
 
   // Define different sets of videos based on instance
   const firstSetVideos = [
-    { id: 1, video: travelVideo, title: "Travel", thumbnail: travelThumbnail },
-    { id: 2, video: mediaVideo, title: "Media", thumbnail: mediaThumbnail },
-    { id: 3, video: entrepreneurVideo, title: "Entrepreneurship", thumbnail: entrepreneurThumbnail }
+    { id: 1, video: travelVideo, title: "Travel Story", thumbnail: travelThumbnail },
+    { id: 2, video: mediaVideo, title: "Media Story", thumbnail: mediaThumbnail },
+    { id: 3, video: entrepreneurVideo, title: "Entrepreneurship Story", thumbnail: entrepreneurThumbnail }
   ];
 
   const secondSetVideos = [

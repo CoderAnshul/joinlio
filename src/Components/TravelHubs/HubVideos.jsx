@@ -11,7 +11,7 @@ import pauseIcon from "../../assets/images/pause.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HubVideo = ({ category }) => {
+const HubVideo = ({ category ,className = "" }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -76,7 +76,7 @@ const HubVideo = ({ category }) => {
   return (
     <div className="w-full space-y-4">
       <div className="w-auto max-w-xl">
-        <h3 className="text-3xl relative font-semibold text-customBlue mb-8">
+        <h3 className={`text-3xl relative font-semibold text-customBlue mb-8 ${className}`}>
           User's Journey
         </h3>
       </div>

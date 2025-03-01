@@ -3,7 +3,7 @@ import FeaturesGrid from './FeatureGrid'
 
 const WhyChooseUs = () => {
   return (
-    <div className='px-6 lg:px-20 gap-[10px] py-12 my-5 mt-14'>
+    <div className='md:px-6 lg:px-20 gap-[10px] py-12 my-5 mt-14'>
         <div className="flex items-start relative mb-8">
                 {/* <div className="flex items-start relative mb-14"> */}
                     <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
