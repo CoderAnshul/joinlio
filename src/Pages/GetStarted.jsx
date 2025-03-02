@@ -187,7 +187,7 @@ const GetStarted = () => {
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Institution Name*
+                Institution Name<span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
@@ -200,12 +200,12 @@ const GetStarted = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Institutional Email*
+                Mail Id<span className="text-red-600">*</span>
               </label>
               <input
                 type="email"
                 className="w-full p-3 border border-gray-300 rounded-lg"
-                placeholder="admin@institution.edu"
+                placeholder="enter your mail ID"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -290,7 +290,7 @@ const GetStarted = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                User Category*
+                User Category<span className="text-red-600">*</span>
               </label>
               <div
                 className="relative"
