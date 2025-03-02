@@ -28,7 +28,7 @@ const HubsHeading = ({ hubData, className = "" }) => {
           <p className={`pb-2 h-fit text-sm lg:text-lg max-w-5xl mb-10 ${className}`}>
             {hubData ? (
               <>
-                {hubData.heading}
+                <h3 className="mt-4 mb-2 text-xl italic">{hubData.heading}</h3>
                 {hubData.subDescription}
               </>
             ) : (
