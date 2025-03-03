@@ -381,7 +381,7 @@ const CircleDetails = ({
             </button>
 
             <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-6 ">
-              🚀 How It Works - {screenIndex === 1 ? "Student" : "Business"}{" "}
+              🚀 How It Works - {screenIndex === 1 ? "Joinlio Peer" : " Joinlio Business"}{" "}
               Account
             </h2>
 
