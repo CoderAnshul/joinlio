@@ -14,10 +14,6 @@ const RevealText = () => {
       smooth: true,
     });
 
-    const onScroll = (e) => {
-      lenis.raf(e);
-    };
-
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -25,14 +21,25 @@ const RevealText = () => {
 
     requestAnimationFrame(raf);
 
-    // Initialize SplitType and animations
+    // Initialize SplitType and animations with word preservation
     const splitTypes = containerRef.current.querySelectorAll(".reveal-type");
 
     splitTypes.forEach((element) => {
       const bgColor = element.dataset.bgColor;
       const fgColor = element.dataset.fgColor;
 
-      const text = new SplitType(element, { types: "chars" });
+      // Use words and chars to maintain word integrity
+      const text = new SplitType(element, { 
+        types: "words,chars",
+        wordClass: "word-wrap",
+        charClass: "char-wrap"
+      });
+
+      // Force words to stay together
+      text.words.forEach(word => {
+        word.style.display = "inline-block";
+        word.style.whiteSpace = "nowrap";
+      });
 
       gsap.fromTo(
         text.chars,
@@ -61,21 +68,22 @@ const RevealText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="flex py-12 items-center min-h-[600px] ">
-      <section>
+    <div ref={containerRef} className="flex py-12 items-center min-h-screen">
+      <section className="w-full mx-auto px-4">
         <p
-          className="reveal-type @container @8xl:bg-blue-500 text-3xl leading-[12vw] xs:text-4xl xs:leading-[9vw] sm:text-5xl sm:leading-[8vw] md:text-5xl md:leading-[8vw] lg:text-6xl"
+          className="reveal-type text-3xl lg:text-6xl font-normal"
+          style={{ 
+            lineHeight: 1.4,
+            wordSpacing: "0.1em",
+            wordBreak: "keep-all",
+            hyphens: "none"
+          }}
           data-bg-color="rgb(191 191 191)"
           data-fg-color="black"
         >
-          The game-changing platform where students and alumni unlock global
-          connections, businesses redefine engagement, and universities elevate
-          student development like never before. Discover a world of
-          collaboration, innovation, and boundless opportunities
+          The game-changing platform where students and alumni unlock global connections, businesses redefine engagement, and universities elevate student development like never before! Discover a world of collaboration, innovation, and boundless opportunities!
         </p>
       </section>
-
-      <section></section>
     </div>
   );
 };

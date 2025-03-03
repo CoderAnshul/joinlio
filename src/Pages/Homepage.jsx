@@ -149,7 +149,7 @@ const Homepage = () => {
       </div>
       <div id="section-data" >
 
-      <DevideSectionText title1 ="STUDENT &" title2 ="ALUMNI" description="Student life is not just a phase – it’s the foundation of your future. The habits you build, the connections you make, and the skills you develop today will define the opportunities you have tomorrow." highlight=" Make it count with JOINLIO."/>
+      <DevideSectionText title1 ="STUDENT &" title2 ="ALUMNI" description="Student life is not just a phase – it’s the foundation of your future. The habits you build, the connections you make, and the skills you develop today will define the opportunities you have tomorrow." highlight=" Make it count with JOINLIO!"/>
       </div>
       <div className='md:px-[5vw] relative overflow-hidden'>
         <ScrollingOrGrowing/>
@@ -177,8 +177,7 @@ const Homepage = () => {
 
       <DevideSectionText  title1 ="BUSINESSES" title2 =" " description="JOINLIO connects your business directly with the student community, allowing you to
       offer exclusive discounts, boost sales, and gather real-time feedback all on one seamless
-      platform. No upfront costs pay only when you start generating sales.
-      "/>
+      platform." highlight="No upfront costs pay only when you start generating sales!"/>
       </div>
 
       <div className='px-[5vw]'>

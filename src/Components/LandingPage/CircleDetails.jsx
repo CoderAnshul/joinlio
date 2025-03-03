@@ -442,7 +442,7 @@ const CircleDetails = ({
 
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 {screenIndex === 1
-                  ? "What is a Peer Account?"
+                  ? "What is Joinlio Peer Account?"
                   : "What is a Business Account in JOINLIO?"}
               </h2>
 
@@ -485,7 +485,6 @@ const CircleDetails = ({
                     <div className="mb-8">
                       <video
                         className="w-full rounded-xl shadow-lg"
-                        controls
                         autoPlay
                         muted
                       >
