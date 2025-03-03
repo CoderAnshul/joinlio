@@ -32,12 +32,12 @@ const menuItems = [
 
 const mobileLinks = [
   { to: "/", text: "HOME" },
-  { to: "/#peer-account", text: "PEER ACCOUNT", isScroll: true },
-  { to: "/#predefined-hubs", text: "PREDEFINED HUBS", isScroll: true },
+  { link: '/#peer-account', text: "PEER ACCOUNT", isScroll: true },
+  { link: '/#predefined-hubs', text: "PREDEFINED HUBS", isScroll: true },
   { to: "/resources", text: "RESOURCES" },
-  { to: "/#section-data", text: "STUDENT/ALUMNI", isScroll: true  },
-  { to: "/business", text: "BUSINESS" },
-  { to: "/universities", text: "UNIVERSITIES" },
+  { link: '/#section-data', text: "STUDENT/ALUMNI", isScroll: true  },
+  { link: '/#business-data', text: "BUSINESS" },
+  { link: '/#universites-data', text: "UNIVERSITIES" },
   { to: "/blog", text: "FOR BLOGS" }
 ];
 
@@ -311,8 +311,8 @@ const Navbar = () => {
               className="text-white"
               ref={(el) => (linksRef.current[mobileLinks.length] = el)}
             >
-              <span className="block text-gray-400 text-sm mb-1">Call us</span>
-              <span className="text-lg">+00 81 590 088</span>
+              <span className="block text-gray-400 text-sm mb-1">Drop your query</span>
+              <span className="text-lg">contact@joinlio.com</span>
             </div>
 
             <Link
