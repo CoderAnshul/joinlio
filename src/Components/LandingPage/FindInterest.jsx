@@ -41,7 +41,7 @@ const FindInterest = () => {
       name: "Travel Hub",
       description:
         "Explore stunning destinations and unique travel experiences.",
-        heading:"#00abff Joinlio",
+        heading:"Explore the World with the Travel Hub on Joinlio",
       subDescription:
         "Designed specifically for those who love to travel, the Travel Hub offers a dynamic community where students can dive into everything related to travel. Whether you're planning a solo adventure, organizing a group trip, or just looking to share experiences, this hub connects you with like-minded adventurers. Create or join sub-hubs to meet peers with similar interests, access exclusive travel planning tools, and collaborate on travel-related projects. Get inspired, find practical support, and start your journey with us today!",
       gif: travelgif,
