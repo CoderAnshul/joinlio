@@ -37,7 +37,7 @@ const UniversitiesFeat = () => {
               key={index}
               className="flex flex-col items-center lg:h-fit lg:min-h-[240px] xl:min-h-[200px] justify-start p-4 gap-4 bg-[#FFFFFF]/80 backdrop-blur-lg shadow-sm border-l-2 border-t-2 hover:shadow-md transition-all border-gray-200 rounded-2xl"
             >
-              <div className="w-full text-lg font-black text-white bg-[#00ABFF] px-2 py-3 h-16 flex justify-center items-center rounded-xl">
+              <div className="w-full text-lg font-black text-center text-white bg-[#00ABFF] px-2 py-3 h-16 flex justify-center items-center rounded-xl">
                 {feature.title}
               </div>
               <p className="mt-4  text-start text-customBlue leading-8 text-xl sm:text-xl lg:text-lg font-bold">

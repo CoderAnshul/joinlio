@@ -12,7 +12,7 @@ const Motives = ({ cards }) => {
         {cards.map((card, index) => (
           <div
             key={index}
-            className="flex flex-col min-h-44 lg:min-h-40 relative justify-end overflow-hidden items-start bg-white rounded-3xl shadow-md p-4"
+            className="flex flex-col min-h-fit pt-10 md:pt-8 xs:min-h-24 lg:min-h-40 relative justify-end overflow-hidden items-start bg-white rounded-3xl shadow-md p-4"
           >
             {/* Card header */}
             <div

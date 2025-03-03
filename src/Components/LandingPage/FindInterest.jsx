@@ -31,6 +31,7 @@ const HubCard = memo(({ hub }) => (
 
 const FindInterest = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showPoints, setShowPoints] = useState(false);
   const modalRef = useRef(null);
 
   const scrollRef = useRef(null);
@@ -301,13 +302,21 @@ const FindInterest = () => {
                   How Hubs Work
                 </h2>
               </div>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                aria-label="Close modal"
-              >
-                <X className="w-6 h-6 text-gray-500" />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setShowPoints(!showPoints)}
+                  className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                >
+                  Working
+                </button>
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                  aria-label="Close modal"
+                >
+                  <X className="w-6 h-6 text-gray-500" />
+                </button>
+              </div>
             </div>
             
             <div className="px-8 pt-6">
@@ -324,30 +333,32 @@ const FindInterest = () => {
               </p>
             </div>
             <div className="px-8 pt-6 ">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Purpose of Hubs
-                </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Purpose of Hubs
+              </h2>
               <p className="text-gray-600 leading-relaxed">
-              The primary purpose of Hubs in Joinlio is to help students discover and pursue their interests and dreams alongside like-minded peers. This approach not only fosters a community of shared interests but also supports personal and professional growth through collaboration. Students can inspire and motivate each other, gaining access to additional tools, support, and services provided by Joinlio to enhance their hub activities.
+                The primary purpose of Hubs in Joinlio is to help students discover and pursue their interests and dreams alongside like-minded peers. This approach not only fosters a community of shared interests but also supports personal and professional growth through collaboration. Students can inspire and motivate each other, gaining access to additional tools, support, and services provided by Joinlio to enhance their hub activities.
               </p>
             </div>
 
-            <div className="px-6 pb-6 space-y-6 mt-6">
-              {modalSections.map((section, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 hover:bg-gray-50 p-4 rounded-lg transition-all duration-200"
-                >
-                  <span className="text-2xl">{section.icon}</span>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">
-                      {section.title}
-                    </h3>
-                    <p className="text-gray-600 mt-1">{section.description}</p>
+            {showPoints && (
+              <div className="px-6 pb-6 space-y-6 mt-6">
+                {modalSections.map((section, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-4 hover:bg-gray-50 p-4 rounded-lg transition-all duration-200"
+                  >
+                    <span className="text-2xl">{section.icon}</span>
+                    <div>
+                      <h3 className="font-semibold text-gray-900">
+                        {section.title}
+                      </h3>
+                      <p className="text-gray-600 mt-1">{section.description}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
 
             <div className="px-8 py-6 border-t flex justify-end gap-4">
               <button
