@@ -68,10 +68,10 @@ const RevealText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="flex py-12 items-center min-h-screen">
+    <div ref={containerRef} className="flex py-12 items-center min-h-fit">
       <section className="w-full mx-auto px-4">
         <p
-          className="reveal-type text-3xl lg:text-6xl font-normal"
+          className="reveal-type text-3xl sm:text-4xl lg:text-6xl font-normal"
           style={{ 
             lineHeight: 1.4,
             wordSpacing: "0.1em",
