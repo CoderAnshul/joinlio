@@ -148,15 +148,36 @@ const FindInterest = () => {
   useEffect(() => {
     const handleWheel = (event) => {
       if (scrollRef.current) {
-        scrollRef.current.scrollTop += event.deltaY;
-        event.preventDefault();
+        // Don't prevent default scrolling behavior completely
+        // Just adjust the scrollTop of your container
+        scrollRef.current.scrollBy({
+          top: event.deltaY,
+          behavior: 'smooth'
+        });
+        
+        // Only prevent default if we're at the boundaries to avoid page scrolling
+        // when the container is fully scrolled
+        const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
+        if (
+          (scrollTop === 0 && event.deltaY < 0) || 
+          (scrollTop + clientHeight >= scrollHeight && event.deltaY > 0)
+        ) {
+          event.preventDefault();
+        }
       }
     };
+    
     const element = scrollRef.current;
     if (element) {
-      element.addEventListener("wheel", handleWheel);
+      // Use passive: false to allow preventDefault() when needed
+      element.addEventListener("wheel", handleWheel, { passive: false });
     }
-    return () => element?.removeEventListener("wheel", handleWheel);
+    
+    return () => {
+      if (element) {
+        element.removeEventListener("wheel", handleWheel);
+      }
+    };
   }, []);
 
   return (
