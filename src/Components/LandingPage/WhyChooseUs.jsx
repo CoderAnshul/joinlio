@@ -7,8 +7,8 @@ const WhyChooseUs = () => {
         <div className="flex items-start relative mb-8">
                 {/* <div className="flex items-start relative mb-14"> */}
                     <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
-                    But why Choose — <br />
-                    <span className="text-textColor">JOINLIO</span>
+                    But why Choose <br />
+                    <span className="text-textColor">JOINLIO?</span>
                     </h1>
                 </div>
         
