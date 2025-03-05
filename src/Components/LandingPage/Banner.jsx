@@ -47,7 +47,7 @@ const Banner = () => {
 
         <h1 className="text-4xl relative z-[50] md:text-45xl lg:text-5xl xl:text-7xl font-archivo font-bold text-customBlue mb-6">
           Step into the <br /> future with{" "}
-          <span className="relative z-[50] text-textColor">JOINLIO</span>
+          <span className="relative z-[50] text-textColor">JOINLIO!</span>
         </h1>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 font-archivo font-bold text-2xl md:text-3xl mb-8">
