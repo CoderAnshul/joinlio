@@ -559,6 +559,20 @@ const CircleDetails = ({
                           </div>
                         </div>
                       </div>
+                      <div className="px-8 pt-3 ">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Key Features of the Peer Account
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+              With the Peer Account, you will monitor development while completing meaningful work to establish yourself as a top professional. <br />
+              The Peer Account functions beyond academic functions because it serves as a platform to showcase your talents and accomplishments. <br />
+              As a platform that combines documentation with networking and secure
+
+communication, the system allows users to demonstrate their abilities to
+
+global employers and collaborative prospects.
+              </p>
+            </div>
                     </>
                   )}
                 </>

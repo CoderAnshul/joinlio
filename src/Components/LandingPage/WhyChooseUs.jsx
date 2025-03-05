@@ -13,7 +13,7 @@ const WhyChooseUs = () => {
                 </div>
         
                 {/* Subtext */}
-                <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl">
+                <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl italic font-bold">
                 {/* <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl"> */}
                 Choose JOINLIO for seamless student engagement, verified profiles, and powerful tools that drive growth and collaboration.
                 </p>

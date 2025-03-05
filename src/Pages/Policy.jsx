@@ -16,7 +16,7 @@ const Policy = () => {
         document to precisely reflect your circumstances. This is strongly
         recommended:
       </p>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         <li>
           To use the GDPR Risk assessment link to assess the suitability of
           your Policy and carry out a Data Protection Impact Assessment (DPIA)
@@ -25,7 +25,7 @@ const Policy = () => {
       </ul>
       <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Interpretation</h2>
       <h3 className="text-xl font-semibold mt-8 mb-2">Definitions:</h3>
-      <div className="space-y-4">
+      <div className="space-y-4 pb-10">
         {[
           { term: "Automated Decision-Making (ADM)", desc: "when a decision is made based solely on Automated Processing (including profiling), which produces legal effects or significantly affects an individual. The UK GDPR prohibits Automated Decision-Making (unless certain conditions are met) but not Automated Processing." },
           { term: "Automated Processing", desc: "any form of automated processing of Personal Data consisting of the use of Personal Data to evaluate certain personal aspects relating to an individual, in particular, to analyze or predict aspects concerning that individual's performance at work, economic situation, health, personal preferences, interests, reliability, behavior, location, or movements. Profiling is an example of automated processing, as are many uses of artificial intelligence (AI), which involves the processing of personal data." },
@@ -66,7 +66,7 @@ const Policy = () => {
 
       {/* DPO Contact Reasons */}
       <h3 className="text-xl font-semibold mt-8 mb-2">When to Contact the DPO:</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {dpoContactReasons.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
@@ -74,7 +74,7 @@ const Policy = () => {
 
       {/* Definitions Section */}
       <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Definitions</h2>
-      <div className="space-y-4">
+      <div className="space-y-4 pb-10">
         {definitions.map(({ term, desc }, index) => (
           <p key={index} className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500">
             <strong className="text-blue-600">{term}:</strong> {desc}
@@ -82,8 +82,8 @@ const Policy = () => {
         ))}
       </div>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Data Protection Principles </h2>
-      <div className="space-y-4">
+      <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2 mb-">Data Protection Principles </h2>
+      <div className="space-y-4 pb-10">
         {dataProtectionPrinciples.map(({ term, desc }, index) => (
           <p key={index} className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500">
             <strong className="text-blue-600">{term}:</strong> {desc}
@@ -92,7 +92,7 @@ const Policy = () => {
       </div>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Lawful Processing Grounds</h2>
-      <div className="space-y-4">
+      <div className="space-y-4 pb-10">
         {lawfulProcessingGrounds.map(({ term, desc }, index) => (
           <p key={index} className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500">
             <strong className="text-blue-600">{term}:</strong> {desc}
@@ -101,7 +101,7 @@ const Policy = () => {
       </div>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Consent</h2>
-      <div className="space-y-4">
+      <div className="space-y-4 pb-10">
         {consentDetails.map(({ term, desc }, index) => (
           <p key={index} className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500">
             <strong className="text-blue-600">{term}:</strong> {desc}
@@ -110,7 +110,7 @@ const Policy = () => {
       </div>
 
       <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">Transparency Details</h2>
-      <div className="space-y-4">
+      <div className="space-y-4 pb-10">
         {transparencyDetails.map(({ term, desc }, index) => (
           <p key={index} className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500">
             <strong className="text-blue-600">{term}:</strong> {desc}
@@ -119,119 +119,119 @@ const Policy = () => {
       </div>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">When to Contact the DPO:</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {dataProtectionPolicy.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Purpose Limitation</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {purposeLimitation.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Data Minimization</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {dataMinimization.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Accuracy</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {accuracy.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Storage Limitation</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {storageLimitation.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Security Integrity Confidentiality</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {securityIntegrityConfidentiality.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Reporting Personal Data Breach</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {reportingPersonalDataBreach.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Transfer Limitation</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {transferLimitation.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Data Subject Rights Requests</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {dataSubjectRightsRequests.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Accountability</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {accountability.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Record Keeping</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {recordKeeping.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Training And Audit</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {trainingAndAudit.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Privacy By Design And DPIA</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {privacyByDesignAndDPIA.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Processing And ADM</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {processingAndADM.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Direct Marketing</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {directMarketing.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Sharing Personal Data</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {sharingPersonalData.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
       </ul>
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Caldicott Principles</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {caldicottPrinciples.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
@@ -282,7 +282,7 @@ const Policy = () => {
       ))}
 
       <h3 className="text-xl font-semibold mt-8 mb-2">Changes To Policy</h3>
-      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
+      <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg pb-8">
         {changesToPolicy.map((reason, index) => (
           <li key={index}>{reason}</li>
         ))}
