@@ -342,12 +342,20 @@ const FindInterest = () => {
               WebkitOverflowScrolling: "touch",
             }}
           >
-            <div className="sticky top-0 bg-white z-50 px-8 pt-8 pb-4 border-b flex items-center justify-between">
-              <div className="flex items-center gap-2">
+            <div className="sticky top-0 bg-white z-50 px-8 pt-8 pb-4 border-b flex items-center justify-between flex-wrap">
+              <div className="flex max-sm:w-full items-center gap-2">
                 <span className="text-rose-500">🔍</span>
                 <h2 className="text-2xl font-bold text-gray-900">
                   How Hubs Work
                 </h2>
+
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="p-2 max-sm:inline-block ml-auto hidden hover:bg-gray-100 rounded-full transition-colors"
+                  aria-label="Close modal"
+                >
+                  <X className="w-6 h-6 text-gray-500" />
+                </button>
               </div>
               <div className="flex items-center gap-2">
                 <button
@@ -358,7 +366,7 @@ const FindInterest = () => {
                 </button>
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                  className="p-2 max-sm:hidden hover:bg-gray-100 rounded-full transition-colors"
                   aria-label="Close modal"
                 >
                   <X className="w-6 h-6 text-gray-500" />
