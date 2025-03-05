@@ -4,7 +4,7 @@ import HubsHeading from '../Components/TravelHubs/HubsHeading';
 import SubInterest from '../Components/TravelHubs/SubInterest';
 import CreateSection from '../Components/TravelHubs/CreateSection';
 import HubInfo from '../Components/TravelHubs/HubInfo';
-import DevideSectionText from '../Components/DevideSectionText';
+import SectionHeading from '../Components/TravelHubs/SectionHeading';
 import HubVideo from '../Components/TravelHubs/HubVideos';
 
 const TravelHub = () => {
@@ -73,7 +73,7 @@ const TravelHub = () => {
         />
       }
       
-      <DevideSectionText 
+      <SectionHeading 
         title1="WHAT WE" 
         title2="PROVIDE?" 
         description=" "

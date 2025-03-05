@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { X } from "lucide-react";
+import { X ,PlusCircle } from "lucide-react";
 
 const SubInterest = ({ category = "travel" ,className = "" }) => {
   const travelCategories = [
@@ -578,43 +578,77 @@ const SubInterest = ({ category = "travel" ,className = "" }) => {
         </div>
 
         <div className="relative">
-  <div className="flex flex-col gap-6 max-h-[500px] md:max-h-fit overflow-y-scroll md:overflow-hidden">
-    {categoryGroups.map((group, index) => (
-      <div key={index} className="flex flex-wrap gap-6 justify-center ">
-        {group.map((item, idx) => (
-          <div
-            key={idx}
-            className="flex min-w-[250px] cursor-pointer max-sm:max-w-full max-w-fit h-fit flex-1 bg-white rounded-xl md:rounded-full p-6 items-center space-x-4 shadow-lg
-               transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-transparent
-               hover:bg-gradient-to-r hover:from-indigo-300 hover:to-pink-300 group"
-          >
-            <div className="flex-shrink-0">
-              <div
-                className={`w-16 h-16 ${item.bgColor} rounded-full flex items-center justify-center
-                 transition-all duration-300 group-hover:scale-110`}
-              >
-                <span className="text-2xl group-hover:rotate-12 transition-all duration-300">
-                  {item.icon}
-                </span>
+          {filteredCategories.length === 0 ? (
+            <div className="flex flex-col items-center justify-center p-12 bg-gray-50 rounded-xl">
+              <div className="text-center">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-24 w-24 mx-auto text-gray-400 mb-6" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+                  />
+                </svg>
+                <h2 className="text-3xl font-bold text-gray-800 mb-4">
+                  Hub Not Found!
+                </h2>
+                <p className="text-gray-600 mb-8">
+                  No hubs match your search in the {category} category.
+                </p>
+                <button
+                  onClick={() => setModalOpen(true)}
+                  className="flex items-center mx-auto px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors"
+                >
+                  <PlusCircle className="mr-2" />
+                  Create New Hub
+                </button>
               </div>
             </div>
-            <div className="flex-1">
-              <h2 className="text-xl font-bold text-gray-900 group-hover:text-white transition-all duration-300">
-                {item.title}
-              </h2>
-              <p className="mt-1 text-gray-600 text-sm group-hover:text-white transition-all duration-300">
-                {item.description}
-              </p>
+          ) : (
+            <div className="flex flex-col gap-6 max-h-[500px] md:max-h-fit overflow-y-scroll md:overflow-hidden">
+              {categoryGroups.map((group, index) => (
+                <div key={index} className="flex flex-wrap gap-6 justify-center ">
+                  {group.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="flex min-w-[250px] cursor-pointer max-sm:max-w-full max-w-fit h-fit flex-1 bg-white rounded-xl md:rounded-full p-6 items-center space-x-4 shadow-lg
+                        transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-transparent
+                        hover:bg-gradient-to-r hover:from-indigo-300 hover:to-pink-300 group"
+                    >
+                      <div className="flex-shrink-0">
+                        <div
+                          className={`w-16 h-16 ${item.bgColor} rounded-full flex items-center justify-center
+                          transition-all duration-300 group-hover:scale-110`}
+                        >
+                          <span className="text-2xl group-hover:rotate-12 transition-all duration-300">
+                            {item.icon}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h2 className="text-xl font-bold text-gray-900 group-hover:text-white transition-all duration-300">
+                          {item.title}
+                        </h2>
+                        <p className="mt-1 text-gray-600 text-sm group-hover:text-white transition-all duration-300">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
-          </div>
-        ))}
-      </div>
-    ))}
-  </div>
-  
-  {/* Fog effect overlay */}
-  <div className="absolute md:hidden bottom-0 left-0 right-0 h-20 rounded-br-lg rounded-bl-lg bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-</div>
+          )}
+          
+          {/* Fog effect overlay */}
+          <div className="absolute md:hidden bottom-0 left-0 right-0 h-20 rounded-br-lg rounded-bl-lg bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+        </div>
       </div>
 
       {modalOpen && (
