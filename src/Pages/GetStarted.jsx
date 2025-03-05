@@ -110,7 +110,7 @@ const GetStarted = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Institutional Email<span className="text-red-600">*</span>
+                  Mail Id<span className="text-red-600">*</span>
                 </label>
                 <input
                   type="email"
