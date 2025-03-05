@@ -313,7 +313,7 @@ const CircleDetails = ({
             src={rings}
             alt="bgring"
           />
-          <div className="gradient-circle-background"></div>  
+          <div className="gradient-circle-background"></div>
           <div className="h-full max-sm:mt-2 min-w-[150px] w-full p-2 flex-wrap relative z-20 gap-2 mt-10 rounded-full bg-transparent flex justify-center items-center">
             {boxTexts.map((text, index) => (
               <div
@@ -381,8 +381,8 @@ const CircleDetails = ({
             </button>
 
             <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-6 ">
-              🚀 How It Works - {screenIndex === 1 ? "Joinlio Peer" : " Joinlio Business"}{" "}
-              Account
+              🚀 How It Works -{" "}
+              {screenIndex === 1 ? "Joinlio Peer" : " Joinlio Business"} Account
             </h2>
 
             <div className="space-y-6">
@@ -442,7 +442,7 @@ const CircleDetails = ({
 
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 {screenIndex === 1
-                  ? "What is Joinlio Peer Account?"
+                  ? "What is a Joinlio peer account?"
                   : "What is a Business Account in JOINLIO?"}
               </h2>
 

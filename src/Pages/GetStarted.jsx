@@ -50,7 +50,9 @@ const GetStarted = () => {
       setEmail("");
       setQuery("");
 
-      alert("Thank you for signing up! We will contact you soon.");
+      alert(
+        "hank you for signing up! Once Joinlio goes live, you will be notified at your registered email address. Stay tuned!"
+      );
     } catch (error) {
       console.error("Error sending email:", error.message);
       alert("There was an error sending your registration. Please try again.");
@@ -259,24 +261,25 @@ const GetStarted = () => {
                   <li className="flex items-start gap-2">
                     <span className="font-medium min-w-6">1.</span>
                     <span>
-                      Students/Alumni: For those in universities, colleges, and
-                      institutions looking to connect, collaborate, and grow.
+                      <strong>Students/Alumni: </strong>For those in
+                      universities, colleges, and institutions looking to
+                      connect, collaborate, and grow.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="font-medium min-w-6">2.</span>
                     <span>
-                      Businesses with Student Discounts: Ideal for businesses
-                      offering discounts to students, enhancing visibility and
-                      customer base.
+                      <strong>Businesses with Student Discounts: </strong>Ideal
+                      for businesses offering discounts to students, enhancing
+                      visibility and customer base.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="font-medium min-w-6">3.</span>
                     <span>
-                      Educational Institutions: For universities and colleges
-                      interested in tools that boost student development and
-                      wish to partner with us.
+                      <strong>Educational Institutions: </strong>For
+                      universities and colleges interested in tools that boost
+                      student development and wish to partner with us.
                     </span>
                   </li>
                 </ul>
