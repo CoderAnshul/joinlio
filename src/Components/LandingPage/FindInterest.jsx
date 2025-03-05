@@ -244,7 +244,7 @@ const FindInterest = () => {
             </video> */}
             <img
               src={JImage}
-              className="w-[80%] mx-auto pt-10 max-sm:w-56 max-lg:w-60 rounded-xl max-sm:mx-auto"
+              className="w-[80%] mx-auto pt-10 max-sm:pt-0 max-sm:w-56 max-lg:w-60 rounded-xl max-sm:mx-auto"
             />
             <div className="absolute bottom-9 left-5 max-sm:left-5 max-sm:bottom-9 max-lg:left-60 max-lg:bottom-28 max-sm:inline-block">
               <h1 className="text-3xl lg:text-3xl font-bold leading-20">
