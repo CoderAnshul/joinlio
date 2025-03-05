@@ -189,7 +189,7 @@ const Homepage = () => {
         />
       </div>
 
-      <div className="px-[5vw]">
+      <div className="md:px-[5vw] relative overflow-hidden">
         <BussinessHead />
         <div id="business-account" className="h-fit relative">
           <CircleDetails {...businessData} screenIndex={2} />

@@ -314,7 +314,7 @@ const CircleDetails = ({
             alt="bgring"
           />
           <div className="gradient-circle-background"></div>
-          <div className="h-full max-sm:mt-2 min-w-[150px] w-full p-2 flex-wrap relative z-20 gap-2 mt-10 rounded-full bg-transparent flex justify-center items-center">
+          <div className="h-full max-sm:mt-20 min-w-[150px] w-full p-2 flex-wrap relative z-20 gap-2 mt-10 rounded-full bg-transparent flex justify-center items-center">
             {boxTexts.map((text, index) => (
               <div
                 key={index}
@@ -346,7 +346,7 @@ const CircleDetails = ({
               <button
                 ref={(el) => (buttonRefs.current[1] = el)}
                 onClick={() => handleButtonClick(1)}
-                className="bg-white uppercase mx-auto h-10 px-6 py-2 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
+                className="bg-white uppercase mx-auto h-10 px-6 max-sm:px-2 py-2 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
               >
                 How it Works
               </button>
