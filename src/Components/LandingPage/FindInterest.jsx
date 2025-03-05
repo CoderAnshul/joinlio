@@ -375,6 +375,9 @@ const FindInterest = () => {
             </div>
 
             <div className="px-8 pt-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                What is Joinlio Hubs?
+              </h2>
               <p className="text-gray-600 leading-relaxed">
                 In Joinlio, Hubs are central spaces designed to facilitate
                 collaboration among students with similar interests and goals.
@@ -389,7 +392,7 @@ const FindInterest = () => {
             </div>
             <div className="px-8 pt-6 ">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Purpose of Hubs
+                Purpose of Joinlio Hubs
               </h2>
               <p className="text-gray-600 leading-relaxed">
                 The primary purpose of Hubs in Joinlio is to help students
@@ -400,6 +403,38 @@ const FindInterest = () => {
                 each other, gaining access to additional tools, support, and
                 services provided by Joinlio to enhance their hub activities.
               </p>
+            </div>
+
+            <div className="px-8 pt-6 ">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                How it works?
+              </h2>
+              <ul className="text-gray-600 leading-relaxed">
+                <li>
+                  <strong>Early Sign-Up: </strong>Register early with your
+                  university name and personal email.
+                </li>
+                <li>
+                  <strong>Activation Notification: </strong>Receive an email to
+                  activate your account when Joinlio goes live.
+                </li>
+                <li>
+                  <strong>Profile Setup: </strong>Log in to complete your
+                  profile and create your Peer Account.
+                </li>
+                <li>
+                  <strong>Explore Hubs: </strong>Create or join hubs based on
+                  your interests.
+                </li>
+                <li>
+                  <strong>Engage and Share: </strong> ost content, engage in
+                  discussions, and utilize hub-specific tools.
+                </li>
+                <li>
+                  <strong>Collaborate: </strong>Participate in real-world
+                  projects to develop skills.
+                </li>
+              </ul>
             </div>
 
             {showPoints && (
