@@ -346,7 +346,7 @@ const FindInterest = () => {
               <div className="flex max-sm:w-full items-center gap-2">
                 <span className="text-rose-500">🔍</span>
                 <h2 className="text-2xl font-bold text-gray-900">
-                  How Hubs Work
+                  What are Joinlio Hubs?
                 </h2>
 
                 <button
@@ -375,9 +375,9 @@ const FindInterest = () => {
             </div>
 
             <div className="px-8 pt-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              {/* <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 What is Joinlio Hubs?
-              </h2>
+              </h2> */}
               <p className="text-gray-600 leading-relaxed">
                 In Joinlio, Hubs are central spaces designed to facilitate
                 collaboration among students with similar interests and goals.
