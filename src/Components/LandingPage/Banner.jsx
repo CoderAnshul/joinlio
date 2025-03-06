@@ -52,28 +52,28 @@ const Banner = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 font-archivo font-bold text-2xl md:text-3xl mb-8">
           <div className="group relative px-4 overflow-hidden max-sm:w-full">
-            <span className="relative z-10 bg-gradient-to-r from-[#2ca1fbdc] to-[#0c71ec] bg-clip-text text-transparent transform transition-transform duration-500 group-hover:scale-110 inline-block">
+            <span className="relative z-10 bg-gradient-to-r from-[#eb002d] to-[#ffa600] bg-clip-text text-transparent transform transition-transform duration-500 group-hover:scale-110 inline-block">
               Connect
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#2ca1fbdc]/20 to-[#0c71ec]/20  transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#eb002d]/20 to-[#ffa600]/20  transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
           </div>
 
-          <div className="hidden md:block  w-2 h-2 rounded-full bg-gradient-to-r from-[#2ca1fbdc] to-[#0c71ec]  animate-pulse"></div>
+          <div className="hidden md:block  w-2 h-2 rounded-full bg-gradient-to-r from-[#eb002d] to-[#ffa600]   animate-pulse"></div>
 
           <div className="group relative overflow-hidden  px-4 max-sm:w-full">
-            <span className="relative z-10 bg-gradient-to-r from-[#2ca1fbdc] to-[#0c71ec] bg-clip-text text-transparent bg-size-200 animate-gradient-x transform transition-transform duration-500 group-hover:scale-110 inline-block">
+            <span className="relative z-10 bg-gradient-to-r from-[#eb002d] to-[#ffa600]  bg-clip-text text-transparent bg-size-200 animate-gradient-x transform transition-transform duration-500 group-hover:scale-110 inline-block">
               Collaborate
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#2ca1fbdc]/20 to-[#0c71ec]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#eb002d]/20 to-[#ffa600]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
           </div>
 
-          <div className="hidden md:block w-2 h-2 rounded-full bg-gradient-to-r from-[#2ca1fbdc] to-[#0c71ec]  animate-pulse"></div>
+          <div className="hidden md:block w-2 h-2 rounded-full bg-gradient-to-r from-[#eb002d] to-[#ffa600]   animate-pulse"></div>
 
           <div className="group relative overflow-hidden  px-4 max-sm:w-full">
-            <span className="relative z-10 bg-gradient-to-r from-[#2ca1fbdc] to-[#0c71ec] bg-clip-text text-transparent transform transition-transform duration-500 group-hover:scale-110 inline-block">
+            <span className="relative z-10 bg-gradient-to-r from-[#eb002d] to-[#ffa600]  bg-clip-text text-transparent transform transition-transform duration-500 group-hover:scale-110 inline-block">
               Grow
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#2ca1fbdc]/20 to-[#0c71ec]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#eb002d]/20 to-[#ffa600]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
           </div>
         </div>
 
