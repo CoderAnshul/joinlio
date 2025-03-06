@@ -256,7 +256,7 @@ const CircleDetails = ({
           src={rings}
           alt="bgring"
         />
-        <div className="gradient-circle-background"></div>
+        <div className="gradient-circle-background "></div>
         <div className="gradient-circle-background outer"></div>
         <div className="h-[650px]  flex justify-center items-center w-[650px] relative z-20 rounded-full bg-transparent">
           {boxTexts.map((text, index) => {
@@ -309,7 +309,7 @@ const CircleDetails = ({
       <div className="block md:hidden">
         <div className="relative  flex flex-col items-center w-full">
           <img
-            className="w-full h-[300px] object-contain"
+            className="w-full h-[300px] object-contain max-sm:opacity-0"
             src={rings}
             alt="bgring"
           />

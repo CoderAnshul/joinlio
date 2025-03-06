@@ -113,7 +113,7 @@ const SendMessage = () => {
           to="/get-started" 
           className="inline-flex items-center text-blue-500 font-semibold group hover:text-blue-600 transition-colors duration-200"
         >
-          See a demo 
+          Sign up
           <svg 
             className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
             viewBox="0 0 24 24" 

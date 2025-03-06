@@ -39,7 +39,7 @@ const Banner = () => {
       <div className="flex relative z-[50] flex-col items-center pt-[54px] justify-center min-h-[calc(60vh-80px)] md:min-h-[calc(80vh-80px)] text-center px-4">
         <div className="text-sm flex items-end gap-1 font-medium text-black uppercase mb-4">
           FOR{" "}
-          <span className="text-xl gradient-text">
+          <span className="text-xl gradient-text ">
             {currentWord}
             <span className="animate-blink">|</span>
           </span>
@@ -51,29 +51,29 @@ const Banner = () => {
         </h1>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 font-archivo font-bold text-2xl md:text-3xl mb-8">
-          <div className="group relative overflow-hidden max-sm:w-full">
-            <span className="relative z-10 bg-gradient-to-r from-[#FB9B4F] to-[#fcc496] bg-clip-text text-transparent transform transition-transform duration-500 group-hover:scale-110 inline-block">
+          <div className="group relative px-4 overflow-hidden max-sm:w-full">
+            <span className="relative z-10 bg-gradient-to-r from-[#2ca1fbdc] to-[#0c71ec] bg-clip-text text-transparent transform transition-transform duration-500 group-hover:scale-110 inline-block">
               Connect
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#fcc496]/20 to-[#fcc496]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2ca1fbdc]/20 to-[#0c71ec]/20  transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
           </div>
 
-          <div className="hidden md:block w-2 h-2 rounded-full bg-gradient-to-r from-[#fcc496] to-[#fcc496] animate-pulse"></div>
+          <div className="hidden md:block  w-2 h-2 rounded-full bg-gradient-to-r from-[#2ca1fbdc] to-[#0c71ec]  animate-pulse"></div>
 
-          <div className="group relative overflow-hidden  max-sm:w-full">
-            <span className="relative z-10 bg-gradient-to-r from-[#FB9B4F] via-[#fcc496] to-[#fcc496] bg-clip-text text-transparent bg-size-200 animate-gradient-x transform transition-transform duration-500 group-hover:scale-110 inline-block">
+          <div className="group relative overflow-hidden  px-4 max-sm:w-full">
+            <span className="relative z-10 bg-gradient-to-r from-[#2ca1fbdc] to-[#0c71ec] bg-clip-text text-transparent bg-size-200 animate-gradient-x transform transition-transform duration-500 group-hover:scale-110 inline-block">
               Collaborate
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#fcc496]/20 to-[#fcc496]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2ca1fbdc]/20 to-[#0c71ec]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
           </div>
 
-          <div className="hidden md:block w-2 h-2 rounded-full bg-gradient-to-r from-[#fcc496] to-[#fcc496] animate-pulse"></div>
+          <div className="hidden md:block w-2 h-2 rounded-full bg-gradient-to-r from-[#2ca1fbdc] to-[#0c71ec]  animate-pulse"></div>
 
-          <div className="group relative overflow-hidden  max-sm:w-full">
-            <span className="relative z-10 bg-gradient-to-r from-[#fcc496] to-[#fcc496] bg-clip-text text-transparent transform transition-transform duration-500 group-hover:scale-110 inline-block">
+          <div className="group relative overflow-hidden  px-4 max-sm:w-full">
+            <span className="relative z-10 bg-gradient-to-r from-[#2ca1fbdc] to-[#0c71ec] bg-clip-text text-transparent transform transition-transform duration-500 group-hover:scale-110 inline-block">
               Grow
             </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#2CA2FB]/20 to-[#00D4FF]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#2ca1fbdc]/20 to-[#0c71ec]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
           </div>
         </div>
 
@@ -81,10 +81,16 @@ const Banner = () => {
           Join a vibrant digital ecosystem where students, <br /> alumni &
           business thrive together.
         </p>
-
-        <Link to="/send-message">
+        {/* 
+        <Link to="/send-message" className="max-sm:hidden">
           <button className="px-8 relative z-[50] py-3 text-sm font-medium text-black border border-black rounded-sm hover:bg-[#2CA2FB] hover:text-white transition-all duration-300 shadow-[0_4px_0px_0px_#00abff]">
             CONTACT US TODAY
+          </button>
+        </Link> */}
+
+        <Link to="/get-started">
+          <button className="px-8 relative z-[50] py-3 text-sm font-medium text-black border border-black rounded-sm hover:bg-[#2CA2FB] hover:text-white transition-all duration-300 shadow-[0_4px_0px_0px_#00abff]">
+            Get Started
           </button>
         </Link>
       </div>

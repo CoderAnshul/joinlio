@@ -31,7 +31,7 @@ const menuItems = [
 const mobileLinks = [
   { to: "/", text: "HOME" },
   { to: "/#peer-account", text: "PEER ACCOUNT", isScroll: true },
-  { to: "/#predefined-hubs", text: "PREDEFINED HUBS", isScroll: true },
+  { to: "/#predefined-hubs", text: "Joinlio Hubs", isScroll: true },
   { to: "/blogs", text: "RESOURCES" },
   { to: "/#section-data", text: "STUDENT/ALUMNI", isScroll: true },
   { to: "/#business-data", text: "BUSINESS", isScroll: true },
@@ -268,10 +268,10 @@ const Navbar = () => {
             </div> */}
 
             <Link
-              to="/get-started"
+              to="/send-message"
               className="button-shadow px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
             >
-              GET STARTED
+              CONTACT US
             </Link>
           </div>
         </div>

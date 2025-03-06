@@ -61,7 +61,7 @@ const BussinessHead = () => {
       <div className="relative max-w-2xl">
         {/* Arrow Button for Next */}
         <div
-          className="absolute left-0 -top-16 md:-left-10 md:top-3 -rotate-90 w-6 h-6 cursor-pointer arrow"
+          className="absolute left-0 -top-16 md:-left-10 md:top-3 -rotate-90 w-6 h-6 cursor-pointer max-sm:mt-8 arrow"
           onClick={handleNext}
         >
           <span></span>

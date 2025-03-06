@@ -272,53 +272,65 @@ const FindInterest = () => {
 
             <div
               ref={scrollRef}
-              className="h-full w-full pr-2 max-h-[600px] custom-scrollbar scroll-smooth overflow-y-auto "
+              className="h-[600px] max-sm:h-fit w-full pr-2 max-h-[600px] custom-scrollbar scroll-smooth overflow-y-auto "
               onWheel={(e) => e.stopPropagation()} // Ensures smooth scrolling
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 pb-4">
-                {filterdHubs.map((hub, index) => (
-                  <div
-                    key={index}
-                    className="relative hubs w-full min-h-56 flex flex-col justify-end rounded-2xl p-4 shadow-lg overflow-hidden"
-                  >
-                    <div className="absolute inset-0 w-full h-full">
-                      <HubCard hub={hub} />
+              {filterdHubs.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5 pb-4">
+                  {filterdHubs.map((hub, index) => (
+                    <div
+                      key={index}
+                      className="relative hubs w-full min-h-56 flex flex-col justify-end rounded-2xl p-4 shadow-lg overflow-hidden"
+                    >
+                      <div className="absolute inset-0 w-full h-full">
+                        <HubCard hub={hub} />
 
-                      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-                    </div>
-                    <div className="hub-container  z-10">
-                      <div className="mb-3">
-                        <h2 className="text-lg font-bold  truncate text-white">
-                          {hub.name}
-                        </h2>
-                        <p className="text-sm mb-2 line-clamp-2 h-10 text-white">
-                          {hub.description}
-                        </p>
-                        {index < 3 ? (
-                          <Link
-                            to="/hubs"
-                            state={{
-                              hubData: {
-                                ...hub,
-                                index: index,
-                              },
-                            }}
-                          >
-                            <button className="w-full bg-[#00abff] text-white text-sm text-center font-medium px-4 py-1 rounded-full gap-1 hover:bg-blue-500 transition">
-                              Follow{" "}
-                              <span className="text-lg font-bold">+</span>
+                        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                      </div>
+                      <div className="hub-container  z-10">
+                        <div className="mb-3">
+                          <h2 className="text-lg font-bold  truncate text-white">
+                            {hub.name}
+                          </h2>
+                          <p className="text-sm mb-2 line-clamp-2 h-10 text-white">
+                            {hub.description}
+                          </p>
+                          {index < 3 ? (
+                            <Link
+                              to="/hubs"
+                              state={{
+                                hubData: {
+                                  ...hub,
+                                  index: index,
+                                },
+                              }}
+                            >
+                              <button className="w-full bg-[#00abff] text-white text-sm text-center font-medium px-4 py-1 rounded-full gap-1 hover:bg-blue-500 transition">
+                                Follow{" "}
+                                <span className="text-lg font-bold">+</span>
+                              </button>
+                            </Link>
+                          ) : (
+                            <button className="w-full bg-gray-400 text-white text-sm font-medium px-4 py-1 rounded-full cursor-not-allowed">
+                              Coming Soon
                             </button>
-                          </Link>
-                        ) : (
-                          <button className="w-full bg-gray-400 text-white text-sm font-medium px-4 py-1 rounded-full cursor-not-allowed">
-                            Coming Soon
-                          </button>
-                        )}
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="h-full max-sm:pt-20 w-full flex flex-col justify-center items-center">
+                  <h2 className="text-lg font-semibold">No hubs found</h2>
+                  <Link
+                    className="text-[#00abff] underline cursor-pointer"
+                    to="/"
+                  >
+                    Create your hub
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -346,7 +358,7 @@ const FindInterest = () => {
               <div className="flex max-sm:w-full items-center gap-2">
                 <span className="text-rose-500">🔍</span>
                 <h2 className="text-2xl font-bold text-gray-900">
-                  What are Joinlio Hubs?
+                  Joinlio Hubs
                 </h2>
 
                 <button
@@ -358,12 +370,12 @@ const FindInterest = () => {
                 </button>
               </div>
               <div className="flex items-center gap-2">
-                <button
+                {/* <button
                   onClick={() => setShowPoints(!showPoints)}
                   className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                 >
                   Working
-                </button>
+                </button> */}
                 <button
                   onClick={() => setIsModalOpen(false)}
                   className="p-2 max-sm:hidden hover:bg-gray-100 rounded-full transition-colors"
@@ -375,9 +387,9 @@ const FindInterest = () => {
             </div>
 
             <div className="px-8 pt-6">
-              {/* <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 What is Joinlio Hubs?
-              </h2> */}
+              </h2>
               <p className="text-gray-600 leading-relaxed">
                 In Joinlio, Hubs are central spaces designed to facilitate
                 collaboration among students with similar interests and goals.
@@ -409,36 +421,8 @@ const FindInterest = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 How it works?
               </h2>
-              <ul className="text-gray-600 leading-relaxed">
-                <li>
-                  <strong>Early Sign-Up: </strong>Register early with your
-                  university name and personal email.
-                </li>
-                <li>
-                  <strong>Activation Notification: </strong>Receive an email to
-                  activate your account when Joinlio goes live.
-                </li>
-                <li>
-                  <strong>Profile Setup: </strong>Log in to complete your
-                  profile and create your Peer Account.
-                </li>
-                <li>
-                  <strong>Explore Hubs: </strong>Create or join hubs based on
-                  your interests.
-                </li>
-                <li>
-                  <strong>Engage and Share: </strong> ost content, engage in
-                  discussions, and utilize hub-specific tools.
-                </li>
-                <li>
-                  <strong>Collaborate: </strong>Participate in real-world
-                  projects to develop skills.
-                </li>
-              </ul>
-            </div>
 
-            {showPoints && (
-              <div className="px-6 pb-6 space-y-6 mt-6">
+              <div className=" pb-6 space-y-6 mt-6">
                 {modalSections.map((section, index) => (
                   <div
                     key={index}
@@ -456,7 +440,7 @@ const FindInterest = () => {
                   </div>
                 ))}
               </div>
-            )}
+            </div>
 
             <div className="px-8 py-6 border-t flex justify-end gap-4">
               <button
@@ -465,11 +449,11 @@ const FindInterest = () => {
               >
                 Close
               </button>
-              <Link to="/get-started">
+              {/* <Link to="/get-started">
                 <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                   Explore Hubs
                 </button>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

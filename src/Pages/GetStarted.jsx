@@ -51,7 +51,7 @@ const GetStarted = () => {
       setQuery("");
 
       alert(
-        "hank you for signing up! Once Joinlio goes live, you will be notified at your registered email address. Stay tuned!"
+        "Thank you for signing up! Once Joinlio goes live, you will be notified at your registered email address. Stay tuned!"
       );
     } catch (error) {
       console.error("Error sending email:", error.message);
@@ -115,7 +115,7 @@ const GetStarted = () => {
                 <input
                   type="email"
                   className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="your.name@institution.edu"
+                  placeholder="yourname@123.con"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required

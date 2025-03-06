@@ -196,13 +196,7 @@ p {
 
 .gradient-text {
   /* background: linear-gradient(90deg, #e0b3c1, #e6d5b3, #e0b3c1); */
-  background: linear-gradient(
-    90deg,
-    #098dd0 0%,
-    #80d5ff 60%,
-    #80d5ff 90%,
-    #bfeaff 150%
-  );
+  background: linear-gradient(90deg, #2ca1fbdc, #0c71ec);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-scroll 3s ease-in-out infinite;

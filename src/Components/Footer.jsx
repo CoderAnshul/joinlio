@@ -39,9 +39,7 @@ export default function Footer() {
 
             <div>
               <h3 className="font-medium mb-2">How Can We Help?</h3>
-              <p className="text-sm text-gray-500 mb-1">
-                contact@joinlio.com
-              </p>
+              <p className="text-sm text-gray-500 mb-1">contact@joinlio.com</p>
               <h2 className="text-sm mb-4 font-medium">
                 Please feel free to get in <br /> touch with us
               </h2>
@@ -58,7 +56,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="flex pt-2 md:mt-0 justify-between items-center text-gray-500 text-sm">
           <p>© 2025 Joinlio | All Rights Reserved</p>
-          <div className="flex space-x-4">
+          {/* <div className="flex space-x-4">
             <a
               href="https://facebook.com"
               target="_blank"
@@ -87,7 +85,7 @@ export default function Footer() {
             >
               <Linkedin className="w-5 h-5 text-gray-500 hover:text-blue-700 transition-transform duration-300 hover:scale-110" />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
