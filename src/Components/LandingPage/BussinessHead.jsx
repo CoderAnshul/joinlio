@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import gsap from "gsap";
 import student from "../../assets/images/student.jpg";
 import customer from "../../assets/images/customer.jpg";
@@ -7,10 +7,11 @@ import trust from "../../assets/images/trust.jpg";
 const contentData = [
   {
     id: 1,
-    subtext: "JOINLIO connects your business with verified students, helping you grow sales and build loyalty—all with zero upfront costs until you succeed.",
+    subtext: "JOINLIO connects your business with verified students, helping you grow sales and build loyalty— all with zero upfront costs until you succeed.",
     changeHeading: "Looking to expand your",
     changeHeadingTwo: " student customer base?",
     img: student,
+    highlights: ["zero upfront costs until you succeed"]
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const contentData = [
     changeHeading: "How can you reach more",
     changeHeadingTwo: " student customers?",
     img: customer,
+    highlights: ["Pay only when you make sales!"]
   },
   {
     id: 3,
@@ -25,8 +27,38 @@ const contentData = [
     changeHeading: "Worried about trust",
     changeHeadingTwo: " and security?",
     img: trust,
+    highlights: ["No hidden fees—you only pay when you earn"]
   },
 ];
+
+const HighlightedText = ({ text, highlights }) => {
+  // Create a regex that matches any of the highlight phrases
+  const highlightRegex = highlights 
+    ? new RegExp(`(${highlights.map(h => h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi')
+    : null;
+
+  // Split the text and map it to create highlighted and non-highlighted parts
+  const parts = highlightRegex 
+    ? text.split(highlightRegex)
+    : [text];
+
+  return (
+    <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl">
+      {parts.map((part, index) => 
+        highlightRegex && highlights.some(h => h.toLowerCase() === part.toLowerCase()) ? (
+          <span 
+            key={index} 
+            className="italic font-bold rounded"
+          >
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      )}
+    </p>
+  );
+};
 
 const BussinessHead = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -78,9 +110,10 @@ const BussinessHead = () => {
 
           {/* Subtext */}
           <div className="flex gap-8 mt-8">
-            <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl">
-              {contentData[currentIndex].subtext}
-            </p>
+            <HighlightedText 
+              text={contentData[currentIndex].subtext}
+              highlights={contentData[currentIndex].highlights}
+            />
           </div>
         </div>
       </div>

@@ -216,12 +216,13 @@ const Homepage = () => {
       <Stories isSecondInstance={true} />
       <Motives cards={cardsDataTwo} />
       <RandomQuote />
-      <div id="universites-data">
+      <div id="universites-data" >
         <DevideSectionText
           title1="UNIVERSITIES"
           title2=""
           description="JOINLIO is a next-generation platform designed to revolutionize student development for universities, colleges, and institutes. By subscribing to JOINLIO, your institution provides students with free access to advanced tools for personal growth, global collaboration, and professional achievement. Empower your students with a verified, futuristic ecosystem that fosters innovation, builds lasting connections, and prepares them to lead in a rapidly evolving world."
           highlight=" "
+          className="lg:max-w-5xl"
         />
       </div>
 

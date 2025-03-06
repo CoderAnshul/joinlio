@@ -118,29 +118,36 @@ const FindInterest = () => {
     },
   ];
 
+
   const modalSections = [
     {
       icon: "🌟",
-      title: "Create or Join Hubs",
+      title: "Early Sign-Up",
       description:
-        "Create your own hubs based on personal interests or join existing predefined hubs focusing on areas like Media, Technology, and Entrepreneurship.",
+        "Receive an email to activate your account when Joinlio goes live.",
+    },
+    {
+      icon: "🌟",
+      title: "Activation Notification",
+      description:
+        "Register early with your university name and personal email.",
+    },
+    {
+      icon: "🤝",
+      title: "Profile Setup",
+      description: "Log in to complete your profile and create your Peer Account.",
     },
     {
       icon: "💡",
       title: "Engage and Share",
       description:
-        "Post content, engage in meaningful discussions, and utilize specialized tools designed for your hub's focus area.",
-    },
-    {
-      icon: "🤝",
-      title: "Collaborate",
-      description: "Hubs facilitate real-world projects and skill development.",
+        "ost content, engage in discussions, and utilize hub-specific tools.",
     },
     {
       icon: "🚀",
-      title: "Support and Network",
+      title: "Collaborate",
       description:
-        "Provides mentorship and networking opportunities, broadening both personal and professional growth.",
+        "Participate in real-world projects to develop skills.",
     },
   ];
 

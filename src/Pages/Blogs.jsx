@@ -287,10 +287,10 @@ const Blogs = () => {
         </div>
         
         <div className="flex items-center space-x-3 text-gray-500">
-          <span className="flex items-center space-x-1">
+          {/* <span className="flex items-center space-x-1">
             <Heart size={16} className="text-[#e0b3c1]" />
             <span className="text-xs">{post.likes}</span>
-          </span>
+          </span> */}
           {/* <span className="flex items-center space-x-1">
             <MessageSquare size={16} className="text-[#e6d5b3]" />
             <span className="text-xs">{post.comments}</span>
