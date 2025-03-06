@@ -379,7 +379,7 @@ const validRights = [
 
   "We will work to respond to your Valid Request within a 30-day period of receipt for all Valid requests under the GDPR and DPA and 45 days of receipt under CPPA/CPRA. We will not charge you a fee for making a Valid Request unless your Valid Request(s) is excessive, repetitive, or manifestly unfounded. If we determine that your Valid Request warrants a fee, we will notify you of the fee and explain that decision before completing your request.",
 
-  "You may submit a Valid Request by sending an email to contact@joinlio.com;",
+  "You may submit a Valid Request by sending an email to contact@joinlio.com.",
 ];
 
 const changesToPolicy = [
