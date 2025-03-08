@@ -31,7 +31,7 @@ const SendMessage = () => {
 
 
       await emailjs.send(
-        'service_b5p6b5g',
+        'service_cjihnzk',
         'template_s1pmj5l',
         templateParams,
         'qf9TWxuatyoqyCvLk',

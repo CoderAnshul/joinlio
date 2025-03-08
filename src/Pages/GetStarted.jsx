@@ -35,8 +35,8 @@ const GetStarted = () => {
 
     try {
       await emailjs.send(
-        "service_b5p6b5g",
-        "template_qi88j3i",
+        'service_cjihnzk',
+        'template_qi88j3i',
         templateParams,
         "qf9TWxuatyoqyCvLk"
       );
