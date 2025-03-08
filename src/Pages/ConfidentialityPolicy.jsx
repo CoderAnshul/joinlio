@@ -1,174 +1,373 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const ConfidentialityPolicy = () => {
+const TermsAndConditions = () => {
+  const [activeTab, setActiveTab] = useState('terms');
+  
+  // Terms data structure
+  const termsData = {
+    sections: [
+      {
+        id: "introduction",
+        title: "1. Introduction",
+        content: "Welcome to Joinlio! These Terms and Conditions govern your access and use of Joinlio's website and platform. By using our services, you agree to comply with these terms. If you do not agree, please do not use Joinlio."
+      },
+      {
+        id: "definitions",
+        title: "2. Definitions",
+        contentType: "bulletList",
+        bulletPoints: [
+          {
+            title: '"Joinlio"',
+            description: "– Refers to our platform, website, and services."
+          },
+          {
+            title: '"User" / "You"',
+            description: "– Any person accessing or using Joinlio."
+          },
+          {
+            title: '"We" / "Us" / "Our"',
+            description: "– Refers to Joinlio and its management."
+          },
+          {
+            title: '"Content"',
+            description: "– Any text, images, videos, messages, or information shared on the platform."
+          }
+        ]
+      },
+      {
+        id: "eligibility",
+        title: "3. Eligibility & Account Registration",
+        content: "To use Joinlio, you must:",
+        contentType: "bulletList",
+        bulletPoints: [
+          {
+            title: "Be at least 16 years old",
+            description: " (or the minimum required age in your country)."
+          },
+          {
+            title: "Provide accurate and complete information",
+            description: " during registration."
+          },
+          {
+            title: "Keep your login credentials confidential",
+            description: " and not share them with others."
+          }
+        ],
+        additionalContent: "We reserve the right to suspend or terminate accounts that provide false information or violate these terms."
+      },
+      {
+        id: "acceptable-use",
+        title: "4. Acceptable Use Policy",
+        content: "By using Joinlio, you agree to:",
+        contentType: "bulletList",
+        positivePoints: [
+          "Use the platform legally and ethically.",
+          "Respect other users and their privacy.",
+          "Comply with all applicable laws and regulations."
+        ],
+        negativePoints: [
+          "Post misleading, harmful, or offensive content.",
+          "Engage in harassment, bullying, or unlawful activity.",
+          "Attempt to hack, disrupt, or interfere with Joinlio's services.",
+          "Use automated tools (bots, scrapers) without permission."
+        ],
+        additionalContent: "Violation of this policy may lead to account suspension or legal action."
+      },
+      {
+        id: "content-ownership",
+        title: "5. Content Ownership & Licensing",
+        subSections: [
+          {
+            id: "your-content",
+            title: "5.1 Your Content",
+            contentType: "bulletList",
+            bulletPoints: [
+              {
+                description: "You retain ownership of the content you post."
+              },
+              {
+                description: "By sharing content on Joinlio, you grant us a non-exclusive, worldwide, royalty-free license to use, display, and distribute it for platform functionality."
+              }
+            ]
+          },
+          {
+            id: "our-content",
+            title: "5.2 Our Content",
+            contentType: "bulletList",
+            bulletPoints: [
+              {
+                description: "All Joinlio trademarks, logos, and branding are owned by us."
+              },
+              {
+                description: "You may not copy, modify, or distribute our content without permission."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "privacy",
+        title: "6. Privacy & Data Protection",
+        contentType: "bulletList",
+        bulletPoints: [
+          {
+            description: "Joinlio complies with UK GDPR, EU GDPR, and CCPA regulations."
+          },
+          {
+            description: "We collect and process personal data as outlined in our Privacy Policy."
+          },
+          {
+            description: "You have the right to access, modify, or request deletion of your data."
+          }
+        ],
+        additionalContent: "For details, refer to our Privacy Policy."
+      },
+      {
+        id: "third-party",
+        title: "7. Third-Party Links & Services",
+        content: "Joinlio may contain links to third-party websites or services. We do not control and are not responsible for their content or policies. Use them at your own risk."
+      },
+      {
+        id: "liability",
+        title: "8. Limitation of Liability",
+        content: "To the fullest extent permitted by law:",
+        contentType: "bulletList",
+        bulletPoints: [
+          {
+            description: 'Joinlio is provided "as is" and "as available" without warranties.'
+          },
+          {
+            description: "We are not liable for any indirect, incidental, or consequential damages."
+          },
+          {
+            description: "We do not guarantee uninterrupted service or error-free performance."
+          }
+        ],
+        additionalContent: "If you are dissatisfied with our service, your sole remedy is to stop using Joinlio."
+      },
+      {
+        id: "termination",
+        title: "9. Account Termination & Suspension",
+        content: "We may suspend or terminate your account if:",
+        contentType: "bulletList",
+        bulletPoints: [
+          {
+            description: "You violate these Terms and Conditions."
+          },
+          {
+            description: "We detect fraudulent or abusive activity."
+          },
+          {
+            description: "We are required to do so by law."
+          }
+        ],
+        additionalContent: "You may close your account anytime by contacting contact@joinlio.com."
+      },
+      {
+        id: "changes",
+        title: "10. Changes to These Terms",
+        content: "Joinlio reserves the right to modify these Terms and Conditions. Updates will be posted on our platform, and your continued use indicates acceptance of the revised terms."
+      },
+      {
+        id: "governing-law",
+        title: "11. Governing Law & Dispute Resolution",
+        content: "These Terms are governed by the laws of the United Kingdom.",
+        contentType: "bulletList",
+        bulletPoints: [
+          {
+            description: "Disputes will be resolved through negotiation, mediation, or arbitration before court action."
+          },
+          {
+            description: "If court action is necessary, it will be in the UK jurisdiction."
+          }
+        ]
+      },
+      {
+        id: "contact",
+        title: "12. Contact Information",
+        content: "For questions or legal inquiries, contact us at:",
+        contentType: "bulletList",
+        bulletPoints: [
+          {
+            title: "Email",
+            description: ": contact@joinlio.com"
+          }
+        ]
+      }
+    ]
+  };
+
+  // Initialize expandedSections with all sections open
+  const [expandedSections, setExpandedSections] = useState(
+    termsData.sections.reduce((acc, section) => {
+      acc[section.id] = true;
+      return acc;
+    }, {})
+  );
+
+  const toggleSection = (sectionId) => {
+    setExpandedSections({
+      ...expandedSections,
+      [sectionId]: !expandedSections[sectionId]
+    });
+  };
+
+  // Render content based on its type
+  const renderContent = (section) => {
+    if (section.contentType === 'bulletList') {
+      return (
+        <div>
+          {section.content && <p className="mb-3 text-gray-600">{section.content}</p>}
+          
+          {section.bulletPoints && (
+            <ul className="space-y-2 pl-5 mb-3">
+              {section.bulletPoints.map((point, index) => (
+                <li key={index} className="flex items-start text-gray-600">
+                  <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 text-blue-500 mr-2 mt-0.5 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </span>
+                  <span>
+                    {point.title && <strong>{point.title}</strong>}
+                    {point.description}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+          
+          {section.positivePoints && (
+            <div className="mb-3">
+              <ul className="space-y-2 pl-5">
+                {section.positivePoints.map((point, index) => (
+                  <li key={index} className="flex items-start text-gray-600">
+                    <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-green-100 text-green-500 mr-2 mt-0.5 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          
+          {section.negativePoints && (
+            <div className="mb-3">
+              <h4 className="font-medium mb-2 text-gray-700">You must NOT:</h4>
+              <ul className="space-y-2 pl-5">
+                {section.negativePoints.map((point, index) => (
+                  <li key={index} className="flex items-start text-gray-600">
+                    <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-red-100 text-red-500 mr-2 mt-0.5 flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          
+          {section.additionalContent && <p className="text-gray-600">{section.additionalContent}</p>}
+        </div>
+      );
+    }
+    
+    return <p className="text-gray-600">{section.content}</p>;
+  };
+
+  const renderSection = (section) => {
+    if (section.subSections) {
+      return (
+        <div key={section.id} className="border-b border-gray-200 pb-4 mb-4 last:border-0">
+          <button 
+            className="flex justify-between items-center w-full text-left font-medium text-blue-600 hover:text-blue-500 transition-colors py-2"
+            onClick={() => toggleSection(section.id)}
+          >
+            <span className="text-xl">{section.title}</span>
+            <span>
+              {expandedSections[section.id] ? 
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                </svg> : 
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              }
+            </span>
+          </button>
+          
+          {expandedSections[section.id] && (
+            <div className="mt-3 pl-4">
+              {section.subSections.map(subSection => (
+                <div key={subSection.id} className="mb-4">
+                  <h4 className="text-lg font-medium text-blue-600 mb-2">{subSection.title}</h4>
+                  {renderContent(subSection)}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+    
+    // Keep the rest of the function as is
+    return (
+      <div key={section.id} className="border-b border-gray-200 pb-4 mb-4 last:border-0">
+        <button 
+          className="flex justify-between items-center w-full text-left font-medium text-blue-600 hover:text-blue-500 transition-colors py-2"
+          onClick={() => toggleSection(section.id)}
+        >
+          <span className="text-xl">{section.title}</span>
+          <span>
+            {expandedSections[section.id] ? 
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+              </svg> : 
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            }
+          </span>
+        </button>
+        
+        {expandedSections[section.id] && (
+          <div className="mt-3 pl-4">
+            {renderContent(section)}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
-    <div className="space-y-6 max-w-6xl mx-auto px-6 py-10">
-      {/* Purpose of Document */}
-      <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">
-        Purpose of Document
-      </h2>
-      <p className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500">
-        The purpose of this document is to ensure all staff members at the College are aware of their legal duty to maintain confidentiality, to inform them of the processes in place to protect personal information, and to provide guidance on disclosure obligations.
-      </p>
-
-      {/* Introduction */}
-      <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">
-        Introduction
-        {/* Introduction */}
-      </h2>
-      <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
-        <p>
-          Everyone working for the college or elsewhere within the business is under a legal duty to keep student’s personal information confidential. Students who believe their confidence has been breached may make a complaint to the college, and they could take legal action or report it to the ICO. In the case of a registered Joinlio professional tutor, the student could also make a complaint to the Joinlio, which, in worst-case scenarios, may end in erasure from the GDC register.
-        </p>
-
-        <p>
-          This policy is concerned with protecting personal student information, although its content would apply equally to staff personal information or business-sensitive information.
-        </p>
-
-        <p>
-          Personal information is data in any form (paper, electronic, tape, verbal, etc.) from which a living individual could be identified including:
-        </p>
-
-        {/* Personal Information List */}
-        <ul className="list-disc list-inside space-y-2 pl-6">
-          <li>
-            Name, age, address, and personal circumstances, as well as sensitive personal information like race, health, sexuality, etc.
-          </li>
-          <li>Information regarding appointments</li>
-          <li>Information regarding medical histories</li>
-          <li>Information regarding finances, including any bad debts.</li>
-        </ul>
-
-        <p>
-          Although the Data Protection Act 2018 is only relevant to the personal information of living individuals, this code also covers information about students. This policy applies to all staff, including permanent, temporary, and locum staff members.
-        </p>
-      </div>
-
-       {/* Confidentiality */}
-       <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">
-        Confidentiality
-      </h2>
-      <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
-        <p>
-          Under the Data Protection Act 2018 and UK GDPR, Joinlio colleges must keep personal data about their students safe and secure and to ensure it is only accessed by persons who need to see it for the purposes of providing safe, effective education.
-        </p>
-        <p>
-          Registered Joinlio professionals and tutors have an ethical and legal duty to keep all student information confidential.
-        </p>
-      </div>
-
-
-      {/* Caldicott Principles */}
-        <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">
-        Caldicott Principles
-        </h2>
-        <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
-        <p>
-            The Caldicott Principles are the guidelines for ensuring people's information is kept confidential and used or shared appropriately within a healthcare setting.
-        </p>
-        <p>
-            All NHS organizations must have an appointed Caldicott Guardian. This won't apply to most Joinlio colleges, although there should be someone within the college who is responsible for ensuring student information is kept confidential and shared appropriately when required.
-        </p>
-        <h3 className="text-xl font-semibold mt-4 mb-2">The Caldicott Principles</h3>
-        <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
-            <li><strong>Principle 1:</strong> Justify the purpose for using the confidential information.</li>
-            <li><strong>Principle 2:</strong> Use confidential information only when it is necessary.</li>
-            <li><strong>Principle 3:</strong> Use the minimum necessary confidential information.</li>
-            <li><strong>Principle 4:</strong> Access to confidential information should be on a strict need-to-know basis.</li>
-            <li><strong>Principle 5:</strong> Everyone with access to confidential information should be aware of their responsibilities.</li>
-            <li><strong>Principle 6:</strong> Comply with the law.</li>
-            <li><strong>Principle 7:</strong> The duty to share information for individual education is as important as the duty to protect students' confidentiality.</li>
-        </ul>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-blue-500 to-indigo-700 rounded-lg shadow-lg p-8 mb-8 text-white text-center">
+          <h1 className="text-4xl font-bold mb-4">Terms and Conditions of Joinlio</h1>
+          <p className="text-lg opacity-90">Please read these terms carefully before using our platform.</p>
         </div>
 
-        {/* Disclosing Student Information */}
-            <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">
-            Disclosing Student Information
-            </h2>
-            <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
-            <p>
-                Personal information relating to a student should only be shared with third parties where the student has given consent or in exceptional circumstances (<strong>GDC Standards 4.3</strong>).
-            </p>
-            <h3 className="text-xl font-semibold mt-4 mb-2">Examples of where information may be shared without consent include:</h3>
-            <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
-                <li>
-                In safeguarding concerns where it is not possible to gain consent and a referral needs to be made to the local authority or the police.
-                </li>
-                <li>
-                Where information has been ordered by a court or by a coroner. If a court order has requested information, only the minimum amount of information should be disclosed.
-                </li>
-            </ul>
-            <p>
-                Before disclosing information to third parties where consent has not been obtained, you are advised to contact your indemnity provider.
-            </p>
-            </div>
-
-            {/* The Importance of Confidentiality */}
-            <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">
-            The Importance of Confidentiality
-            </h2>
-            <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
-            <p>
-                The relationship between the tutor and student is based on the understanding that any information revealed by the student to the tutor will not be divulged without the student’s consent. Students have the right to privacy, and they must provide the organization with full information on their educational history to ensure that education is carried out effectively.
-            </p>
-            <p>
-                The intensely personal nature of health information means that many students would be reluctant to provide the college with information if they felt the information would be passed on.
-            </p>
-            <p>
-                Education must be taken to ensure that confidentiality is never breached, even to the most minor degree, in the use of social media or websites (<strong>GDC Standards 4.2.3</strong>).
-            </p>
-            </div>
-
-            {/* Recognize Your Obligations */}
-                <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">
-                Recognize Your Obligations
-                </h2>
-                <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
-                <p>
-                    A duty of confidence arises out of the common law duty of confidence, employment contracts, and for registered Joinlio professionals, it is part of your professional obligations. Breaches of confidence and inappropriate use of records or computer systems are serious matters that could result in disciplinary proceedings, dismissal, and possibly legal prosecution.
-                </p>
-                <h3 className="text-xl font-semibold mt-4 mb-2">So, make sure you do not:</h3>
-                <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
-                    <li>Put personal information at risk of unauthorized access.</li>
-                    <li>Knowingly misuse any personal information or allow others to do so.</li>
-                    <li>Access records or information that you have no legitimate reason to look at. This includes records and information about your family, friends, neighbors, and acquaintances.</li>
-                </ul>
-                </div>
-
-
-                {/* GDC Standards Guidance */}
-                <h2 className="text-2xl font-semibold mt-8 mb-4 border-b-2 border-blue-500 pb-2">
-                GDC Standards Guidance
-                </h2>
-                <div className="bg-white shadow-md p-4 rounded-lg border-l-4 border-blue-500 space-y-4">
-                <p>
-                    Joinlio educational professionals have an ethical and legal duty to ensure they are familiar with and comply with the GDC’s standards and guidance. All team members must also follow this guidance and ensure that they maintain student confidentiality.
-                </p>
-                <p>
-                    Copies of this publication in full are available as PDF downloads from the GDC’s website at 
-                    <a href="https://www.gdc-uk.org" className="text-blue-600 underline">
-                    www.gdc-uk.org
-                    </a>.
-                </p>
-                <h3 className="text-xl font-semibold mt-4 mb-2">Key Standards:</h3>
-                <ul className="list-disc list-inside space-y-2 pl-6 mb-6 text-lg">
-                    <li>
-                    <strong>4.2</strong> Protect the confidentiality of students’ information and only use it for the purpose for which it was given.
-                    </li>
-                    <li>
-                    <strong>4.2.1</strong> Confidentiality is central to the relationship and trust between you and your student. You must keep student information confidential. This applies to all the information about students that you have learned in your professional role, including personal details, student educational history, what education they are having, and how much it costs.
-                    </li>
-                    <li>
-                    <strong>4.2.3</strong> You must not post any information or comments about students on social networking or blogging sites. If you use professional social media to discuss anonymized cases for the purpose of discussing best education, you must be careful that the student or students cannot be identified.
-                    </li>
-                </ul>
-                </div>
-
-
-
-
+        {/* Content */}
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="space-y-6">
+            {termsData.sections.map(section => renderSection(section))}
+          </div>
+        </div>
+        
+        {/* Footer */}
+        <div className="mt-8 text-center text-gray-500 text-sm">
+          <p>Last updated: March 2025</p>
+          <p className="mt-2">© 2025 Joinlio. All rights reserved.</p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default ConfidentialityPolicy;
+export default TermsAndConditions;
