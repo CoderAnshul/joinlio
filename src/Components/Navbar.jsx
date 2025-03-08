@@ -31,7 +31,7 @@ const menuItems = [
 const mobileLinks = [
   { to: "/", text: "HOME" },
   { to: "/#peer-account", text: "PEER ACCOUNT", isScroll: true },
-  { to: "/#predefined-hubs", text: "Joinlio Hubs", isScroll: true },
+  { to: "/#predefined-hubs", text: "JOINLIO HUBS", isScroll: true },
   { to: "/blogs", text: "RESOURCES" },
   { to: "/#section-data", text: "STUDENT/ALUMNI", isScroll: true },
   { to: "/#business-data", text: "BUSINESS", isScroll: true },
