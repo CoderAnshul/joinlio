@@ -121,30 +121,30 @@ const FindInterest = () => {
 
   const modalSections = [
     {
-      icon: "🌟",
+      icon: "✉️",
       title: "Early Sign-Up",
       description:
         "Receive an email to activate your account when Joinlio goes live.",
     },
     {
-      icon: "🌟",
+      icon: "🔔",
       title: "Activation Notification",
       description:
         "Register early with your university name and personal email.",
     },
     {
-      icon: "🤝",
+      icon: "👤",
       title: "Profile Setup",
       description: "Log in to complete your profile and create your Peer Account.",
     },
     {
-      icon: "💡",
+      icon: "💬",
       title: "Engage and Share",
       description:
-        "ost content, engage in discussions, and utilize hub-specific tools.",
+        "Post content, engage in discussions, and utilize hub-specific tools.",
     },
     {
-      icon: "🚀",
+      icon: "🤝",
       title: "Collaborate",
       description:
         "Participate in real-world projects to develop skills.",
