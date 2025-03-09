@@ -296,7 +296,7 @@ const Navbar = () => {
         </button>
 
         <div className="p-8 h-full flex flex-col">
-          <ul className="space-y-6 mt-10">
+          <ul className="space-y-6 mt-10 mb-8">
             {mobileLinks.map((link, index) => (
               <li key={index}>
                 <a
