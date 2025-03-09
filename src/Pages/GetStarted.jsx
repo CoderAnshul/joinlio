@@ -35,10 +35,10 @@ const GetStarted = () => {
 
     try {
       await emailjs.send(
-        'service_cjihnzk',
-        'template_qi88j3i',
+        'service_kewk8yr',
+        'template_ymwsydf',
         templateParams,
-        "qf9TWxuatyoqyCvLk"
+        "o_l0zTlSddslcQg_o"
       );
 
       // Reset form
