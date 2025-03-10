@@ -118,7 +118,6 @@ const FindInterest = () => {
     },
   ];
 
-
   const modalSections = [
     {
       icon: "🌟",
@@ -135,7 +134,8 @@ const FindInterest = () => {
     {
       icon: "🤝",
       title: "Profile Setup",
-      description: "Log in to complete your profile and create your Peer Account.",
+      description:
+        "Log in to complete your profile and create your Peer Account.",
     },
     {
       icon: "💡",
@@ -146,8 +146,7 @@ const FindInterest = () => {
     {
       icon: "🚀",
       title: "Collaborate",
-      description:
-        "Participate in real-world projects to develop skills.",
+      description: "Participate in real-world projects to develop skills.",
     },
   ];
 
@@ -239,7 +238,7 @@ const FindInterest = () => {
       <div className="lg:flex max-sm:h-fit">
         {/* Left Section */}
         <div className="mt-20 lg:mr-4 flex-shrink-0 lg:w-1/4">
-          <div className="interest-banner relative w-full h-[685px] max-lg:h-[400px] max-sm:h-[580px] max-sm:flex max-sm:flex-col  gap-4 rounded-xl bg-white shadow-xl">
+          <div className="interest-banner relative w-full h-[685px] max-lg:h-[400px] max-sm:h-[580px] max-sm:flex max-sm:flex-col max-md:flex  gap-4 rounded-xl bg-white shadow-xl">
             {/* <video
               className="w-full max-sm:w-56 max-lg:w-60 rounded-xl max-sm:mx-auto"
               loop
@@ -251,9 +250,9 @@ const FindInterest = () => {
             </video> */}
             <img
               src={JImage}
-              className="w-[80%] mx-auto pt-10 max-sm:pt-0 max-sm:w-56 max-lg:w-60 rounded-xl max-sm:mx-auto"
+              className="w-[80%]  mx-auto pt-10 max-sm:pt-0 max-sm:w-56 max-lg:w-56 max-lg:pt-0 max-lg:mx-10 rounded-xl max-sm:mx-auto"
             />
-            <div className="absolute bottom-9 left-5 max-sm:left-5 max-sm:bottom-9 max-lg:left-60 max-lg:bottom-28 max-sm:inline-block">
+            <div className="absolute bottom-9 left-5 max-sm:left-5 max-sm:bottom-9 max-lg:left-72 max-lg:bottom-28 max-sm:inline-block">
               <h1 className="text-3xl lg:text-3xl font-bold leading-20">
                 Transfrom your interests into a <br />
                 <span className="text-textColor uppercase">Central hub!</span>
