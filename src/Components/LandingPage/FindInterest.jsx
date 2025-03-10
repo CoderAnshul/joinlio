@@ -44,7 +44,7 @@ const FindInterest = () => {
       name: "Travel Hub",
       description:
         "Explore stunning destinations and unique travel experiences.",
-      heading: "Explore the World with the Travel Hub on Joinlio",
+      heading: "Explore the World with the Travel Hub on Joinlio!",
       subDescription:
         "Designed specifically for those who love to travel, the Travel Hub offers a dynamic community where students can dive into everything related to travel. Whether you're planning a solo adventure, organizing a group trip, or just looking to share experiences, this hub connects you with like-minded adventurers. Create or join sub-hubs to meet peers with similar interests, access exclusive travel planning tools, and collaborate on travel-related projects. Get inspired, find practical support, and start your journey with us today!",
       gif: travelgif,
@@ -52,7 +52,7 @@ const FindInterest = () => {
     {
       name: "Media Hub",
       description: "Capture and create amazing content.",
-      heading: "Dive into Creativity with the Media Hub on Joinlio",
+      heading: "Dive into Creativity with the Media Hub on Joinlio!",
       subDescription:
         "Tailored for enthusiasts in the media field, the Media Hub provides a vibrant platform to explore and engage in various aspects of media, including filmmaking, podcasting, photography, and more. Whether you're an experienced creator or a budding artist, you can discover and join pre-defined sub-hubs that match your interests or establish your own. Within these sub-hubs, create groups, collaborate on projects, produce podcasts, and more with peers who share your passion. Gain access to specialized tools, services, and support provided by Joinlio to enhance your creative projects and bring your visions to life.",
       gif: mediagif,
@@ -61,7 +61,7 @@ const FindInterest = () => {
       name: "Entrepreneurship Hub",
       description: "Fuel your business ideas and networking.",
       heading:
-        "Fuel Your Business Dreams with the Entrepreneurship Hub on Joinlio",
+        "Fuel Your Business Dreams with the Entrepreneurship Hub on Joinlio!",
       subDescription:
         "Specifically crafted for aspiring entrepreneurs, this hub provides a supportive environment where students eager to launch their startups can thrive. Engage with various sub-hubs related to entrepreneurship, where you can either join existing ones or create new ones tailored to your business vision. Connect with like-minded peers to form groups, participate in business projects, or start your own ventures. Joinlio supports your entrepreneurial journey with a wealth of resources, including specialized tools, services, and guidance, all designed to help you achieve business success.",
       gif: entreprenuershipgif,
@@ -120,31 +120,31 @@ const FindInterest = () => {
 
   const modalSections = [
     {
-      icon: "🌟",
+      icon: "✉️",
       title: "Early Sign-Up",
       description:
         "Receive an email to activate your account when Joinlio goes live.",
     },
     {
-      icon: "🌟",
+      icon: "🔔",
       title: "Activation Notification",
       description:
         "Register early with your university name and personal email.",
     },
     {
-      icon: "🤝",
+      icon: "👤",
       title: "Profile Setup",
       description:
         "Log in to complete your profile and create your Peer Account.",
     },
     {
-      icon: "💡",
+      icon: "💬",
       title: "Engage and Share",
       description:
-        "ost content, engage in discussions, and utilize hub-specific tools.",
+        "Post content, engage in discussions, and utilize hub-specific tools.",
     },
     {
-      icon: "🚀",
+      icon: "🤝",
       title: "Collaborate",
       description: "Participate in real-world projects to develop skills.",
     },

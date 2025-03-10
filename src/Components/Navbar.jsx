@@ -31,7 +31,7 @@ const menuItems = [
 const mobileLinks = [
   { to: "/", text: "HOME" },
   { to: "/#peer-account", text: "PEER ACCOUNT", isScroll: true },
-  { to: "/#predefined-hubs", text: "Joinlio Hubs", isScroll: true },
+  { to: "/#predefined-hubs", text: "JOINLIO HUBS", isScroll: true },
   { to: "/blogs", text: "RESOURCES" },
   { to: "/#section-data", text: "STUDENT/ALUMNI", isScroll: true },
   { to: "/#business-data", text: "BUSINESS", isScroll: true },
@@ -296,7 +296,7 @@ const Navbar = () => {
         </button>
 
         <div className="p-8 h-full flex flex-col">
-          <ul className="space-y-6 mt-10">
+          <ul className="space-y-6 mt-10 mb-8">
             {mobileLinks.map((link, index) => (
               <li key={index}>
                 <a

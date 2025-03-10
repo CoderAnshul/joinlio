@@ -31,10 +31,10 @@ const SendMessage = () => {
 
 
       await emailjs.send(
-        'service_b5p6b5g',
-        'template_s1pmj5l',
+        'service_kewk8yr',
+        'template_623zqt8',
         templateParams,
-        'qf9TWxuatyoqyCvLk',
+        'o_l0zTlSddslcQg_o',
       );
 
       // Reset form

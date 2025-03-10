@@ -363,7 +363,7 @@ const CircleDetails = ({
         >
           <div
             ref={modalRef}
-            className="relative p-4 bg-white/70 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl max-w-3xl w-full mx-4 my-6 max-h-[85vh] overflow-y-auto"
+            className="relative p-4 bg-white/70 pt-16 sm:pt-4 backdrop-blur-xl border border-white/30 shadow-2xl rounded-2xl max-w-3xl w-full mx-4 my-6 max-h-[85vh] overflow-y-auto"
             onClick={handleModalContentClick}
             onWheel={(e) => e.stopPropagation()}
             style={{
@@ -440,7 +440,7 @@ const CircleDetails = ({
                 <X className="w-6 h-6 text-gray-500" />
               </button>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 max-w-[290px] sm:max-w-full">
                 {screenIndex === 1
                   ? "What is a Joinlio peer account?"
                   : "What is a Business Account in JOINLIO?"}
