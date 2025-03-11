@@ -575,3 +575,11 @@ p {
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 4px;
 }
+
+
+@supports (-webkit-touch-callout: none) {
+  .modal-ios-fix {
+    padding-bottom: env(safe-area-inset-bottom);
+    min-height: -webkit-fill-available;
+  }
+}

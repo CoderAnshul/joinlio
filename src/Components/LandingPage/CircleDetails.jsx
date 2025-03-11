@@ -37,12 +37,14 @@ const CircleDetails = ({
   useEffect(() => {
     if (isPeerModalOpen || isModalOpen) {
       const scrollY = window.scrollY;
-      document.body.classList.add("modal-open");
+      document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
-
+      document.body.style.width = '100%';
+      
       return () => {
-        document.body.classList.remove("modal-open");
-        document.body.style.top = "";
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
         window.scrollTo(0, scrollY);
       };
     }
@@ -431,52 +433,52 @@ const CircleDetails = ({
             onClick={handleModalContentClick}
             onWheel={(e) => e.stopPropagation()}
           >
-            <div className="sticky top-0 bg-white z-50 px-8 pt-8 pb-0 border-b rounded-t-2xl">
-              <button
-                onClick={() => setIsPeerModalOpen(false)}
-                className="absolute right-4 top-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-                aria-label="Close modal"
-              >
-                <X className="w-6 h-6 text-gray-500" />
-              </button>
+            <div className="sticky top-0 bg-white z-50 px-4 sm:px-8 pt-6 sm:pt-8 pb-0 border-b rounded-t-2xl">
+  <button
+    onClick={() => setIsPeerModalOpen(false)}
+    className="absolute right-3 top-3 p-2 hover:bg-gray-100 rounded-full transition-colors"
+    aria-label="Close modal"
+  >
+    <X className="w-5 h-5 text-gray-500" />
+  </button>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 max-w-[290px] sm:max-w-full">
-                {screenIndex === 1
-                  ? "What is a Joinlio peer account?"
-                  : "What is a Business Account in JOINLIO?"}
-              </h2>
+  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 pr-8">
+    {screenIndex === 1
+      ? "What is a Joinlio peer account?"
+      : "What is a Business Account in JOINLIO?"}
+  </h2>
 
-              {screenIndex === 1 && (
-                <div className="flex space-x-4">
-                  <button
-                    className={`px-4 py-2 font-medium transition-colors relative ${
-                      activeTab === "description"
-                        ? "text-blue-600"
-                        : "text-gray-600 hover:text-blue-600"
-                    }`}
-                    onClick={() => setActiveTab("description")}
-                  >
-                    Read Description
-                    {activeTab === "description" && (
-                      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
-                    )}
-                  </button>
-                  <button
-                    className={`px-4 py-2 font-medium transition-colors relative ${
-                      activeTab === "demo"
-                        ? "text-blue-600"
-                        : "text-gray-600 hover:text-blue-600"
-                    }`}
-                    onClick={() => setActiveTab("demo")}
-                  >
-                    See Demo
-                    {activeTab === "demo" && (
-                      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
-                    )}
-                  </button>
-                </div>
-              )}
-            </div>
+  {screenIndex === 1 && (
+    <div className="flex w-full overflow-x-auto pb-1">
+      <button
+        className={`px-3 sm:px-4 py-2 font-medium transition-colors relative whitespace-nowrap ${
+          activeTab === "description"
+            ? "text-blue-600"
+            : "text-gray-600 hover:text-blue-600"
+        }`}
+        onClick={() => setActiveTab("description")}
+      >
+        Read Description
+        {activeTab === "description" && (
+          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
+        )}
+      </button>
+      <button
+        className={`px-3 sm:px-4 py-2 font-medium transition-colors relative whitespace-nowrap ${
+          activeTab === "demo"
+            ? "text-blue-600"
+            : "text-gray-600 hover:text-blue-600"
+        }`}
+        onClick={() => setActiveTab("demo")}
+      >
+        See Demo
+        {activeTab === "demo" && (
+          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
+        )}
+      </button>
+    </div>
+  )}
+</div>
 
             <div className="overflow-y-auto flex-1 px-8 py-6">
               {screenIndex === 1 ? (
