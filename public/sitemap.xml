@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Home Page -->
+    <url>
+        <loc>https://joinlio.com/</loc>
+        <priority>1.0</priority>
+        <changefreq>daily</changefreq>
+    </url>
+   <!-- Blogs Page -->
+    <url>
+        <loc>https://joinlio.com/blogs</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+
+    <!-- About Us Page -->
+    <url>
+        <loc>https://joinlio.com/about</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <!-- Services Page -->
+    <url>
+        <loc>https://joinlio.com/services</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <!-- Contact Us Page -->
+    <url>
+        <loc>https://joinlio.com/contact</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <!-- Privacy Policy Page -->
+    <url>
+        <loc>https://joinlio.com/privacy-policy</loc>
+        <priority>0.5</priority>
+        <changefreq>yearly</changefreq>
+    </url>
+    <!-- Terms and Conditions Page -->
+    <url>
+        <loc>https://joinlio.com/terms-and-conditions</loc>
+        <priority>0.5</priority>
+        <changefreq>yearly</changefreq>
+    </url>
+</urlset>
