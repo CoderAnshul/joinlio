@@ -13,18 +13,6 @@
         <changefreq>monthly</changefreq>
     </url>
 
-    <!-- About Us Page -->
-    <url>
-        <loc>https://joinlio.com/about</loc>
-        <priority>0.8</priority>
-        <changefreq>monthly</changefreq>
-    </url>
-    <!-- Services Page -->
-    <url>
-        <loc>https://joinlio.com/services</loc>
-        <priority>0.8</priority>
-        <changefreq>monthly</changefreq>
-    </url>
     <!-- Contact Us Page -->
     <url>
         <loc>https://joinlio.com/contact</loc>
