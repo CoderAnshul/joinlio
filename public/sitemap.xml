@@ -15,7 +15,7 @@
 
     <!-- Contact Us Page -->
     <url>
-        <loc>https://joinlio.com/contact</loc>
+        <loc>https://joinlio.com/send-message</loc>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
@@ -27,7 +27,7 @@
     </url>
     <!-- Terms and Conditions Page -->
     <url>
-        <loc>https://joinlio.com/terms-and-conditions</loc>
+        <loc>https://joinlio.com/terms-and-condition</loc>
         <priority>0.5</priority>
         <changefreq>yearly</changefreq>
     </url>
