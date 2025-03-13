@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation ,useParams} from 'react-router-dom';
 import HubsHeading from '../Components/TravelHubs/HubsHeading';
 import SubInterest from '../Components/TravelHubs/SubInterest';
 import CreateSection from '../Components/TravelHubs/CreateSection';
@@ -8,6 +8,8 @@ import SectionHeading from '../Components/TravelHubs/SectionHeading';
 import HubVideo from '../Components/TravelHubs/HubVideos';
 
 const TravelHub = () => {
+  const { hubName } = useParams();
+
   const location = useLocation();
   const hubData = location.state?.hubData || null;
 

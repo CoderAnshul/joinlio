@@ -178,16 +178,25 @@ const Blogs = () => {
     : blogPosts.filter(post => post.category === activeCategory);
 
   const handleReadMore = (post) => {
-    // Pass the complete post object including fullContent
-    navigate(`/blog-detail/${post.id}`, { 
+
+    const titleSlug = post.title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') 
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-') 
+    .trim(); 
+    
+
+    navigate(`/blog-detail/${titleSlug}`, { 
       state: { 
         post: {
           ...post,
-          content: post.fullContent || [], // Pass fullContent as content
+          slug: titleSlug, 
+          content: post.fullContent || [],
           mainImage: post.imageSrc,
-          authorImage: "/api/placeholder/80/80", // Default author image
-          relatedArticles: [], // Add related articles if you have them
-          commentList: [] // Add comments if you have them
+          authorImage: "/api/placeholder/80/80",
+          relatedArticles: [],
+          commentList: []
         } 
       } 
     });

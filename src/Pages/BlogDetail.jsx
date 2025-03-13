@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { ArrowLeft, Heart, MessageSquare, Share2, Bookmark } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import BlogDp from "/fav.png"
@@ -30,6 +30,15 @@ const BlogDetail = () => {
     e.preventDefault();
     navigate('/blogs');
   };
+
+  useEffect(() => {
+    if (!location.state?.post && locationPost?.id) {
+      const currentSlug = window.location.pathname.split('/').pop();
+     
+      document.title = locationPost.title || "Blog Post";
+    }
+  }, [location.state, locationPost]);
+
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();

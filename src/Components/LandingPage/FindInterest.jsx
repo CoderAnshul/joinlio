@@ -118,6 +118,13 @@ const FindInterest = () => {
     },
   ];
 
+  const createHubSlug = (hubName) => {
+    return hubName
+      .toLowerCase()
+      .replace(/\s+/g, '-') 
+      .replace(/[^a-z0-9-]/g, ''); // Remove special chars
+  };
+
   const modalSections = [
     {
       icon: "✉️",
@@ -239,7 +246,7 @@ const FindInterest = () => {
         {/* Left Section */}
         <div className="mt-20 lg:mr-4 flex-shrink-0 lg:w-1/4">
           <div className="interest-banner relative w-full h-[685px] max-lg:h-[400px] max-sm:h-[580px] max-sm:flex max-sm:flex-col max-md:flex  gap-4 rounded-xl bg-white shadow-xl">
-            {/* <video
+             {/* <video
               className="w-full max-sm:w-56 max-lg:w-60 rounded-xl max-sm:mx-auto"
               loop
               autoPlay
@@ -295,7 +302,7 @@ const FindInterest = () => {
                       </div>
                       <div className="hub-container  z-10">
                         <div className="mb-3">
-                          <h2 className="text-lg font-bold  truncate text-white">
+                          <h2 className="text-lg font-bold truncate text-white">
                             {hub.name}
                           </h2>
                           <p className="text-sm mb-2 line-clamp-2 h-10 text-white">
@@ -303,7 +310,7 @@ const FindInterest = () => {
                           </p>
                           {index < 3 ? (
                             <Link
-                              to="/hubs"
+                              to={`/hubs/${createHubSlug(hub.name)}`}
                               state={{
                                 hubData: {
                                   ...hub,
@@ -339,7 +346,7 @@ const FindInterest = () => {
               )}
             </div>
           </div>
-        </div>
+          </div>
       </div>
 
       {/* Modal */}
@@ -376,12 +383,6 @@ const FindInterest = () => {
                 </button>
               </div>
               <div className="flex items-center gap-2">
-                {/* <button
-                  onClick={() => setShowPoints(!showPoints)}
-                  className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-                >
-                  Working
-                </button> */}
                 <button
                   onClick={() => setIsModalOpen(false)}
                   className="p-2 max-sm:hidden hover:bg-gray-100 rounded-full transition-colors"
@@ -455,11 +456,6 @@ const FindInterest = () => {
               >
                 Close
               </button>
-              {/* <Link to="/get-started">
-                <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                  Explore Hubs
-                </button>
-              </Link> */}
             </div>
           </div>
         </div>
