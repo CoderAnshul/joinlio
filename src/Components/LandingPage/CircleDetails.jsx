@@ -489,6 +489,8 @@ const CircleDetails = ({
                         className="w-full rounded-xl shadow-lg"
                         autoPlay
                         muted
+                        playsInline
+                        controlsList="nodownload nofullscreen noremoteplayback"
                       >
                         <source src={dashboardvideo} type="video/mp4" />
                         Your browser does not support the video tag.
