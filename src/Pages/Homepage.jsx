@@ -13,7 +13,7 @@ import WhyChooseUs from "../Components/LandingPage/WhyChooseUs";
 import Subscription from "../Components/LandingPage/Subscription";
 import RevealText from "../Components/LandingPage/RevealText";
 import CircleDetails from "../Components/LandingPage/CircleDetails";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 import { useEffect } from "react";
 import ChatButton from "../Components/LandingPage/ChatButton";

@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import BlogDp from "/fav.png";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 const BlogDetail = () => {
   const location = useLocation();

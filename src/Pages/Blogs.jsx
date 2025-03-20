@@ -15,8 +15,7 @@ import tavelblog from "../assets/images/Travel.jpg";
 import Entrepreneurshipblog from "../assets/images/Entrepreneurship.jpg";
 import Mediablog from "../assets/images/Media.jpg";
 import BlogDp from "/fav.png";
-import { Helmet } from "react-helmet-async";
-import { m } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const Blogs = () => {
   const [activeCategory, setActiveCategory] = useState("All");

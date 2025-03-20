@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     host: true,
     strictPort: true,
+    port: 5174, // Change this to your desired port
     hmr: {
       protocol: "wss",
       clientPort: 443, // Forces WebSocket to use the correct port

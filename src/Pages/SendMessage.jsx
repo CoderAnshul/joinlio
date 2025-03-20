@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 const SendMessage = () => {
   const [formData, setFormData] = useState({
