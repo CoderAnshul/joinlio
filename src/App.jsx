@@ -13,6 +13,17 @@ import Blogs from "./Pages/Blogs";
 import BlogDetail from "./Pages/BlogDetail";
 import { useLocation } from "react-router-dom";
 import SendMessage from "./Pages/SendMessage";
+import DashboardLayout from "./Components/Dashboard/DashboardLayout";
+import Profile from "./Components/Dashboard/profile";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import Feed from "./Components/Dashboard/Feeds";
+import ExploreTopicsPage from "./Components/Dashboard/ExploreTopicsPage";
+import {PeerAccountPage} from "./Components/Dashboard/PeerAccount";
+import {Tools} from "./Components/Dashboard/Tools";
+import {ProjectsPage} from "./Components/Dashboard/Collaboration";
+import { ServicesPage } from "./Components/Dashboard/Service";
+import Rewards from "./Components/Dashboard/Rewards";
+import RequestPartnership from "./Components/Dashboard/RequestPartnership";
 
 const App = () => {
   const lenisRef = useRef(null);
@@ -84,6 +95,24 @@ const App = () => {
             <Route path="/blog-detail/:id" element={<BlogDetail />} />
             <Route path="/blog-detail/:titleSlug" element={<BlogDetail />} />
             <Route path="/send-message" element={<SendMessage />} />
+
+
+  <Route path="/dashboard" element={<DashboardLayout />}>
+    <Route index element={<Dashboard />} />
+    <Route path="profile" element={<Profile />} />
+    <Route path="feed" element={<Feed />} />
+    <Route path="topics" element={<ExploreTopicsPage />} />
+    <Route path="account" element={<PeerAccountPage />} />
+    <Route path="tools" element={<Tools></Tools>}></Route>
+    <Route path="projects" element={<ProjectsPage />} />
+    <Route path="services" element={<ServicesPage></ServicesPage>} />
+    <Route path="rewards" element={<Rewards />} />
+    <Route path="request-partnership" element={<RequestPartnership></RequestPartnership>}></Route>
+
+
+    {/* Add other dashboard routes here */}
+  </Route>
+
           </Routes>
         </div>
         <Footer />
