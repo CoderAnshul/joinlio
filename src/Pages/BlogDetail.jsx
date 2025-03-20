@@ -1,7 +1,14 @@
-import React, { useState,useEffect } from 'react';
-import { ArrowLeft, Heart, MessageSquare, Share2, Bookmark } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import BlogDp from "/fav.png"
+import React, { useState, useEffect } from "react";
+import {
+  ArrowLeft,
+  Heart,
+  MessageSquare,
+  Share2,
+  Bookmark,
+} from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import BlogDp from "/fav.png";
+import { Helmet } from "react-helmet-async";
 
 const BlogDetail = () => {
   const location = useLocation();
@@ -20,25 +27,28 @@ const BlogDetail = () => {
     authorImage = "/api/placeholder/80/80",
     category = "Lifestyle",
     content = [],
-    relatedArticles = []
+    relatedArticles = [],
+    metaTitle,
+    metaDescription,
   } = locationPost;
 
-  const [newComment, setNewComment] = useState('');
-  const [commentList, setCommentList] = useState(locationPost.commentList || []);
+  const [newComment, setNewComment] = useState("");
+  const [commentList, setCommentList] = useState(
+    locationPost.commentList || []
+  );
 
   const handleBackClick = (e) => {
     e.preventDefault();
-    navigate('/blogs');
+    navigate("/blogs");
   };
 
   useEffect(() => {
     if (!location.state?.post && locationPost?.id) {
-      const currentSlug = window.location.pathname.split('/').pop();
-     
+      const currentSlug = window.location.pathname.split("/").pop();
+
       document.title = locationPost.title || "Blog Post";
     }
   }, [location.state, locationPost]);
-
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
@@ -49,71 +59,130 @@ const BlogDetail = () => {
         userImage: "/api/placeholder/100/100",
         timeAgo: "Just now",
         text: newComment,
-        likes: 0
+        likes: 0,
       };
       setCommentList([...commentList, newCommentData]);
-      setNewComment('');
+      setNewComment("");
     }
   };
 
-  return (
-    <div className="min-h-screen bg-white p-6 md:p-10">
-      <div className="max-w-7xl mx-auto relative z-10">
-        <a href="/blogs" onClick={handleBackClick} className="inline-flex items-center space-x-2 text-gray-700 hover:text-[#00ABFF] mb-8 transition-colors">
-          <ArrowLeft size={20} />
-          <span>Back to all articles</span>
-        </a>
+  console.log("locationPost");
+  console.log(locationPost);
 
-        <header className="mb-12">
-          <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl border border-white border-opacity-30">
-            <div className="relative h-96 md:h-[500px]">
-              <img src={mainImage} alt={title} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white">
-                <span className="px-3 py-1 rounded-full bg-[#00ABFF] text-white text-sm font-medium">{category}</span>
-                <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">{title}</h1>
-                <div className="flex flex-wrap items-center text-sm md:text-base text-gray-200 space-x-6">
-                  <div className="flex items-center space-x-2">
-                    <img src={BlogDp} className='h-8 ' alt="author" />
-                    <span>{author}</span>
+  return (
+    <>
+      <Helmet>
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+      </Helmet>
+      <div className="min-h-screen bg-white p-6 md:p-10">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <a
+            href="/blogs"
+            onClick={handleBackClick}
+            className="inline-flex items-center space-x-2 text-gray-700 hover:text-[#00ABFF] mb-8 transition-colors"
+          >
+            <ArrowLeft size={20} />
+            <span>Back to all articles</span>
+          </a>
+
+          <header className="mb-12">
+            <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-2xl overflow-hidden shadow-xl border border-white border-opacity-30">
+              <div className="relative h-96 md:h-[500px]">
+                <img
+                  src={mainImage}
+                  alt={title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white">
+                  <span className="px-3 py-1 rounded-full bg-[#00ABFF] text-white text-sm font-medium">
+                    {category}
+                  </span>
+                  <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
+                    {title}
+                  </h1>
+                  <div className="flex flex-wrap items-center text-sm md:text-base text-gray-200 space-x-6">
+                    <div className="flex items-center space-x-2">
+                      <img src={BlogDp} className="h-8 " alt="author" />
+                      <span>{author}</span>
+                    </div>
+                    <span>{date}</span>
+                    <span>{readTime}</span>
                   </div>
-                  <span>{date}</span>
-                  <span>{readTime}</span>
                 </div>
               </div>
             </div>
-          </div>
-        </header>
+          </header>
 
-        <main className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-2xl p-6 md:p-10 shadow-xl border border-white border-opacity-30 mb-12">
-          <div className="prose prose-lg max-w-none">
-            {content.map((section, index) => {
-              switch (section.type) {
-                case 'paragraph':
-                  return <p key={index} className="text-gray-700 leading-relaxed mb-6">{section.content}</p>;
-                case 'heading':
-                  return <h2 key={index} className="text-2xl font-bold text-gray-800 mb-4 mt-10">{section.content}</h2>;
-                case 'subheading':
-                  return <h3 key={index} className="text-xl font-semibold text-gray-800 mb-3 mt-6">{section.content}</h3>;
-                case 'image':
-                  return (
-                    <div key={index} className="my-10 rounded-xl overflow-hidden shadow-lg">
-                      <img src={section.url} alt={section.alt} className="w-full h-auto" />
-                      {section.caption && <p className="italic text-sm text-gray-600 bg-white bg-opacity-70 backdrop-filter backdrop-blur-sm p-3">{section.caption}</p>}
-                    </div>
-                  );
-                case 'quote':
-                  return <blockquote key={index} className="border-l-4 border-[#00ABFF] pl-4 italic my-8 text-gray-700">{section.content}</blockquote>;
-                default:
-                  return null;
-              }
-            })}
-          </div>
+          <main className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-2xl p-6 md:p-10 shadow-xl border border-white border-opacity-30 mb-12">
+            <div className="prose prose-lg max-w-none">
+              {content.map((section, index) => {
+                switch (section.type) {
+                  case "paragraph":
+                    return (
+                      <p
+                        key={index}
+                        className="text-gray-700 leading-relaxed mb-6"
+                      >
+                        {section.content}
+                      </p>
+                    );
+                  case "heading":
+                    return (
+                      <h2
+                        key={index}
+                        className="text-2xl font-bold text-gray-800 mb-4 mt-10"
+                      >
+                        {section.content}
+                      </h2>
+                    );
+                  case "subheading":
+                    return (
+                      <h3
+                        key={index}
+                        className="text-xl font-semibold text-gray-800 mb-3 mt-6"
+                      >
+                        {section.content}
+                      </h3>
+                    );
+                  case "image":
+                    return (
+                      <div
+                        key={index}
+                        className="my-10 rounded-xl overflow-hidden shadow-lg"
+                      >
+                        <img
+                          src={section.url}
+                          alt={section.alt}
+                          className="w-full h-auto"
+                        />
+                        {section.caption && (
+                          <p className="italic text-sm text-gray-600 bg-white bg-opacity-70 backdrop-filter backdrop-blur-sm p-3">
+                            {section.caption}
+                          </p>
+                        )}
+                      </div>
+                    );
+                  case "quote":
+                    return (
+                      <blockquote
+                        key={index}
+                        className="border-l-4 border-[#00ABFF] pl-4 italic my-8 text-gray-700"
+                      >
+                        {section.content}
+                      </blockquote>
+                    );
+                  default:
+                    return null;
+                }
+              })}
+            </div>
 
-          <div className="border-t border-gray-200 mt-10 pt-8">
-            <div className="flex flex-wrap justify-between items-center">
-              <div className="flex items-center space-x-4 mb-4 md:mb-0">
-                {/* <button className="flex items-center space-x-1 text-gray-700 hover:text-[#00ABFF] transition-colors">
+            <div className="border-t border-gray-200 mt-10 pt-8">
+              <div className="flex flex-wrap justify-between items-center">
+                <div className="flex items-center space-x-4 mb-4 md:mb-0">
+                  {/* <button className="flex items-center space-x-1 text-gray-700 hover:text-[#00ABFF] transition-colors">
                   <Heart size={20} />
                   <span>{likes} likes</span>
                 </button>
@@ -121,8 +190,8 @@ const BlogDetail = () => {
                   <MessageSquare size={20} />
                   <span>{comments} comments</span>
                 </button> */}
-              </div>
-              {/* <div className="flex items-center space-x-4">
+                </div>
+                {/* <div className="flex items-center space-x-4">
                 <button className="flex items-center space-x-1 text-gray-700 hover:text-[#00ABFF] transition-colors">
                   <Share2 size={20} />
                   <span>Share</span>
@@ -132,12 +201,12 @@ const BlogDetail = () => {
                   <span>Save</span>
                 </button>
               </div> */}
+              </div>
             </div>
-          </div>
-        </main>
+          </main>
 
-        {/* Comments section */}
-        {/* <section className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-2xl p-6 md:p-10 shadow-xl border border-white border-opacity-30 mb-12">
+          {/* Comments section */}
+          {/* <section className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-2xl p-6 md:p-10 shadow-xl border border-white border-opacity-30 mb-12">
           <h2 className="text-2xl font-bold text-gray-800 mb-8">Comments ({commentList.length})</h2>
           <div className="mb-10">
             <form onSubmit={handleCommentSubmit}>
@@ -184,8 +253,9 @@ const BlogDetail = () => {
             </div>
           ))}
         </section> */}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

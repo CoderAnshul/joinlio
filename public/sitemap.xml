@@ -6,32 +6,31 @@
         <priority>1.0</priority>
         <changefreq>daily</changefreq>
     </url>
+   <!-- Blogs detail -->
+      <url>
+        <loc>https://joinlio.com/blog-detail/transform-your-creative-ideas-into-reality-with-joinlio</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+
+     <!-- Blogs detail -->
+      <url>
+        <loc>https://joinlio.com/blog-detail/why-student-entrepreneurship-is-the-key-to-future-success</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+      <!-- Blogs detail -->
+      <url>
+        <loc>https://joinlio.com/blog-detail/wanderlust-for-growth-how-travel-transforms-your-life</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
    <!-- Blogs Page -->
     <url>
         <loc>https://joinlio.com/blogs</loc>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
-
-     <!-- Hubs Page -->
-    <url>
-        <loc>https://joinlio.com/hubs/travel-hub</loc>
-        <priority>1.0</priority>
-        <changefreq>daily</changefreq>
-    </url>
-
-      <url>
-        <loc>https://joinlio.com/hubs/media-hub</loc>
-        <priority>1.0</priority>
-        <changefreq>daily</changefreq>
-    </url>
-    
-      <url>
-        <loc>https://joinlio.com/hubs/entrepreneurship-hub</loc>
-        <priority>1.0</priority>
-        <changefreq>daily</changefreq>
-    </url>
-
     <!-- Contact Us Page -->
     <url>
         <loc>https://joinlio.com/send-message</loc>
