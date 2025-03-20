@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from "../../assets/images/logo512.png";
+
 
 const Sidebar = ({ userData }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -17,18 +19,19 @@ const Sidebar = ({ userData }) => {
   
   return (
     <div className={`${isCollapsed ? 'w-16' : 'w-64'} transition-width duration-300 ease-in-out h-full bg-blue-800 text-white p-4 flex flex-col`}>
-      {/* Logo and collapse button */}
-      <div className="flex items-center justify-between mb-8">
-        {!isCollapsed && <h2 className="text-xl font-bold">Dashboard</h2>}
-        <button 
-          onClick={() => setIsCollapsed(!isCollapsed)} 
-          className="p-1 rounded-full hover:bg-blue-700"
-        >
-          {isCollapsed ? '→' : '←'}
-        </button>
-      </div>
-      
-      {/* Onboarding progress - only shown if onboarding is not complete */}
+        <div className="flex items-center justify-between mb-8">
+          <Link to="/">
+          {!isCollapsed && <img className="max-h-32" src={logo} alt="logo" />}
+          </Link>
+          <button 
+            onClick={() => setIsCollapsed(!isCollapsed)} 
+            className="p-1 rounded-full hover:bg-blue-700"
+          >
+            {isCollapsed ? '→' : '←'}
+          </button>
+        </div>
+        
+        {/* Onboarding progress - only shown if onboarding is not complete */}
       {!hasCompletedOnboarding && !isCollapsed && (
         <div className="mb-6">
           <div className="flex justify-between mb-1">

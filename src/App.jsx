@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Homepage from "./Pages/Homepage";
 import Footer from "./Components/Footer";
@@ -11,7 +11,6 @@ import Policy from "./Pages/Policy";
 import ConfidentialityPolicy from "./Pages/ConfidentialityPolicy";
 import Blogs from "./Pages/Blogs";
 import BlogDetail from "./Pages/BlogDetail";
-import { useLocation } from "react-router-dom";
 import SendMessage from "./Pages/SendMessage";
 import DashboardLayout from "./Components/Dashboard/DashboardLayout";
 import Profile from "./Components/Dashboard/profile";
@@ -48,6 +47,47 @@ const App = () => {
     return null;
   };
 
+  // Layout wrapper component to conditionally render Navbar and Footer
+  const MainLayout = () => {
+    const location = useLocation();
+    const isDashboard = location.pathname.startsWith('/dashboard');
+    
+    return (
+      <>
+        {!isDashboard && <Navbar />}
+        <div className="content-container relative z-10">
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/hubs" element={<TravelHub />} />
+            <Route path="/hubs/:hubName" element={<TravelHub />} />
+            <Route path="/get-started" element={<GetStarted />} />
+            <Route path="/privacy-policy" element={<Policy />} />
+            <Route path="/terms-and-condition" element={<ConfidentialityPolicy />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blog-detail/:id" element={<BlogDetail />} />
+            <Route path="/blog-detail/:titleSlug" element={<BlogDetail />} />
+            <Route path="/send-message" element={<SendMessage />} />
+            
+            {/* Dashboard routes with custom layout */}
+            <Route path="/dashboard" element={<DashboardLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="feed" element={<Feed />} />
+              <Route path="topics" element={<ExploreTopicsPage />} />
+              <Route path="account" element={<PeerAccountPage />} />
+              <Route path="tools" element={<Tools />} />
+              <Route path="projects" element={<ProjectsPage />} />
+              <Route path="services" element={<ServicesPage />} />
+              <Route path="rewards" element={<Rewards />} />
+              <Route path="request-partnership" element={<RequestPartnership />} />
+            </Route>
+          </Routes>
+        </div>
+        {!isDashboard && <Footer />}
+      </>
+    );
+  };
+
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
@@ -79,43 +119,7 @@ const App = () => {
 
       <BrowserRouter>
         <ScrollManager />
-        <Navbar />
-        <div className="content-container relative z-10">
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/hubs" element={<TravelHub />} />
-            <Route path="/hubs/:hubName" element={<TravelHub />} />
-            <Route path="/get-started" element={<GetStarted />} />
-            <Route path="/privacy-policy" element={<Policy />} />
-            <Route
-              path="/terms-and-condition"
-              element={<ConfidentialityPolicy />}
-            />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blog-detail/:id" element={<BlogDetail />} />
-            <Route path="/blog-detail/:titleSlug" element={<BlogDetail />} />
-            <Route path="/send-message" element={<SendMessage />} />
-
-
-  <Route path="/dashboard" element={<DashboardLayout />}>
-    <Route index element={<Dashboard />} />
-    <Route path="profile" element={<Profile />} />
-    <Route path="feed" element={<Feed />} />
-    <Route path="topics" element={<ExploreTopicsPage />} />
-    <Route path="account" element={<PeerAccountPage />} />
-    <Route path="tools" element={<Tools></Tools>}></Route>
-    <Route path="projects" element={<ProjectsPage />} />
-    <Route path="services" element={<ServicesPage></ServicesPage>} />
-    <Route path="rewards" element={<Rewards />} />
-    <Route path="request-partnership" element={<RequestPartnership></RequestPartnership>}></Route>
-
-
-    {/* Add other dashboard routes here */}
-  </Route>
-
-          </Routes>
-        </div>
-        <Footer />
+        <MainLayout />
       </BrowserRouter>
     </div>
   );
