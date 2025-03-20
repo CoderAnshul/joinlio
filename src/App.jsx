@@ -23,6 +23,8 @@ import {ProjectsPage} from "./Components/Dashboard/Collaboration";
 import { ServicesPage } from "./Components/Dashboard/Service";
 import Rewards from "./Components/Dashboard/Rewards";
 import RequestPartnership from "./Components/Dashboard/RequestPartnership";
+import PlanManagement from "./Components/Dashboard/planManagement";
+import StudentManagement from "./Components/Dashboard/student";
 
 const App = () => {
   const lenisRef = useRef(null);
@@ -80,6 +82,8 @@ const App = () => {
               <Route path="services" element={<ServicesPage />} />
               <Route path="rewards" element={<Rewards />} />
               <Route path="request-partnership" element={<RequestPartnership />} />
+              <Route path="plan" element={<PlanManagement />} />
+              <Route path="students" element={<StudentManagement/>} />
             </Route>
           </Routes>
         </div>
