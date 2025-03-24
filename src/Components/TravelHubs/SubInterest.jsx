@@ -516,9 +516,11 @@ const SubInterest = ({ category = "travel" ,className = "" }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [newHub, setNewHub] = useState({
-    title: "",
-    icon: "",
-    description: "",
+    title: '',
+    icon: '',
+    description: '',
+    isPrivate: false,
+    tags: []
   });
 
   const createGroups = (categories) => {
@@ -652,53 +654,92 @@ const SubInterest = ({ category = "travel" ,className = "" }) => {
       </div>
 
       {modalOpen && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[10000]">
-          <div className="bg-white absolute z-[10000] p-6 rounded-lg shadow-xl w-96 ">
-            <button
-              onClick={() => setModalOpen(false)}
-              className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
-            >
-              <X size={20} />
-            </button>
-            <h2 className="text-xl font-bold mb-4">Create New Hub</h2>
-            <input
-              type="text"
-              placeholder="Title"
-              className="w-full p-2 border rounded mb-3"
-              value={newHub.title}
-              onChange={(e) => setNewHub({ ...newHub, title: e.target.value })}
-            />
-            <input
-              type="text"
-              placeholder="Icon (emoji)"
-              className="w-full p-2 border rounded mb-3"
-              value={newHub.icon}
-              onChange={(e) => setNewHub({ ...newHub, icon: e.target.value })}
-            />
-            <textarea
-              placeholder="Description"
-              className="w-full p-2 border rounded mb-4 h-24"
-              value={newHub.description}
-              onChange={(e) =>
-                setNewHub({ ...newHub, description: e.target.value })
-              }
-            />
-            <div className="flex justify-end gap-2">
-              <button
-                className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 transition-colors"
-                onClick={() => setModalOpen(false)}
-              >
-                Cancel
-              </button>
-              <button
-                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-                onClick={handleSubmit}
-              >
-                Create
-              </button>
-            </div>
-          </div>
-        </div>
+       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[10000]">
+                 <div className="bg-white p-6 rounded-xl shadow-xl w-96 relative">
+                   <button
+                     onClick={() => setModalOpen(false)}
+                     className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 transition duration-200"
+                   >
+                     <X size={20} />
+                   </button>
+                   <h2 className="text-xl font-bold mb-4 text-gray-800">Create New Hub</h2>
+           
+                   <div className="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-center">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-500 mr-3 flex-shrink-0">
+                       <circle cx="12" cy="12" r="10"></circle>
+                       <line x1="12" y1="8" x2="12" y2="12"></line>
+                       <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                     </svg>
+                     <p className="text-amber-800 text-sm">
+                       Hub creation is currently unavailable. This feature will be enabled after Joinlio officially launches.
+                     </p>
+                   </div>
+           
+                   <div className="space-y-4">
+                     <div>
+                       <label htmlFor="hub-title" className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                       <input
+                         id="hub-title"
+                         type="text"
+                         placeholder="Enter hub title"
+                         className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                         value={newHub.title}
+                         onChange={(e) => setNewHub({ ...newHub, title: e.target.value })}
+                       />
+                     </div>
+                     
+                     <div>
+                       <label htmlFor="hub-icon" className="block text-sm font-medium text-gray-700 mb-1">Icon (emoji)</label>
+                       <input
+                         id="hub-icon"
+                         type="text"
+                         placeholder="🚀"
+                         className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                         value={newHub.icon}
+                         onChange={(e) => setNewHub({ ...newHub, icon: e.target.value })}
+                       />
+                     </div>
+                     
+                     <div>
+                       <label htmlFor="hub-description" className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                       <textarea
+                         id="hub-description"
+                         placeholder="Write a short description..."
+                         className="w-full p-2.5 border border-gray-300 rounded-lg h-24 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                         value={newHub.description}
+                         onChange={(e) => setNewHub({ ...newHub, description: e.target.value })}
+                       />
+                     </div>
+           
+                     <div className="flex items-center">
+                       <input
+                         id="private-hub"
+                         type="checkbox"
+                         className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                         checked={newHub.isPrivate}
+                         onChange={(e) => setNewHub({ ...newHub, isPrivate: e.target.checked })}
+                       />
+                       <label htmlFor="private-hub" className="ml-2 text-sm font-medium text-gray-700">
+                         Private Hub
+                       </label>
+                     </div>
+                   </div>
+           
+                   <div className="flex justify-end gap-3 mt-6">
+                     <button
+                       className="px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors"
+                       onClick={() => setModalOpen(false)}
+                     >
+                       Cancel
+                     </button>
+                     <button
+                       className="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+                     >
+                       Create Hub
+                     </button>
+                   </div>
+                 </div>
+               </div>
       )}
     </div>
   );
