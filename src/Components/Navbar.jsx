@@ -265,84 +265,84 @@ const Navbar = () => {
             {/* /* <div className="flex items-center text-xs text-semibold">
                     <div className="w-2 h-2 rounded-full text-xs bg-black mr-2"></div>
                     <span>CALL US : +00 81 590 088</span>
-                  </div> */} 
+                  </div> */}
 
-                  <Link
-                    to="/send-message"
-                    className="button-shadow px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
-                  >
-                    CONTACT US
-                  </Link>
+            <Link
+              to="/send-message"
+              className="button-shadow px-6 py-3 text-xs font-medium border border-black rounded-sm active:scale-95 transform hover:bg-[#2CA2FB] hover:text-white transition-all duration-300"
+            >
+              CONTACT US
+            </Link>
 
-                  <Link
-  to="/dashboard"
-  className="flex items-center space-x-2 hover:text-gray-600"
->
-  <svg 
-    className="w-6 h-6 text-blue-600" 
-    fill="none" 
-    stroke="currentColor" 
-    viewBox="0 0 24 24" 
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-      strokeWidth="2" 
-      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-    />
-  </svg>
-  <span>Dashboard</span>
-</Link>
-                  </div>
-                </div>
-                </nav>
-
-                <div
-                ref={overlayRef}
-                className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity duration-300 md:hidden opacity-0 pointer-events-none`}
-                onClick={() => setIsOpen(false)}
+            {/* <Link
+              to="/dashboard"
+              className="flex items-center space-x-2 hover:text-gray-600"
+            >
+              <svg
+                className="w-6 h-6 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
                 />
+              </svg>
+              <span>Dashboard</span>
+            </Link> */}
+          </div>
+        </div>
+      </nav>
 
-                <aside
-                ref={sidebarRef}
-                className="fixed top-0 right-0 h-full w-[80vw] max-w-sm bg-gray-800 z-40 transform translate-x-full md:hidden overflow-y-auto"
+      <div
+        ref={overlayRef}
+        className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity duration-300 md:hidden opacity-0 pointer-events-none`}
+        onClick={() => setIsOpen(false)}
+      />
+
+      <aside
+        ref={sidebarRef}
+        className="fixed top-0 right-0 h-full w-[80vw] max-w-sm bg-gray-800 z-40 transform translate-x-full md:hidden overflow-y-auto"
+      >
+        <button
+          onClick={() => setIsOpen(false)}
+          className="absolute top-6 right-6 text-white p-2"
+          aria-label="Close menu"
+        >
+          <X className="w-6 h-6" />
+        </button>
+
+        <div className="p-8 h-full flex flex-col">
+          <ul className="space-y-6 mt-10 mb-8">
+            {mobileLinks.map((link, index) => (
+              <li key={index}>
+                <a
+                  href={link.to}
+                  onClick={(e) => handleMobileNavClick(e, link)}
+                  className="block text-xl text-white font-medium hover:text-gray-300 transition-colors duration-300"
                 >
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="absolute top-6 right-6 text-white p-2"
-                  aria-label="Close menu"
-                >
-                  <X className="w-6 h-6" />
-                </button>
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-                <div className="p-8 h-full flex flex-col">
-                  <ul className="space-y-6 mt-10 mb-8">
-                  {mobileLinks.map((link, index) => (
-                    <li key={index}>
-                    <a
-                      href={link.to}
-                      onClick={(e) => handleMobileNavClick(e, link)}
-                      className="block text-xl text-white font-medium hover:text-gray-300 transition-colors duration-300"
-                    >
-                      {link.text}
-                    </a>
-                    </li>
-                  ))}
-                  </ul>
+          <div className="mt-auto space-y-6 pb-8">
+            <div
+              className="text-white"
+              ref={(el) => (linksRef.current[mobileLinks.length] = el)}
+            >
+              <span className="block text-gray-400 text-sm mb-1">
+                Drop your query
+              </span>
+              <span className="text-lg">contact@joinlio.com</span>
+            </div>
 
-                  <div className="mt-auto space-y-6 pb-8">
-                  <div
-                    className="text-white"
-                    ref={(el) => (linksRef.current[mobileLinks.length] = el)}
-                  >
-                    <span className="block text-gray-400 text-sm mb-1">
-                    Drop your query
-                    </span>
-                    <span className="text-lg">contact@joinlio.com</span>
-                  </div>
-
-                  <Link
+            <Link
               // ref={(el) => (linksRef.current[mobileLinks.length + 1] = el)}
               to="/get-started"
               className="inline-block w-full px-6 py-3 text-center text-white border border-white rounded-md hover:!bg-white hover:text-gray-800 transition-all duration-300"
