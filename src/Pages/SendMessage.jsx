@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { Helmet } from "react-helmet";
 
 const SendMessage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -37,18 +38,14 @@ const SendMessage = () => {
         "o_l0zTlSddslcQg_o"
       );
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
+      // Ensure this matches the route in your App configuration
+      navigate('/thank-you', { 
+        state: { 
+          name: formData.name 
+        } 
       });
-
-      alert("Message sent successfully!");
     } catch (error) {
       console.error("Error sending message:", error.message);
-      alert("Failed to send message. Please try again.");
-    } finally {
       setIsSubmitting(false);
     }
   };
