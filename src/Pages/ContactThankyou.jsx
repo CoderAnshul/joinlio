@@ -37,7 +37,7 @@ const ContactThankyou = () => {
           <div className="flex justify-center space-x-4">
             <Link 
               to="/" 
-              className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors duration-200"
+              className="bg-[#00abff] text-white px-6 py-3 rounded-md hover:bg-blue-600 transition-colors duration-200"
             >
               Return to Home
             </Link>

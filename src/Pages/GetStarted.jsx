@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ChevronDown, Bird, User } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import j from "../assets/images/bigJTwo.png";
 
 const GetStarted = () => {
+  const navigate = useNavigate();
   const [userCategory, setUserCategory] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -17,7 +19,6 @@ const GetStarted = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!acceptTerms) {
-      alert("Please accept the terms and conditions to proceed.");
       return;
     }
     setIsSubmitting(true);
@@ -41,22 +42,10 @@ const GetStarted = () => {
         "o_l0zTlSddslcQg_o"
       );
 
-      // Reset form
-      setUserCategory("");
-      setFirstName("");
-      setLastName("");
-      setInstitutionName("");
-      setBusinessName("");
-      setEmail("");
-      setQuery("");
-
-      alert(
-        "Thank you for signing up! Once Joinlio goes live, you will be notified at your registered email address. Stay tuned!"
-      );
+      // Navigate to thank you page
+      navigate('/getStarted-thank-you');
     } catch (error) {
       console.error("Error sending email:", error.message);
-      alert("There was an error sending your registration. Please try again.");
-    } finally {
       setIsSubmitting(false);
     }
   };

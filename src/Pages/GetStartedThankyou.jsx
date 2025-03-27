@@ -15,33 +15,9 @@ const GetStartedThankyou = () => {
         />
       </Helmet>
       <div className="min-h-fit p-6 flex items-center justify-center">
-        <div>
-          <img className="max-h-[500px] hidden lg:block mr-10" src={j} alt="Joinlio Logo" />
-        </div>
-        <div className="w-full h-full lg:ml-5 max-w-full grid md:grid-cols-2 gap-8 items-start">
-          {/* Left Section */}
-          <div className="space-y-6">
-            <div className="relative p-8">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 bg-blue-50 p-3 rounded-lg">
-                  <Bird className="text-blue-600 w-5 h-5" />
-                  <p className="text-sm">
-                    You're now part of the Joinlio early access community!
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-3 bg-green-50 p-3 rounded-lg">
-                  <User className="text-green-600 w-5 h-5" />
-                  <p className="text-sm">
-                    We'll notify you via email when Joinlio goes live.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div className="w-full  h-full lg:ml-5 max-w-full flex justify-center gap-8 items-start">
           {/* Right Section - Thank You Message */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg text-center">
+          <div className="bg-white p-8 rounded-2xl max-w-2xl text-center">
             <svg 
               className="mx-auto mb-6 text-green-500 w-24 h-24" 
               fill="none" 
@@ -63,15 +39,9 @@ const GetStartedThankyou = () => {
             <div className="flex justify-center space-x-4">
               <Link 
                 to="/" 
-                className="bg-[#F7C28A] text-black px-6 py-3 rounded-lg hover:bg-[#c59057] transition-colors duration-200"
+                className="bg-[#00abff] text-white px-6 py-3 rounded-lg hover:bg-blue-400 transition-colors duration-200"
               >
                 Return to Home
-              </Link>
-              <Link 
-                to="/get-started" 
-                className="bg-gray-100 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors duration-200"
-              >
-                Invite Friends
               </Link>
             </div>
           </div>
