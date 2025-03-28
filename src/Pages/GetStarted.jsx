@@ -43,7 +43,7 @@ const GetStarted = () => {
       );
 
       // Navigate to thank you page
-      navigate('/getStarted-thank-you');
+      navigate('/get-started-thank-you');
     } catch (error) {
       console.error("Error sending email:", error.message);
       setIsSubmitting(false);
