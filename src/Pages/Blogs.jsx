@@ -517,9 +517,9 @@ const Blogs = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Hero section with search */}
           <div className="mb-16 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
               Joinlio Blogs
-            </h2>
+            </h1>
             <p className="text-gray-700 text-lg md:text-xl max-w-2xl mx-auto mb-10">
               Discover how JOINLIO helps students transform their ideas into
               reality through Media, Entrepreneurship, and Travel.
