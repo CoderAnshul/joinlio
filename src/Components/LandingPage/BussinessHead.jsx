@@ -103,10 +103,10 @@ const BussinessHead = () => {
 
         {/* Content Wrapper (Only this slides) */}
         <div className="content-wrapper">
-          <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
+          <h2 className="text-3xl lg:text-5xl font-bold leading-snug">
             {contentData[currentIndex].changeHeading}
             <span className="text-textColor">{contentData[currentIndex].changeHeadingTwo}</span>
-          </h1>
+          </h2>
 
           {/* Subtext */}
           <div className="flex gap-8 mt-8">
