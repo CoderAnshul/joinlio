@@ -66,7 +66,7 @@ const SendMessage = () => {
             <p className="text-sm font-semibold text-blue-500 tracking-wider">
               CONTACT US
             </p>
-            <h1 className="text-4xl font-bold text-gray-900">Get in touch</h1>
+            <h3 className="text-4xl font-bold text-gray-900">Get in touch</h3>
           </div>
 
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">

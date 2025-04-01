@@ -6,10 +6,10 @@ const WhyChooseUs = () => {
     <div className='md:px-6 lg:px-20 gap-[10px] py-12 my-5 mt-14'>
         <div className="flex items-start relative mb-8">
                 {/* <div className="flex items-start relative mb-14"> */}
-                    <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
+                    <h2 className="text-3xl lg:text-5xl font-bold leading-snug">
                     But why Choose <br />
                     <span className="text-textColor">JOINLIO?</span>
-                    </h1>
+                    </h2>
                 </div>
         
                 {/* Subtext */}

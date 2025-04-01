@@ -284,10 +284,10 @@ const CircleDetails = ({
           })}
 
           <div className="absolute flex items-start flex-col justify-center text-center text-lg font-bold">
-            <h1 className="text-3xl lg:text-4xl mx-auto max-w-[400px] text-customBlue mb-4 font-bold leading-snug">
+            <h2 className="text-3xl lg:text-4xl mx-auto max-w-[400px] text-customBlue mb-4 font-bold leading-snug">
               {centerHeading}
               <span className="text-white">{centerSubHeading}</span>
-            </h1>
+            </h2>
             <div className="flex gap-4 mx-auto">
               <button
                 ref={(el) => (buttonRefs.current[0] = el)}
@@ -330,10 +330,10 @@ const CircleDetails = ({
           </div>
 
           <div className="absolute flex items-start flex-col justify-center text-center text-lg font-bold py-3">
-            <h1 className="text-3xl lg:text-4xl mx-auto max-w-[400px] text-customBlue mb-4 font-bold leading-snug">
+            <h2 className="text-3xl lg:text-4xl mx-auto max-w-[400px] text-customBlue mb-4 font-bold leading-snug">
               {centerHeading}
               <span className="text-blue-500">{centerSubHeading}</span>
-            </h1>
+            </h2>
             <p className="text-sm text-customBlue max-w-lg text-opacity-80 mb-4">
               {centerDescription}
             </p>

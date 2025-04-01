@@ -175,12 +175,12 @@ const Homepage = () => {
             <FindInterest />
           </div>
           <div className="px-6 lg:px-20 gap-[10px] md:mt-12 md:py-12 py-2 my-5">
-            <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
+            <h2 className="text-3xl lg:text-5xl font-bold leading-snug">
               Still not convinced? <br />
               <span className="text-textColor">
                 “Hear it straight from our users”
               </span>
-            </h1>
+            </h2>
           </div>
         </div>
         <Stories />
@@ -206,12 +206,12 @@ const Homepage = () => {
             <CircleDetails {...businessData} screenIndex={2} />
           </div>
           <div className="px-6 lg:px-20 gap-[10px]  py-12 ">
-            <h1 className="text-3xl lg:text-5xl font-bold leading-snug">
+            <h2 className="text-3xl lg:text-5xl font-bold leading-snug">
               Still not convinced? <br />
               <span className="text-textColor">
                 “Hear it straight from our users”
               </span>
-            </h1>
+            </h2>
             <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl">
               {/* <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl"> */}
               Why take our word for it when you can hear directly from
