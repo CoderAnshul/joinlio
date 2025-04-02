@@ -6,6 +6,24 @@
         <priority>1.0</priority>
         <changefreq>daily</changefreq>
     </url>
+     <!-- Hub -->
+    <url>
+        <loc>https://joinlio.com/hubs/travel-hub</loc>
+        <priority>1.0</priority>
+        <changefreq>daily</changefreq>
+    </url>
+     <!-- Hub Page -->
+    <url>
+        <loc>https://joinlio.com/hubs/media-hub</loc>
+        <priority>1.0</priority>
+        <changefreq>daily</changefreq>
+    </url>
+     <!-- Hub Page -->
+    <url>
+        <loc>https://joinlio.com/hubs/entrepreneurship-hub</loc>
+        <priority>1.0</priority>
+        <changefreq>daily</changefreq>
+    </url>
    <!-- Blogs detail -->
       <url>
         <loc>https://joinlio.com/blog-detail/transform-your-creative-ideas-into-reality-with-joinlio</loc>
