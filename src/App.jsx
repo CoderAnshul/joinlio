@@ -11,6 +11,8 @@ import Policy from "./Pages/Policy";
 import ConfidentialityPolicy from "./Pages/ConfidentialityPolicy";
 import Blogs from "./Pages/Blogs";
 import BlogDetail from "./Pages/BlogDetail";
+import ContactThankyou from "./Pages/ContactThankyou";
+import GetStartedThankyou from "./Pages/GetStartedThankyou";
 import SendMessage from "./Pages/SendMessage";
 import DashboardLayout from "./Components/Dashboard/DashboardLayout";
 import Profile from "./Components/Dashboard/profile";
@@ -69,6 +71,8 @@ const App = () => {
             <Route path="/blog-detail/:id" element={<BlogDetail />} />
             <Route path="/blog-detail/:titleSlug" element={<BlogDetail />} />
             <Route path="/send-message" element={<SendMessage />} />
+            <Route path="/thank-you" element={<ContactThankyou />} />
+            <Route path="/get-started-thank-you" element={<GetStartedThankyou />} />
             
             {/* Dashboard routes with custom layout */}
             <Route path="/dashboard" element={<DashboardLayout />}>

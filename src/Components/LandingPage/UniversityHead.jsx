@@ -98,10 +98,10 @@ const UniversityHead = () => {
             <span></span>
             <span></span>
           </div>
-          <h1 className="text-3xl lg:text-5xl font-bold leading-snug slide-title">
+          <h2 className="text-3xl lg:text-5xl font-bold leading-snug slide-title">
             {slides[currentSlide].title} <br />
             <span className="text-textColor">{slides[currentSlide].subTitle}</span>
-          </h1>
+          </h2>
         </div>
 
         {/* Subtext */}

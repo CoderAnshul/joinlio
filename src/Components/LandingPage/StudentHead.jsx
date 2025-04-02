@@ -103,10 +103,10 @@ const ScrollingOrGrowing = () => {
             <span></span>
             <span></span>
           </div>
-          <h1 className="text-3xl lg:text-5xl font-bold leading-snug slide-title">
+          <h2 className="text-3xl lg:text-5xl font-bold leading-snug slide-title">
             {contentData[currentIndex].changeHeading}
             <span className="text-textColor">{contentData[currentIndex].changeHeadingTwo}</span>
-          </h1>
+          </h2>
         </div>
         <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl slide-description">
           {contentData[currentIndex].subtext}

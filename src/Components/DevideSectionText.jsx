@@ -12,9 +12,9 @@ const DevideSectionText = ({
     <section className="relative pl-5 my-[50px] lg:mt-[150px] flex items-center justify-between h-auto">
       {/* Left Side: Title and Description */}
       <div className={`max-w-2xl sm:max-w-lg md:max-w-2xl ${className}`}>
-        <h1 className={` text-5xl lg:text-8xl md:!leading-[50px]  lg:!leading-[80px] -ml-2 md:-ml-3 gradient-text-two whitespace-nowrap md:text-6xl font-bold text-blue-300 ${className} !text-white`}>
+        <h2 className={` text-5xl lg:text-8xl md:!leading-[50px] lg:!leading-[80px] -ml-2 md:-ml-3 gradient-text-two whitespace-nowrap md:text-6xl font-bold text-blue-300 ${className} !text-white`}>
           {title1} <br /> {title2}
-        </h1>
+        </h2>
         <p className="mt-6 text-sm font-archivo  md:text-lg text-gray-700 lg:!leading-6 mb-10">
           {description}{" "}
           <span className="font-semibold italic">{highlight}</span>
