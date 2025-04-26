@@ -22,7 +22,7 @@ const DevideSectionText = ({
       </div>
 
       {/* Right Side: Circle with Arrow */}
-      <div
+      {/* <div
         className={`${className} absolute right-2 -bottom-24 sm:bottom-auto sm:top-0 md:right-16 lg:right-16 flex items-center justify-center`}
       >
         <div className="relative w-32 h-32 rounded-full flex items-center justify-center">
@@ -31,13 +31,11 @@ const DevideSectionText = ({
             viewBox="0 0 100 100"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Circular Path */}
             <path
               id="circlePath"
               d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"
               fill="transparent"
             />
-            {/* Text Along the Path */}
             <text className="text-[10px] font-medium tracking-widest text-black">
               <textPath
                 href="#circlePath"
@@ -50,14 +48,13 @@ const DevideSectionText = ({
               </textPath>
             </text>
           </svg>
-          {/* Center Arrow Image */}
           <img
             src={arr}
             alt="Arrow"
             className="w-6 h-6 absolute bounce-animation"
           />
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
