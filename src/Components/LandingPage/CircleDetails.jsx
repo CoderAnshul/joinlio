@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import rings from "../../assets/images/rings.png";
+
 import {
   X,
   Activity,
@@ -14,6 +15,7 @@ import {
   Coins,
   Target,
   BarChart,
+  Check,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import dashboardvideo from "../../assets/video/dashboard.mp4";
@@ -216,32 +218,32 @@ const CircleDetails = ({
           {
             icon: "🏢",
             title: "Create Your Business Account",
-            desc: "Sign up and set up your business profile in minutes. Add details about your products, services, and student-focused offers to attract the right audience.",
+            desc: "Set up your profile and showcase your offers in minutes.",
           },
           {
             icon: "🎯",
             title: "Showcase Your Offerings",
-            desc: "List your student discounts, services, or products directly in targeted hubs where students are actively engaging. Tailor your promotions to specific interests for maximum impact.",
+            desc: "List student deals in interest-based hubs for better reach.",
           },
           {
             icon: "💬",
             title: "Connect with Students",
-            desc: "Interact directly with students through hubs and activities. Engage with your target audience, answer their questions, and build meaningful relationships with potential customers.",
+            desc: "Engage directly with students, answer questions, and build trust.",
           },
           {
             icon: "📊",
             title: "Monitor Sales and Feedback",
-            desc: "Use the dashboard to track your sales performance and collect real-time feedback from customers. Gain insights into what works and refine your strategy to boost results.",
+            desc: "Track performance and improve with real-time feedback.",
           },
           {
             icon: "💰",
             title: "Pay Only for Results",
-            desc: "Enjoy risk-free advertising. With JOINLIO's zero upfront cost model, you only pay when you make a sale. It's a win-win for your business and students.",
+            desc: "No upfront cost—only pay when you make a sale.",
           },
           {
             icon: "🚀",
             title: "Grow and Expand",
-            desc: "Leverage JOINLIO's tools, analytics, and insights to grow your brand visibility, retain loyal customers, and expand your business across campuses and beyond.",
+            desc: "Use tools and insights to grow your brand across campuses",
           },
         ];
   };
@@ -445,7 +447,7 @@ const CircleDetails = ({
   <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 pr-8">
     {screenIndex === 1
       ? "What is a Joinlio peer account?"
-      : "What is a Business Account in JOINLIO?"}
+      : "What is a JOINLIO Business Account?"}
   </h2>
 
   {screenIndex === 1 && (
@@ -498,45 +500,61 @@ const CircleDetails = ({
                     </div>
                   ) : (
                     <>
-                      <div className="mb-8">
-                        <p className="text-gray-600 leading-relaxed">
-                          The Peer Account serves as your tailored digital
-                          portfolio because it presents your abilities and
-                          accomplishments through an approach that expands
-                          traditional resume approaches. Students and scholars
-                          need their personal Peer Accounts to ensure their
-                          maximum growth potential in academics and careers. The
-                          peer account exists as an active mirror of your
-                          development that illustrates work relationships,
-                          individual accomplishments and professional
-                          advancement. Through this platform you can monitor
-                          your activities along with sustaining meaningful
-                          relationships while gaining access to worldwide
-                          possibilities in a safe and user-friendly interface.
-                        </p>
+                      <div className="bg-white rounded-lg pb-5 mx-auto">
+                        <div className="space-y-6">
+                          <div className="text-start mb-8">
+                            <p className="text-lg text-gray-600 mt-3">
+                              Your personalized space on Joinlio — designed to help you connect with others, 
+                              work on exciting projects, and grow both personally and professionally. 
+                              This account belongs to you.
+                            </p>
+                          </div>
+                          
+                          <div className="bg-blue-50 rounded-xl p-6">
+                            <h3 className="text-xl font-semibold text-gray-800 mb-6">Through it, you can:</h3>
+                            
+                            <div className="space-y-4">
+                              <div className="bg-white p-5 rounded-lg shadow-sm flex items-start">
+                                <span className="text-2xl mr-4">👤</span>
+                                <p className="text-gray-700">
+                                  <span className="font-medium">Create your profile</span> based on your interests, skills, and goals.
+                                </p>
+                              </div>
+                              
+                              <div className="bg-white p-5 rounded-lg shadow-sm flex items-start">
+                                <span className="text-2xl mr-4">📚</span>
+                                <p className="text-gray-700">
+                                  <span className="font-medium">Save and track</span> your projects, collaborations, connections, blogs, and more.
+                                </p>
+                              </div>
+                              
+                              <div className="bg-white p-5 rounded-lg shadow-sm flex items-start">
+                                <span className="text-2xl mr-4">🌍</span>
+                                <p className="text-gray-700">
+                                  <span className="font-medium">Connect with students</span> around the world who share your passions.
+                                </p>
+                              </div>
+                              
+                              <div className="bg-white p-5 rounded-lg shadow-sm flex items-start">
+                                <span className="text-2xl mr-4">🛠</span>
+                                <p className="text-gray-700">
+                                  <span className="font-medium">Use tools, resources, and hubs</span> tailored to your interests.
+                                </p>
+                              </div>
+                              
+                              <div className="bg-white p-5 rounded-lg shadow-sm flex items-start">
+                                <span className="text-2xl mr-4">📈</span>
+                                <p className="text-gray-700">
+                                  <span className="font-medium">Showcase your journey</span> and achievements with your own Peer Account link.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
                       <div className="bg-blue-50 rounded-xl p-6 mb-8">
-                        <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                          Your Progress
-                        </h3>
-                        <div className="relative pt-1">
-                          <div className="flex mb-2 items-center justify-between">
-                            <div>
-                              <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
-                                Goals Achieved
-                              </span>
-                            </div>
-                            <div className="text-right">
-                              <span className="text-xs font-semibold inline-block text-blue-600">
-                                70%
-                              </span>
-                            </div>
-                          </div>
-                          <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
-                            <div className="w-[70%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
-                          </div>
-                        </div>
+                       
                         <div>
                           <h3 className="text-xl font-semibold text-gray-900 mb-6">
                             {screenIndex === 1
@@ -563,51 +581,53 @@ const CircleDetails = ({
                           </div>
                         </div>
                       </div>
-                      <div className="px-8 pt-3 ">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                          Key Features of the Peer Account
-                        </h2>
-                        <p className="text-gray-600 leading-relaxed">
-                          <li>
-                            {" "}
-                            With the Peer Account, you will monitor development
-                            while completing meaningful work to establish
-                            yourself as a top professional.
-                          </li>
-                          <li>
-                            {" "}
-                            The Peer Account functions beyond academic functions
-                            because it serves as a platform to showcase your
-                            talents and accomplishments.
-                          </li>{" "}
-                          <li>
-                            {" "}
-                            As a platform that combines documentation with
-                            networking and secure communication, the system
-                            allows users to demonstrate their abilities to
-                            global employers and collaborative prospects.
-                          </li>
-                        </p>
-                      </div>
                     </>
                   )}
                 </>
               ) : (
                 <>
-                  <div className="mb-8">
-                    <p className="text-gray-600 leading-relaxed">
-                      The Business Account within JOINLIO represents a specific
-                      platform for companies to interact effectively with their
-                      student audience. JOINLIO provides Business Accounts that
-                      enable companies to establish direct marketing connections
-                      with university students. The platform delivers a strong
-                      toolset for presenting products and services combined with
-                      special student-oriented deals. The Business Account
-                      enables companies to develop strong customer brand
-                      relations while making targeted student engagement for
-                      higher sales results.
-                    </p>
-                  </div>
+                      <div className="  mx-auto mb-5">
+                      <div className="space-y-6">
+                        <div className="mb-6">
+                          <h2 className="text-md text-gray-800">It's your gateway to connect directly with university students!</h2>
+                          <p className="text-md text-gray-700 mt-2">
+                            JOINLIO gives companies a special space to:
+                          </p>
+                        </div>
+                        
+                        <div className="bg-blue-50 rounded-xl p-6">
+                          <div className="space-y-4">
+                            <div className="flex items-start">
+                              <div className="flex-shrink-0 text-blue-600 mt-1">
+                                <Check size={16} className="stroke-2" />
+                              </div>
+                              <div className="ml-3">
+                                <p className="text-md font-medium text-gray-800">Promote products & services</p>
+                              </div>
+                            </div>
+                            
+                            <div className="flex items-start">
+                              <div className="flex-shrink-0 text-blue-600 mt-1">
+                                <Check size={16} className="stroke-2" />
+                              </div>
+                              <div className="ml-3">
+                                <p className="text-md font-medium text-gray-800">Offer student-only deals</p>
+                              </div>
+                            </div>
+                            
+                            <div className="flex items-start">
+                              <div className="flex-shrink-0 text-blue-600 mt-1">
+                                <Check size={16} className="stroke-2" />
+                              </div>
+                              <div className="ml-3">
+                                <p className="text-md font-medium text-gray-800">Build strong brand loyalty.All while reaching an audience that's ready to engage.</p>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
                   <div className="bg-blue-50 rounded-xl p-6 mb-8">
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -618,69 +638,46 @@ const CircleDetails = ({
                         <span className="text-blue-600 font-bold">•</span>
                         <span className="text-gray-700">
                           <span className="font-semibold">
-                            Enhance Visibility:
+                          Boost Your Visibility: 
                           </span>{" "}
-                          Access to a unique platform that helps reach students
-                          as potential customers.
+                          Get noticed by students who are future customers.
                         </span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-blue-600 font-bold">•</span>
                         <span className="text-gray-700">
                           <span className="font-semibold">
-                            Drive Engagement:
+                          Drive Real Engagement:
                           </span>{" "}
-                          Establish direct interactions with potential
-                          customers, increasing conversion rates.
+                          Talk directly with your audience—no middleman
                         </span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-blue-600 font-bold">•</span>
                         <span className="text-gray-700">
-                          <span className="font-semibold">Tailor Offers:</span>{" "}
-                          Create specific deals to accommodate student market
-                          requirements.
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-blue-600 font-bold">•</span>
-                        <span className="text-gray-700">
-                          <span className="font-semibold">
-                            Gain Valuable Insights:
-                          </span>{" "}
-                          Improve marketing strategy using real-time feedback
-                          and acquired data.
+                          <span className="font-semibold">Customize Your Offers: </span>{" "}
+                          Create deals that actually fit student needs.
                         </span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-blue-600 font-bold">•</span>
                         <span className="text-gray-700">
                           <span className="font-semibold">
-                            Cost Efficiency:
+                          Learn What Works:
                           </span>{" "}
-                          Performance-based payment delivers superior value at
-                          minimal cost.
+                          Get instant feedback and insights to sharpen your strategy
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 font-bold">•</span>
+                        <span className="text-gray-700">
+                          <span className="font-semibold">
+                          Spend Smart:
+                          </span>{" "}
+                          Pay based on performance = better value at lower cost.
                         </span>
                       </li>
                     </ul>
-
-                    <div className="relative pt-4 mt-4">
-                      <div className="flex mb-2 items-center justify-between">
-                        <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blue-600 bg-blue-200">
-                            Average ROI
-                          </span>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-xs font-semibold inline-block text-blue-600">
-                            85%
-                          </span>
-                        </div>
-                      </div>
-                      <div className="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-blue-200">
-                        <div className="w-[85%] shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600 transition-all duration-500"></div>
-                      </div>
-                    </div>
                   </div>
 
                   <div>

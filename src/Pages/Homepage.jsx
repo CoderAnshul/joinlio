@@ -23,29 +23,22 @@ const Homepage = () => {
     {
       title: "Our Mission",
       description:
-        "To empower students and alumni with meaningful connections, real-world opportunities, and tools to thrive in their personal and professional journeys.",
+        "Empowering students with real connections, real opportunities, and the right tools to thrive.",
       bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
     {
       title: "Our Goal",
       description:
-        "Our goal is to transform student lives with tools, connections, and opportunities, partnering with institutions to redefine student success globally.",
+        "A world where every student can unlock their potential, build lasting relationships, and turn dreams into action.",
       bgColor: "bg-black",
       textColor: "text-white",
     },
     {
       title: "Our Vision",
       description:
-        "To create a world where every student and alumni can fully discover their true potential, build meaningful lasting relationships, and turn their biggest dreams into reality.",
+        "To transform student life by partnering with institutions and offering powerful tools for success—globally.",
       bgColor: "bg-[#00abff]",
-      textColor: "text-white",
-    },
-    {
-      title: "Our Motive",
-      description:
-        "Driven by the belief that every student deserves a chance to grow, connect, and succeed,JOINLIO is here to inspire and support you every step of the way.",
-      bgColor: "bg-black",
       textColor: "text-white",
     },
   ];
@@ -53,21 +46,21 @@ const Homepage = () => {
     {
       title: "Our Mission",
       description:
-        "To empower businesses by connecting them with a thriving student community, driving growth through meaningful interactions, and fostering long-term success.",
+        "To empower businesses by connecting them with an active student community—fueling growth through real engagement and long-term value.",
       bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
     {
       title: "Our Goal",
       description:
-        "To help businesses build loyal customer bases, improve sales with exclusive insights, and reach thousands of students seamlessly—delivering measurable impact.",
+        "To help businesses grow loyal student customers, gain actionable insights, and drive measurable results.",
       bgColor: "bg-black",
       textColor: "text-white",
     },
     {
       title: "Our Motive",
       description:
-        "JOINLIO believes every business deserves the right tools to grow, connect, thrive, succeed, innovate, streamline processes, enhance efficiency, and create a lasting, sustainable future.",
+        "We believe every business deserves smart tools to connect, innovate, and thrive—while building a sustainable future.",
       bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
@@ -76,21 +69,21 @@ const Homepage = () => {
     {
       title: "Our Mission",
       description:
-        "To empower universities by providing a transformative platform that drives student growth, fosters collaboration, and builds a thriving community of future leaders.",
+        "To empower universities with a platform that drives student growth, encourages collaboration,and builds a community of future leaders.",
       bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
     {
       title: "Our Goal",
       description:
-        "To partner with institutions globally, helping them unlock their students’ potential by offering tools and insights that shape their personal and professional journeys.",
+        "To partner with institutions worldwide, helping students unlock their potential through smart tools and meaningful insights.",
       bgColor: "bg-black",
       textColor: "text-white",
     },
     {
       title: "Our Motive",
       description:
-        "Our motive is to build a robust and powerful tool for universities, enabling them to enhance their students’ personal growth, create impactful connections, and ensure long-term success.",
+        "We’re building a powerful tool for universities to boost student development, foster strong connections, and support long-term success.",
       bgColor: "bg-[#00abff]",
       textColor: "text-white",
     },
@@ -98,14 +91,12 @@ const Homepage = () => {
 
   const studentData = {
     boxTexts: [
+      "Track Progress",
+      "Showcase Projects",
       "Trusted Connections",
-      "Your Digital Resume",
-      "Do Volunteer & Paid Projects",
-      "Meet like-minded People Globally",
-      "Get Reward & Recognitions",
-      "Connect With Opportunities",
-      "Journey Tracking",
-      "Activity Documentation",
+      "Digital Resume",
+      "Volunteer & Paid Work",
+      "Earn Recognition",
     ],
     centerHeading: "Unlock all these possibilities with a",
     centerSubHeading: " Joinlio Peer Account",
@@ -114,14 +105,12 @@ const Homepage = () => {
   };
   const businessData = {
     boxTexts: [
-      "Direct Student Access",
-      "Risk-Free Payments",
-      "Monitor Feedback",
-      "Create Ad Campaigns",
-      "Track Sales Impact",
-      "Flexible Payment Options",
       "Targeted Hubs",
-      "Advanced Analytics",
+      "Direct Student Access",
+      "Ad Campaign Tools",
+      "Insights & Analytics",
+      "Secure Payment Options",
+      "Real-Time Feedback",
     ],
     centerHeading: "Enhance your business with a ",
     centerSubHeading: "Joinlio Business Account",

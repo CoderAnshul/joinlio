@@ -77,9 +77,8 @@ const Banner = () => {
           </div>
         </div>
 
-        <p className="relative z-[50] font-archivo text-customBlue max-w-md md:max-w-xl font-semibold mb-8">
-          Join a vibrant digital ecosystem where students, <br /> alumni &
-          business thrive together.
+        <p className="relative z-[50] font-archivo text-customBlue max-w-md md:max-w-md font-semibold mb-8">
+        Joinlio is a game-changing platform for personal and professional growth.
         </p>
         {/* 
         <Link to="/send-message" className="max-sm:hidden">

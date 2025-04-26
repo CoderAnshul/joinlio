@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import illustration from "../../assets/images/confused.png";
 import struggle from "../../assets/images/struggle.png";
@@ -11,49 +11,48 @@ const contentData = [
   {
     id: 1,
     heading: "Only 8% of students achieve their dreams",
-    subtext: "JOINLIO helps you make the most of your time by transforming wasted hours into opportunities for meaningful connections, productive collaborations, and personal growth.",
-    changeHeading: "Are you just scrolling aimlessly, ",
-    changeHeadingTwo: "wasting time on social media?",
+    subtext: "JOINLIO turns your screen time into meaningful connections, collaborations, and growth.",
+    changeHeading: "Tired of endless scrolling, ",
+    changeHeadingTwo: "with no purpose?",
     image: illustration,
   },
   {
     id: 2,
     heading: "Almost 92% of students get distracted",
-    subtext: "JOINLIO connects you with like-minded peers worldwide, fostering collaboration and meaningful engagement aligned with your passions and goals.",
-    changeHeading: "Struggling to find trusted, like-minded",
-    changeHeadingTwo: " collaborators for your projects?",
+    subtext: "JOINLIO helps you connect with like-minded peers and build real relationships—on and offcampus, globally.",
+    changeHeading: "Struggling to find the right ",
+    changeHeadingTwo: "people to grow with?",
     image: struggle,
   },
   {
     id: 3,
     heading: "Do you want to be in the top 8%?",
-    subtext: "JOINLIO empowers you to gain valuable real-world experience and effectively showcase your skills through a dedicated Peer Account, helping you stand out and grow in your professional journey.",
-    changeHeading: "Worried Your Degree",
-    changeHeadingTwo: " Isn’t Enough?",
+    subtext: "JOINLIO gives you tools, mentors, and support to bring your vision to life",
+    changeHeading: "Have ideas but no way",
+    changeHeadingTwo: " to build them?",
     image: worried,
   },
   {
     id: 4,
     heading: "Only 8% achieve their dreams. Are you part of it?",
-    subtext: "JOINLIO fosters meaningful connections by creating a dynamic platform that enables you to build strong relationships within your university community and extend your network beyond campus, opening doors to new opportunities and collaborations.",
-    changeHeading: "Finding It Hard to Build ",
-    changeHeadingTwo: "Valuable Relationships?",
+    subtext: "JOINLIO helps you gain hands-on experience and showcase what makes you stand out",
+    changeHeadingTwo: "is enough? ",
     image: relation,
   },
   {
     id: 5,
     heading: "Only 8% achieve their dreams. Are you part of it?",
-    subtext: "JOINLIO serves as a dynamic ecosystem that offers a comprehensive range of hubs, valuable resources, and experienced mentors, all dedicated to empowering individuals and teams in transforming their innovative ideas into tangible and successful realities.",
+    subtext: "With your Peer Account, JOINLIO helps you present your skills and story to the right people.",
     changeHeading: "Lacking Tools to Bring ",
     changeHeadingTwo: "Ideas to Life?",
     image: idea,
   },
   {
-    id: 5,
+    id: 6,
     heading: "Only 8% achieve their dreams. Are you part of it?",
     subtext: "JOINLIO enables you to present your expertise, accomplishments, and professional journey in a structured and compelling manner through a dedicated Peer Account, allowing you to highlight your skills and achievements to a broader audience.",
-    changeHeading: "Struggling to Land ",
-    changeHeadingTwo: "Your First Job?",
+    changeHeading: "Finding it hard to land ",
+    changeHeadingTwo: "your first job?",
     image: job,
   },
 ];
@@ -61,34 +60,70 @@ const contentData = [
 const ScrollingOrGrowing = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [nextContentReady, setNextContentReady] = useState(false);
+  const slideIntervalRef = useRef(null);
 
+  // Function to handle next slide
   const handleNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % contentData.length);
+    
+    // Hide current content
+    gsap.to(".slide-content", {
+      opacity: 0,
+      duration: 0.3,
+      onComplete: () => {
+        // Update index immediately
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % contentData.length);
+        setNextContentReady(true);
+      }
+    });
   };
 
+  // Handle animations when next content is ready
   useEffect(() => {
-    gsap.fromTo(
-      ".slide-title",
-      { opacity: 0, y: -30 },
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
-    );
+    if (nextContentReady) {
+      // Show new content with original animations
+      gsap.fromTo(
+        ".slide-title",
+        { opacity: 0, y: -30 },
+        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+      );
 
-    gsap.fromTo(
-      ".slide-description",
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
-    );
+      gsap.fromTo(
+        ".slide-description",
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+      );
 
-    gsap.fromTo(
-      ".slide-image",
-      { opacity: 0, scale: 0.95 },
-      { opacity: 1, scale: 1, duration: 1, ease: "power2.out" }
-    );
+      gsap.fromTo(
+        ".slide-image",
+        { opacity: 0, scale: 0.95 },
+        { opacity: 1, scale: 1, duration: 1, ease: "power2.out", onComplete: () => {
+          setIsAnimating(false);
+          setNextContentReady(false);
+        }}
+      );
+    }
+  }, [nextContentReady]);
 
-    setIsAnimating(false);
-  }, [currentIndex]);
+  // Setup automatic rotation
+  useEffect(() => {
+    // Set timeout for first slide
+    const initialTimeout = setTimeout(() => {
+      handleNext();
+    }, 10000);
+    
+    // Set interval for automatic slide changes
+    slideIntervalRef.current = setInterval(() => {
+      handleNext();
+    }, 10000);
+    
+    return () => {
+      clearTimeout(initialTimeout);
+      clearInterval(slideIntervalRef.current);
+    };
+  }, []);
 
   return (
     <section className="flex flex-col md:flex-row items-start justify-between px-6 lg:px-20 gap-[10px] py-12 space-y-8 lg:space-y-0">
@@ -103,12 +138,12 @@ const ScrollingOrGrowing = () => {
             <span></span>
             <span></span>
           </div>
-          <h2 className="text-3xl lg:text-5xl font-bold leading-snug slide-title">
+          <h2 className="text-3xl lg:text-5xl font-bold leading-snug slide-title slide-content">
             {contentData[currentIndex].changeHeading}
             <span className="text-textColor">{contentData[currentIndex].changeHeadingTwo}</span>
           </h2>
         </div>
-        <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl slide-description">
+        <p className="text-gray-700 text-[16px] leading-[20px] mt-[2vw] max-w-xl slide-description slide-content">
           {contentData[currentIndex].subtext}
         </p>
       </div>
@@ -116,7 +151,7 @@ const ScrollingOrGrowing = () => {
         <img
           src={contentData[currentIndex].image}
           alt="Student"
-          className="w-full object-contain max-w-xs 2xl:max-w-xs mx-auto slide-image"
+          className="w-full object-contain max-w-xs 2xl:max-w-xs mx-auto slide-image slide-content"
         />
       </div>
     </section>

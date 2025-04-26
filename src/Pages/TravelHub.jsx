@@ -6,6 +6,7 @@ import CreateSection from '../Components/TravelHubs/CreateSection';
 import HubInfo from '../Components/TravelHubs/HubInfo';
 import SectionHeading from '../Components/TravelHubs/SectionHeading';
 import HubVideo from '../Components/TravelHubs/HubVideos';
+import DevideSectionText from '../Components/DevideSectionText';
 
 const TravelHub = () => {
   const { hubName } = useParams();
@@ -40,9 +41,12 @@ const TravelHub = () => {
 
   // Define background gradients based on category
   const categoryGradients = {
-    travel: 'bg-gradient-to-b from-[#FEB478] via-[#F58C77] via-[#D4858B] via-[#A28093] via-[#596385] to-[#365886]',
-    media: 'bg-gradient-to-b from-[#CBE7FE] to-[#50A2FB]',
-    entrepreneur: 'bg-gradient-to-b from-[#3145AB] to-[#BD20AB]',
+    // travel: 'bg-gradient-to-b from-[#FEB478] via-[#F58C77] via-[#D4858B] via-[#A28093] via-[#596385] to-[#365886]',
+    // media: 'bg-gradient-to-b from-[#CBE7FE] to-[#50A2FB]',
+    // entrepreneur: 'bg-gradient-to-b from-[#3145AB] to-[#BD20AB]',
+    travel: 'bg-white',
+    media: 'bg-white',
+    entrepreneur: 'bg-white',
   };
 
   // Only add text-white class if the category is entrepreneur
@@ -75,12 +79,12 @@ const TravelHub = () => {
         />
       }
       
-      <SectionHeading 
-        title1="WHAT WE" 
-        title2="PROVIDE?" 
-        description=" "
-        className={category === 'entrepreneur' ? 'text-white' : ''}
-      />
+      <DevideSectionText
+            title1="WHAT WE"
+            title2="PROVIDE"
+            description=""
+            highlight=""
+          />
       
       <HubInfo 
         category={category} 

@@ -250,9 +250,8 @@ const GetStarted = () => {
                   <li className="flex items-start gap-2">
                     <span className="font-medium min-w-6">1.</span>
                     <span>
-                      <strong>Students/Alumni: </strong>For those in
-                      universities, colleges, and institutions looking to
-                      connect, collaborate, and grow.
+                      <strong>Students/Alumni: </strong>If you're 16+ — whether you're finishing school or studying in a university,
+                      college, or institution — Joinlio is your space to connect, collaborate, and grow.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">

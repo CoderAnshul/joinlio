@@ -81,7 +81,10 @@ const RevealText = () => {
           data-bg-color="rgb(191 191 191)"
           data-fg-color="black"
         >
-          The game-changing platform where students and alumni unlock global connections, businesses redefine engagement, and universities elevate student development like never before! Discover a world of collaboration, innovation, and boundless opportunities!
+          Built for students aged 16+, whether you're finishing school, in university, recently graduated, or
+          already an alumni. It helps you connect, collaborate, and grow in your field of interest with
+          like-minded peers around the world. Joinlio also helps businesses reach the right student
+          audience and supports universities as a tool to drive student growth beyond the classroom.
         </p>
       </section>
     </div>

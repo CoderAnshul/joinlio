@@ -406,18 +406,16 @@ const FindInterest = () => {
 
             <div className="px-8 pt-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                What is Joinlio Hubs?
+              What are Joinlio Hubs?
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                In Joinlio, Hubs are central spaces designed to facilitate
-                collaboration among students with similar interests and goals.
-                These hubs are not just passive forums but are dynamic,
-                structured environments where students can share, learn, earn,
-                connect, collaborate, and grow together. They can create their
-                own hubs based on personal interests or join existing predefined
-                hubs, which focus on various areas like Media, Technology, and
-                Entrepreneurship, promoting personal development and practical
-                learning.
+              Joinlio Hubs are spaces based on your interests — like Media, Tech, or Entrepreneurship.
+              Join a hub that matches your passion, or create your own if it doesn’t exist yet
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+              Once your Peer Account is set up, you can explore hubs filled with <strong className="!text-black">tools</strong>, <strong className="!text-black">services</strong>, <strong className="!text-black">and
+              support</strong> to help you <strong className="!text-black">connect, collaborate, and grow</strong> with like-minded peers.
+
               </p>
             </div>
             <div className="px-8 pt-6 ">
@@ -425,13 +423,13 @@ const FindInterest = () => {
                 Purpose of Joinlio Hubs
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                The primary purpose of Hubs in Joinlio is to help students
-                discover and pursue their interests and dreams alongside
-                like-minded peers. This approach not only fosters a community of
-                shared interests but also supports personal and professional
-                growth through collaboration. Students can inspire and motivate
-                each other, gaining access to additional tools, support, and
-                services provided by Joinlio to enhance their hub activities.
+              Today, many students struggle to discover their interests, talents, or next steps after school or
+              college. That’s why we created Joinlio Hubs. <br />
+              <strong className="!text-black">You can turn any interest into a hub — it could be anything you're passionate about.</strong>
+              Like-minded students from around the world can join your hub, where you can <strong className="!text-black">connect</strong>,
+              <strong className="!text-black">collaborate, and grow together</strong> while discovering your passion and building real-world skills.
+
+
               </p>
             </div>
 
