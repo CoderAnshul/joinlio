@@ -27,7 +27,7 @@ const contentData = [
   {
     id: 3,
     heading: "Do you want to be in the top 8%?",
-    subtext: "JOINLIO gives you tools, mentors, and support to bring your vision to life",
+    subtext: "JOINLIO gives you tools, mentors, and support to bring your vision to life.",
     changeHeading: "Have ideas but no way",
     changeHeadingTwo: " to build them?",
     image: worried,
@@ -35,8 +35,9 @@ const contentData = [
   {
     id: 4,
     heading: "Only 8% achieve their dreams. Are you part of it?",
-    subtext: "JOINLIO helps you gain hands-on experience and showcase what makes you stand out",
-    changeHeadingTwo: "is enough? ",
+    subtext: "JOINLIO helps you gain hands-on experience and showcase what makes you stand out.",
+    changeHeading: "Not sure your degree",
+    changeHeadingTwo: " is enough? ",
     image: relation,
   },
   {
