@@ -50,32 +50,32 @@ const TravelHub = () => {
   };
 
   // Only add text-white class if the category is entrepreneur
-  const textColorClass = category === 'entrepreneur' ? 'text-white' : '';
+  // const textColorClass = category === 'entrepreneur' ? 'text-white' : '';
 
   return (
     <div className={`${categoryGradients[category] || 'bg-white'} min-h-screen`}>
       <div className="px-[5vw]">
         <HubsHeading 
           hubData={hubData} 
-          className={textColorClass}
+          // className={textColorClass}
         />
         <CreateSection 
           category={category} 
-          className={textColorClass}
+          // className={textColorClass}
         />
       </div>
 
       <div className="px-[5vw]">
         <HubVideo 
           category={category} 
-          className={textColorClass}
+          // className={textColorClass}
         />
       </div>
 
       {category && 
         <SubInterest 
           category={category} 
-          className={textColorClass}
+          // className={textColorClass}
         />
       }
       
@@ -88,7 +88,7 @@ const TravelHub = () => {
       
       <HubInfo 
         category={category} 
-        className={textColorClass}
+        // className={textColorClass}
       />
     </div>
   );
