@@ -287,9 +287,10 @@ const FindInterest = () => {
           <div className="interest-banner relative w-full min-h-80 max-h-[700px] p-4 rounded-xl bg-white shadow-[0px_0px_10px_rgba(0,0,0,0.3)]">
             <div className="border-2 h-10 border-black py-1 px-3 border-opacity-45 mb-4 rounded-lg flex justify-between items-center">
               <input
-                className="w-4/5 bg-transparent h-full outline-none"
+                className="w-4/5 bg-transparent h-full outline-none placeholder-gray-500"
                 type="search"
                 onChange={handleSearch}
+                placeholder="search for the hub that you want to join..."
               />
               <img className="h-5" src={search} alt="search" />
             </div>
