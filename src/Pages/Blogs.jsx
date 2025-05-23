@@ -14,6 +14,9 @@ import { useNavigate } from "react-router-dom";
 import tavelblog from "../assets/images/Travel.jpg";
 import Entrepreneurshipblog from "../assets/images/Entrepreneurship.jpg";
 import Mediablog from "../assets/images/Media.jpg";
+import bolg42 from "../assets/images/blog42.jpg";
+import bolg41 from "../assets/images/blog41.jpg";
+
 import BlogDp from "/fav.png";
 import { Helmet } from "react-helmet";
 
@@ -284,11 +287,18 @@ const Blogs = () => {
         },
         {
           type: "list",
-          items: [
+          content:
             "Low-Risk Environment: Since you are a student, you don't have as many monetary and family commitments so you have the opportunity to try things and make mistakes.",
+        },
+        {
+          type: "list",
+          content:
             "Networking Opportunities: JOINLIO provides an opportunity to communicate with investors, mentors, and like-minded people through regular events.",
+        },
+        {
+          type: "list",
+          content:
             "Recognition and Growth: Many student entrepreneurs get recognized on campus and in other places, creating more avenues for them.",
-          ],
         },
         { type: "heading", content: "Conclusion" },
         {
@@ -452,6 +462,275 @@ const Blogs = () => {
           type: "quote",
           content:
             "Pack your bags because the next chapter in life is waiting for you, so why not start planning now?",
+        },
+      ],
+    },
+    {
+      id: 4,
+      title: "Top 10 Student Collaboration Tools for 2025 ",
+      metaTitle: "Top 10 Student Collaboration Tools for 2025 | Joinlio - Blog",
+      metaDescription:
+        "The best student collaboration platforms in 2025 for managing group projects, connecting with like-minded peers, and building strong academic portfolios.",
+      excerpt:
+        "Students nowadays are required to complete a great deal of group tasks during their stay in university; however, let us not forget that the organisation aspect can be a real horror. ",
+      category: "Tools",
+      author: "JOINLIO Team",
+      date: "May 23, 2025",
+      readTime: "9 min read",
+      likes: 356,
+      imageSrc: bolg41,
+      content:
+        'Top 10 Student Collaboration Tools to Build Real Projects and Connect with Like-Minded Students in 2025"...',
+      fullContent: [
+        {
+          type: "heading",
+          content:
+            "Top 10 Student Collaboration Tools to Build Real Projects and Connect with Like-Minded Students in 2025",
+        },
+        {
+          type: "paragraph",
+          content:
+            "Students nowadays are required to complete a great deal of group tasks during their stay in university; however, let us not forget that the organisation aspect can be a real horror. ",
+        },
+        {
+          type: "paragraph",
+          content:
+            "From using different messengers for group communication to having disjointed tools and deadlines missed, students are still using apps that weren’t designed for them. That is why in the year 2025, more and more students around the world, especially university students, are using a student collaboration tool that is designed to support their student life. ",
+        },
+        {
+          type: "paragraph",
+          content:
+            "These tools are useful for task organization, searching for teammates, and even creating a portfolio for the final job. In this article you will come across the <strong>10 best collaboration tools for students</strong> which they should consider to ensure their group projects improve their skills, as well as their ability to find the right people for the job.",
+        },
+
+        {
+          type: "heading",
+          content: "1.Notion – Versatile and Configurable Workspace",
+        },
+
+        {
+          type: "list",
+          content:
+            "Notion is an invaluable tool for group work if you need a space that adapts to the flow of your team.",
+        },
+        {
+          type: "list",
+          content:
+            "Notion also helps students with notes, tasks, and timelines, and they can create wikis with it too. It is very flexible with a drag-and-drop option, hence the ease in planning.",
+        },
+        {
+          type: "list",
+          content:
+            "Notion is arguably one of the most versatile <strong>university teamwork platforms</strong> available, useful for managing almost any project, be it a creative project or organization of coursework. ",
+        },
+        {
+          type: "list",
+          content:
+            "It is particularly helpful if you want to keep all the information, be it deadlines, files, or to-do lists, in one place.",
+        },
+
+        {
+          type: "heading",
+          content:
+            "2. JOINLIO – All-in-One Platform in One Click to Use for Students",
+        },
+        {
+          type: "list",
+          content:
+            "To our knowledge, JOINLIO is one of the first <strong>collaborative platforms for students</strong> that has been designed with university life in mind, unlike many other general productivity apps out there. It is not just a sophisticated to-do list; it is much more than that.",
+        },
+        {
+          type: "list",
+          content:
+            "Based on this model of teamwork, JOINLIO helps everyone discover like-minded students in the fields of Media, Entrepreneurship, Travel, Tech, etc and work on targeted paid and non-paid projects. ",
+        },
+        {
+          type: "list",
+          content:
+            "Every action undertaken within the platform goes to your Peer Account, a neat and colorful resume that is great for internships or applications.",
+        },
+        {
+          type: "list",
+          content:
+            "Unlike other social networks, JOINLIO currently only enables current students and alumni, thus protecting your circle and keeping it relevant to student life. ",
+        },
+        {
+          type: "list",
+          content:
+            "If you are in search of the best student collaboration tool that provides connection, creation, and uniqueness, JOINLIO is here for you. It also includes additional student tools, services, and even special offers within the app itself. There is nothing to worry as it is the definite solution for <strong>collaborative platforms for students</strong>, and you can sign up for it here on the early bird list.",
+        },
+
+        {
+          type: "heading",
+          content: "3. Trello- Best for simple task tracking",
+        },
+        {
+          type: "list",
+          content:
+            "In case your group is more of the visual and easy-to-use type, Trello is the perfect choice. It is an online application through which you can arrange activities into boards and cards, which can be moved from one state to another, such as “To do”, “In progress”, and “Done”.",
+        },
+        {
+          type: "list",
+          content:
+            "It's effective for short-term work projects and teams that require a big picture vision of how tasks are allocated. All in all, Trello remains one of the <strong>best collaboration tools</strong> as long as they need a solid yet simplistic platform.",
+        },
+
+        {
+          type: "heading",
+          content: "4. Canva for Teams – Share Resources & Work Seamlessly",
+        },
+
+        {
+          type: "list",
+          content:
+            "This saves time when the members of different groups need to collaborate in creating posters, presentations, or even content for social media. ",
+        },
+        {
+          type: "list",
+          content:
+            "It’s perfect for students who may not have design skills at all but are looking for a tool that will allow them to create visually appealing posters.",
+        },
+        {
+          type: "list",
+          content:
+            "Event management, creation of creative courses, and club promotions form part of the crucial areas where many students find Canva useful, making it one of the most used teamwork tools with visuals.",
+        },
+
+        {
+          type: "heading",
+          content: "5. Google Workspace: The Academic Favorite",
+        },
+        {
+          type: "list",
+          content:
+            "For most students, having Google Workspace is still a necessity. Programs similar to Docs, Sheets, and Slides remain the go-to tools for any group project in an academic setting. ",
+        },
+        {
+          type: "list",
+          content:
+            "The real-time collaboration, especially the co-edition and the ability to store the file in the cloud, will allow you to work on the same file even if you are in different locations, in different states in the country.",
+        },
+        {
+          type: "list",
+          content:
+            "It includes all basic features from writing an essay to making presentations, and is one of the most popular <strong>online group work applications</strong> for education.",
+        },
+
+        {
+          type: "heading",
+          content: "6. Slack – Structured Group Communication",
+        },
+        {
+          type: "list",
+          content:
+            "There are different channels in Slack to divide all conversations into and make the student teams maintain order. Unlike being locked up in one lengthy and multiple windows chat conversation, there are different channels where multiple tasks, issues, or even members can be addressed. ",
+        },
+        {
+          type: "list",
+          content:
+            "It also works quite seamlessly with Google Drive and Notion, which makes it a good fit for more rigid <strong>project management for students</strong>.",
+        },
+        {
+          type: "list",
+          content:
+            "Slack is an excellent tool to replace traditional messaging apps for groups of academics and committees in societies.",
+        },
+        {
+          type: "heading",
+          content:
+            "7. Discord – Suited to communities and basic collaborations",
+        },
+        {
+          type: "list",
+          content:
+            "While Discord’s main purpose is gaming, it has evolved into a very versatile communication software for students, including in creative and casual learning environments. ",
+        },
+        {
+          type: "list",
+          content:
+            "Voice, video, and text channels make it perfect for clubs for creative teams, or student startups who prefer a more relaxed and professional team communication environment. ",
+        },
+        {
+          type: "list",
+          content:
+            "Discord is ideal if your team needs real-time communication and doesn’t require a strict, formal setting for cooperation.",
+        },
+
+        {
+          type: "heading",
+          content: "8. Micro- Best for brainstorming and Mind Maps",
+        },
+        {
+          type: "list",
+          content:
+            "Miro is a web-based tool that can be used to teach people something new. With the help of this tool, you can create mind maps, timelines, and event planning boards.",
+        },
+        {
+          type: "list",
+          content:
+            "It’s quite popular among design, UX, and creative writing students who are process-oriented thinkers.",
+        },
+        {
+          type: "list",
+          content:
+            "Miro is an engaging and interactive application for students to use in collaboration and is highly effective in the ideation phase.",
+        },
+        {
+          type: "heading",
+          content: "9. ClickUp – Project Management Tool for Large-Scale Teams",
+        },
+        {
+          type: "list",
+          content:
+            "For groups of students completing large-scale assignments or tasks that require collaboration over a longer amount of time, ClickUp can be a very effective tool. ",
+        },
+        {
+          type: "list",
+          content:
+            "It has features such as Gantt, Kanban boards, task priorities, and tracking time to provide extended opportunities for advanced <strong>project management for students</strong>. If you are at the helm of a big society organization or a group dissertation, then ClickUp provides you with all of this in one place.",
+        },
+        {
+          type: "heading",
+          content: "10. Kapwing- Best for media project collaboration",
+        },
+        {
+          type: "list",
+          content:
+            "Kapwing provides an easy way to edit videos if your team is involved in generating videos and everyone is staying at home.",
+        },
+        {
+          type: "list",
+          content:
+            "It is an online video editor that allows students to remove unwanted sections, add captions, soundtracks, and effects, and simultaneously have the capacity to switch between web browsers. No software download needed. ",
+        },
+        {
+          type: "list",
+          content:
+            "To its credit, as a collaborative media and marketing tool, Kapwing is one of the best online tools for organizing group work in content creation.",
+        },
+        {
+          type: "heading",
+          content: "Conclusion: Which One is the Best?",
+        },
+        {
+          type: "paragraph",
+          content:
+            "How one can define which tool is the best for the task at hand for your team and your process. If it belongs to your academic assignments, Google Workspace and Notion will do just fine. If you are going for designing only, then there is nothing better than Canva, and if content is your thing, then Kapwing cannot be better than this. ",
+        },
+        {
+          type: "paragraph",
+          content:
+            "For more complicated tasks, which are spread out or long-term projects, Trello, ClickUp, and Miro are more suitable. But if you want one platform that has all those features, including collaboration tools, student connections, career experience, and a presentation portfolio, JOINLIO is designed for that. ",
+        },
+        {
+          type: "paragraph",
+          content:
+            "These <strong>student collaboration tools</strong> can be helpful while planning an event, introducing a start-up, or just trying to make teamwork in the class more effective.",
+        },
+        {
+          type: "paragraph",
+          content:
+            "Planning on going to the next level with modern platforms for students? Sign up with JOINLIO today to be one of the first people to create their projects and amplify their networks on our platform.",
         },
       ],
     },

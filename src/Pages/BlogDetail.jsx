@@ -124,9 +124,8 @@ const BlogDetail = () => {
                       <p
                         key={index}
                         className="text-gray-700 leading-relaxed mb-6"
-                      >
-                        {section.content}
-                      </p>
+                        dangerouslySetInnerHTML={{ __html: section.content }}
+                      ></p>
                     );
                   case "heading":
                     return (
@@ -172,6 +171,14 @@ const BlogDetail = () => {
                       >
                         {section.content}
                       </blockquote>
+                    );
+                  case "list":
+                    return (
+                      <li
+                        key={index}
+                        className="text-gray-700 leading-relaxed mb-6"
+                        dangerouslySetInnerHTML={{ __html: section.content }}
+                      ></li>
                     );
                   default:
                     return null;
