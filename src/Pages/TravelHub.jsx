@@ -54,43 +54,17 @@ const TravelHub = () => {
 
   return (
     <div className={`${categoryGradients[category] || 'bg-white'} min-h-screen`}>
-      <div className="px-[5vw]">
-        <HubsHeading 
-          hubData={hubData} 
-          // className={textColorClass}
-        />
-        <CreateSection 
-          category={category} 
-          // className={textColorClass}
-        />
-      </div>
-
-      <div className="px-[5vw]">
-        <HubVideo 
-          category={category} 
-          // className={textColorClass}
-        />
-      </div>
-
-      {category && 
-        <SubInterest 
-          category={category} 
-          // className={textColorClass}
-        />
-      }
-      
-      <DevideSectionText
-            title1="WHAT WE"
-            title2="PROVIDE?"
-            description=""
-            highlight=""
-          />
-      
-      <HubInfo 
-        category={category} 
-        // className={textColorClass}
-      />
-    </div>
+  <div className="px-[5vw]">
+    <HubsHeading hubData={hubData} />
+    <CreateSection category={category} />
+  </div>
+  <div className="px-[5vw]">
+    <HubVideo category={category} />
+  </div>
+  {category && <SubInterest category={category} />}
+  <DevideSectionText title1="WHAT WE" title2="PROVIDE?" description="" highlight="" />
+  <HubInfo category={category} />
+</div>
   );
 };
 

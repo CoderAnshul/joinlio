@@ -267,7 +267,7 @@ p {
 
 .hide-scrollbar {
   scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  /* -ms-overflow-style: none; */
 }
 
 .hide-scrollbar::-webkit-scrollbar {

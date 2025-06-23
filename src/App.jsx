@@ -27,6 +27,7 @@ import Rewards from "./Components/Dashboard/Rewards";
 import RequestPartnership from "./Components/Dashboard/RequestPartnership";
 import PlanManagement from "./Components/Dashboard/planManagement";
 import StudentManagement from "./Components/Dashboard/student";
+import Glimpse from "./Pages/Glimpse";
 
 const App = () => {
   const lenisRef = useRef(null);
@@ -72,6 +73,7 @@ const App = () => {
             <Route path="/blog-detail/:titleSlug" element={<BlogDetail />} />
             <Route path="/send-message" element={<SendMessage />} />
             <Route path="/thank-you" element={<ContactThankyou />} />
+            <Route path="/glimpse" element={<Glimpse />} />
             <Route path="/get-started-thank-you" element={<GetStartedThankyou />} />
             
             {/* Dashboard routes with custom layout */}
