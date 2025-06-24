@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useRef, useEffect } from 'react';
 import blog from "../../assets/images/blog.png";
 import community from "../../assets/images/community.png";
 import trip from "../../assets/images/trip.png";
@@ -6,22 +7,27 @@ import group from "../../assets/images/group.png";
 import { label } from 'framer-motion/client';
 import BlogPopup from '../BlogPopup';
 import GroupPopup from '../GroupPopup'
+import { X, Upload, Play, Pause, VolumeX, Volume2, Hash, Users, Eye, Clock, Youtube } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
 const buttonConfig = {
   travel: [
     { label: "Create Blog", image: blog },
     { label: "Create Groups", image: group },
     { label: "Create your trips", image: trip },
-    {label : "Create glimpse", image: community}
+    { label: "Glimpse", image: trip }
   ],
   media: [
     { label: "Create Blog", image: blog },
     { label: "Create Project", image: community },
-    { label: "Create Groups", image: group }
+    { label: "Create Groups", image: group },
+    { label: "Glimpse", image: trip }
   ],
   entrepreneur: [
     { label: "Create Blog", image: blog },
     { label: "Create Groups", image: group },
-    { label: "Create Project", image: community }
+    { label: "Create Project", image: community },
+    { label: "Glimpse", image: trip }
   ]
 };
 
@@ -269,11 +275,585 @@ const buttonConfig = {
 //   );
 // };
 
+const GlimpseUploadModal = ({ onClose }) => {
+  const [uploadedVideo, setUploadedVideo] = useState(null);
+  const [videoPreview, setVideoPreview] = useState(null);
+  const [videoDuration, setVideoDuration] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [uploadType, setUploadType] = useState('glimpse'); // 'glimpse' or 'youtube'
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    hashtags: '',
+    collaborators: '',
+    category: 'Travel',
+    privacy: 'Public'
+  });
+  const [youtubeData, setYoutubeData] = useState({
+    title: '',
+    description: '',
+    tags: '',
+    category: 'Entertainment',
+    privacy: 'Public',
+    thumbnail: null
+  });
+  const [dragActive, setDragActive] = useState(false);
+  
+  const videoRef = useRef(null);
+  const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    // Prevent background scroll
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+      // Cleanup video URL
+      if (videoPreview) {
+        URL.revokeObjectURL(videoPreview);
+      }
+    };
+  }, [videoPreview]);
+
+  const handleDrag = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleVideoUpload(e.dataTransfer.files[0]);
+    }
+  };
+
+  const handleVideoUpload = (file) => {
+    if (file && file.type.startsWith('video/')) {
+      setUploadedVideo(file);
+      const url = URL.createObjectURL(file);
+      setVideoPreview(url);
+      
+      // Create a temporary video element to get duration
+      const tempVideo = document.createElement('video');
+      tempVideo.src = url;
+      tempVideo.onloadedmetadata = () => {
+        const duration = tempVideo.duration;
+        setVideoDuration(duration);
+        
+        // Determine upload type based on duration
+        if (duration > 60) {
+          setUploadType('youtube');
+        } else {
+          setUploadType('glimpse');
+        }
+      };
+    } else {
+      alert('Please upload a valid video file');
+    }
+  };
+
+  const handleFileInput = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      handleVideoUpload(e.target.files[0]);
+    }
+  };
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleYoutubeInputChange = (e) => {
+    const { name, value } = e.target;
+    setYoutubeData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const formatDuration = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!uploadedVideo) {
+      alert('Please upload a video first');
+      return;
+    }
+    
+    if (uploadType === 'glimpse') {
+      console.log('Glimpse Data:', formData);
+      console.log('Video File:', uploadedVideo);
+      alert('Glimpse uploaded successfully!');
+    } else {
+      console.log('YouTube Data:', youtubeData);
+      console.log('Video File:', uploadedVideo);
+      alert('Video uploaded to YouTube successfully!');
+    }
+    
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[100000] p-4">
+      <div className="bg-white rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden shadow-2xl">
+        {/* Header */}
+        <div className="flex justify-between items-center p-6 border-b border-gray-200" style={{ background: '#00abff' }}>
+          <div className="text-white">
+            <h2 className="text-2xl font-bold">
+              {uploadType === 'glimpse' ? 'Create Glimpse' : 'Upload to YouTube'}
+            </h2>
+            <p className="text-blue-100 text-sm">
+              {uploadType === 'glimpse' 
+                ? 'Share your moment with the world' 
+                : 'Your video is longer than 60 seconds - uploading to YouTube'
+              }
+            </p>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-white/20 rounded-full transition-colors text-white"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        <div className="overflow-y-auto max-h-[calc(90vh-120px)]">
+          <div className="p-6">
+            {/* Video Upload Section - Always at the top */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold mb-4 flex items-center" style={{ color: '#00abff' }}>
+                <Upload className="mr-2" size={20} />
+                Upload Video
+              </h3>
+              
+              {!videoPreview ? (
+                <div
+                  className={`border-2 border-dashed rounded-xl p-8 text-center transition-colors ${
+                    dragActive 
+                      ? 'bg-blue-50' 
+                      : 'border-gray-300 hover:border-blue-400'
+                  }`}
+                  style={{ borderColor: dragActive ? '#00abff' : undefined }}
+                  onDragEnter={handleDrag}
+                  onDragLeave={handleDrag}
+                  onDragOver={handleDrag}
+                  onDrop={handleDrop}
+                >
+                  <div className="space-y-4">
+                    <div className="mx-auto w-16 h-16 rounded-full flex items-center justify-center text-white" style={{ background: '#00abff' }}>
+                      <Upload size={32} />
+                    </div>
+                    
+                    <div>
+                      <p className="text-lg font-medium text-gray-700">
+                        Drag & drop your video here
+                      </p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        or click to browse files
+                      </p>
+                    </div>
+                    
+                    <button
+                      onClick={() => fileInputRef.current?.click()}
+                      className="px-6 py-3 text-white rounded-lg hover:opacity-90 transition-all font-medium"
+                      style={{ background: '#00abff' }}
+                    >
+                      Choose Video File
+                    </button>
+                    
+                    <p className="text-xs text-gray-400">
+                      Supports MP4, WebM, AVI (Max 100MB)
+                    </p>
+                  </div>
+                  
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="video/*"
+                    onChange={handleFileInput}
+                    className="hidden"
+                  />
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="relative bg-black rounded-xl overflow-hidden">
+                    <video
+                      ref={videoRef}
+                      src={videoPreview}
+                      className="w-full h-64 object-cover"
+                      muted={isMuted}
+                      onPlay={() => setIsPlaying(true)}
+                      onPause={() => setIsPlaying(false)}
+                    />
+                    
+                    {/* Video Controls */}
+                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                      <div className="flex gap-4">
+                        <button
+                          onClick={togglePlayPause}
+                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                        >
+                          {isPlaying ? <Pause size={24} className="text-white" /> : <Play size={24} className="text-white" />}
+                        </button>
+                        
+                        <button
+                          onClick={toggleMute}
+                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
+                        >
+                          {isMuted ? <VolumeX size={24} className="text-white" /> : <Volume2 size={24} className="text-white" />}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-4">
+                      <p className="text-sm text-gray-600">
+                        {uploadedVideo?.name}
+                      </p>
+                      <div className="flex items-center gap-2 text-sm">
+                        <Clock size={16} style={{ color: '#00abff' }} />
+                        <span style={{ color: videoDuration > 60 ? '#f59e0b' : '#00abff' }}>
+                          {formatDuration(videoDuration)}
+                          {videoDuration > 60 && ' (YouTube Upload)'}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setUploadedVideo(null);
+                        setVideoPreview(null);
+                        setIsPlaying(false);
+                        setVideoDuration(0);
+                        setUploadType('glimpse');
+                      }}
+                      className="text-red-500 hover:text-red-700 text-sm font-medium"
+                    >
+                      Remove Video
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Form Section */}
+            {videoPreview && (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {uploadType === 'glimpse' ? (
+                  // Glimpse Form
+                  <div className="lg:col-span-2 space-y-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-3 h-3 rounded-full" style={{ background: '#00abff' }}></div>
+                      <h3 className="text-lg font-semibold" style={{ color: '#00abff' }}>Glimpse Details</h3>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Title *
+                          </label>
+                          <input
+                            type="text"
+                            name="title"
+                            value={formData.title}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                            style={{ '--tw-ring-color': '#00abff' }}
+                            placeholder="Give your glimpse a catchy title..."
+                            required
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Description
+                          </label>
+                          <textarea
+                            name="description"
+                            value={formData.description}
+                            onChange={handleInputChange}
+                            rows={3}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent resize-none"
+                            style={{ '--tw-ring-color': '#00abff' }}
+                            placeholder="Tell viewers what this glimpse is about..."
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+                            <Hash size={16} className="mr-1" />
+                            Hashtags
+                          </label>
+                          <input
+                            type="text"
+                            name="hashtags"
+                            value={formData.hashtags}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                            style={{ '--tw-ring-color': '#00abff' }}
+                            placeholder="#travel #adventure"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+                            <Users size={16} className="mr-1" />
+                            Collaborators
+                          </label>
+                          <input
+                            type="text"
+                            name="collaborators"
+                            value={formData.collaborators}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                            style={{ '--tw-ring-color': '#00abff' }}
+                            placeholder="@username1, @username2"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Category
+                        </label>
+                        <select
+                          name="category"
+                          value={formData.category}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                          style={{ '--tw-ring-color': '#00abff' }}
+                        >
+                          <option value="Travel">Travel</option>
+                          <option value="Food">Food</option>
+                          <option value="Entertainment">Entertainment</option>
+                          <option value="Education">Education</option>
+                          <option value="Sports">Sports</option>
+                          <option value="Art">Art</option>
+                          <option value="Music">Music</option>
+                          <option value="Technology">Technology</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+                          <Eye size={16} className="mr-1" />
+                          Privacy
+                        </label>
+                        <select
+                          name="privacy"
+                          value={formData.privacy}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                          style={{ '--tw-ring-color': '#00abff' }}
+                        >
+                          <option value="Public">Public</option>
+                          <option value="Private">Private</option>
+                          <option value="Friends">Friends Only</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  // YouTube Form
+                  <div className="lg:col-span-2 space-y-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Youtube size={20} className="text-red-600" />
+                      <h3 className="text-lg font-semibold text-red-600">YouTube Upload Details</h3>
+                    </div>
+                    
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                      <div className="flex items-center gap-2">
+                        <Clock size={16} className="text-yellow-600" />
+                        <p className="text-sm text-yellow-800">
+                          Your video is <strong>{formatDuration(videoDuration)}</strong> long. Videos longer than 60 seconds will be uploaded to YouTube.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Video Title *
+                          </label>
+                          <input
+                            type="text"
+                            name="title"
+                            value={youtubeData.title}
+                            onChange={handleYoutubeInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                            placeholder="Enter video title..."
+                            required
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Description *
+                          </label>
+                          <textarea
+                            name="description"
+                            value={youtubeData.description}
+                            onChange={handleYoutubeInputChange}
+                            rows={4}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none"
+                            placeholder="Describe your video content..."
+                            required
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Tags
+                          </label>
+                          <input
+                            type="text"
+                            name="tags"
+                            value={youtubeData.tags}
+                            onChange={handleYoutubeInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                            placeholder="tag1, tag2, tag3"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Category *
+                          </label>
+                          <select
+                            name="category"
+                            value={youtubeData.category}
+                            onChange={handleYoutubeInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                            required
+                          >
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Education">Education</option>
+                            <option value="Music">Music</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Travel">Travel & Events</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Technology">Science & Technology</option>
+                            <option value="News">News & Politics</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Privacy *
+                          </label>
+                          <select
+                            name="privacy"
+                            value={youtubeData.privacy}
+                            onChange={handleYoutubeInputChange}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                            required
+                          >
+                            <option value="Public">Public</option>
+                            <option value="Unlisted">Unlisted</option>
+                            <option value="Private">Private</option>
+                          </select>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                          <h4 className="font-medium text-blue-900 mb-2">YouTube Requirements:</h4>
+                          <ul className="text-sm text-blue-800 space-y-1">
+                            <li>• Title must be descriptive (required)</li>
+                            <li>• Description helps with discoverability (required)</li>
+                            <li>• Choose appropriate category</li>
+                            <li>• Tags improve searchability</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Submit Buttons */}
+                <div className="lg:col-span-2 flex gap-4 pt-6 border-t border-gray-200">
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+                  >
+                    Cancel
+                  </button>
+                  <Link className='flex-1' to="/glimpse"><button
+                    type="button"
+                    // onClick={handleSubmit}
+                    className="flex-1 px-6 py-3 text-white rounded-lg hover:opacity-90 transition-all font-medium"
+                    style={{ 
+                      background: uploadType === 'glimpse' ? '#00abff' : '#dc2626' 
+                    }}
+                  >
+                    {uploadType === 'glimpse' ? 'Upload Glimpse' : 'Upload to YouTube'}
+                  </button>
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // Trip Popup with Itinerary Planning
 const TripPopup = ({ onClose }) => {
+  useEffect(() => {
+  // Prevent background scroll when modal opens
+  document.body.style.overflow = 'hidden';
+  
+  // Restore scroll when modal closes
+  return () => {
+    document.body.style.overflow = 'unset';
+  };
+}, []);
   return (
-    <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
-        <div className="bg-white p-6 rounded-2xl w-full max-w-2xl h-[80vh] overflow-y-scroll shadow-xl" onClick={(e) => e.stopPropagation()}>      <div className="flex justify-between items-center mb-4">
+    <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50' onClick={onClose}>
+<div className="bg-white p-6 rounded-2xl w-full max-w-2xl max-h-[80vh] overflow-y-auto shadow-xl m-4" onClick={(e) => e.stopPropagation()}>     
+          <div className="flex justify-between items-center mb-4">
         <h3 className="text-2xl font-bold gradient-text-three">Create Trip</h3>
         <button className="text-gray-500 hover:text-gray-800 p-2" onClick={onClose}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -462,9 +1042,20 @@ const ProjectPopup = ({ onClose }) => {
     image: null
   });
 
+  useEffect(() => {
+  // Prevent background scroll when modal opens
+  document.body.style.overflow = 'hidden';
+  
+  // Restore scroll when modal closes
+  return () => {
+    document.body.style.overflow = 'unset';
+  };
+}, []);
+
   return (
-    <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
-        <div className="bg-white p-6 rounded-2xl w-full max-w-2xl h-[80vh] overflow-y-scroll shadow-xl" onClick={(e) => e.stopPropagation()}>    <div className="bg-white rounded-lg p-8 max-w-2xl w-full max-h-screen overflow-y-auto">
+    <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50' onClick={onClose}>
+<div className="bg-white p-6 rounded-2xl w-full max-w-2xl max-h-[80vh] overflow-y-auto shadow-xl m-4" onClick={(e) => e.stopPropagation()}>   
+          <div className="bg-white rounded-lg p-8 max-w-2xl w-full max-h-screen overflow-y-auto">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Create New Project</h2>
         <button 
@@ -632,6 +1223,7 @@ const CreateSection = ({ category ,hubId}) => {
       {activePopup === "Create Groups" && <GroupPopup onClose={closePopup} />}
       {activePopup === "Create your trips" && <TripPopup onClose={closePopup} />}
       {activePopup === "Create Project" && <ProjectPopup onClose={closePopup} />}
+      {activePopup === "Glimpse" && <GlimpseUploadModal onClose={closePopup} />}
     </div>
   );
 };

@@ -188,7 +188,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="relative right-0 z-20 flex h-20 items-center justify-between px-[6vw] lg:px-[5vw] py-4">
+      <nav className="relative right-0  flex h-20 items-center justify-between px-[6vw] lg:px-[5vw] py-4">
         <div className="text-xl font-bold">
           <Link to="/">
             <img className="max-h-32" src={logo} alt="logo" />

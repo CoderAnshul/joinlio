@@ -29,7 +29,8 @@ import PlanManagement from "./Components/Dashboard/planManagement";
 import StudentManagement from "./Components/Dashboard/student";
 import SignIn from "./Pages/SignIn";
 import VerifyOtpPopup from "./Components/VerifyOtpPopup";
-import SubHubPage from "./Pages/SubHubDetailpage";
+import SubHubPage from "./Pages/SubHubDetailpage";import Glimpse from "./Pages/Glimpse";
+
 const App = () => {
   const lenisRef = useRef(null);
 
@@ -74,6 +75,7 @@ const App = () => {
             <Route path="/blog-detail/:titleSlug" element={<BlogDetail />} />
             <Route path="/send-message" element={<SendMessage />} />
             <Route path="/thank-you" element={<ContactThankyou />} />
+            <Route path="/glimpse" element={<Glimpse />} />
             <Route path="/get-started-thank-you" element={<GetStartedThankyou />} />
             <Route path="/sign-in" element={<SignIn/>} />  
             <Route path="/verify-otp" element={<VerifyOtpPopup/>} /> 
