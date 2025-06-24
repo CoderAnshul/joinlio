@@ -1,64 +1,45 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Play, X, Maximize2 } from 'lucide-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Play, X, Maximize2, Loader2, AlertCircle } from 'lucide-react';
+import { fetchGlimpses } from '../store/slices/glimpse'; // Adjust path as needed
 
 const VideoGallery = () => {
+  const dispatch = useDispatch();
+  const { data: glimpsesData, loading, error } = useSelector(state => state.glimpse);
+  console.log("Glimpsesdcv Data:", glimpsesData);
+  
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showVideoInfo, setShowVideoInfo] = useState(true);
   const videoRefs = useRef([]);
   const hideTimeoutRef = useRef(null);
-  
-  // Sample video data - replace with your actual video uploads
-  const videos = [
-    {
-      id: 1,
-      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-      thumbnail: "https://via.placeholder.com/400x600/1a1a1a/ffffff?text=Video+1",
-      title: "Adventure in Mountains",
-      duration: "2:30"
-    },
-    {
-      id: 2,
-      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4", 
-      thumbnail: "https://via.placeholder.com/400x600/2a2a2a/ffffff?text=Video+2",
-      title: "Beach Sunset",
-      duration: "1:45"
-    },
-    {
-      id: 3,
-      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4",
-      thumbnail: "https://via.placeholder.com/400x600/3a3a3a/ffffff?text=Video+3", 
-      title: "City Lights",
-      duration: "3:20"
-    },
-    {
-      id: 4,
-      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-      thumbnail: "https://via.placeholder.com/400x600/4a4a4a/ffffff?text=Video+4",
-      title: "Forest Walk",
-      duration: "2:15"
-    },
-    {
-      id: 5,
-      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4",
-      thumbnail: "https://via.placeholder.com/400x600/5a5a5a/ffffff?text=Video+5",
-      title: "Ocean Waves",
-      duration: "4:10"
-    },
-    {
-      id: 6,
-      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4",
-      thumbnail: "https://via.placeholder.com/400x600/6a6a6a/ffffff?text=Video+6",
-      title: "Desert Landscape",
-      duration: "1:55"
-    }
-  ];
 
   const hubData = {
     name: "Videos",
     heading: "Explore Amazing Moments",
     subDescription: "Dive into our collection of stunning videos from around the world"
   };
+
+  // Fetch videos on component mount
+  useEffect(() => {
+    dispatch(fetchGlimpses());
+  }, [dispatch]);
+
+  // Transform API data to match component structure
+  const videos = React.useMemo(() => {
+    console.log("Glimpses Data:", glimpsesData);
+    if (!glimpsesData) return [];
+    
+    return glimpsesData?.map((video, index) => ({
+      id: video._id || video.id || index,
+      src: video.url || video.videoUrl || video.src || video?.video_file,
+      thumbnail: video.thumbnail || video.thumbnailUrl || `https://via.placeholder.com/400x600/1a1a1a/ffffff?text=Video+${index + 1}`,
+      title: video.title || video.name || `Video ${index + 1}`,
+      duration: video.duration || "0:00",
+      createdAt: video.createdAt,
+      ...video // Include any additional fields from API
+    }));
+  }, [glimpsesData]);
 
   useEffect(() => {
     // Auto-play videos when they come into view
@@ -87,7 +68,7 @@ const VideoGallery = () => {
         if (video) observer.unobserve(video);
       });
     };
-  }, []);
+  }, [videos]);
 
   const openFullscreen = (video) => {
     setSelectedVideo(video);
@@ -122,14 +103,10 @@ const VideoGallery = () => {
       clearTimeout(hideTimeoutRef.current);
     }
     
-    // Set new timeout to hide after 3 seconds
+    // Set new timeout to hide after 1 second
     hideTimeoutRef.current = setTimeout(() => {
       setShowVideoInfo(false);
     }, 1000);
-  };
-
-  const handleVideoLeave = () => {
-    // Keep the timeout running when mouse leaves
   };
 
   const VideoCard = ({ video, index }) => (
@@ -181,6 +158,39 @@ const VideoGallery = () => {
     </div>
   );
 
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 text-[#00abff] animate-spin mx-auto mb-4" />
+          <p className="text-gray-600 text-lg">Loading videos...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center max-w-md mx-auto px-4">
+          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Error Loading Videos</h2>
+          <p className="text-gray-600 mb-4">
+            {typeof error === 'string' ? error : error.message || 'Failed to load videos'}
+          </p>
+          <button 
+            onClick={() => dispatch(fetchGlimpses())}
+            className="bg-[#00abff] hover:bg-[#0088cc] text-white px-6 py-2 rounded-lg font-medium transition-colors duration-200"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
@@ -193,16 +203,33 @@ const VideoGallery = () => {
             <h3 className="mt-4 mb-2 text-xl italic text-[#00abff]">{hubData.heading}</h3>
             {hubData.subDescription}
           </p>
+          
+          {/* Video count */}
+          {videos.length > 0 && (
+            <div className="mb-8">
+              <span className="bg-[#00abff]/10 text-[#00abff] px-4 py-2 rounded-full text-sm font-medium">
+                {videos.length} video{videos.length !== 1 ? 's' : ''} available
+              </span>
+            </div>
+          )}
         </div>
       </div>
 
       {/* Video Grid */}
       <div className="container mx-auto px-4 pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 md:gap-6">
-          {videos.map((video, index) => (
-            <VideoCard key={video.id} video={video} index={index} />
-          ))}
-        </div>
+        {videos.length === 0 ? (
+          <div className="text-center py-16">
+            <div className="text-gray-400 text-6xl mb-4">🎬</div>
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">No Videos Found</h3>
+            <p className="text-gray-500">Upload some videos to get started!</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 md:gap-6">
+            {videos.map((video, index) => (
+              <VideoCard key={video.id} video={video} index={index} />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Fullscreen Modal */}
@@ -220,7 +247,7 @@ const VideoGallery = () => {
           <div 
             className="relative w-full h-full max-w-5xl max-h-[85vh] bg-black rounded-lg overflow-hidden shadow-2xl"
             onMouseEnter={handleVideoHover}
-            onMouseLeave={handleVideoLeave}
+            onMouseLeave={() => {}}
           >
             <video
               className="w-full h-full object-contain bg-black"
@@ -243,7 +270,15 @@ const VideoGallery = () => {
               showVideoInfo ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-0'
             }`}>
               <h2 className="text-white text-2xl font-bold mb-2 drop-shadow-lg">{selectedVideo.title}</h2>
-              <p className="text-white/90 drop-shadow-md">Duration: {selectedVideo.duration}</p>
+              <div className="flex items-center gap-4 text-white/90 drop-shadow-md">
+                <span>Duration: {selectedVideo.duration}</span>
+                {selectedVideo.createdAt && (
+                  <span>•</span>
+                )}
+                {selectedVideo.createdAt && (
+                  <span>Uploaded: {new Date(selectedVideo.createdAt).toLocaleDateString()}</span>
+                )}
+              </div>
             </div>
           </div>
 

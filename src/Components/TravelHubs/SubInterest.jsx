@@ -221,7 +221,7 @@ const SubInterest = ({ category = "travel", className = "", hubId }) => {
                         transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-2 hover:border-transparent
                         hover:bg-gradient-to-r hover:from-indigo-300 hover:to-pink-300 group active:scale-95"
                     >
-                      <div className="flex-shrink-0">
+                      {/* <div className="flex-shrink-0">
                         <div
                           className={`w-16 h-16 ${item.bgColor} rounded-full flex items-center justify-center
                           transition-all duration-300 group-hover:scale-110`}
@@ -230,7 +230,7 @@ const SubInterest = ({ category = "travel", className = "", hubId }) => {
                             {item.icon}
                           </span>
                         </div>
-                      </div>
+                      </div> */}
                       <div className="flex-1">
                         <h2 className="text-xl font-bold text-gray-900 group-hover:text-white transition-all duration-300">
                           {item?.name || item.title}

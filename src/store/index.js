@@ -6,7 +6,8 @@ import hubReducer from './slices/hubSlice';
 import subHub from './slices/subhub'; 
 import blogReducer from './slices/blog';
 import user from './slices/user';
-import groupReducer from './slices/group'; // Assuming you have a group slice
+import groupReducer from './slices/group';
+import glimpseReducer from './slices/glimpse';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     signin: signInReducer,
     hub: hubReducer,
     subhub: subHub,
+    glimpse: glimpseReducer,
 
     blog: blogReducer,
     user: user,

@@ -19,9 +19,9 @@ import Profile from "./Components/Dashboard/profile";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Feed from "./Components/Dashboard/Feeds";
 import ExploreTopicsPage from "./Components/Dashboard/ExploreTopicsPage";
-import {PeerAccountPage} from "./Components/Dashboard/PeerAccount";
-import {Tools} from "./Components/Dashboard/Tools";
-import {ProjectsPage} from "./Components/Dashboard/Collaboration";
+import { PeerAccountPage } from "./Components/Dashboard/PeerAccount";
+import { Tools } from "./Components/Dashboard/Tools";
+import { ProjectsPage } from "./Components/Dashboard/Collaboration";
 import { ServicesPage } from "./Components/Dashboard/Service";
 import Rewards from "./Components/Dashboard/Rewards";
 import RequestPartnership from "./Components/Dashboard/RequestPartnership";
@@ -29,7 +29,11 @@ import PlanManagement from "./Components/Dashboard/planManagement";
 import StudentManagement from "./Components/Dashboard/student";
 import SignIn from "./Pages/SignIn";
 import VerifyOtpPopup from "./Components/VerifyOtpPopup";
-import SubHubPage from "./Pages/SubHubDetailpage";import Glimpse from "./Pages/Glimpse";
+import SubHubPage from "./Pages/SubHubDetailpage";
+import Glimpse from "./Pages/Glimpse";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import HubBlogDetailPage from "./Pages/SubhubBlogDetail";
 
 const App = () => {
   const lenisRef = useRef(null);
@@ -54,7 +58,6 @@ const App = () => {
     return null;
   };
 
-  // Layout wrapper component to conditionally render Navbar and Footer
   const MainLayout = () => {
     const location = useLocation();
     const isDashboard = location.pathname.startsWith('/dashboard');
@@ -73,17 +76,14 @@ const App = () => {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blog-detail/:id" element={<BlogDetail />} />
             <Route path="/blog-detail/:titleSlug" element={<BlogDetail />} />
+            <Route path="/hub-blog-detail/:slug" element={<HubBlogDetailPage />} />
             <Route path="/send-message" element={<SendMessage />} />
             <Route path="/thank-you" element={<ContactThankyou />} />
             <Route path="/glimpse" element={<Glimpse />} />
             <Route path="/get-started-thank-you" element={<GetStartedThankyou />} />
             <Route path="/sign-in" element={<SignIn/>} />  
             <Route path="/verify-otp" element={<VerifyOtpPopup/>} /> 
-             <Route path="/subhub/:subHubId" element={<SubHubPage />} />
-
-            {/* Temporary route for sign-up, replace with actual component later */}
-            
-            {/* Dashboard routes with custom layout */}
+            <Route path="/subhub/:subHubId" element={<SubHubPage />} />
             <Route path="/dashboard" element={<DashboardLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="profile" element={<Profile />} />
@@ -106,10 +106,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
       smooth: true,
-      lerp: 0.07, // Adjust scrolling smoothness
+      lerp: 0.07,
     });
 
     lenisRef.current = lenis;
@@ -121,7 +120,6 @@ const App = () => {
 
     requestAnimationFrame(onScroll);
 
-    // Cleanup on unmount
     return () => {
       lenis.destroy();
     };
@@ -129,11 +127,17 @@ const App = () => {
 
   return (
     <div className="app-wrapper min-h-screen overflow-x-hidden">
-      {/* <div className="gradient-layer">
-        <div className="gradient-background"></div>
-        <div className="gradient-background outer"></div>
-      </div> */}
-
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <BrowserRouter>
         <ScrollManager />
         <MainLayout />
