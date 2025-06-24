@@ -27,7 +27,9 @@ import Rewards from "./Components/Dashboard/Rewards";
 import RequestPartnership from "./Components/Dashboard/RequestPartnership";
 import PlanManagement from "./Components/Dashboard/planManagement";
 import StudentManagement from "./Components/Dashboard/student";
-
+import SignIn from "./Pages/SignIn";
+import VerifyOtpPopup from "./Components/VerifyOtpPopup";
+import SubHubPage from "./Pages/SubHubDetailpage";
 const App = () => {
   const lenisRef = useRef(null);
 
@@ -73,6 +75,11 @@ const App = () => {
             <Route path="/send-message" element={<SendMessage />} />
             <Route path="/thank-you" element={<ContactThankyou />} />
             <Route path="/get-started-thank-you" element={<GetStartedThankyou />} />
+            <Route path="/sign-in" element={<SignIn/>} />  
+            <Route path="/verify-otp" element={<VerifyOtpPopup/>} /> 
+             <Route path="/subhub/:subHubId" element={<SubHubPage />} />
+
+            {/* Temporary route for sign-up, replace with actual component later */}
             
             {/* Dashboard routes with custom layout */}
             <Route path="/dashboard" element={<DashboardLayout />}>

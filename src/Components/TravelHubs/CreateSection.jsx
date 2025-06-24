@@ -3,12 +3,14 @@ import blog from "../../assets/images/blog.png";
 import community from "../../assets/images/community.png";
 import trip from "../../assets/images/trip.png";
 import group from "../../assets/images/group.png";
-
+import { label } from 'framer-motion/client';
+import BlogPopup from '../BlogPopup';
 const buttonConfig = {
   travel: [
     { label: "Create Blog", image: blog },
     { label: "Create Groups", image: group },
-    { label: "Create your trips", image: trip }
+    { label: "Create your trips", image: trip },
+    {label : "Create glimpse", image: community}
   ],
   media: [
     { label: "Create Blog", image: blog },
@@ -24,120 +26,120 @@ const buttonConfig = {
 
 
 // Blog Popup with Rich Text Editor
-const BlogPopup = ({ onClose }) => {
-  return (
-    <>
-      <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
-      <div className="bg-white p-6 rounded-2xl w-full max-w-2xl h-[80vh] overflow-y-scroll shadow-xl" onClick={(e) => e.stopPropagation()}>
-      <div className="flex justify-between items-center mb-4">
+// const BlogPopup = ({ onClose }) => {
+//   return (
+//     <>
+//       <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
+//       <div className="bg-white p-6 rounded-2xl w-full max-w-2xl h-[80vh] overflow-y-scroll shadow-xl" onClick={(e) => e.stopPropagation()}>
+//       <div className="flex justify-between items-center mb-4">
         
-        <h3 className="text-2xl font-bold gradient-text-three">Create Blog</h3>
-        <button className="text-gray-500 hover:text-gray-800 p-2" onClick={onClose}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-      <div className="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-500 mr-3">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="8" x2="12" y2="12"></line>
-          <line x1="12" y1="16" x2="12.01" y2="16"></line>
-        </svg>
-        <p className="text-amber-800 text-sm">
-          Blog creation is currently unavailable. This feature will be enabled after Joinlio officially launches.
-        </p>
-      </div>
+//         <h3 className="text-2xl font-bold gradient-text-three">Create Blog</h3>
+//         <button className="text-gray-500 hover:text-gray-800 p-2" onClick={onClose}>
+//           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+//             <line x1="18" y1="6" x2="6" y2="18"></line>
+//             <line x1="6" y1="6" x2="18" y2="18"></line>
+//           </svg>
+//         </button>
+//       </div>
+//       <div className="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-center">
+//         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-500 mr-3">
+//           <circle cx="12" cy="12" r="10"></circle>
+//           <line x1="12" y1="8" x2="12" y2="12"></line>
+//           <line x1="12" y1="16" x2="12.01" y2="16"></line>
+//         </svg>
+//         <p className="text-amber-800 text-sm">
+//           Blog creation is currently unavailable. This feature will be enabled after Joinlio officially launches.
+//         </p>
+//       </div>
       
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Title
-        </label>
-        <input 
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-          type="text" 
-          placeholder="Enter blog title"
-        />
-      </div>
+//       <div className="mb-4">
+//         <label className="block text-gray-700 text-sm font-bold mb-2">
+//           Title
+//         </label>
+//         <input 
+//           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+//           type="text" 
+//           placeholder="Enter blog title"
+//         />
+//       </div>
       
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Cover Image
-        </label>
-        <div className="flex items-center justify-center bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-40 mb-2 relative">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-            </svg>
-            <span className="ml-2 text-sm text-gray-500">Upload Cover Image</span>
-          </div>
-          <input type="file" className="opacity-0 absolute inset-0 w-full h-full cursor-pointer" />
-        </div>
-      </div>
+//       <div className="mb-4">
+//         <label className="block text-gray-700 text-sm font-bold mb-2">
+//           Cover Image
+//         </label>
+//         <div className="flex items-center justify-center bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg h-40 mb-2 relative">
+//           <div className="absolute inset-0 flex items-center justify-center">
+//             <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+//             </svg>
+//             <span className="ml-2 text-sm text-gray-500">Upload Cover Image</span>
+//           </div>
+//           <input type="file" className="opacity-0 absolute inset-0 w-full h-full cursor-pointer" />
+//         </div>
+//       </div>
       
-      <div className="mb-6">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Content
-        </label>
-        <div className="border rounded-lg mb-2">
-          <div className="flex bg-gray-100 border-b p-2 gap-2">
-            <button className="p-1 hover:bg-gray-200 rounded">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 7V4h16v3"></path><path d="M9 20h6"></path><path d="M12 4v16"></path>
-              </svg>
-            </button>
-            <button className="p-1 hover:bg-gray-200 rounded">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 11h16"></path>
-              </svg>
-            </button>
-            <button className="p-1 hover:bg-gray-200 rounded">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                <polyline points="21 15 16 10 5 21"></polyline>
-              </svg>
-            </button>
-            <button className="p-1 hover:bg-gray-200 rounded">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 3v7a6 6 0 0 0 6 6 6 6 0 0 0 6-6V3"></path>
-              </svg>
-            </button>
-            <button className="p-1 hover:bg-gray-200 rounded">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-              </svg>
-            </button>
-          </div>
-          <textarea 
-            className="shadow-inner appearance-none border-none rounded-b-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-64" 
-            placeholder="Start writing your blog post..."
-          />
-        </div>
-      </div>
+//       <div className="mb-6">
+//         <label className="block text-gray-700 text-sm font-bold mb-2">
+//           Content
+//         </label>
+//         <div className="border rounded-lg mb-2">
+//           <div className="flex bg-gray-100 border-b p-2 gap-2">
+//             <button className="p-1 hover:bg-gray-200 rounded">
+//               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+//                 <path d="M4 7V4h16v3"></path><path d="M9 20h6"></path><path d="M12 4v16"></path>
+//               </svg>
+//             </button>
+//             <button className="p-1 hover:bg-gray-200 rounded">
+//               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+//                 <path d="M4 11h16"></path>
+//               </svg>
+//             </button>
+//             <button className="p-1 hover:bg-gray-200 rounded">
+//               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+//                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+//                 <circle cx="8.5" cy="8.5" r="1.5"></circle>
+//                 <polyline points="21 15 16 10 5 21"></polyline>
+//               </svg>
+//             </button>
+//             <button className="p-1 hover:bg-gray-200 rounded">
+//               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+//                 <path d="M6 3v7a6 6 0 0 0 6 6 6 6 0 0 0 6-6V3"></path>
+//               </svg>
+//             </button>
+//             <button className="p-1 hover:bg-gray-200 rounded">
+//               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+//                 <circle cx="12" cy="12" r="10"></circle>
+//                 <line x1="2" y1="12" x2="22" y2="12"></line>
+//                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+//               </svg>
+//             </button>
+//           </div>
+//           <textarea 
+//             className="shadow-inner appearance-none border-none rounded-b-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-64" 
+//             placeholder="Start writing your blog post..."
+//           />
+//         </div>
+//       </div>
       
-      <div className="flex justify-between">
-        <button 
-          className="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg hover:bg-gray-300 transition-all"
-          onClick={onClose}
-        >
-          Save Draft
-        </button>
-        <button 
-          className="bg-textColor text-white font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-all"
-          onClick={onClose}
-        >
-          Publish
-        </button>
-      </div>
-    </div>
-    </div>
-    </>
-  );
-};
+//       <div className="flex justify-between">
+//         <button 
+//           className="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg hover:bg-gray-300 transition-all"
+//           onClick={onClose}
+//         >
+//           Save Draft
+//         </button>
+//         <button 
+//           className="bg-textColor text-white font-bold py-2 px-4 rounded-lg hover:opacity-90 transition-all"
+//           onClick={onClose}
+//         >
+//           Publish
+//         </button>
+//       </div>
+//     </div>
+//     </div>
+//     </>
+//   );
+// };
 
 // Group Popup with Member Management
 const GroupPopup = ({ onClose }) => {
@@ -584,7 +586,7 @@ const ProjectPopup = ({ onClose }) => {
 }
 
 
-const CreateSection = ({ category }) => {
+const CreateSection = ({ category ,hubId}) => {
   const buttons = buttonConfig[category] || [];
   const [activePopup, setActivePopup] = useState(null);
    const [newProject, setNewProject] = useState({
@@ -625,7 +627,7 @@ const CreateSection = ({ category }) => {
       </div>
 
       {/* Render the appropriate popup based on activePopup state */}
-      {activePopup === "Create Blog" && <BlogPopup onClose={closePopup} />}
+      {activePopup === "Create Blog" && <BlogPopup onClose={closePopup} hubId={hubId} />}
       {activePopup === "Create Groups" && <GroupPopup onClose={closePopup} />}
       {activePopup === "Create your trips" && <TripPopup onClose={closePopup} />}
       {activePopup === "Create Project" && <ProjectPopup onClose={closePopup} />}

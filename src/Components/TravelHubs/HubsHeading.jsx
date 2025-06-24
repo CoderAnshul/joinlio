@@ -18,6 +18,8 @@ const HubsHeading = ({ hubData, className = "" }) => {
       "Welcome to the Cinema Hub, your destination for all things film and storytelling. Engage with fellow movie enthusiasts, discover hidden gems, and discuss cinematic masterpieces. From classic films to contemporary releases, explore the art of storytelling through the lens of cinema.",
   };
 
+console.log("Hub Data in HubsHeading:", hubData);
+
   return (
     <div>
       <div className="relative z-[100]">
@@ -28,8 +30,8 @@ const HubsHeading = ({ hubData, className = "" }) => {
           <p className={`pb-2 h-fit text-sm lg:text-lg max-w-5xl mb-10 ${className}`}>
             {hubData ? (
               <>
-                <h3 className="mt-4 mb-2 text-xl italic">{hubData.heading}</h3>
-                {hubData.subDescription}
+                <h3 className="mt-4 mb-2 text-xl italic">{hubData.subtitle}</h3>
+                {hubData.subDescription || hubData?.description}
               </>
             ) : (
               hubDescriptions["Travel Hub"]

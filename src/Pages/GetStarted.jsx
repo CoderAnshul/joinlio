@@ -1,52 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { ChevronDown, Bird, User } from "lucide-react";
-import emailjs from "@emailjs/browser";
+import { submitSignupForm, resetSignupState } from "../store/slices/signupSlice";
+import VerifyOtpPopup from "../Components/VerifyOtpPopup";
 import j from "../assets/images/bigJTwo.png";
 
 const GetStarted = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, error, signupSuccess, response } = useSelector((state) => state.signup);
   const [userCategory, setUserCategory] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [institutionName, setInstitutionName] = useState("");
   const [businessName, setBusinessName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [query, setQuery] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const [showOtpPopup, setShowOtpPopup] = useState(false);
+
+  // Debug: Log Redux state changes
+  useEffect(() => {
+    console.log("Redux state:", { loading, error, signupSuccess, response });
+    if (signupSuccess && response && !showOtpPopup) {
+      console.log("Signup successful, showing OTP popup");
+      setShowOtpPopup(true);
+    }
+  }, [signupSuccess, response, showOtpPopup]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form submitted with data:", {
+      userCategory,
+      firstName,
+      lastName,
+      institutionName,
+      businessName,
+      email,
+      password,
+      query,
+      acceptTerms,
+    });
+
     if (!acceptTerms) {
+      alert("Please accept the Terms and Conditions.");
       return;
     }
-    setIsSubmitting(true);
 
-    // Prepare template parameters
-    const templateParams = {
-      user_category: userCategory || "",
-      first_name: firstName || "N/A",
-      last_name: lastName || "N/A",
-      institution_name: institutionName || "N/A",
-      business_name: businessName || "N/A",
-      email: email || "N/A",
-      query: query || "N/A",
-    };
+    // Prepare form data
+    const formData = new FormData();
+    formData.append("type", userCategory || "");
+    formData.append("f_name", firstName || "N/A");
+    formData.append("l_name", lastName || "N/A");
+    formData.append("institute_name", institutionName || "N/A");
+    formData.append("business_name", businessName || "N/A");
+    formData.append("email", email || "N/A");
+    formData.append("password", password || "N/A");
+    formData.append("query", query || "N/A");
 
     try {
-      await emailjs.send(
-        'service_kewk8yr',
-        'template_ymwsydf',
-        templateParams,
-        "o_l0zTlSddslcQg_o"
-      );
-
-      // Navigate to thank you page
-      navigate('/get-started-thank-you');
-    } catch (error) {
-      console.error("Error sending email:", error.message);
-      setIsSubmitting(false);
+      const result = await dispatch(submitSignupForm(formData)).unwrap();
+      console.log("Signup API response:", result);
+      setShowOtpPopup(true); // Show OTP popup
+    } catch (err) {
+      console.error("Error submitting form:", err);
     }
   };
 
@@ -99,24 +118,38 @@ const GetStarted = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Mail Id<span className="text-red-600">*</span>
+                  Mail Id <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="email"
                   className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="yourname@123.con"
+                  placeholder="yourname@123.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
             </div>
+
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Password <span className="text-red-600">*</span>
+              </label>
+              <input
+                type="password"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
           </>
         );
       case "businesses":
         return (
           <>
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-2 gap-4 mb-3">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   First Name
@@ -143,10 +176,10 @@ const GetStarted = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-2 gap-4 mb-3">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Business Name<span className="text-red-600">*</span>
+                  Business Name <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -159,7 +192,7 @@ const GetStarted = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Business Email<span className="text-red-600">*</span>
+                  Business Email <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="email"
@@ -171,38 +204,68 @@ const GetStarted = () => {
                 />
               </div>
             </div>
+
+            <div className="mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Password <span className="text-red-600">*</span>
+              </label>
+              <input
+                type="password"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
           </>
         );
       case "institutions":
         return (
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <div>
+          <>
+            <div className="grid grid-cols-2 gap-4 mb-3">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Institution Name <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="Enter your institution's name"
+                  value={institutionName}
+                  onChange={(e) => setInstitutionName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Mail Id <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="email"
+                  className="w-full p-3 border border-gray-300 rounded-lg"
+                  placeholder="enter your mail ID"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="mb-3">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Institution Name<span className="text-red-600">*</span>
+                Password <span className="text-red-600">*</span>
               </label>
               <input
-                type="text"
+                type="password"
                 className="w-full p-3 border border-gray-300 rounded-lg"
-                placeholder="Enter your institution's name"
-                value={institutionName}
-                onChange={(e) => setInstitutionName(e.target.value)}
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Mail Id<span className="text-red-600">*</span>
-              </label>
-              <input
-                type="email"
-                className="w-full p-3 border border-gray-300 rounded-lg"
-                placeholder="enter your mail ID"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-          </div>
+          </>
         );
       default:
         return null;
@@ -218,7 +281,7 @@ const GetStarted = () => {
         {/* Left Section */}
         <div className="space-y-6">
           <div className="relative">
-            <div className="absolute inset-0  rounded-3xl opacity-20" />
+            <div className="absolute inset-0 rounded-3xl opacity-20" />
             <div className="relative p-8">
               <h1 className="text-3xl font-bold mb-6">Sign Up Early!</h1>
               <p className="text-gray-700 mb-8">
@@ -250,8 +313,10 @@ const GetStarted = () => {
                   <li className="flex items-start gap-2">
                     <span className="font-medium min-w-6">1.</span>
                     <span>
-                      <strong>Students/Alumni: </strong>If you're 16+ — whether you're finishing school or studying in a university,
-                      college, or institution — Joinlio is your space to connect, collaborate, and grow.
+                      <strong>Students/Alumni: </strong>If you're 16+ — whether
+                      you're finishing school or studying in a university, college,
+                      or institution — Joinlio is your space to connect,
+                      collaborate, and grow.
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
@@ -281,7 +346,7 @@ const GetStarted = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                User Category<span className="text-red-600">*</span>
+                User Category <span className="text-red-600">*</span>
               </label>
               <div
                 className="relative"
@@ -344,22 +409,40 @@ const GetStarted = () => {
                     className="text-[#00abff] hover:underline"
                   >
                     Terms & Conditions
-                  </a>
+                  </a>{" "}
                   *
                 </label>
               </div>
             </div>
 
+            {error && (
+              <div className="mb-4 text-red-600 text-sm">
+                Error: {JSON.stringify(error) || "Something went wrong. Please try again."}
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-[#F7C28A] text-Black py-3 px-6 rounded-lg hover:bg-[#c59057] transition-colors disabled:opacity-50"
-              disabled={isSubmitting}
+              className="w-full bg-[#F7C28A] text-black py-3 px-6 rounded-lg hover:bg-[#c59057] transition-colors disabled:opacity-50"
+              disabled={loading}
             >
-              {isSubmitting ? "Signing up..." : "Sign up"}
+              {loading ? "Signing up..." : "Sign up"}
             </button>
           </form>
         </div>
       </div>
+
+      {/* Debug: Log popup state */}
+      {console.log("Rendering popup with isOpen:", showOtpPopup)}
+      <VerifyOtpPopup
+        isOpen={showOtpPopup}
+        onClose={() => {
+          console.log("Closing OTP popup");
+          setShowOtpPopup(false);
+          dispatch(resetSignupState()); // Reset state when closing popup
+        }}
+        email={email}
+      />
     </div>
   );
 };
